@@ -32,7 +32,7 @@
             <div class="input-group input-group-flat">
               <input class="form-control" id="password" name="password" type="password" value="{{ old('password') }}" placeholder="{{ __('User password') }}" autocomplete="off">
               <span class="input-group-text">
-                <a class="link-secondary cursor-pointer" data-bs-toggle="tooltip" title="{{ __('Show password') }}" onclick="showPassword()">
+                <a class="link-secondary cursor-pointer" data-bs-toggle="tooltip" title="{{ __('Click to show password') }}" onclick="showPassword()">
                   <!-- Download SVG icon from http://tabler-icons.io/i/eye -->
                   <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
