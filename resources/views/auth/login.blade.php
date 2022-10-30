@@ -6,10 +6,21 @@
       <div class="mb-4 text-center">
         <a class="navbar-brand navbar-brand-autodark" href="."><img src="{{ asset('static/logo.svg') }}" alt="Tabler logo" height="36"></a>
       </div>
-      <form class="card card-md" action="{{ route('login') }}" method="POST" autocomplete="off">
+      <form class="card card-md shadow-sm" action="{{ route('login') }}" method="POST" autocomplete="off">
         @csrf
         <div class="card-body">
-          <h2 class="mb-4 text-center">{{ __('Sign in') }}</h2>
+          <h2 class="text-center">{{ __('Sign in') }}</h2>
+          <div class="mb-6">
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+          </div>
           <div class="mb-3">
             <label class="form-label">{{ __('Personal number') }}</label>
             <input class="form-control" name="personal_number" type="text" value="{{ old('parsonal_number') }}" placeholder="{{ __('Personal number') }}">
@@ -24,7 +35,7 @@
             <div class="input-group input-group-flat">
               <input class="form-control" id="password" name="password" type="password" value="{{ old('password') }}" placeholder="{{ __('User password') }}" autocomplete="off">
               <span class="input-group-text">
-                <a class="link-secondary cursor-pointer" data-bs-toggle="tooltip" title="Show password" onclick="showPassword()">
+                <a class="link-secondary cursor-pointer" data-bs-toggle="tooltip" title="{{ __('Show password') }}" onclick="showPassword()">
                   <!-- Download SVG icon from http://tabler-icons.io/i/eye -->
                   <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -43,13 +54,14 @@
             </label>
           </div>
           <div class="form-footer">
-            <button class="btn btn-primary w-100 text-uppercase" type="submit">{{ __('Sign in') }}</button>
+            <button class="btn btn-primary w-100 text-uppercase hover-shadow" type="submit">{{ __('Sign in') }}</button>
           </div>
         </div>
         <div class="hr-text">{{ __('or') }}</div>
         <div class="card-body">
           <div class="row">
-            <div class="col"><a class="btn btn-white w-100" href="#">
+            <div class="col">
+              <a class="btn btn-white w-100 hover-shadow" href="#">
                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
                 <svg class="icon text-github" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                   fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -60,7 +72,8 @@
                 {{ __('Login with Github') }}
               </a>
             </div>
-            <div class="col"><a class="btn btn-white w-100" href="#">
+            <div class="col">
+              <a class="btn btn-white w-100 hover-shadow" href="#">
                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
                 <svg class="icon text-twitter" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                   fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -87,6 +100,6 @@
       } else {
         element.type = "password";
       }
-    }
+    };
   </script>
 @endsection

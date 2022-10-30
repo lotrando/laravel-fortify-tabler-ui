@@ -7,10 +7,21 @@
         <div class="mb-4 text-center">
           <a class="navbar-brand navbar-brand-autodark" href="."><img src="{{ asset('static/logo.svg') }}" alt="Tabler logo" height="36"></a>
         </div>
-        <form class="card card-md" action="{{ route('register') }}" method="POST">
+        <form class="card card-md shadow-sm" action="{{ route('register') }}" method="POST">
           @csrf
           <div class="card-body">
-            <h2 class="text-upercase mb-4 text-center">{{ __('Create new account') }}</h2>
+            <h2 class="text-upercase mb-2 text-center">{{ __('Create new account') }}</h2>
+            <div class="mb-6">
+              @if ($errors->any())
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                </div>
+              @endif
+            </div>
             <div class="mb-3">
               <label class="form-label">{{ __('Personal number') }}</label>
               <input class="form-control" name="personal_number" type="text" value="{{ old('personal_number') }}" placeholder="{{ __('Personal number') }}">
