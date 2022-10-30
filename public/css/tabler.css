@@ -14628,7 +14628,7 @@ a.badge {
 
 .btn:hover {
     color: var(--tblr-btn-color-text);
-    border-color: rgba(var(--tblr-btn-color-text-rgb), 0.48);
+    border-color: rgba(var(--tblr-btn-color-text-rgb), 0.15);
 }
 
 .btn:focus:not([disabled]):not(.disabled) {

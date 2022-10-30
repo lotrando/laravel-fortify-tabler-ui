@@ -124,7 +124,7 @@ return [
     ],
     'attributes' => [
         'personal_number' => 'osobní číslo',
-        'email' => 'pole e-mailová adresa',
+        'email' => 'pole emailová adresa',
         'password' => 'heslo',
         'name' => 'jméno',
         'department_id' => 'pole oddělení',

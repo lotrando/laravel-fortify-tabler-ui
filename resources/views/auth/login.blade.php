@@ -12,7 +12,7 @@
           <h2 class="text-center">{{ __('Sign in') }}</h2>
           <div class="mb-6">
             @if ($errors->any())
-              <div class="alert alert-danger">
+              <div class="alert alert-danger text-danger shadow-sm">
                 <ul>
                   @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -23,9 +23,9 @@
           </div>
           <div class="mb-3">
             <label class="form-label">{{ __('Personal number') }}</label>
-            <input class="form-control" name="personal_number" type="text" value="{{ old('parsonal_number') }}" placeholder="{{ __('Personal number') }}">
+            <input class="form-control" name="personal_number" type="text" value="{{ old('personal_number') }}" placeholder="{{ __('Personal number') }}">
           </div>
-          <div class="mb-3">
+          <div class="mb-4">
             <label class="form-label">
               {{ __('Password') }}
             </label>
@@ -44,7 +44,7 @@
               </span>
             </div>
           </div>
-          <div class="mb-2">
+          <div class="my-2">
             <label class="form-check">
               <input class="form-check-input" type="checkbox" />
               <span class="form-check-label">{{ __('Remember me on this device') }}</span>
@@ -54,10 +54,10 @@
             <button class="btn btn-primary w-100 text-uppercase hover-shadow mb-2" type="submit">{{ __('Sign in') }}</button>
           </div>
           <div class="text-center">
-            <a href="{{ route('password.request') }}">{{ __('I forgot password') }}</a>
+            <a href="{{ route('password.request') }}">{{ __('Forgot your password?') }}</a>
           </div>
         </div>
-        <div class="hr-text">{{ __('or') }}</div>
+        {{-- <div class="hr-text">{{ __('or') }}</div>
         <div class="card-body">
           <div class="row">
             <div class="col">
@@ -85,7 +85,7 @@
               </a>
             </div>
           </div>
-        </div>
+        </div> --}}
       </form>
       <div class="text-muted mt-3 text-center">
         {{ __('Don\'t have account yet?') }} <a href="{{ route('register') }}" tabindex="-1">{{ __('Sign up') }}</a>

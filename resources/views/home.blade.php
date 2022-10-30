@@ -1,23 +1,31 @@
 @extends('layouts.app')
 
 @section('main')
-  <div class="page min-vh-100">
-    <div class="container-fluid p-2">
-      <div class="card card-md shadow-sm">
-        <div class="card-body">
-          <h2 class="text-center">{{ __('Homepage') }}</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script>
-    function showPassword() {
-      var element = document.getElementById("password");
-      if (element.type === "password") {
-        element.type = "text";
-      } else {
-        element.type = "password";
-      }
-    };
-  </script>
+  @if (session('status'))
+    <div>{{ session('status') }}</div>
+  @endif
+
+  <div>You are logged in!</div>
+
+  <form method="POST" action="{{ route('logout') }}">
+    @csrf
+
+    <button type="submit">
+      {{ __('Logout') }}
+    </button>
+  </form>
+
+  <hr>
+
+  @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updateProfileInformation()))
+    @include('profile.update-profile-information-form')
+  @endif
+
+  @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
+    @include('profile.update-password-form')
+  @endif
+
+  @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::twoFactorAuthentication()))
+    @include('profile.two-factor-authentication-form')
+  @endif
 @endsection
