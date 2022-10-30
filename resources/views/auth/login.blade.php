@@ -28,9 +28,6 @@
           <div class="mb-3">
             <label class="form-label">
               {{ __('Password') }}
-              <span class="form-label-description">
-                <a href="{{ route('password.request') }}">{{ __('I forgot password') }}</a>
-              </span>
             </label>
             <div class="input-group input-group-flat">
               <input class="form-control" id="password" name="password" type="password" value="{{ old('password') }}" placeholder="{{ __('User password') }}" autocomplete="off">
@@ -54,7 +51,10 @@
             </label>
           </div>
           <div class="form-footer">
-            <button class="btn btn-primary w-100 text-uppercase hover-shadow" type="submit">{{ __('Sign in') }}</button>
+            <button class="btn btn-primary w-100 text-uppercase hover-shadow mb-2" type="submit">{{ __('Sign in') }}</button>
+          </div>
+          <div class="text-center">
+            <a href="{{ route('password.request') }}">{{ __('I forgot password') }}</a>
           </div>
         </div>
         <div class="hr-text">{{ __('or') }}</div>
