@@ -1,16 +1,17 @@
 @extends('layouts.datatable')
 
 @section('main')
-  @if (session('status'))
-    <div>{{ session('status') }}</div>
-  @endif
-
-  <div class="container-fluid" style="margin-top: 10px">
+  <div class="container-fluid" style="margin-top: 25px">
     <div class="row justify-content-center">
-      <div class="col-md-8">
+      <div class="col-md-12">
+
         <div class="card">
-          <div class="card-header">
-            Test
+
+          <div class="card-header justify-content-between d-flex">
+            <h1 class="text-muted">{{ __('Emploeeys') }}</h1>
+            <div>
+              <button class="btn btn-success" id="create_record" name="create_record">{{ __('New') }}</button>
+            </div>
           </div>
           <div class="card-body">
             @if (session('status'))
@@ -18,14 +19,24 @@
                 {{ session('status') }}
               </div>
             @endif
-            <table class="table-bordered table-striped data-table table">
+            @if (session('status'))
+              <div>{{ session('status') }}</div>
+            @endif
+            <table class="table-bordered table-striped dataTable table">
               <thead>
                 <tr>
-                  <th>No</th>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Department</th>
-                  <th class="text-center"><button class="btn btn-sm btn-success" id="create_record" name="create_record">Nový</button></th>
+                  <th>{{ __('Personal number') }}</th>
+                  <th>{{ __('Image') }}</th>
+                  <th>{{ __('Title preffix') }}</th>
+                  <th>{{ __('Last name') }}</th>
+                  <th>{{ __('First name') }}</th>
+                  <th>{{ __('Title suffix') }}</th>
+                  <th>{{ __('Department') }}</th>
+                  <th>{{ __('Job title') }}</th>
+                  <th>{{ __('Email') }}</th>
+                  <th>{{ __('Phone') }}</th>
+                  <th>{{ __('Mobile') }}</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -84,71 +95,3 @@
       </div>
     </div>
   </div>
-
-
-
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('.data-table').DataTable({
-        processing: true,
-        serverSide: true,
-        stateSave: true,
-        pageSave: true,
-        order: [
-          [2, "asc"]
-        ],
-        lengthMenu: [
-          [10, 30, 60, 100, -1],
-          [10, 30, 60, 100, "Všechny"]
-        ],
-        language: {
-          "url": "https://cdn.datatables.net/plug-ins/1.12.1/i18n/cs.json"
-        },
-        ajax: "{{ route('movements.index') }}",
-        columns: [{
-            data: 'id',
-            name: 'id'
-          },
-          {
-            data: 'title',
-            name: 'title'
-          },
-          {
-            data: 'user',
-            name: 'user.name'
-          },
-          {
-            data: 'department',
-            name: 'department.department_name'
-          },
-          {
-            data: 'action',
-            name: 'action',
-            orderable: false,
-            searchable: false
-          },
-        ],
-        columnDefs: [{
-            targets: 0,
-            "width": "5%"
-          },
-          {
-            targets: 1,
-            "width": "25%"
-          },
-          {
-            targets: 2,
-            "width": "15%"
-          },
-          {
-            targets: 3,
-            "width": "15%"
-          },
-          {
-            targets: 4,
-            "width": "5%"
-          },
-        ]
-      });
-    });
-  </script>

@@ -18,7 +18,6 @@ class CreateDepartmentsTable extends Migration
             $table->string('department_code');
             $table->string('center_code');
             $table->string('department_name');
-            $table->timestamps();
         });
     }
 

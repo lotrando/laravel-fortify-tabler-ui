@@ -14,7 +14,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employee = Employee::with('department')->get();
+
+        return view('employees.index')->with('employee', $employee)->toJason();
     }
 
     /**

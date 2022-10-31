@@ -62,12 +62,13 @@
             </div>
             <div class="mb-3">
               <label class="form-check">
-                <input class="form-check-input" name="terms" type="checkbox" />
+                <input class="form-check-input" id="terms" name="terms" type="checkbox" />
                 <span class="form-check-label">{{ __('Agree the') }} <a href="#" tabindex="-1">{{ __('terms and policy') }}</a>.</span>
               </label>
             </div>
             <div class="form-footer">
-              <button class="btn btn-primary w-100 text-uppercase" type="submit">{{ __('Sign up') }}</button>
+              <button class="btn btn-primary w-100 text-uppercase" name="submitButton" type="submit" value="{{ __('Sign up') }}"
+                onClick="check_agree(this.form)">{{ __('Sign up') }}</button>
             </div>
           </div>
         </form>
@@ -93,5 +94,14 @@
         y.type = "password";
       }
     }
+  </script>
+  <script>
+    function check_agree(form) {
+      if (form.terms.checked) {} else {
+        alert('You must agree to the application agreement terms before continuing.');
+      }
+    }
+    form.submitButton.disabled = true;
+    form.submit()
   </script>
 @endsection
