@@ -4,13 +4,13 @@
   <div class="container-fluid">
     <div class="page page-center">
       <div class="container-tight py-4">
-        <div class="mb-4 text-center">
-          <a class="navbar-brand navbar-brand-autodark" href="."><img src="{{ asset('static/logo-khn.png') }}" alt="Tabler logo" height="100"></a>
-        </div>
         <form class="card card-md shadow-sm" action="{{ route('register') }}" method="POST">
           @csrf
           <div class="card-body">
-            <h2 class="text-upercase mb-2 text-center">{{ __('Create new account') }}</h2>
+            <div class="mb-4 text-center">
+              <a class="navbar-brand navbar-brand-autodark" href="#"><img src="{{ asset('static/logo-khn.png') }}" alt="Tabler logo" height="80"></a>
+            </div>
+            {{-- <h2 class="text-upercase mb-2 text-center">{{ __('Create new account') }}</h2> --}}
             <div class="mb-6">
               @if ($errors->any())
                 <div class="alert alert-danger">
@@ -102,6 +102,7 @@
       }
     }
     form.submitButton.disabled = true;
+
     form.submit()
   </script>
 @endsection

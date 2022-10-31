@@ -3,13 +3,13 @@
 @section('main')
   <div class="page page-center">
     <div class="container-tight py-4">
-      <div class="mb-4 text-center">
-        <a class="navbar-brand navbar-brand-autodark" href="."><img src="{{ asset('static/logo-khn.png') }}" alt="Tabler logo" height="100"></a>
-      </div>
       <form class="card card-md shadow-sm" action="{{ route('login') }}" method="POST" autocomplete="off">
         @csrf
         <div class="card-body">
-          <h2 class="text-center">{{ __('Sign in') }}</h2>
+          <div class="mb-4 text-center">
+            <a class="navbar-brand navbar-brand-autodark" href="#"><img src="{{ asset('static/logo-khn.png') }}" alt="Tabler logo" height="80"></a>
+          </div>
+          {{-- <h1 class="text-center">{{ __('Sign in') }}</h1> --}}
           <div class="mb-6">
             @if ($errors->any())
               <div class="alert alert-danger text-danger shadow-sm">
@@ -51,7 +51,7 @@
             </label>
           </div>
           <div class="form-footer">
-            <button class="btn btn-primary w-100 text-uppercase hover-shadow mb-2" type="submit">{{ __('Sign in') }}</button>
+            <button class="btn btn-blue w-100 text-uppercase hover-shadow mb-2" type="submit">{{ __('Sign in') }}</button>
           </div>
           <div class="text-center">
             <a href="{{ route('password.request') }}">{{ __('Forgot your password?') }}</a>

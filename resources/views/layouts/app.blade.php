@@ -11,6 +11,7 @@
   <link href="{{ asset('css/tabler-payments.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-vendors.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/demo.css') }}" rel="stylesheet" />
+  <link type="image/png" href="{{ asset('static/logo-khn.png') }}" rel="shortcut icon">
 </head>
 
 <body>

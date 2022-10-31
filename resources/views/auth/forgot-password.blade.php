@@ -3,12 +3,12 @@
 @section('main')
   <div class="page page-center">
     <div class="container-tight py-4">
-      <div class="mb-4 text-center">
-        <a class="navbar-brand navbar-brand-autodark" href="."><img src="{{ asset('static/logo.svg') }}" alt="Tabler logo" height="36"></a>
-      </div>
       <form class="card card-md" action="{{ route('password.email') }}" method="POST" autocomplete="off">
         @csrf
         <div class="card-body">
+          <div class="mb-4 text-center">
+            <a class="navbar-brand navbar-brand-autodark" href="#"><img src="{{ asset('static/logo-khn.png') }}" alt="Tabler logo" height="80"></a>
+          </div>
           <div class="alert alert-info text-justify shadow-sm" role="alert">
             <h4 class="alert-title">{{ __('Forgot your password?') }}</h4>
             <div class="text-muted">
