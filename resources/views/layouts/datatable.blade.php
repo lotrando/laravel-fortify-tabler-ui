@@ -69,7 +69,7 @@
           },
           {
             data: 'department',
-            name: 'department'
+            name: 'department.department_name'
           },
           {
             data: 'job_id',
@@ -96,7 +96,7 @@
         ],
         columnDefs: [{
             targets: 0,
-            "width": "7%"
+            "width": "8%"
           },
           {
             targets: 1,
@@ -124,7 +124,7 @@
           },
           {
             targets: 7,
-            "width": "10%"
+            "width": "5%"
           },
           {
             targets: 8,

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class EmployeeController extends Controller
 {
@@ -12,11 +13,20 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $employee = Employee::with('department')->get();
+        if ($request->ajax()) {
 
-        return view('employees.index')->with('employee', $employee)->toJason();
+            $employees = Employee::with('department')->get();
+            DataTables::eloquent($employees)
+                ->addColumn('action', function ($row) {
+                    $html = '<a href="#" class="btn btn-xs btn-secondary btn-edit">Edit</a> ';
+                    $html .= '<button data-rowid="' . $row->id . '" class="btn btn-xs btn-danger btn-delete">Del</button>';
+                    return $html;
+                })->toJson();
+        }
+
+        return view('employees.index');
     }
 
     /**
@@ -37,7 +47,9 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // do validation
+        Employee::create($request->all());
+        return ['success' => true, 'message' => 'Inserted Successfully'];
     }
 
     /**
@@ -69,9 +81,11 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update($id)
     {
-        //
+        // do validation
+        Employee::find($id)->update(request()->all());
+        return ['success' => true, 'message' => 'Updated Successfully'];
     }
 
     /**
@@ -80,8 +94,9 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy($id)
     {
-        //
+        Employee::find($id)->delete();
+        return ['success' => true, 'message' => 'Deleted Successfully'];
     }
 }
