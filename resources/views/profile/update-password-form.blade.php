@@ -2,16 +2,7 @@
       <div class="card card-md shadow-sm">
         <div class="card-body">
           <div class="mb-6">
-            @if ($errors->any())
-              <div class="alert alert-danger text-danger">
-                <ul>
-                  @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                  @endforeach
-                </ul>
-              </div>
-            @endif
-            @if (session('status') == 'password_updated')
+            @if (session('status'))
               <div class="alert alert-success" role="alert">
                 {{ session('status') }}
               </div>
@@ -37,8 +28,10 @@
               <input class="form-control" name="password_confirmation" type="password" placeholder="{{ __('New password confirmation') }}">
             </div>
 
-            <div class="form-footer">
-              <button class="btn btn-success text-uppercase hover-shadow mb-2" type="submit">{{ __('Update') }}</button>
+            <div class="d-flex justify-content-end">
+              <div class="form-footer">
+                <button class="btn btn-success text-uppercase hover-shadow mb-2" type="submit">{{ __('Update') }}</button>
+              </div>
             </div>
 
           </form>

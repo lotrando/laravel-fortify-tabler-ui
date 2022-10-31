@@ -33,8 +33,10 @@
           <input class="form-control" name="email" type="email" value="{{ old('email') ?? auth()->user()->email }}" placeholder="{{ __('Email address') }}">
         </div>
 
-        <div class="form-footer">
-          <button class="btn btn-success text-uppercase hover-shadow mb-2" type="submit">{{ __('Update') }}</button>
+        <div class="d-flex justify-content-end">
+          <div class="form-footer">
+            <button class="btn btn-success text-uppercase hover-shadow mb-2" type="submit">{{ __('Update') }}</button>
+          </div>
         </div>
 
       </form>
