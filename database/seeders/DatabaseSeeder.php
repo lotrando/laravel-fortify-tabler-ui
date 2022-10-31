@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Employee;
 use App\Models\User;
+use Database\Seeders\DepartmentSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call([
+            DepartmentSeeder::class
+        ]);
+
         User::factory(10)->create();
+
+        Employee::factory(200)->create();
     }
 }

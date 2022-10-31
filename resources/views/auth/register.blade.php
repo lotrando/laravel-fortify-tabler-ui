@@ -5,7 +5,7 @@
     <div class="page page-center">
       <div class="container-tight py-4">
         <div class="mb-4 text-center">
-          <a class="navbar-brand navbar-brand-autodark" href="."><img src="{{ asset('static/logo.svg') }}" alt="Tabler logo" height="36"></a>
+          <a class="navbar-brand navbar-brand-autodark" href="."><img src="{{ asset('static/logo-khn.png') }}" alt="Tabler logo" height="100"></a>
         </div>
         <form class="card card-md shadow-sm" action="{{ route('register') }}" method="POST">
           @csrf

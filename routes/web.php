@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Route::get('/', function () {
 Route::get('home', function () {
     return view('home');
 })->middleware('verified', 'auth');
+
+Route::resource('employees', EmployeeController::class);
