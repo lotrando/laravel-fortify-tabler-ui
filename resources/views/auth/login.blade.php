@@ -46,7 +46,7 @@
           </div>
           <div class="my-2">
             <label class="form-check">
-              <input class="form-check-input" type="checkbox" />
+              <input class="form-check-input" name="remember" type="checkbox" />
               <span class="form-check-label">{{ __('Remember me on this device') }}</span>
             </label>
           </div>

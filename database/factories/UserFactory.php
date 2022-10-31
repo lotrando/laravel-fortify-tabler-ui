@@ -23,7 +23,8 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => Hash::make($personalNumber),
-            'remember_token' => Str::random(10),
+            'terms' => $this->faker->randomElement(['on', null]),
+            'remember_token' => Str::random(60),
         ];
     }
 

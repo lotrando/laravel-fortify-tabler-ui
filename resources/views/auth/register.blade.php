@@ -62,8 +62,8 @@
             </div>
             <div class="mb-3">
               <label class="form-check">
-                <input class="form-check-input" type="checkbox" />
-                <span class="form-check-label">{{ __('Agree the') }} <a href="./terms-of-service.html" tabindex="-1">{{ __('terms and policy') }}</a>.</span>
+                <input class="form-check-input" name="terms" type="checkbox" />
+                <span class="form-check-label">{{ __('Agree the') }} <a href="#" tabindex="-1">{{ __('terms and policy') }}</a>.</span>
               </label>
             </div>
             <div class="form-footer">

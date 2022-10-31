@@ -128,6 +128,7 @@ return [
         'password' => 'heslo',
         'name' => 'jméno',
         'department_id' => 'pole oddělení',
+        'terms' => 'souhlas',
         'date_start' => 'pole Od',
         'date_end' => 'pole Do'
     ],
