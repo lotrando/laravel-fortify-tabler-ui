@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class EmployeeController extends Controller
 {
@@ -15,15 +15,29 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
+
         if ($request->ajax()) {
 
-            $employees = Employee::with('department')->get();
-            DataTables::eloquent($employees)
-                ->addColumn('action', function ($row) {
-                    $html = '<a href="#" class="btn btn-xs btn-secondary btn-edit">Edit</a> ';
-                    $html .= '<button data-rowid="' . $row->id . '" class="btn btn-xs btn-danger btn-delete">Del</button>';
-                    return $html;
-                })->toJson();
+            $model = Employee::with('department');
+
+            return DataTables::eloquent($model)
+
+                ->addColumn('department', function (Employee $employee) {
+                    return $employee->department->department_name;
+                })
+
+                ->addColumn('action', function ($data) {
+
+                    $buttons = '
+                        <center>
+                            <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-warning"><i class="fas fa-pen"></i></button>
+                            <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                        </center>
+                        ';
+                    return $buttons;
+                })
+
+                ->toJson();
         }
 
         return view('employees.index');

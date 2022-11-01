@@ -18,7 +18,7 @@ class EmployeeFactory extends Factory
 
         return [
             'personal_number' => $personalNumber,
-            'image'           => '/image/' . $personalNumber . '.jpg',
+            'image'           => '/foto/' . $personalNumber . '.jpg',
             'title_preffix'   => $this->faker->title(),
             'last_name'       => $this->faker->lastName(),
             'first_name'      => $this->faker->firstName(),

@@ -5,8 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Laravel</title>
-  <link href="{{ asset('css/fontawesome-all.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('https://use.fontawesome.com/releases/v5.11.2/css/all.css') }}" rel="stylesheet">
   <link href="{{ asset('css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/tabler.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-flags.min.css') }}" rel="stylesheet" />
@@ -26,6 +25,7 @@
   <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
   <script src="{{ asset('js/tabler.min.js') }}"></script>
   <script src="{{ asset('js/demo.min.js') }}"></script>
+
   <script>
     $(document).ready(function() {
       $('.dataTable').DataTable({
@@ -34,23 +34,35 @@
         stateSave: true,
         pageSave: true,
         order: [
-          [1, "asc"]
+          [2, "asc"]
         ],
-        lengthMenu: [
+        "lengthMenu": [
           [10, 30, 60, 100, -1],
           [10, 30, 60, 100, "Všechny"]
         ],
         language: {
-          "url": "https://cdn.datatables.net/plug-ins/1.12.1/i18n/cs.json"
+          "url": "{{ asset('js/cs.json') }}"
         },
-        ajax: "{{ route('employees.index') }}",
+        ajax: {
+          url: "{{ route('employees.index') }}",
+        },
+        columnDefs: [{
+          type: 'czech',
+          targets: 1
+        }],
         columns: [{
             data: 'personal_number',
             name: 'personal_number'
           },
           {
             data: 'image',
-            name: 'image'
+            name: 'image',
+            render: function(data, type, full, meta) {
+
+              return "<div class='text-center img-hover-zoom'><a data-lightbox='emplyee' href='{{ URL::to('/') }}" + data + "'><img src={{ URL::to('/') }}" +
+                data + " class='zoom img-thumbnail' width='64' /></a></div>";
+            },
+            orderable: false,
           },
           {
             data: 'title_preffix',
@@ -97,31 +109,31 @@
         ],
         columnDefs: [{
             targets: 0,
-            "width": "8%"
+            "width": "1%"
           },
           {
             targets: 1,
-            "width": "10%"
+            "width": "5%"
           },
           {
             targets: 2,
-            "width": "10%"
+            "width": "5%"
           },
           {
             targets: 3,
-            "width": "10%"
+            "width": "5%"
           },
           {
             targets: 4,
-            "width": "10%"
+            "width": "5%"
           },
           {
             targets: 5,
-            "width": "10%"
+            "width": "5%"
           },
           {
             targets: 6,
-            "width": "10%"
+            "width": "5%"
           },
           {
             targets: 7,
@@ -129,11 +141,15 @@
           },
           {
             targets: 8,
-            "width": "10%"
+            "width": "5%"
           },
           {
             targets: 9,
-            "width": "15%"
+            "width": "5%"
+          },
+          {
+            targets: 9,
+            "width": "5%"
           }
         ]
       });

@@ -12,6 +12,16 @@
   <link href="{{ asset('css/tabler-vendors.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/demo.css') }}" rel="stylesheet" />
   <link type="image/png" href="{{ asset('static/logo-khn.png') }}" rel="shortcut icon">
+  <style>
+    body {
+      background-image: url('../static/background-khn.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh;
+      margin: 0;
+    }
+  </style>
 </head>
 
 <body>
