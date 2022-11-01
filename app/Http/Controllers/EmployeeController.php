@@ -25,9 +25,7 @@ class EmployeeController extends Controller
                 ->addColumn('department', function (Employee $employee) {
                     return $employee->department->department_name;
                 })
-
                 ->addColumn('action', function ($data) {
-
                     $buttons = '
                         <center>
                             <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-warning"><i class="fas fa-pen"></i></button>
@@ -36,7 +34,6 @@ class EmployeeController extends Controller
                         ';
                     return $buttons;
                 })
-
                 ->toJson();
         }
 

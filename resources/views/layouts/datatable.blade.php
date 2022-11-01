@@ -7,6 +7,7 @@
   <title>Laravel</title>
   <link href="{{ asset('https://use.fontawesome.com/releases/v5.11.2/css/all.css') }}" rel="stylesheet">
   <link href="{{ asset('css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/lightbox.css') }}" rel="stylesheet">
   <link href="{{ asset('css/tabler.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-flags.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-payments.min.css') }}" rel="stylesheet" />
@@ -23,6 +24,7 @@
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
+  <script src="{{ asset('js/lightbox.js') }}"></script>
   <script src="{{ asset('js/tabler.min.js') }}"></script>
   <script src="{{ asset('js/demo.min.js') }}"></script>
 
@@ -60,7 +62,7 @@
             render: function(data, type, full, meta) {
 
               return "<div class='text-center img-hover-zoom'><a data-lightbox='emplyee' href='{{ URL::to('/') }}" + data + "'><img src={{ URL::to('/') }}" +
-                data + " class='zoom img-thumbnail' width='64' /></a></div>";
+                data + " class='zoom img-thumbnail' width='44' /></a></div>";
             },
             orderable: false,
           },
@@ -113,7 +115,7 @@
           },
           {
             targets: 1,
-            "width": "5%"
+            "width": "2%"
           },
           {
             targets: 2,
@@ -121,11 +123,11 @@
           },
           {
             targets: 3,
-            "width": "5%"
+            "width": "10%"
           },
           {
             targets: 4,
-            "width": "5%"
+            "width": "10%"
           },
           {
             targets: 5,
@@ -133,23 +135,19 @@
           },
           {
             targets: 6,
-            "width": "5%"
+            "width": "18%"
           },
           {
             targets: 7,
-            "width": "5%"
+            "width": "10%"
           },
           {
             targets: 8,
-            "width": "5%"
+            "width": "1%"
           },
           {
             targets: 9,
-            "width": "5%"
-          },
-          {
-            targets: 9,
-            "width": "5%"
+            "width": "1%"
           }
         ]
       });

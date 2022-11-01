@@ -22,7 +22,7 @@
             @if (session('status'))
               <div>{{ session('status') }}</div>
             @endif
-            <table class="table-bordered table-hover dataTable table">
+            <table class="table-bordered table-hover dataTable w-100 table">
               <thead class="bg-success table text-center text-white">
                 <tr>
                   <th>{{ __('Number') }}</th>
@@ -36,7 +36,7 @@
                   <th>{{ __('Email') }}</th>
                   <th>{{ __('Phone') }}</th>
                   <th>{{ __('Mobile') }}</th>
-                  <th></th>
+                  <th>{{ __('Action') }}</th>
                 </tr>
               </thead>
               <tbody>
