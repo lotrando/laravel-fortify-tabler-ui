@@ -33,7 +33,6 @@
                   <th>{{ __('Title suffix') }}</th>
                   <th>{{ __('Department') }}</th>
                   <th>{{ __('Job title') }}</th>
-                  <th>{{ __('Email') }}</th>
                   <th>{{ __('Phone') }}</th>
                   <th>{{ __('Mobile') }}</th>
                   <th>{{ __('Action') }}</th>

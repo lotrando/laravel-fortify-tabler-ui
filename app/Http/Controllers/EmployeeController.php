@@ -22,11 +22,11 @@ class EmployeeController extends Controller
             return DataTables::eloquent($model)
 
                 ->addColumn('department', function (Employee $employee) {
-                    return $employee->department->center_code;
+                    return $employee->department->department_mame;
                 })
 
                 ->addColumn('job', function (Employee $employee) {
-                    return $employee->job_title;
+                    return $employee->job->job_title;
                 })
 
                 ->addColumn('action', function ($data) {

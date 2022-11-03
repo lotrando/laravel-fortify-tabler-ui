@@ -66,7 +66,7 @@
             name: 'image',
             render: function(data, type, full, meta) {
 
-              return "<div class='cent img-hover-zoom'><a data-lightbox='emplyee' href='{{ URL::to('/') }}/foto/" + data + "'><img src={{ URL::to('/') }}/foto/" +
+              return "<div class='cent img-hover-zoom'><a data-lightbox='emplyee' href='{{ URL::to('/') }}" + data + "'><img src={{ URL::to('/') }}" +
                 data + " class='zoom img-thumbnail' width='64' /></a></div>";
             },
             orderable: false,
@@ -94,10 +94,6 @@
           {
             data: 'job',
             name: 'job'
-          },
-          {
-            data: 'email',
-            name: 'email'
           },
           {
             data: 'phone',
@@ -144,7 +140,7 @@
           },
           {
             targets: 7,
-            "width": "10%"
+            "width": "18%"
           },
           {
             targets: 8,
