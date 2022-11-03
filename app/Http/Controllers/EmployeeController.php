@@ -15,21 +15,25 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
-
         if ($request->ajax()) {
 
-            $model = Employee::with('department');
+            $model = Employee::with('department', 'job');
 
             return DataTables::eloquent($model)
 
                 ->addColumn('department', function (Employee $employee) {
-                    return $employee->department->department_name;
+                    return $employee->department->center_code;
                 })
+
+                ->addColumn('job', function (Employee $employee) {
+                    return $employee->job_title;
+                })
+
                 ->addColumn('action', function ($data) {
                     $buttons = '
                         <center>
-                            <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-warning"><i class="fas fa-pen"></i></button>
-                            <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-warning p-2"><i class="fas fa-pen"></i></button>
+                            <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-danger p-2"><i class="fas fa-trash-alt"></i></button>
                         </center>
                         ';
                     return $buttons;

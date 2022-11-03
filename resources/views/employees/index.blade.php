@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
       <div class="col-md-12">
 
-        <div class="card">
+        <div class="card mb-3 shadow-sm">
 
-          <div class="card-header justify-content-between d-flex">
-            <h1 class="text-muted">{{ __('Zaměstanci') }}</h1>
+          <div class="card-header align-items-center justify-content-between d-flex">
+            <h1 class="text-muted text-uppercase mb-0">{{ __('Aktivní zaměstanci') }}</h1>
             <div>
               <button class="btn btn-success" id="create_record" name="create_record">{{ __('New') }}</button>
             </div>

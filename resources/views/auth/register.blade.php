@@ -63,7 +63,7 @@
             <div class="mb-3">
               <label class="form-check">
                 <input class="form-check-input" id="terms" name="terms" type="checkbox" />
-                <span class="form-check-label">{{ __('Agree the') }} <a href="#" tabindex="-1">{{ __('terms and policy') }}</a>.</span>
+                <span class="form-check-label">{{ __('Agree the') }} <a data-bs-toggle="modal" data-bs-target="#modal-terms" href="#">{{ __('terms and policy') }}</a>.</span>
               </label>
             </div>
             <div class="form-footer">
@@ -78,6 +78,32 @@
       </div>
     </div>
   </div>
+
+
+
+  <div class="modal" id="modal-terms" tabindex="-1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Jaké osobní údaje společnost zpracovává</h5>
+          <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <h3>Společnost o Vás může shromažďovat údaje, které společnosti sami sdělíte</h3>
+
+        <p>Takovými Osobními údaji jsou zejména údaje, které uvedete ve vyplněném registračním, objednávkovém či jiném formuláři, nebo které Společnosti sdělíte prostřednictvím e-mailu, telefonu, faxu či jiného obdobného zařízení. Jedná se především o jméno, příjmení, korespondenční adresu, e-mailovou adresu, telefonní číslo, údaje o bankovním účtu, údaje o zvolené platební metodě apod.</p>
+
+        <p>Tyto osobní údaje Společnost využívá ke správě a zlepšování Webových stránek a pro účely zajištění interních operací, včetně řešení problémů, analýzy dat, testování, výzkumu, statistických účelů a evidenci četnosti náhledů. Tyto Osobní údaje lze dále využít k měření účinnosti reklamy a k poskytování relevantní inzerce.<p>
+        
+        </div>
+        <div class="modal-footer">
+          <button class="btn me-auto float-right" data-bs-dismiss="modal" type="button">{{ __('Close') }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <script>
     function showPasswords() {
       var x = document.getElementById("password");

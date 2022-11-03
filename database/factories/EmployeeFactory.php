@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Department;
+use App\Models\Job;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EmployeeFactory extends Factory
@@ -24,7 +25,11 @@ class EmployeeFactory extends Factory
             'first_name'      => $this->faker->firstName(),
             'title_suffix'    => $this->faker->title(),
             'department_id'   => Department::all()->random()->id,
-            'job_id'          => $this->faker->jobTitle(),
+            'job_id'          => Job::all()->random()->id,
+            'email'           => $this->faker->unique()->safeEmail(),
+            'start_date'      => $this->faker->dateTimeBetween('-1 week', '+1 week'),
+            'end_date'        => $this->faker->dateTimeBetween('-1 week', '+1 week'),
+            'comment'         => $this->faker->text(),
             'email'           => $this->faker->unique()->safeEmail(),
             'phone'           => $this->faker->numberBetween(341, 556),
             'mobile'          => $this->faker->e164PhoneNumber(),

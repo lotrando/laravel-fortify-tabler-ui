@@ -15,7 +15,7 @@
         @endif
         <div class="card-body">
           <div class="d-flex align-items-center justify-content-between">
-            <div class="text-muted">You are logged in!</div>
+            <div class="text-muted">{{ __('You are logged in!') }}</div>
 
             <form method="POST" action="{{ route('logout') }}">
               @csrf
@@ -28,11 +28,16 @@
       </div>
     </div>
 
-    @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updateProfileInformation()))
-      @include('profile.update-profile-information-form')
-    @endif
-
-    @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
-      @include('profile.update-password-form')
-    @endif
-  @endsection
+    <div class="row">
+      <div class="col-12">
+        @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updateProfileInformation()))
+          @include('profile.update-profile-information-form')
+        @endif
+        @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
+          @include('profile.update-password-form')
+        @endif
+      </div>
+    </div>
+  </div>
+  </div>
+@endsection

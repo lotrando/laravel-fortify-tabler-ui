@@ -14,6 +14,15 @@
   <link href="{{ asset('css/tabler-vendors.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/demo.css') }}" rel="stylesheet" />
   <link type="image/png" href="{{ asset('static/logo-khn.png') }}" rel="shortcut icon">
+  <style>
+    body {
+      background-size: cover;
+      height: 100vh;
+      margin-bottom: 10px;
+      margin-bottom\: 5px;
+      color: #666;
+    }
+  </style>
 </head>
 
 <body>
@@ -36,7 +45,7 @@
         stateSave: true,
         pageSave: true,
         order: [
-          [2, "asc"]
+          [3, "asc"]
         ],
         "lengthMenu": [
           [10, 30, 60, 100, -1],
@@ -48,10 +57,6 @@
         ajax: {
           url: "{{ route('employees.index') }}",
         },
-        columnDefs: [{
-          type: 'czech',
-          targets: 1
-        }],
         columns: [{
             data: 'personal_number',
             name: 'personal_number'
@@ -61,8 +66,8 @@
             name: 'image',
             render: function(data, type, full, meta) {
 
-              return "<div class='text-center img-hover-zoom'><a data-lightbox='emplyee' href='{{ URL::to('/') }}" + data + "'><img src={{ URL::to('/') }}" +
-                data + " class='zoom img-thumbnail' width='44' /></a></div>";
+              return "<div class='cent img-hover-zoom'><a data-lightbox='emplyee' href='{{ URL::to('/') }}/foto/" + data + "'><img src={{ URL::to('/') }}/foto/" +
+                data + " class='zoom img-thumbnail' width='64' /></a></div>";
             },
             orderable: false,
           },
@@ -84,11 +89,11 @@
           },
           {
             data: 'department',
-            name: 'department.department_name'
+            name: 'department'
           },
           {
-            data: 'job_id',
-            name: 'job_id'
+            data: 'job',
+            name: 'job'
           },
           {
             data: 'email',
@@ -147,7 +152,7 @@
           },
           {
             targets: 9,
-            "width": "1%"
+            "width": "0%"
           }
         ]
       });

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Employee;
 use App\Models\User;
 use Database\Seeders\DepartmentSeeder;
+use Database\Seeders\JobSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +18,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            DepartmentSeeder::class
+            DepartmentSeeder::class,
+            JobSeeder::class
         ]);
 
         User::factory(10)->create();

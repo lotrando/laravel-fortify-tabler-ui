@@ -6,19 +6,17 @@ use App\Models\Employee;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class Job extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'department_code',
-        'center_code',
-        'department_name'
+        'job_title'
     ];
 
     public $timestamps = false;
 
-    public function user()
+    public function employee()
     {
         return $this->belongsTo(Employee::class);
     }

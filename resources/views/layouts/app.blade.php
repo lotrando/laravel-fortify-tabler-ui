@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Laravel</title>
+  <title>Intranet KHN</title>
   <link href="{{ asset('css/fontawesome-all.css') }}" rel="stylesheet">
   <link href="{{ asset('css/tabler.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-flags.min.css') }}" rel="stylesheet" />
@@ -14,13 +14,14 @@
   <link type="image/png" href="{{ asset('static/logo-khn.png') }}" rel="shortcut icon">
   <style>
     body {
-      background-image: url('../static/background-khn.jpg');
+      background-image: url("{{ asset('static/background-khn.jpg') }}");
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       height: 100vh;
       margin: 0;
       overflow: hidden;
+      color: #666;
     }
   </style>
 </head>
