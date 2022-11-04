@@ -32,6 +32,7 @@
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
+  <script src="{{ asset('js/czech-string.js') }}"></script>
   <script src="{{ asset('js/lightbox.js') }}"></script>
   <script src="{{ asset('js/tabler.min.js') }}"></script>
   <script src="{{ asset('js/demo.min.js') }}"></script>
@@ -56,6 +57,10 @@
         ajax: {
           url: "{{ route('employees.index') }}",
         },
+        columnDefs: [{
+          type: 'czech',
+          targets: 3
+        }],
         columns: [{
             data: 'personal_number',
             "width": "1%"
@@ -77,7 +82,7 @@
           },
           {
             data: 'last_name',
-            "width": "5%"
+            "width": "5%",
           },
           {
             data: 'first_name',
