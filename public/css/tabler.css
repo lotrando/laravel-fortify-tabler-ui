@@ -2455,9 +2455,9 @@ progress {
 
 .form-control-sm {
     min-height: calc(1.4285714em + 0.25rem + 2px);
-    padding: 0.125rem 0.5rem;
+    padding: 0.250rem 0.5rem;
     font-size: 0.75rem;
-    border-radius: 2px;
+    border-radius: 5px;
 }
 
 .form-control-sm::-webkit-file-upload-button {
@@ -2591,11 +2591,11 @@ textarea.form-control-lg {
 }
 
 .form-select-sm {
-    padding-top: 0.125rem;
-    padding-bottom: 0.125rem;
+    padding-top: 0.255rem;
+    padding-bottom: 0.255rem;
     padding-left: 0.5rem;
     font-size: 0.75rem;
-    border-radius: 2px;
+    border-radius: 5px;
 }
 
 .form-select-lg {
@@ -4832,6 +4832,10 @@ fieldset:disabled .btn {
     display: flex;
     padding-left: 0;
     list-style: none;
+}
+
+.paginate_button {
+    padding: 2px;
 }
 
 .page-link {

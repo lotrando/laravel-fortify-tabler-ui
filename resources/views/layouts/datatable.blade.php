@@ -16,7 +16,6 @@
   <link type="image/png" href="{{ asset('static/logo-khn.png') }}" rel="shortcut icon">
   <style>
     body {
-      background-size: cover;
       height: 100vh;
       margin-bottom: 10px;
       margin-bottom\: 5px;
@@ -59,98 +58,59 @@
         },
         columns: [{
             data: 'personal_number',
-            name: 'personal_number'
+            "width": "1%"
           },
           {
             data: 'image',
-            name: 'image',
+            "width": "1%",
             render: function(data, type, full, meta) {
 
-              return "<div class='cent img-hover-zoom'><a data-lightbox='emplyee' href='{{ URL::to('/') }}" + data + "'><img src={{ URL::to('/') }}" +
-                data + " class='zoom img-thumbnail' width='64' /></a></div>";
+              return "<div class='cent img-hover-zoom'><a data-lightbox='employee' href='{{ URL::to('/') }}" + data +
+                "'><img src={{ URL::to('/') }}" +
+                data + " class='zoom img-thumbnail' width='32' height='32' /></a></div>";
             },
             orderable: false,
           },
           {
             data: 'title_preffix',
-            name: 'title_preffix'
+            "width": "1%"
           },
           {
             data: 'last_name',
-            name: 'last_name'
+            "width": "5%"
           },
           {
             data: 'first_name',
-            name: 'first_name'
+            "width": "5%"
           },
           {
             data: 'title_suffix',
-            name: 'title_suffix'
+            "width": "1%"
           },
           {
-            data: 'department',
-            name: 'department'
+            data: 'department.department_name',
+            "width": "10%"
           },
           {
-            data: 'job',
-            name: 'job'
+            data: 'job.job_title',
+            "width": "10%"
           },
           {
             data: 'phone',
-            name: 'phone'
+            className: "text-center",
+            "width": "1%"
           },
           {
             data: 'mobile',
-            name: 'mobile'
+            "width": "2%"
           },
           {
             data: 'action',
-            name: 'action',
+            "width": "1%",
             orderable: false,
             searchable: false
           },
         ],
-        columnDefs: [{
-            targets: 0,
-            "width": "1%"
-          },
-          {
-            targets: 1,
-            "width": "2%"
-          },
-          {
-            targets: 2,
-            "width": "5%"
-          },
-          {
-            targets: 3,
-            "width": "10%"
-          },
-          {
-            targets: 4,
-            "width": "10%"
-          },
-          {
-            targets: 5,
-            "width": "5%"
-          },
-          {
-            targets: 6,
-            "width": "18%"
-          },
-          {
-            targets: 7,
-            "width": "18%"
-          },
-          {
-            targets: 8,
-            "width": "1%"
-          },
-          {
-            targets: 9,
-            "width": "0%"
-          }
-        ]
       });
     });
   </script>

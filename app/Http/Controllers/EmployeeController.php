@@ -17,17 +17,9 @@ class EmployeeController extends Controller
     {
         if ($request->ajax()) {
 
-            $model = Employee::with('department', 'job');
+            $model = Employee::with('department', 'job')->select('*');
 
-            return DataTables::eloquent($model)
-
-                ->addColumn('department', function (Employee $employee) {
-                    return $employee->department->department_mame;
-                })
-
-                ->addColumn('job', function (Employee $employee) {
-                    return $employee->job->job_title;
-                })
+            return DataTables::of($model)
 
                 ->addColumn('action', function ($data) {
                     $buttons = '
@@ -38,6 +30,7 @@ class EmployeeController extends Controller
                         ';
                     return $buttons;
                 })
+
                 ->toJson();
         }
 
