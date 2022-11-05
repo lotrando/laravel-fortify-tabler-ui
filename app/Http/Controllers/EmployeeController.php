@@ -17,7 +17,7 @@ class EmployeeController extends Controller
     {
         if ($request->ajax()) {
 
-            $model = Employee::with('department', 'job')->select('*');
+            $model = Employee::with('department', 'job')->get();
 
             return DataTables::of($model)
 
