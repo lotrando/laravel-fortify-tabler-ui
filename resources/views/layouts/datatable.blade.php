@@ -59,7 +59,7 @@
         },
         columnDefs: [{
           type: 'czech',
-          targets: 3
+          targets: [3]
         }],
         columns: [{
             data: 'personal_number',
