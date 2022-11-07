@@ -17,9 +17,9 @@ class EmployeeController extends Controller
     {
         if ($request->ajax()) {
 
-            $model = Employee::with('department', 'job')->get();
+            $model = Employee::where('status', 'active')->with('department', 'job')->select('*');
 
-            return DataTables::of($model)
+            return DataTables::eloquent($model)
 
                 ->addColumn('action', function ($data) {
                     $buttons = '

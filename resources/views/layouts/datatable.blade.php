@@ -70,8 +70,8 @@
             "width": "1%",
             render: function(data, type, full, meta) {
 
-              return "<div class='cent img-hover-zoom'><a data-lightbox='employee' href='{{ URL::to('/') }}" + data +
-                "'><img src={{ URL::to('/') }}" +
+              return "<div class='cent img-hover-zoom'><a data-lightbox='employee' href='{{ URL::to('/foto') }}/" + data +
+                "'><img src={{ URL::to('/foto') }}/" +
                 data + " class='zoom img-thumbnail' width='32' height='32' /></a></div>";
             },
             orderable: false,
