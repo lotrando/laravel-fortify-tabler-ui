@@ -1,11 +1,11 @@
 @extends('layouts.datatable')
 
 @section('main')
-  <div class="container-fluid" style="margin-top: 25px">
+  <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-md-12">
 
-        <div class="card mb-3 shadow-sm">
+        <div class="card mb-3 mt-3 shadow-sm">
 
           <div class="card-header align-items-center justify-content-between d-flex">
             <h1 class="text-muted text-uppercase mb-0"><i class="fas fa-users"></i> {{ __('Zaměstanci') }}</h1>
@@ -31,8 +31,10 @@
                   <th>{{ __('Last name') }}</th>
                   <th>{{ __('First name') }}</th>
                   <th>{{ __('Title suffix') }}</th>
+                  <th>{{ __('Kod') }}</th>
                   <th>{{ __('Department') }}</th>
                   <th>{{ __('Job title') }}</th>
+                  <th>{{ __('Email') }}</th>
                   <th>{{ __('Phone') }}</th>
                   <th>{{ __('Mobile') }}</th>
                   <th class="text-center">{{ __('Action') }}</th>

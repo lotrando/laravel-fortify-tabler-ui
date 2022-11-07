@@ -17,8 +17,6 @@
   <style>
     body {
       height: 100vh;
-      margin-bottom: 10px;
-      margin-bottom\: 5px;
       color: #666;
     }
   </style>
@@ -63,14 +61,15 @@
         }],
         columns: [{
             data: 'personal_number',
-            "width": "1%"
+            "width": "0.5%"
           },
           {
             data: 'image',
             "width": "1%",
             render: function(data, type, full, meta) {
 
-              return "<div class='cent img-hover-zoom'><a data-lightbox='employee' href='{{ URL::to('/foto') }}/" + data +
+              return "<div class='cent img-hover-zoom'><a data-lightbox='employee' data-title='" + data +
+                "' href='{{ URL::to('/foto') }}/" + data +
                 "'><img src={{ URL::to('/foto') }}/" +
                 data + " class='zoom img-thumbnail' width='32' height='32' /></a></div>";
             },
@@ -82,15 +81,19 @@
           },
           {
             data: 'last_name',
-            "width": "5%",
+            "width": "3%",
           },
           {
             data: 'first_name',
-            "width": "5%"
+            "width": "3%"
           },
           {
             data: 'title_suffix',
             "width": "1%"
+          },
+          {
+            data: 'department.department_code',
+            "width": "2%"
           },
           {
             data: 'department.department_name',
@@ -99,6 +102,10 @@
           {
             data: 'job.job_title',
             "width": "10%"
+          },
+          {
+            data: 'email',
+            "width": "2%"
           },
           {
             data: 'phone',
