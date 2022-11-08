@@ -27,7 +27,7 @@
     @yield('main')
   </main>
 
-  {{-- Model --}}
+  {{-- Modal --}}
   <div class="modal modal-blur fade" id="modal-report" role="dialog" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -36,28 +36,62 @@
           <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="mb-3">
-            <div class="col-4">
+          <div class="row mb-3">
+            <div class="col-2">
               <label class="form-label">{{ __('Photo') }}</label>
               <span id="store_image"></span>
               <input class="form-control" id="image" name="image" type="file" placeholder="{{ __('Select a photo') }}">
             </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('Personal number') }}</label>
+              <input class="form-control" id="personal_number" name="personal_number" type="text" placeholder="{{ __('Personal number') }}">
+            </div>
+            <div class="col-1">
+              <label class="form-label">{{ __('Title preffix') }}</label>
+              <input class="form-control" id="title_preffix" name="title_preffix" type="text" placeholder="{{ __('Title preffix') }}">
+            </div>
+            <div class="col-3">
+              <label class="form-label">{{ __('Last name') }}</label>
+              <input class="form-control" id="last_name" name="last_name" type="text" placeholder="{{ __('Last name') }}">
+            </div>
+            <div class="col-3">
+              <label class="form-label">{{ __('First name') }}</label>
+              <input class="form-control" id="first_name" name="first_name" type="text" placeholder="{{ __('First name') }}">
+            </div>
+            <div class="col-1">
+              <label class="form-label">{{ __('Title suffix') }}</label>
+              <input class="form-control" id="title_preffix" name="title_preffix" type="text" placeholder="{{ __('Title preffix') }}">
+            </div>
           </div>
-          <div class="col-2 mb-3">
-            <label class="form-label">{{ __('Personal number') }}</label>
-            <input class="form-control" id="personal_number" name="personal_number" type="text" placeholder="{{ __('Personal number') }}">
-          </div>
-          <div class="col-2 mb-3">
-            <label class="form-label">{{ __('Title preffix') }}</label>
-            <input class="form-control" id="title_preffix" name="title_preffix" type="text" placeholder="{{ __('Title preffixr') }}">
-          </div>
-          <div class="col-2 mb-3">
-            <label class="form-label">{{ __('Personal number') }}</label>
-            <input class="form-control" id="personal_number" name="personal_number" type="text" placeholder="{{ __('Personal number') }}">
-          </div>
-          <div class="col-2 mb-3">
-            <label class="form-label">{{ __('Personal number') }}</label>
-            <input class="form-control" id="personal_number" name="personal_number" type="text" placeholder="{{ __('Personal number') }}">
+          <div class="row mb-3">
+            <div class="col-3">
+              <label class="form-label">{{ __('Middle name') }}</label>
+              <input class="form-control" id="middle_name" name="middle_name" type="text" placeholder="{{ __('Middle name') }}">
+            </div>
+            <div class="col-3">
+              <label class="form-label">{{ __('Married name') }}</label>
+              <input class="form-control" id="married_name" name="married_name" type="text" placeholder="{{ __('Married name') }}">
+            </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('Phone') }}</label>
+              <input class="form-control" id="phone" name="phone" type="text" placeholder="{{ __('Phone') }}">
+            </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('Mobil') }}</label>
+              <input class="form-control" id="mobil" name="mobil" type="text" placeholder="{{ __('Mobil') }}">
+            </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('Card') }}</label>
+              <select class="form-select" id="id_card" name="id_card">
+                <option value="Nový nástup" selected>Nový nástup</option>
+                <option value="Vytvořit kartu">Vytvořit kartu</option>
+                <option value="Vytvořit nálepku">Vytvořit nálepku</option>
+                <option value="Předat nálepku">Předat nálepku</option>
+                <option value="Aktual. nálepku">Aktualizovat nálepku</option>
+                <option value="OK">OK</option>
+                <option value="Vrácena">Vrácena</option>
+              </select>
+            </div>
           </div>
           {{-- <label class="form-label">Report type</label>
           <div class="form-selectgroup-boxes row mb-3">
@@ -107,7 +141,7 @@
                 <label class="form-label">{{ __('Job') }}</label>
                 <select class="form-select" id="job_id" name="job_id">
                   @foreach ($jobs as $job)
-                    <option value="{{ $job->id }}" selected>{{ $job->job_title }}</option>
+                    <option value="{{ $job->id }}" @if (old('job_id') == $job->id) selected @endif>{{ $job->job_title }}</option>
                   @endforeach
                 </select>
               </div>
@@ -123,12 +157,6 @@
             </div>
           </div>
           <div class="row">
-            {{-- <div class="col-lg-6">
-              <div class="mb-3">
-                <label class="form-label">Client name</label>
-                <input class="form-control" type="text">
-              </div>
-            </div> --}}
             <div class="col-12">
               <div class="mb-1">
                 <label class="form-label">{{ __('Description') }}</label>
@@ -436,7 +464,7 @@
             "width": "1%"
           },
           {
-            data: 'department.department_code',
+            data: 'department.center_code',
             "width": "2%"
           },
           {
