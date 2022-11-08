@@ -30,7 +30,7 @@
   {{-- Modal --}}
   <div class="modal modal-blur fade" id="modal-report" role="dialog" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-      <div class="modal-content">
+      <div class="modal-content shadow-lg">
         <div class="modal-header">
           <h5 class="modal-title">{{ __('New employee') }}</h5>
           <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
@@ -82,7 +82,7 @@
             </div>
             <div class="col-2">
               <label class="form-label">{{ __('Card') }}</label>
-              <select class="form-select" id="id_card" name="id_card">
+              <select class="form-select" id="id_card" name="id_card" data-max-options="2">
                 <option value="Nový nástup" selected>Nový nástup</option>
                 <option value="Vytvořit kartu">Vytvořit kartu</option>
                 <option value="Vytvořit nálepku">Vytvořit nálepku</option>
