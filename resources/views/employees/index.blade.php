@@ -10,7 +10,7 @@
           <div class="card-header align-items-center justify-content-between d-flex">
             <h1 class="text-muted text-uppercase mb-0"><i class="fas fa-users"></i> {{ __('Zaměstanci') }}</h1>
             <div>
-              <button class="btn btn-success" id="create_record" name="create_record"><i class="fas fa-user-plus"></i></button>
+              <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-report"><i class="fas fa-user-plus"></i></button>
             </div>
           </div>
           <div class="card-body">

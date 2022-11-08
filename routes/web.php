@@ -23,3 +23,5 @@ Route::get('home', function () {
 })->middleware('verified', 'auth');
 
 Route::resource('employees', EmployeeController::class);
+Route::post('employees/update', [EmployeeController::class, 'update'])->name('employees.update');
+Route::get('employees/destroy/{id}', [EmployeeController::class, 'destroy']);

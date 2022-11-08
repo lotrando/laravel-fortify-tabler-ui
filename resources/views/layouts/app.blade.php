@@ -5,13 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Intranet KHN</title>
+  <link href="{{ asset('https://use.fontawesome.com/releases/v5.11.2/css/all.css') }}" rel="stylesheet">
+  <link type="image/png" href="{{ asset('static/logo-khn.png') }}" rel="shortcut icon">
   <link href="{{ asset('css/fontawesome-all.css') }}" rel="stylesheet">
   <link href="{{ asset('css/tabler.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-flags.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-payments.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-vendors.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/demo.css') }}" rel="stylesheet" />
-  <link type="image/png" href="{{ asset('static/logo-khn.png') }}" rel="shortcut icon">
   <style>
     body {
       background-image: url("{{ asset('static/background-khn.jpg') }}");

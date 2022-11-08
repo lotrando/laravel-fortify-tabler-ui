@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Employee;
+use App\Models\Job;
 use Illuminate\Http\Request;
+use JetBrains\PhpStorm\Deprecated;
 use Yajra\DataTables\Facades\DataTables;
 
 class EmployeeController extends Controller
@@ -15,6 +18,10 @@ class EmployeeController extends Controller
      */
     public function index(Request $request)
     {
+
+        $departments = Department::all();
+        $jobs = Job::all();
+
         if ($request->ajax()) {
 
             $model = Employee::where('status', 'active')->with('department', 'job')->select('*');
@@ -34,7 +41,10 @@ class EmployeeController extends Controller
                 ->toJson();
         }
 
-        return view('employees.index');
+        return view('employees.index')->with([
+            'departments' => $departments,
+            'jobs' => $jobs,
+        ]);
     }
 
     /**
