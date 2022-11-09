@@ -36,6 +36,7 @@
   "New password confirmation": "Potvrzení nového hesla",
   "Remember me on this device": "Zapamatovat si mě na tomto zařízení",
   "You are logged in!": "Jste přihlášeni!",
+  "Are you sure?": "Jste si jistý?",
   "Logout": "Odhlásit",
   "Close": "Zavřít",
   "New": "Nový",
@@ -49,8 +50,11 @@
   "New employee": "Nový zaměstnanec",
   "Photo": "Fotografie",
   "Cancel": "Zrušit",
+  "Delete": "Odstranit",
   "Job": "Ppracovní funkce",
   "Description": "Poznámka/Komentář",
+  "Do you really want to remove employee?": "Opravdu chcete odstranit zaměstnance?",
+  "This operation cannot be undone": "Tuto operaci nelze vrátit zpět",
   "Login with Github": "Přihlásit s Githubem",
   "Login with Twitter": "Přihlásit s Twitterem"
 }

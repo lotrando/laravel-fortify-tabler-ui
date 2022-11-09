@@ -31,8 +31,8 @@ class EmployeeController extends Controller
                 ->addColumn('action', function ($data) {
                     $buttons = '
                         <center>
-                            <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-warning p-2"><i class="fas fa-pen"></i></button>
-                            <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-danger p-2"><i class="fas fa-trash-alt"></i></button>
+                            <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-warning p-2" data-bs-toggle="modal" data-bs-target="#editModal" data-keyboard="false"><i class="fas fa-pen"></i></button>
+                            <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-danger p-2" data-bs-toggle="modal" data-bs-target="#confirmModal" data-keyboard="false"><i class="fas fa-trash-alt"></i></button>
                         </center>
                         ';
                     return $buttons;
@@ -44,6 +44,7 @@ class EmployeeController extends Controller
         return view('employees.index')->with([
             'departments' => $departments,
             'jobs' => $jobs,
+            ['success' => true, 'message' => 'Inserted Successfully']
         ]);
     }
 
@@ -65,6 +66,9 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        return $request;
+
+
         // do validation
         Employee::create($request->all());
         return ['success' => true, 'message' => 'Inserted Successfully'];

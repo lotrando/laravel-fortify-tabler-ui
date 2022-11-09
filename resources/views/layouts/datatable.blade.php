@@ -27,12 +27,12 @@
     @yield('main')
   </main>
 
-  {{-- Modal --}}
+  {{-- Create Modal --}}
   <div class="modal modal-blur fade" id="modal-report" role="dialog" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
       <div class="modal-content shadow-lg">
         <div class="modal-header">
-          <h5 class="modal-title">{{ __('New employee') }}</h5>
+          <h5 class="modal-title" id="modalTitle">{{ __('Create new employee') }}</h5>
           <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -93,42 +93,11 @@
               </select>
             </div>
           </div>
-          {{-- <label class="form-label">Report type</label>
-          <div class="form-selectgroup-boxes row mb-3">
-            <div class="col-6">
-              <label class="form-selectgroup-item">
-                <input class="form-selectgroup-input" name="report-type" type="radio" value="1" checked>
-                <span class="form-selectgroup-label d-flex align-items-center p-3">
-                  <span class="me-3">
-                    <span class="form-selectgroup-check"></span>
-                  </span>
-                  <span class="form-selectgroup-label-content">
-                    <span class="form-selectgroup-title strong mb-1">Simple</span>
-                    <span class="d-block text-muted">Provide only basic data needed for the report</span>
-                  </span>
-                </span>
-              </label>
-            </div>
-            <div class="col-lg-6">
-              <label class="form-selectgroup-item">
-                <input class="form-selectgroup-input" name="report-type" type="radio" value="1">
-                <span class="form-selectgroup-label d-flex align-items-center p-3">
-                  <span class="me-3">
-                    <span class="form-selectgroup-check"></span>
-                  </span>
-                  <span class="form-selectgroup-label-content">
-                    <span class="form-selectgroup-title strong mb-1">Advanced</span>
-                    <span class="d-block text-muted">Insert charts and additional advanced analyses to be inserted in the report</span>
-                  </span>
-                </span>
-              </label>
-            </div>
-          </div> --}}
           <div class="row">
             <div class="col-5">
               <div class="mb-3">
                 <label class="form-label">{{ __('Department') }}</label>
-                <select class="form-select" id="department_id" name="department_id">
+                <select class="form-select" id="department_id" name="department_id" size="10">
                   @foreach ($departments as $department)
                     <option value="{{ $department->id }}" @if (old('department_id') == $department->id) selected @endif>{{ $department->center_code }} -
                       {{ $department->department_name }}</option>
@@ -139,7 +108,7 @@
             <div class="col-5">
               <div class="mb-3">
                 <label class="form-label">{{ __('Job') }}</label>
-                <select class="form-select" id="job_id" name="job_id">
+                <select class="form-select" id="job_id" name="job_id" size="10">
                   @foreach ($jobs as $job)
                     <option value="{{ $job->id }}" @if (old('job_id') == $job->id) selected @endif>{{ $job->job_title }}</option>
                   @endforeach
@@ -166,9 +135,9 @@
           </div>
         </div>
         <div class="modal-footer">
-          <a class="btn btn-secondary" data-bs-dismiss="modal" href="#">
+          <button class="btn btn-white" data-bs-dismiss="modal">
             {{ __('Cancel') }}
-          </a>
+          </button>
           <a class="btn btn-primary ms-auto" data-bs-dismiss="modal" href="#">
             {{ __('Create new employee') }}
           </a>
@@ -177,195 +146,120 @@
     </div>
   </div>
 
-  {{-- test --}}
-
-  <div class="modal modal-blur fade" id="" role="dialog" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-      <div class="modal-content">
+  {{-- Edit Modal --}}
+  <div class="modal modal-blur fade" id="editModal" role="dialog" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+      <div class="modal-content shadow-lg">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button class="close" data-dismiss="modal" type="button" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <h5 class="modal-title" id="modalTitle"></h5>
+          <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <span id="form_result"></span>
-          <form class="form-horizontal" id="sample_form" method="post" enctype="multipart/form-data">
-
-            @csrf
-
-            <div class="row">
-
-              <div class="col-sm-2">
-                <div class="form-group"><label class="control-label">Fotografie</label>
-                  <span id="store_image"></span>
-                </div>
-                <div class="form-group">
-                  <input id="image" name="image" type="file" />
-                </div>
+          <div class="row mb-3">
+            <div class="col-2">
+              <label class="form-label">{{ __('Photo') }}</label>
+              <span id="store_image"></span>
+              <input class="form-control" id="image" name="image" type="file" placeholder="{{ __('Select a photo') }}">
+            </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('Personal number') }}</label>
+              <input class="form-control" id="personal_number" name="personal_number" type="text" placeholder="{{ __('Personal number') }}">
+            </div>
+            <div class="col-1">
+              <label class="form-label">{{ __('Title preffix') }}</label>
+              <input class="form-control" id="title_preffix" name="title_preffix" type="text" placeholder="{{ __('Title preffix') }}">
+            </div>
+            <div class="col-3">
+              <label class="form-label">{{ __('Last name') }}</label>
+              <input class="form-control" id="last_name" name="last_name" type="text" placeholder="{{ __('Last name') }}">
+            </div>
+            <div class="col-3">
+              <label class="form-label">{{ __('First name') }}</label>
+              <input class="form-control" id="first_name" name="first_name" type="text" placeholder="{{ __('First name') }}">
+            </div>
+            <div class="col-1">
+              <label class="form-label">{{ __('Title suffix') }}</label>
+              <input class="form-control" id="title_preffix" name="title_preffix" type="text" placeholder="{{ __('Title preffix') }}">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-3">
+              <label class="form-label">{{ __('Middle name') }}</label>
+              <input class="form-control" id="middle_name" name="middle_name" type="text" placeholder="{{ __('Middle name') }}">
+            </div>
+            <div class="col-3">
+              <label class="form-label">{{ __('Married name') }}</label>
+              <input class="form-control" id="married_name" name="married_name" type="text" placeholder="{{ __('Married name') }}">
+            </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('Phone') }}</label>
+              <input class="form-control" id="phone" name="phone" type="text" placeholder="{{ __('Phone') }}">
+            </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('Mobil') }}</label>
+              <input class="form-control" id="mobil" name="mobil" type="text" placeholder="{{ __('Mobil') }}">
+            </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('Card') }}</label>
+              <select class="form-select" id="id_card" name="id_card" data-max-options="2">
+                <option value="Nový nástup" selected>Nový nástup</option>
+                <option value="Vytvořit kartu">Vytvořit kartu</option>
+                <option value="Vytvořit nálepku">Vytvořit nálepku</option>
+                <option value="Předat nálepku">Předat nálepku</option>
+                <option value="Aktual. nálepku">Aktualizovat nálepku</option>
+                <option value="OK">OK</option>
+                <option value="Vrácena">Vrácena</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-5">
+              <div class="mb-3">
+                <label class="form-label">{{ __('Department') }}</label>
+                <select class="form-select" id="department_id" name="department_id" size="10">
+                  @foreach ($departments as $department)
+                    <option value="{{ $department->id }}" @if (old('department_id') == $department->id) selected @endif>{{ $department->center_code }} -
+                      {{ $department->department_name }}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-2">
-                <div class="form-group"><label class="control-label">Osobní číslo</label><input class="form-control" id="pernum" name="pernum" type="text" /></div>
-              </div>
-              <div class="col-sm-2">
-                <div class="form-group"><label class="control-label">Titul Před</label>
-                  <select class="form-control" id="prefix" name="prefix" type="text" />
-                  <option value=""></option>
-                  <option value="Bc.">Bc.</option>
-                  <option value="MUDr.">MUDr.</option>
-                  <option value="Ing.">Ing.</option>
-                  <option value="PharmDr.">PharmDr.</option>
-                  <option value="Mgr.">Mgr.</option>
-                  <option value="MUDr. Ing.">MUDr. Ing.</option>
-                  <option value="Ing. Mgr.">Ing. Mgr.</option>
-
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="form-group"><label class="control-label">Příjmení</label><input class="form-control" id="last_name" name="last_name" type="text" /></div>
-              </div>
-              <div class="col-sm-3">
-                <div class="form-group"><label class="control-label">Jméno</label><input class="form-control" id="first_name" name="first_name" type="text" /></div>
-              </div>
-              <div class="col-sm-2">
-                <div class="form-group"><label class="control-label">Titul za</label>
-                  <select class="form-control" id="suffix" name="suffix" type="text" />
-                  <option value=""></option>
-                  <option value="DiS.">DiS.</option>
-                  <option value="MBA">MBA</option>
-                  <option value="LL.M.">LL.M.</option>
-                  <option value="MBA, LL.M.">MBA, LL.M.</option>
-                  </select>
-                </div>
+            <div class="col-5">
+              <div class="mb-3">
+                <label class="form-label">{{ __('Job') }}</label>
+                <select class="form-select" id="job_id" name="job_id" size="10">
+                  @foreach ($jobs as $job)
+                    <option value="{{ $job->id }}" @if (old('job_id') == $job->id) selected @endif>{{ $job->job_title }}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="form-group"><label class="control-label">Doplňující příjmení</label><input class="form-control" id="middle_name" name="middle_name"
-                    type="text" /></div>
-              </div>
-              <div class="col-sm-3">
-                <div class="form-group"><label class="control-label">Za svobodna</label><input class="form-control" id="married_name" name="married_name" type="text" />
-                </div>
-              </div>
-              <div class="col-sm-2">
-                <div class="form-group"><label class="control-label">Klapka</label><input class="form-control" id="phone" name="phone" type="text" /></div>
-              </div>
-              <div class="col-sm-3">
-                <div class="form-group"><label class="control-label">Mobil</label><input class="form-control" id="mobil" name="mobil" type="text" /></div>
+            <div class="col-2">
+              <div class="mb-3">
+                <label class="form-label">{{ __('Status') }}</label>
+                <select class="form-select" id="status" name="status">
+                  <option value="active" selected>Aktivní</option>
+                  <option value="maternal">Mateřská</option>
+                </select>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-5">
-                <div class="form-group">
-                  <label class="control-label">Oddělení</label>
-                  <select class="form-control" id="department" name="department" type="text" />
-                  <option value="nezadáno">Vyber Oddělení / Ambulanci</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="form-group">
-                  <label class="control-label">Barva proužku ID Karty</label>
-                  <select class="form-control" id="comment" name="comment" type="text" />
-                  <option class="line0" value="222222">Vyber barvu</option>
-                  <option class="line1" value="4287f5">INT</option>
-                  <option class="line2" value="7833e8">NEU</option>
-                  <option class="line3" value="d9fa05">ONP</option>
-                  <option class="line4" value="94f700">OS</option>
-                  <option class="line5" value="66c908">REH</option>
-                  <option class="line6" value="0f9990">OPL</option>
-                  <option class="line7" value="a908c9">OKB</option>
-                  <option class="line8" value="c90818">RDG</option>
-                  <option class="line9" value="a31561">MEZ-JIP</option>
-                  <option class="line10" value="ffa600">ORT</option>
-                  <option class="line11" value="ffee00">Ředitelství</option>
-                  <option class="line12" value="ffa200">Stravovak ( Kantýna, Bufet )</option>
-                  <option class="line13" value="999999">Provoz (Recepce, Úklid, Údržba</option>
-                  <option class="line14" value="2c612a">Lékárny</option>
-                  <option class="line15" value="ffa633">Následná péče</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-2">
-                <div class="form-group">
-                  <label class="control-label">Stav karty</label>
-                  <select class="form-control" id="card_status" name="card_status" type="text" />
-                  <option value="Nový nástup">Nový nástup</option>
-                  <option value="Vytvořit kartu">Vytvořit kartu</option>
-                  <option value="Vytvořit nálepku">Vytvořit nálepku</option>
-                  <option value="Předat nálepku">Předat nálepku</option>
-                  <option value="Aktual. nálepku">Aktual. nálepku</option>
-                  <option value="OK">OK</option>
-                  <option value="Vrácena">Vrácena</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-2">
-                <div class="form-group">
-                  <label class="control-label">Kávomat</label>
-                  <select class="form-control" id="coffee_status" name="coffee_status" type="text" />
-                  <option value="Ne">Ne</option>
-                  <option value="Ano">Ano</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-7">
-                <div class="form-group">
-                  <label class="control-label">Funkce</label>
-                  <select class="form-control" id="occupation" name="occupation" type="text" />
-                  <option value="nezadáno">Vyber funkci zaměstnance</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-sm-5">
-                <div class="form-group"><label class="control-label">Poměr</label>
-                  <select class="form-control" id="relationship" name="relationship" type="text" />
-                  <option value="">Vyber pracovní poměr</option>
-                  <option value="HPP">Hlavní pracovní poměr (HPP)</option>
-                  <option value="DPP">Dohoda o provedení práce (DPP)</option>
-                  <option value="DPČ">Dohoda o pracovní činnosti (DPČ)</option>
-                  <option value="EVP">EVP</option>
-                  <option value="ČSO">ČSO</option>
-                  </select>
-                </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-1">
+                <label class="form-label">{{ __('Description') }}</label>
+                <textarea class="form-control" id="comment" name="comment" type="text" row="3"></textarea>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class='form-group date'>
-                  <label class="control-label">Datum nástupu</label>
-                  <input class="form-control" id='startdate' name="startdate" type='text' />
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class='form-group date'>
-                  <label class="control-label">Datum výpovědi</label>
-                  <input class="form-control" id='enddate' name="enddate" type='text' />
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="form-group">
-                  <label class="control-label">Status zaměstnance</label>
-                  <select class="form-control" id="status" name="status" type="text" />
-                  <option value="Active">Aktivní</option>
-                  <option value="Maternal">Mateřská</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-group" align="center">
-              <input id="action" name="action" type="hidden" />
-              <input id="hidden_id" name="hidden_id" type="hidden" />
-              <div class="modal-footer">
-                <button class="btn me-auto" data-bs-dismiss="modal" type="button">{{ __('Close') }}</button>
-                <button class="btn btn-success" id="action_button" name="action_button" type="submit">{{ __('Create') }}</button>
-              </div>
-            </div>
-          </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-white" data-bs-dismiss="modal">
+            {{ __('Cancel') }}
+          </button>
+          <a class="btn btn-primary ms-auto" data-bs-dismiss="modal" href="#">
+            {{ __('Create new employee') }}
+          </a>
         </div>
       </div>
     </div>
@@ -376,11 +270,19 @@
   <div class="modal modal-blur fade" id="confirmModal" role="dialog" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content">
-        <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
+        <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="{{ __('Close') }}"></button>
         <div class="modal-status bg-danger"></div>
         <div class="modal-body py-4 text-center">
-          <h3>Odstranit ?</h3>
-          <div class="text-muted">Chcete zaměstnance definitivně odstranit ?</div>
+          <!-- Download SVG icon from http://tabler-icons.io/i/alert-triangle -->
+          <svg class="icon text-danger icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 9v2m0 4v.01" />
+            <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+          </svg>
+          <h3>{{ __('Are you sure?') }}</h3>
+          <div class="text-muted">{{ __('Do you really want to remove employee?') }}<br>{{ __('This operation cannot be undone') }}
+          </div>
         </div>
         <div class="modal-footer">
           <div class="w-100">
@@ -388,7 +290,7 @@
               <div class="col"><a class="btn w-100" data-bs-dismiss="modal" href="#">
                   {{ __('Cancel') }}
                 </a></div>
-              <div class="col"><a class="btn btn-danger w-100" id="ok_button" name="ok_button" data-bs-dismiss="modal" href="#">
+              <div class="col"><a class="btn btn-danger w-100" data-bs-dismiss="modal" href="#">
                   {{ __('Delete') }}
                 </a></div>
             </div>
@@ -501,7 +403,7 @@
 
   <script>
     $('#create_record').click(function() {
-      $('.modal-title').text("Vytvořit nového zaměstnance");
+      $('#modal_label').text("Vytvořit nového zaměstnance");
       $('#action_button').val("Vytvořit");
       $('#action').val("Add");
       $('#formModal').modal({
@@ -612,16 +514,12 @@
       })
     });
 
-    var user_id;
-
-    $(document).on('click', '.delete', function() {
-      user_id = $(this).attr('id');
-      $('#confirmModal').modal('show');
-    });
+    var employee_id;
+    employee_id = $('.delete').attr('id');
 
     $('#ok_button').click(function() {
       $.ajax({
-        url: "employees/destroy/" + user_id,
+        url: "employees/destroy/" + employee_id,
         beforeSend: function() {
           $('#ok_button').text('Odstraňuji ...');
         },

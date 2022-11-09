@@ -21,8 +21,10 @@
                 {{ session('status') }}
               </div>
             @endif
-            @if (session('status'))
-              <div>{{ session('status') }}</div>
+            @if (session('error'))
+              <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+              </div>
             @endif
             <table class="table-bordered table-hover dataTable w-100 table">
               <thead class="bg-secondary table bg-opacity-50 text-center text-white">
