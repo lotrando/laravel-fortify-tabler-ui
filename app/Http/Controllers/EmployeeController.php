@@ -31,8 +31,8 @@ class EmployeeController extends Controller
                 ->addColumn('action', function ($data) {
                     $buttons = '
                         <center>
-                            <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-warning p-2" data-bs-toggle="modal" data-bs-target="#editModal" data-keyboard="false"><i class="fas fa-pen"></i></button>
-                            <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-danger p-2" data-bs-toggle="modal" data-bs-target="#confirmModal" data-keyboard="false"><i class="fas fa-trash-alt"></i></button>
+                            <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-warning p-2"><i class="fas fa-pen"></i></button>
+                            <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-danger p-2"><i class="fas fa-trash-alt"></i></button>
                         </center>
                         ';
                     return $buttons;
