@@ -24,7 +24,7 @@ class EmployeeController extends Controller
 
         if ($request->ajax()) {
 
-            $model = Employee::where('status', 'active')->with('department', 'job')->select('*');
+            $model = Employee::with('department', 'job')->select('*');
 
             return DataTables::eloquent($model)
 
@@ -91,9 +91,12 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit($id)
     {
-        //
+        if (request()->ajax()) {
+            $data = Employee::findOrFail($id);
+            return response()->json(['data' => $data]);
+        }
     }
 
     /**

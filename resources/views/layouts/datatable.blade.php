@@ -28,29 +28,25 @@
   </main>
 
   {{-- Create Modal --}}
-  <div class="modal modal-blur fade" id="createModal" role="dialog" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-lg" role="document">
+  <div class="modal modal-blur fade" id="formModal" role="dialog" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
       <div class="modal-content shadow-lg">
         <div class="modal-header">
-          <h5 class="modal-title" id="createModalTitle">{{ __('Create new employee') }}</h5>
+          <h5 class="modal-title"></h5>
           <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <form action="{{ route('employees.create') }}" method="post"></form>
           <div class="row mb-3">
-            <div class="col-2">
-              <label class="form-label">{{ __('Photo') }}</label>
-              <span id="store_image"></span>
-              <input class="form-control" id="image" name="image" type="file" placeholder="{{ __('Select a photo') }}">
-            </div>
-            <div class="col-2">
+            <div class="col-1">
               <label class="form-label">{{ __('Personal number') }}</label>
               <input class="form-control" id="personal_number" name="personal_number" type="text" placeholder="{{ __('Personal number') }}">
             </div>
-            <div class="col-1">
-              <label class="form-label">{{ __('Title preffix') }}</label>
-              <input class="form-control" id="title_preffix" name="title_preffix" type="text" placeholder="{{ __('Title preffix') }}">
+            <div class="col-2">
+              <label class="form-label">{{ __('Titles preffix') }}</label>
+              <input class="form-control" id="title_preffix" name="title_preffix" type="text" placeholder="{{ __('Titles preffix') }}">
             </div>
-            <div class="col-3">
+            <div class="col-4">
               <label class="form-label">{{ __('Last name') }}</label>
               <input class="form-control" id="last_name" name="last_name" type="text" placeholder="{{ __('Last name') }}">
             </div>
@@ -58,13 +54,13 @@
               <label class="form-label">{{ __('First name') }}</label>
               <input class="form-control" id="first_name" name="first_name" type="text" placeholder="{{ __('First name') }}">
             </div>
-            <div class="col-1">
-              <label class="form-label">{{ __('Title suffix') }}</label>
-              <input class="form-control" id="title_preffix" name="title_preffix" type="text" placeholder="{{ __('Title preffix') }}">
+            <div class="col-2">
+              <label class="form-label">{{ __('Titles suffix') }}</label>
+              <input class="form-control" id="title_suffix" name="title_suffixx" type="text" placeholder="{{ __('Titles suffix') }}">
             </div>
           </div>
           <div class="row mb-3">
-            <div class="col-3">
+            <div class="col-2">
               <label class="form-label">{{ __('Middle name') }}</label>
               <input class="form-control" id="middle_name" name="middle_name" type="text" placeholder="{{ __('Middle name') }}">
             </div>
@@ -72,13 +68,13 @@
               <label class="form-label">{{ __('Married name') }}</label>
               <input class="form-control" id="married_name" name="married_name" type="text" placeholder="{{ __('Married name') }}">
             </div>
-            <div class="col-2">
+            <div class="col-1">
               <label class="form-label">{{ __('Phone') }}</label>
               <input class="form-control" id="phone" name="phone" type="text" placeholder="{{ __('Phone') }}">
             </div>
             <div class="col-2">
               <label class="form-label">{{ __('Mobil') }}</label>
-              <input class="form-control" id="mobil" name="mobil" type="text" placeholder="{{ __('Mobil') }}">
+              <input class="form-control" id="mobile" name="mobile" type="text" placeholder="{{ __('Mobil') }}">
             </div>
             <div class="col-2">
               <label class="form-label">{{ __('Card') }}</label>
@@ -88,48 +84,127 @@
                 <option value="Vytvořit nálepku">Vytvořit nálepku</option>
                 <option value="Předat nálepku">Předat nálepku</option>
                 <option value="Aktual. nálepku">Aktualizovat nálepku</option>
-                <option value="OK">OK</option>
+                <option value="Vydána">Vydáno</option>
                 <option value="Vrácena">Vrácena</option>
               </select>
             </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('Status') }}</label>
+              <select class="form-select" id="status" name="status">
+                <option value="active" selected>Aktivní</option>
+                <option value="maternal">Mateřská</option>
+              </select>
+            </div>
           </div>
-          <div class="row">
-            <div class="col-5">
-              <div class="mb-3">
-                <label class="form-label">{{ __('Department') }}</label>
-                <select class="form-select" id="department_id" name="department_id" size="10">
-                  @foreach ($departments as $department)
-                    <option value="{{ $department->id }}" @if (old('department_id') == $department->id) selected @endif>{{ $department->center_code }} -
-                      {{ $department->department_name }}</option>
-                  @endforeach
-                </select>
+          <div class="row mb-3">
+            <div class="col-2">
+              <label class="form-label">{{ __('Email') }}</label>
+              <input class="form-control" id="email" name="email" type="text" placeholder="{{ __('Email') }}">
+            </div>
+            <div class="col-1">
+              <label class="form-label">{{ __('Coffee') }}</label>
+              <input class="form-control" id="coffee" name="coffee" type="text" placeholder="{{ __('Coffee') }}">
+            </div>
+            <div class="col-6">
+              <label class="form-label">{{ __('Department color') }}</label>
+              <div class="row g-2">
+                <div class="col-auto">
+                  <label class="form-colorinput">
+                    <input class="form-colorinput-input" name="id_color" type="radio" value="blue" />
+                    <span class="form-colorinput-color bg-blue"></span>
+                  </label>
+                </div>
+                <div class="col-auto">
+                  <label class="form-colorinput">
+                    <input class="form-colorinput-input" name="id_color" type="radio" value="azure" />
+                    <span class="form-colorinput-color bg-azure"></span>
+                  </label>
+                </div>
+                <div class="col-auto">
+                  <label class="form-colorinput">
+                    <input class="form-colorinput-input" name="id_color" type="radio" value="indigo" />
+                    <span class="form-colorinput-color bg-indigo"></span>
+                  </label>
+                </div>
+                <div class="col-auto">
+                  <label class="form-colorinput">
+                    <input class="form-colorinput-input" name="id_color" type="radio" value="purple" />
+                    <span class="form-colorinput-color bg-purple"></span>
+                  </label>
+                </div>
+                <div class="col-auto">
+                  <label class="form-colorinput">
+                    <input class="form-colorinput-input" name="id_color" type="radio" value="pink" />
+                    <span class="form-colorinput-color bg-pink"></span>
+                  </label>
+                </div>
+                <div class="col-auto">
+                  <label class="form-colorinput">
+                    <input class="form-colorinput-input" name="id_color" type="radio" value="red" />
+                    <span class="form-colorinput-color bg-red"></span>
+                  </label>
+                </div>
+                <div class="col-auto">
+                  <label class="form-colorinput">
+                    <input class="form-colorinput-input" name="id_color" type="radio" value="orange" />
+                    <span class="form-colorinput-color bg-orange"></span>
+                  </label>
+                </div>
+                <div class="col-auto">
+                  <label class="form-colorinput">
+                    <input class="form-colorinput-input" name="id_color" type="radio" value="yellow" />
+                    <span class="form-colorinput-color bg-yellow"></span>
+                  </label>
+                </div>
+                <div class="col-auto">
+                  <label class="form-colorinput">
+                    <input class="form-colorinput-input" name="id_color" type="radio" value="lime" />
+                    <span class="form-colorinput-color bg-lime"></span>
+                  </label>
+                </div>
               </div>
             </div>
+          </div>
+          <div class="row mb-3">
             <div class="col-5">
+              <label class="form-label">{{ __('Department') }}</label>
+              <select class="form-select" id="department_id" name="department_id" size="16">
+                @foreach ($departments as $department)
+                  <option value="{{ $department->id }}" @if (old('department_id') == $department->id) selected @endif>{{ $department->center_code }} -
+                    {{ $department->department_name }}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="col-4">
               <div class="mb-3">
                 <label class="form-label">{{ __('Job') }}</label>
-                <select class="form-select" id="job_id" name="job_id" size="10">
+                <select class="form-select" id="job_id" name="job_id" size="16">
                   @foreach ($jobs as $job)
                     <option value="{{ $job->id }}" @if (old('job_id') == $job->id) selected @endif>{{ $job->job_title }}</option>
                   @endforeach
                 </select>
               </div>
             </div>
-            <div class="col-2">
+            <div class="col-3">
               <div class="mb-3">
-                <label class="form-label">{{ __('Status') }}</label>
-                <select class="form-select" id="status" name="status">
-                  <option value="active" selected>Aktivní</option>
-                  <option value="maternal">Mateřská</option>
-                </select>
+                <label class="form-label">{{ __('Photo') }}</label>
+                <div class="d-flex justify-content-center align-items-center">
+                  <span id="store_image"></span>
+                </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-12">
+            <div class="col-9">
               <div class="mb-1">
                 <label class="form-label">{{ __('Description') }}</label>
-                <textarea class="form-control" id="comment" name="comment" type="text" row="3"></textarea>
+                <textarea class="form-control" id="comment" name="comment" data-bs-toggle="autosize" type="text" placeholder="{{ __('Description') }}"></textarea>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="mb-3">
+                <label class="form-label">{{ __('Select a photo') }}</label>
+                <input class="form-control" id="image" name="image" type="file" placeholder="{{ __('Select a photo') }}">
               </div>
             </div>
           </div>
@@ -138,13 +213,13 @@
           <button class="btn btn-white" data-bs-dismiss="modal">
             {{ __('Cancel') }}
           </button>
-          <button class="btn btn-primary ms-auto" id="createModalTitle">
-            {{ __('Create new employee') }}
-          </button>
+          <button class="btn btn-primary ms-auto" id="action_button"></button>
         </div>
       </div>
     </div>
   </div>
+  </div>
+
 
   {{-- Delete Modal --}}
   <div class="modal modal-blur fade" id="confirmModal" role="dialog" aria-hidden="true" tabindex="-1">
@@ -285,35 +360,70 @@
 
   <script>
     $('#openCreateModal').click(function() {
-      $('#createModalTitle').text("Vytvořit nového zaměstnance");
-      $('#action_button').text("Vytvořit");
+      $('.modal-title').text("{{ __('Create new employee') }}");
+      $('#action_button').text("{{ __('Create new employee') }}");
       $('#action').val("Add");
-      $('#createModal').modal('show' {
-        backdrop: 'static',
-        keyboard: false
-      });
+      $('#formModal').modal('show');
     });
   </script>
 
+  {{-- Edit record --}}
   <script>
-    var employee_id;
+    $(document).on('click', '.edit', function() {
+      var id = $(this).attr('id');
+      $('#form_result').html('');
+      $.ajax({
+        url: "/employees/" + id + "/edit",
+        dataType: "json",
+        success: function(html) {
+          $('#formModal').modal('show');
+          $('.modal-title').text("{{ __('Edit employee') }}");
+          $('#action_button').text("{{ __('Edit employee') }}");
+          $('#action').val("Edit");
+          $('#personal_number').val(html.data.personal_number);
+          $('#title_preffix').val(html.data.title_preffix);
+          $('#last_name').val(html.data.last_name);
+          $('#middle_name').val(html.data.middle_name);
+          $('#first_name').val(html.data.first_name);
+          $('#title_suffix').val(html.data.title_suffix);
+          $('#married_name').val(html.data.married_name);
+          $('#phone').val(html.data.phone);
+          $('#mobile').val(html.data.mobile);
+          $('#id_card').val(html.data.id_card);
+          $('#department_id').val(html.data.department_id);
+          $('#job_id').val(html.data.job_id);
+          $('#comment').val(html.data.comment);
+          $('#status').val(html.data.status);
+          $('#coffee').val(html.data.coffee);
+          $('#id_color').val(html.data.id_color);
+          $('#employment').val(html.data.employment);
+          $('#store_image').html("<a data-lightbox='emplyee' href='{{ URL::to('/') }}/foto/" + html.data.image + "'><img src={{ URL::to('/') }}/foto/" + html.data
+            .image + " height='100%' class='z-depth-1 img-thumbnail' /></a>");
+          $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.image + "' />");
+          $('#hidden_id').val(html.data.id);
+        }
+      })
+    });
+  </script>
 
+  {{-- Delete record --}}
+  <script>
     $(document).on('click', '.delete', function() {
       employee_id = $(this).attr('id');
+      $('#ok_button').text("{{ __('Delete') }}");
       $('#confirmModal').modal('show');
-      $('#ok_button').text('Odstranit');
     });
 
     $('#ok_button').click(function() {
       $.ajax({
         url: "employees/destroy/" + employee_id,
         beforeSend: function() {
-          $('#ok_button').text('Odstraňuji ...');
+          $('#ok_button').text("{{ __('Deleting ...') }}");
         },
         success: function(data) {
           setTimeout(function() {
             $('#confirmModal').modal('hide');
-            $('#ok_button').text('Odstranitttt');
+            $('#ok_button').text("{{ __('Delete') }}");
             $('.dataTable').DataTable().ajax.reload(null, false);
           }, 1000);
         }

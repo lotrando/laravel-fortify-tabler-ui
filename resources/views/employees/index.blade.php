@@ -16,6 +16,7 @@
             </div>
           </div>
           <div class="card-body">
+            <span id="form_result"></span>
             @if (session('status'))
               <div class="alert alert-success" role="alert">
                 {{ session('status') }}
