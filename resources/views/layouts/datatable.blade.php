@@ -29,7 +29,7 @@
 
   {{-- Create Modal --}}
   <div class="modal modal-blur fade" id="formModal" role="dialog" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-xl modal-dialog-top" role="document">
       <div class="modal-content shadow-lg">
         <div class="modal-header">
           <h5 class="modal-title"></h5>
@@ -43,14 +43,14 @@
                 <span id="form_result"></span>
               </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-2">
               <div class="col-2">
                 <label class="form-label">{{ __('Personal number') }}</label>
                 <input class="form-control" id="personal_number" name="personal_number" type="text" placeholder="{{ __('Personal number') }}">
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Titles preffix') }}</label>
-                <select class="form-select" name="title_preffix" id="title_preffix">
+                <select class="form-select" id="title_preffix" name="title_preffix">
                   <option value=""></option>
                   <option value="Bc.">Bc.</option>
                   <option value="MUDr.">MUDr.</option>
@@ -71,7 +71,7 @@
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Titles suffix') }}</label>
-                <select class="form-select" name="title_suffix" id="title_suffix">
+                <select class="form-select" id="title_suffix" name="title_suffix">
                   <option value=""></option>
                   <option value="DiS.">DiS.</option>
                   <option value="MBA">MBA</option>
@@ -80,7 +80,7 @@
                 </select>
               </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-2">
               <div class="col-2">
                 <label class="form-label">{{ __('Middle name') }}</label>
                 <input class="form-control" id="middle_name" name="middle_name" type="text" placeholder="{{ __('Middle name') }}">
@@ -128,14 +128,14 @@
                 </select>
               </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-2">
               <div class="col-2">
                 <label class="form-label">{{ __('Email') }}</label>
                 <input class="form-control" id="email" name="email" type="text" placeholder="{{ __('Email') }}">
               </div>
               <div class="col-1">
                 <label class="form-label">{{ __('Coffee') }}</label>
-               <select class="form-select" id="coffee" name="coffee">
+                <select class="form-select" id="coffee" name="coffee">
                   <option value=""></option>
                   <option value="N">Ne</option>
                   <option value="A">Ano</option>
@@ -144,7 +144,7 @@
               <div class="col-2">
                 <label class="form-label">{{ __('ID Card color') }}</label>
                 <select class="form-select" id="id_color" name="id_color">
-                    <option value=""></option>
+                  <option value=""></option>
                   @foreach ($department_colors as $department_color)
                     <option class="bg-{{ $department_color->code }}-lt text-white" value="{{ $department_color->code }}" @if (old('id_color') == $department_color->code) selected @endif>
                       {{ $department_color->name }}
@@ -174,22 +174,30 @@
                 </div>
               </div>
             </div>
-            <div class="row mb-3">
+            <div class="row mb-2">
               <div class="col-2">
                 <label class="form-label">{{ __('Current photo') }}</label>
-                <div class="d-flex justify-content-starr align-items-start">
+                <div class="d-flex justify-content-start align-items-start">
                   <span id="store_image"></span>
                 </div>
               </div>
-              <div class="col-10">
+              <div class="col-2">
+                <label class="form-label">{{ __('Preview new photo') }}</label>
+                <div class="d-flex justify-content-start align-items-start">
+                  <img class='z-depth-1 img-thumbnail-big' id="preview_image" height='193px'></img>
+                </div>
+              </div>
+              <div class="col-8">
                 <label class="form-label">{{ __('Description') }}</label>
                 <textarea class="form-control" id="comment" name="comment" type="text" placeholder="{{ __('Description') }}" rows="8"></textarea>
               </div>
             </div>
-            <div class="row mb-3">
+            <div class="row">
               <div class="col-4">
-                <label class="form-label">{{ __('Select file with photo') }}</label>
-                <input class="form-control" id="image" name="image" type="file" placeholder="{{ __('Select a photo') }}">
+                <div class="form-group">
+                  <label class="form-label">{{ __('Select file with new photo') }}</label>
+                  <input class="form-control" id="image" name="image" type="file">
+                </div>
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Start date') }}</label>
@@ -212,10 +220,10 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-white" data-bs-dismiss="modal">
+            <button class="btn btn-white hover-shadow" data-bs-dismiss="modal" type="button">
               {{ __('Close') }}
             </button>
-            <button class="btn btn-primary ms-auto" id="action_button" name="action_button" type="submit"></button>
+            <button class="btn btn-primary ms-auto hover-shadow" id="action_button" name="action_button" type="submit"></button>
           </div>
         </form>
       </div>
@@ -245,12 +253,48 @@
           <div class="w-100">
             <div class="row">
               <div class="col">
-                <button class="btn w-100" data-bs-dismiss="modal">
+                <button class="btn w-100 hover-shadow" data-bs-dismiss="modal">
                   {{ __('Cancel') }}
                 </button>
               </div>
               <div class="col">
-                <button class="btn btn-danger w-100" id="ok_button"></button>
+                <button class="btn btn-danger w-100 hover-shadow" id="ok_button"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- Delete Foto --}}
+  <div class="modal modal-blur fade" id="photoModal" role="dialog" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content shadow-lg">
+        <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="{{ __('Close') }}"></button>
+        <div class="modal-status bg-danger"></div>
+        <div class="modal-body py-4 text-center">
+          <!-- Download SVG icon from http://tabler-icons.io/i/alert-triangle -->
+          <svg class="icon text-danger icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 9v2m0 4v.01" />
+            <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+          </svg>
+          <h3>{{ __('Are you sure?') }}</h3>
+          <div class="text-muted">{{ __('Do you really want to remove photo?') }}<br>{{ __('This operation cannot be undone') }}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="w-100">
+            <div class="row">
+              <div class="col">
+                <button class="btn w-100 hover-shadow" data-bs-dismiss="modal">
+                  {{ __('Cancel') }}
+                </button>
+              </div>
+              <div class="col">
+                <button class="btn btn-danger w-100 hover-shadow" id="remove_button"></button>
               </div>
             </div>
           </div>
@@ -327,7 +371,7 @@
           },
           {
             data: 'department.center_code',
-            "width": "2%"
+            "width": "3%"
           },
           {
             data: 'department.department_name',
@@ -374,7 +418,7 @@
           },
           {
             data: 'action',
-            "width": "1%",
+            "width": "5%",
             orderable: false,
             searchable: false
           },
@@ -395,8 +439,10 @@
       $('#employment').val('HPP');
       $('#coffee').val('N');
       $('#id_color').val('');
-      $('#store_image').html("<img src={{ URL::to('/') }}/foto/00000.png height='193px' class='z-depth-1 img-thumbnail-big' /></img>");
-      $('#store_image').append("<input type='hidden' id='hidden_image' name='hidden_image' value='00000.png' />");
+      $('#pre').val('');
+      $("#preview_image").attr("src", "{{ URL::to('/') }}/foto/no_image.png");
+      $('#store_image').html("<img src={{ URL::to('/') }}/foto/no_image.png height='193px' class='z-depth-1 img-thumbnail-big' /></img>");
+      $('#store_image').append("<input type='hidden' id='hidden_image' name='hidden_image' value='no_image.png' />");
     })
 
     $(document).on('click', '.edit', function() {
@@ -432,8 +478,9 @@
           $('#end_date').val(html.data.end_date);
           $('#created_at').val(html.data.created_at);
           $('#updated_at').val(html.data.updated_at);
+          $("#preview_image").attr("src", "{{ URL::to('/') }}/foto/no_image.png");
           $('#store_image').html("<a data-lightbox='employee' href='{{ URL::to('/') }}/foto/" + html.data.image + "'><img src={{ URL::to('/') }}/foto/" + html.data
-            .image + " height='193px' class='z-depth-1 img-thumbnail-big'></a>");
+            .image + " height='193px' class='bg-" + html.data.id_color + "-lt z-depth-1 img-thumbnail-big hover-shadow'></a>");
           $('#store_image').append("<input type='hidden' id='hidden_image' name='hidden_image' value='" + html.data.image + "' />");
           $('#hidden_id').val(html.data.id);
         }
@@ -458,11 +505,13 @@
               for (var count = 0; count < data.errors.length; count++) {
                 html += '<li>' + data.errors[count] + '</li>';
               }
-              html += '</ul><a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>';
+              html += '</ul><a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a></div>';
             }
             if (data.success) {
-              html = '<div class="alert alert-success text-success shadow-sm"><ul><li>' + data.success + '</li></ul><a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>';
+              html = '<div class="alert alert-success text-success shadow-sm"><ul><li>' + data.success +
+                '</li></ul><a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a></div>';
               $('#inputForm')[0].reset();
+              $('#preview_image').val('no_image.png');
               $('.dataTable').DataTable().ajax.reload(null, false);
             }
             $('#form_result').html(html);
@@ -471,6 +520,7 @@
       }
 
       if ($('#action').val() == "Edit") {
+        event.preventDefault();
         $.ajax({
           url: "{{ route('employees.update') }}",
           method: "POST",
@@ -521,10 +571,32 @@
           }, 1000);
         }
       })
-    })
-    </script>
+    });
 
-    <script>
+    $(document).on('click', '.remove', function() {
+      employee_id = $(this).attr('id');
+      $('#remove_button').text("{{ __('Remove') }}");
+      $('#photoModal').modal('show');
+    })
+
+    $('#remove_button').click(function() {
+      $.ajax({
+        url: "employees/destroy-photo/" + employee_id,
+        beforeSend: function() {
+          $('#remove_button').text("{{ __('Removing ...') }}");
+        },
+        success: function(data) {
+          setTimeout(function() {
+            $('#photoModal').modal('hide');
+            $('#remove_button').text("{{ __('Remove') }}");
+            $('.dataTable').DataTable().ajax.reload(null, false);
+          }, 1000);
+        }
+      })
+    })
+  </script>
+
+  <script>
     lightbox.option({
       'resizeDuration': 400,
       'wrapAround': true,
@@ -532,6 +604,22 @@
       'maxHeight': 600,
       'albumLabel': "Fotografie %1 z %2",
       'fitImagesInViewport': true
+    });
+  </script>
+
+  {{-- Preview Photo --}}
+  <script>
+    $(document).ready(() => {
+      $("#image").change(function() {
+        const file = this.files[0];
+        if (file) {
+          let reader = new FileReader();
+          reader.onload = function(event) {
+            $("#preview_image").attr("src", event.target.result);
+          };
+          reader.readAsDataURL(file);
+        }
+      });
     });
   </script>
 

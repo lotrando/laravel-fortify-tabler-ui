@@ -6,7 +6,10 @@ use App\Models\Department;
 use App\Models\DepartmentColors;
 use App\Models\Employee;
 use App\Models\Job;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -34,6 +37,7 @@ class EmployeeController extends Controller
                     $buttons = '
                         <center>
                             <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-azure p-2"><i class="fas fa-pen"></i></button>
+                            <button type="button" title="Odstranit Fotografii" name="edit" id="' . $data->id . '" class="remove btn btn-yellow p-2"><i class="fas fa-file-excel"></i></button>
                             <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-red p-2"><i class="fas fa-trash-alt"></i></button>
                         </center>
                         ';
@@ -86,7 +90,7 @@ class EmployeeController extends Controller
             'phone',
             'mobile',
             'id_card'           =>  'required',
-            'id_color'          =>  'required',
+            'id_color',
             'coffee',
             'employment'        =>  'required',
             'status',
@@ -103,11 +107,12 @@ class EmployeeController extends Controller
         $image = $request->file('image');
 
         if (empty($image)) {
-            $new_name = '00000.png';
+            $image_name = 'no_image.png';
         } else {
-            $new_name = $image->getClientOriginalName();
-
-            $image->move(public_path('foto'), $new_name);
+            $current = Carbon::now()->format('Ymd-His');
+            $guessExtension = $image->guessExtension();
+            $image_name = $request->personal_number . '_' . $current . '.' . $guessExtension;
+            $image->move(public_path('foto'), $image_name);
         }
 
         $form_data = [
@@ -131,7 +136,7 @@ class EmployeeController extends Controller
             'coffee'            =>  $request->coffee,
             'status'            =>  $request->status,
             'employment'        =>  $request->employment,
-            'image'             =>  $new_name
+            'image'             =>  $image_name
         ];
 
         Employee::create($form_data);
@@ -208,7 +213,9 @@ class EmployeeController extends Controller
                 return response()->json(['errors' => $error->errors()->all()]);
             }
 
-            $image_name = $image->getClientOriginalName();
+            $current = Carbon::now()->format('Ymd-His');
+            $guessExtension = $image->guessExtension();
+            $image_name = $request->personal_number . '_' . $current . '.' . $guessExtension;
             $image->move(public_path('foto'), $image_name);
         } else {
             $rules = [
@@ -279,7 +286,27 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        Employee::find($id)->delete();
+        $user = Employee::find($id);
+        $file = $user->image;
+        $filename = public_path() . '/foto/' . $file;
+        File::delete($filename);
+        $user->delete();
         return ['success' => true, 'message' => 'Deleted Successfully'];
+    }
+
+    /**
+     * Remove photo
+     */
+    public function destroyPhoto($id)
+    {
+        $user = Employee::find($id);
+        $file = $user->image;
+        $filename = public_path() . '/foto/' . $file;
+        File::delete($filename);
+
+        $user->image = 'no_image.png';
+        $user->save();
+
+        return ['success' => true, 'message' => 'Photo Deleted Successfully'];
     }
 }

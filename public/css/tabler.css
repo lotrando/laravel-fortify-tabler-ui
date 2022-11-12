@@ -2463,8 +2463,8 @@ textarea {
 
 .form-control-sm {
   min-height: calc(1.4285714em + 0.25rem + 2px);
-  padding: 0.250rem 0.5rem;
-  font-size: 0.75rem;
+  padding: 0.450rem 0.5rem;
+  font-size: 0.90rem;
   border-radius: 5px;
 }
 
