@@ -32,16 +32,18 @@
                 <tr>
                   <th>{{ __('Number') }}</th>
                   <th>{{ __('Image') }}</th>
-                  <th>{{ __('Title preffix') }}</th>
+                  <th>{{ __('Titles preffix') }}</th>
                   <th>{{ __('Last name') }}</th>
                   <th>{{ __('First name') }}</th>
-                  <th>{{ __('Title suffix') }}</th>
+                  <th>{{ __('Titles suffix') }}</th>
                   <th>{{ __('Vema Kod') }}</th>
                   <th>{{ __('Department') }}</th>
                   <th>{{ __('Job title') }}</th>
                   <th>{{ __('Email') }}</th>
                   <th>{{ __('Phone') }}</th>
                   <th>{{ __('Mobile') }}</th>
+                  <th>{{ __('Status') }}</th>
+                  <th>{{ __('Start date') }}</th>
                   <th class="text-center">{{ __('Action') }}</th>
                 </tr>
               </thead>

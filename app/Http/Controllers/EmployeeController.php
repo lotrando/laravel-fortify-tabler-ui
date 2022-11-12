@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\DepartmentColors;
 use App\Models\Employee;
 use App\Models\Job;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class EmployeeController extends Controller
 
         $departments = Department::all();
         $jobs = Job::all();
+        $department_colors = DepartmentColors::all();
 
         if ($request->ajax()) {
 
@@ -44,6 +46,7 @@ class EmployeeController extends Controller
         return view('employees.index')->with([
             'departments' => $departments,
             'jobs' => $jobs,
+            'department_colors' => $department_colors,
             ['success' => true, 'message' => 'Inserted Successfully']
         ]);
     }
@@ -93,8 +96,11 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
+        $data = Employee::findOrFail($id);
+
+        // dd($data);
+
         if (request()->ajax()) {
-            $data = Employee::findOrFail($id);
             return response()->json(['data' => $data]);
         }
     }

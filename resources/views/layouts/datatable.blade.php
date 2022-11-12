@@ -36,9 +36,9 @@
           <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="{{ route('employees.create') }}" method="post"></form>
+          <form id="inputForm" action="{{ route('employees.create') }}" method="post"></form>
           <div class="row mb-3">
-            <div class="col-1">
+            <div class="col-2">
               <label class="form-label">{{ __('Personal number') }}</label>
               <input class="form-control" id="personal_number" name="personal_number" type="text" placeholder="{{ __('Personal number') }}">
             </div>
@@ -46,7 +46,7 @@
               <label class="form-label">{{ __('Titles preffix') }}</label>
               <input class="form-control" id="title_preffix" name="title_preffix" type="text" placeholder="{{ __('Titles preffix') }}">
             </div>
-            <div class="col-4">
+            <div class="col-3">
               <label class="form-label">{{ __('Last name') }}</label>
               <input class="form-control" id="last_name" name="last_name" type="text" placeholder="{{ __('Last name') }}">
             </div>
@@ -77,7 +77,7 @@
               <input class="form-control" id="mobile" name="mobile" type="text" placeholder="{{ __('Mobil') }}">
             </div>
             <div class="col-2">
-              <label class="form-label">{{ __('Card') }}</label>
+              <label class="form-label">{{ __('ID Card') }}</label>
               <select class="form-select" id="id_card" name="id_card" data-max-options="2">
                 <option value="Nový nástup" selected>Nový nástup</option>
                 <option value="Vytvořit kartu">Vytvořit kartu</option>
@@ -91,6 +91,7 @@
             <div class="col-2">
               <label class="form-label">{{ __('Status') }}</label>
               <select class="form-select" id="status" name="status">
+                <option value="inactive" selected>Neaktivní</option>
                 <option value="active" selected>Aktivní</option>
                 <option value="maternal">Mateřská</option>
               </select>
@@ -105,107 +106,68 @@
               <label class="form-label">{{ __('Coffee') }}</label>
               <input class="form-control" id="coffee" name="coffee" type="text" placeholder="{{ __('Coffee') }}">
             </div>
-            <div class="col-6">
-              <label class="form-label">{{ __('Department color') }}</label>
-              <div class="row g-2">
-                <div class="col-auto">
-                  <label class="form-colorinput">
-                    <input class="form-colorinput-input" name="id_color" type="radio" value="blue" />
-                    <span class="form-colorinput-color bg-blue"></span>
-                  </label>
-                </div>
-                <div class="col-auto">
-                  <label class="form-colorinput">
-                    <input class="form-colorinput-input" name="id_color" type="radio" value="azure" />
-                    <span class="form-colorinput-color bg-azure"></span>
-                  </label>
-                </div>
-                <div class="col-auto">
-                  <label class="form-colorinput">
-                    <input class="form-colorinput-input" name="id_color" type="radio" value="indigo" />
-                    <span class="form-colorinput-color bg-indigo"></span>
-                  </label>
-                </div>
-                <div class="col-auto">
-                  <label class="form-colorinput">
-                    <input class="form-colorinput-input" name="id_color" type="radio" value="purple" />
-                    <span class="form-colorinput-color bg-purple"></span>
-                  </label>
-                </div>
-                <div class="col-auto">
-                  <label class="form-colorinput">
-                    <input class="form-colorinput-input" name="id_color" type="radio" value="pink" />
-                    <span class="form-colorinput-color bg-pink"></span>
-                  </label>
-                </div>
-                <div class="col-auto">
-                  <label class="form-colorinput">
-                    <input class="form-colorinput-input" name="id_color" type="radio" value="red" />
-                    <span class="form-colorinput-color bg-red"></span>
-                  </label>
-                </div>
-                <div class="col-auto">
-                  <label class="form-colorinput">
-                    <input class="form-colorinput-input" name="id_color" type="radio" value="orange" />
-                    <span class="form-colorinput-color bg-orange"></span>
-                  </label>
-                </div>
-                <div class="col-auto">
-                  <label class="form-colorinput">
-                    <input class="form-colorinput-input" name="id_color" type="radio" value="yellow" />
-                    <span class="form-colorinput-color bg-yellow"></span>
-                  </label>
-                </div>
-                <div class="col-auto">
-                  <label class="form-colorinput">
-                    <input class="form-colorinput-input" name="id_color" type="radio" value="lime" />
-                    <span class="form-colorinput-color bg-lime"></span>
-                  </label>
-                </div>
-              </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('ID Card color') }}</label>
+              <select class="form-select" id="id_color" name="id_color">
+                @foreach ($department_colors as $department_color)
+                  <option class="bg-{{ $department_color->code }} text-white" value="{{ $department_color->code }}" @if (old('id_color') == $department_color->code) selected @endif>
+                    {{ $department_color->name }}
+                  </option>
+                @endforeach
+              </select>
             </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-5">
+            <div class="col-4">
               <label class="form-label">{{ __('Department') }}</label>
-              <select class="form-select" id="department_id" name="department_id" size="16">
+              <select class="form-select" id="department_id" name="department_id">
                 @foreach ($departments as $department)
                   <option value="{{ $department->id }}" @if (old('department_id') == $department->id) selected @endif>{{ $department->center_code }} -
                     {{ $department->department_name }}</option>
                 @endforeach
               </select>
             </div>
-            <div class="col-4">
+            <div class="col-3">
               <div class="mb-3">
                 <label class="form-label">{{ __('Job') }}</label>
-                <select class="form-select" id="job_id" name="job_id" size="16">
+                <select class="form-select" id="job_id" name="job_id">
                   @foreach ($jobs as $job)
                     <option value="{{ $job->id }}" @if (old('job_id') == $job->id) selected @endif>{{ $job->job_title }}</option>
                   @endforeach
                 </select>
               </div>
             </div>
-            <div class="col-3">
-              <div class="mb-3">
-                <label class="form-label">{{ __('Photo') }}</label>
-                <div class="d-flex justify-content-center align-items-center">
-                  <span id="store_image"></span>
-                </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-2">
+              <label class="form-label">{{ __('Photo') }}</label>
+              <div class="d-flex justify-content-start align-items-start">
+                <span id="store_image"></span>
               </div>
+            </div>
+            <div class="col-10">
+              <label class="form-label">{{ __('Description') }}</label>
+              <textarea class="form-control" id="comment" name="comment" type="text" placeholder="{{ __('Description') }}" rows="8"></textarea>
             </div>
           </div>
-          <div class="row">
-            <div class="col-9">
-              <div class="mb-1">
-                <label class="form-label">{{ __('Description') }}</label>
-                <textarea class="form-control" id="comment" name="comment" data-bs-toggle="autosize" type="text" placeholder="{{ __('Description') }}"></textarea>
-              </div>
+          <div class="row mb-3">
+            <div class="col-4">
+              <label class="form-label">{{ __('Select a photo') }}</label>
+              <input class="form-control" id="image" name="image" type="file" placeholder="{{ __('Select a photo') }}">
             </div>
-            <div class="col-3">
-              <div class="mb-3">
-                <label class="form-label">{{ __('Select a photo') }}</label>
-                <input class="form-control" id="image" name="image" type="file" placeholder="{{ __('Select a photo') }}">
-              </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('Start date') }}</label>
+              <input class="form-control" id="start_date" name="start_date" type="date" placeholder="{{ __('Start date') }}">
+            </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('End date') }}</label>
+              <input class="form-control" id="end_date" name="end_date" type="date" placeholder="{{ __('End date') }}">
+            </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('Created at') }}</label>
+              <input class="form-control" id="created_at" name="created_at" type="date" placeholder="{{ __('Created at') }}">
+            </div>
+            <div class="col-2">
+              <label class="form-label">{{ __('Updated at') }}</label>
+              <input class="form-control" id="updated_at" name="updated_at" type="date" placeholder="{{ __('Updated at') }}">
             </div>
           </div>
         </div>
@@ -265,6 +227,7 @@
   <script src="{{ asset('js/lightbox.js') }}"></script>
   <script src="{{ asset('js/tabler.min.js') }}"></script>
   <script src="{{ asset('js/demo.min.js') }}"></script>
+  <script src="{{ asset('js/moment-with-locales.js') }}"></script>
 
   <script>
     $(document).ready(function() {
@@ -298,17 +261,14 @@
             data: 'image',
             "width": "1%",
             render: function(data, type, full, meta) {
-
-              return "<div class='cent img-hover-zoom'><a data-lightbox='employee' data-title='" + data +
-                "' href='{{ URL::to('/foto') }}/" + data +
-                "'><img src={{ URL::to('/foto') }}/" +
-                data + " class='zoom img-thumbnail' width='32' height='32' /></a></div>";
+              return "<div class='cent img-hover-zoom'><img src={{ URL::to('/foto') }}/" +
+                data + " class='zoom img-thumbnail' width='35' height='45' /></a></div>";
             },
             orderable: false,
           },
           {
             data: 'title_preffix',
-            "width": "1%"
+            "width": "2%"
           },
           {
             data: 'last_name',
@@ -320,7 +280,7 @@
           },
           {
             data: 'title_suffix',
-            "width": "1%"
+            "width": "2%"
           },
           {
             data: 'department.center_code',
@@ -332,7 +292,7 @@
           },
           {
             data: 'job.job_title',
-            "width": "10%"
+            "width": "8%"
           },
           {
             data: 'email',
@@ -348,6 +308,25 @@
             "width": "2%"
           },
           {
+            data: 'status',
+            "width": "1%",
+            render: function(data, type, full, meta) {
+              if (data == 'active') {
+                return "<span class='badge bg-green me-1'></span>Aktivní";
+              } else {
+                return "<span class='badge bg-warning me-1'></span>Mateřská";
+              }
+            }
+          },
+          {
+            data: 'start_date',
+            "width": "3%",
+            render: function(data, type, full, meta) {
+              var date = moment(data).locale('cs');
+              return date.format('DD. MM. YYYY');
+            }
+          },
+          {
             data: 'action',
             "width": "1%",
             orderable: false,
@@ -360,11 +339,35 @@
 
   <script>
     $('#openCreateModal').click(function() {
+      $('#formModal').modal('show');
       $('.modal-title').text("{{ __('Create new employee') }}");
       $('#action_button').text("{{ __('Create new employee') }}");
       $('#action').val("Add");
-      $('#formModal').modal('show');
-    });
+      $('#personal_number').val('');
+      $('#title_preffix').val('');
+      $('#last_name').val('');
+      $('#middle_name').val('');
+      $('#first_name').val('');
+      $('#title_suffix').val('');
+      $('#married_name').val('');
+      $('#phone').val('');
+      $('#mobile').val('');
+      $('#id_card').val('Nový nástup');
+      $('#department_id').val('');
+      $('#job_id').val('');
+      $('#comment').val('');
+      $('#status').val('inactive');
+      $('#coffee').val('');
+      $('#id_color').val('');
+      $('#employment').val('');
+      $('#start_date').val('');
+      $('#end_date').val('');
+      $('#created_at').val('');
+      $('#updated_at').val('');
+      $('#store_image').html(
+        "<img src={{ URL::to('/') }}/foto/00000.png height='193px' class='z-depth-1 img-thumbnail-big' /></img>"
+      );
+    })
   </script>
 
   {{-- Edit record --}}
@@ -397,8 +400,12 @@
           $('#coffee').val(html.data.coffee);
           $('#id_color').val(html.data.id_color);
           $('#employment').val(html.data.employment);
-          $('#store_image').html("<a data-lightbox='emplyee' href='{{ URL::to('/') }}/foto/" + html.data.image + "'><img src={{ URL::to('/') }}/foto/" + html.data
-            .image + " height='100%' class='z-depth-1 img-thumbnail' /></a>");
+          $('#start_date').val(html.data.start_date);
+          $('#end_date').val(html.data.end_date);
+          $('#created_at').val(html.data.created_at);
+          $('#updated_at').val(html.data.updated_at);
+          $('#store_image').html("<a data-lightbox='employee' href='{{ URL::to('/') }}/foto/" + html.data.image + "'><img src={{ URL::to('/') }}/foto/" + html.data
+            .image + " height='193px' class='z-depth-1 img-thumbnail-big bg-" + html.data.id_color + "' /></a>");
           $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.image + "' />");
           $('#hidden_id').val(html.data.id);
         }
@@ -429,6 +436,17 @@
         }
       })
     });
+  </script>
+
+  <script>
+    lightbox.option({
+      'resizeDuration': 400,
+      'wrapAround': true,
+      'positionFromTop': 100,
+      'maxHeight': 600,
+      'albumLabel': "Fotografie %1 z %2",
+      'fitImagesInViewport': true
+    })
   </script>
 
 </body>

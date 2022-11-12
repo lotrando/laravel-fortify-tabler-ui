@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
-use App\Models\Job;
 use App\Models\Department;
+use App\Models\Job;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
     use HasFactory;
+
+    protected $dates = ['created_at', 'updated_at'];
 
     protected $fillable = [
         'personal_number',
@@ -43,5 +46,10 @@ class Employee extends Model
     public function job()
     {
         return $this->belongsTo(Job::class, 'job_id');
+    }
+
+    protected function serializeDate($dates)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $dates)->format('Y-m-d');
     }
 }
