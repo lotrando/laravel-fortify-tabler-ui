@@ -10,7 +10,7 @@
             <a class="navbar-brand navbar-brand-autodark" href="#"><img src="{{ asset('static/logo-khn.png') }}" alt="Tabler logo" height="80"></a>
           </div>
           <div class="alert alert-info text-justify shadow-sm" role="alert">
-            <h4 class="alert-title">{{ __('Forgot your password?') }}</h4>
+            <h4 class="alert-title text-center">{{ __('Forgot your password?') }}</h4>
             <div class="text-muted">
               {{ __('No problem. Just let us your email address and we will email you a password reset link that will allow you to enter a new one.') }}
             </div>

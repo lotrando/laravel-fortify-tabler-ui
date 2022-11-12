@@ -53,10 +53,6 @@
           <div class="form-footer">
             <button class="btn btn-blue w-100 text-uppercase hover-shadow mb-2" type="submit">{{ __('Sign in') }}</button>
           </div>
-          <div class="text-center">
-            <a href="{{ route('password.request') }}">{{ __('Forgot your password?') }}</a>
-          </div>
-        </div>
         {{-- <div class="hr-text">{{ __('or') }}</div>
         <div class="card-body">
           <div class="row">
@@ -87,9 +83,22 @@
           </div>
         </div> --}}
       </form>
-      <div class="text-muted mt-3 text-center">
-        {{ __('Don\'t have account yet?') }} <a href="{{ route('register') }}" tabindex="-1">{{ __('Sign up') }}</a>
-      </div>
+      <div class="hr-text">{{ __('or') }}</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <a class="btn btn-white w-100 hover-shadow" href="{{ route('password.request') }}">
+                  {{ __('Forgot your password?') }}
+                </a>
+              </div>
+              <div class="col">
+                <a class="btn btn-white w-100 hover-shadow" href="{{ route('register') }}">
+                  {{ __('Sign up') }}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
   <script>

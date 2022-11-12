@@ -10,7 +10,6 @@
             <div class="mb-4 text-center">
               <a class="navbar-brand navbar-brand-autodark" href="#"><img src="{{ asset('static/logo-khn.png') }}" alt="Tabler logo" height="80"></a>
             </div>
-            <h2 class="text-upercase mb-2 text-center">{{ __('Create new account') }}</h2>
             <div class="mb-6">
               @if ($errors->any())
                 <div class="alert alert-danger">
@@ -70,12 +69,25 @@
               <button class="btn btn-primary w-100 text-uppercase" id="submitButton" type="submit" disabled value="{{ __('Sign up') }}"
                >{{ __('Sign up') }}</button>
             </div>
-          </div>
         </form>
-        <div class="text-muted mt-3 text-center">
-          {{ __('Already have account?') }} <a href="{{ route('login') }}" tabindex="-1">{{ __('Sign in') }}</a>
+      <div class="hr-text">{{ __('or') }}</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <a class="btn btn-white w-100 hover-shadow" href="{{ route('password.request') }}">
+                  {{ __('Forgot your password?') }}
+                </a>
+              </div>
+              <div class="col">
+                <a class="btn btn-white w-100 hover-shadow" href="{{ route('login') }}">
+                  {{ __('Sign in') }}
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+    </div>
+  </div>
     </div>
   </div>
 

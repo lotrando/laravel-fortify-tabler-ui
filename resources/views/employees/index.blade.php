@@ -10,23 +10,17 @@
           <div class="card-header align-items-center justify-content-between d-flex">
             <h1 class="text-muted text-uppercase mb-0"><i class="fas fa-users"></i> {{ __('Zaměstanci') }}</h1>
             <div>
-              <button class="btn btn-lime" id="openCreateModal">
+              <button title="Nový" class="btn btn-lime p-2" id="openCreateModal">
                 <i class="fas fa-user-plus"></i>
               </button>
             </div>
           </div>
           <div class="card-body">
-            <span id="form_result"></span>
-            @if (session('status'))
-              <div class="alert alert-success" role="alert">
-                {{ session('status') }}
+            <div class="row">
+              <div class="col-12">
+                  <span id="form_result_2"></span>
               </div>
-            @endif
-            @if (session('error'))
-              <div class="alert alert-danger" role="alert">
-                {{ session('error') }}
-              </div>
-            @endif
+            </div>
             <table class="table-bordered table-hover dataTable w-100 table">
               <thead class="bg-secondary table bg-opacity-50 text-center text-white">
                 <tr>
@@ -56,3 +50,5 @@
     </div>
   </div>
 @endsection
+
+

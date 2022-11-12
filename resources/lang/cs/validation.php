@@ -122,20 +122,22 @@ return [
             'rule-name' => 'custom-message',
         ],
     ],
-    'attributes' => [
+    'attributes'           => [
         'personal_number' => 'osobní číslo',
-        'email' => 'pole emailová adresa',
-        'password' => 'heslo',
-        'name' => 'jméno',
-        'department_id' => 'pole oddělení',
-        'terms' => 'souhlas',
-        'date_start' => 'pole Od',
-        'date_end' => 'pole Do'
+        'email'           => 'pole emailová adresa',
+        'password'        => 'heslo',
+        'first_name'      => 'jméno',
+        'last_name'       => 'příjmení',
+        'department_id'   => 'oddělení',
+        'job_id'          => 'pole pracovní funkce',
+        'start_date'      => 'datum nástupu',
+        'id_color'        => 'pole Barva ID karty',
+        'employment'      => 'pole pracovní poměr'
     ],
-    'values' => [
+    'values'               => [
         'after_or_equal' => [
             // or tomorrow
-            'today' => 'dnešní'
-        ]
-    ]
+            'today' => 'dnešní',
+        ],
+    ],
 ];

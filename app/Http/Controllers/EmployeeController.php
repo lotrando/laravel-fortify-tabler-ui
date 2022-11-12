@@ -7,7 +7,7 @@ use App\Models\DepartmentColors;
 use App\Models\Employee;
 use App\Models\Job;
 use Illuminate\Http\Request;
-use JetBrains\PhpStorm\Deprecated;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
 class EmployeeController extends Controller
@@ -69,12 +69,74 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $rules = [
+            'personal_number'   =>  'required|unique:employees|min:5|max:5',
+            'title_preffix',
+            'last_name'         =>  'required',
+            'first_name'        =>  'required',
+            'middle_name',
+            'married_name',
+            'title_suffix',
+            'department_id'     =>  'required',
+            'job_id'            =>  'required',
+            'email',
+            'start_date'        =>  'required',
+            'end_date',
+            'comment',
+            'phone',
+            'mobile',
+            'id_card'           =>  'required',
+            'id_color'          =>  'required',
+            'coffee',
+            'employment'        =>  'required',
+            'status',
+            'employment'        =>  'required',
+            'image'             =>  'image|max:4096'
+        ];
 
+        $error = Validator::make($request->all(), $rules);
 
-        // do validation
-        Employee::create($request->all());
-        return ['success' => true, 'message' => 'Inserted Successfully'];
+        if ($error->fails()) {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+        $image = $request->file('image');
+
+        if (empty($image)) {
+            $new_name = '00000.png';
+        } else {
+            $new_name = $image->getClientOriginalName();
+
+            $image->move(public_path('foto'), $new_name);
+        }
+
+        $form_data = [
+            'personal_number'   =>  $request->personal_number,
+            'title_preffix'     =>  $request->title_preffix,
+            'last_name'         =>  $request->last_name,
+            'first_name'        =>  $request->first_name,
+            'middle_name'       =>  $request->middle_name,
+            'married_name'      =>  $request->married_name,
+            'title_suffix'      =>  $request->title_suffix,
+            'department_id'     =>  $request->department_id,
+            'job_id'            =>  $request->job_id,
+            'email'             =>  $request->email,
+            'start_date'        =>  $request->start_date,
+            'end_date'          =>  $request->end_date,
+            'comment'           =>  $request->comment,
+            'phone'             =>  $request->phone,
+            'mobile'            =>  $request->mobile,
+            'id_card'           =>  $request->id_card,
+            'id_color'          =>  $request->id_color,
+            'coffee'            =>  $request->coffee,
+            'status'            =>  $request->status,
+            'employment'        =>  $request->employment,
+            'image'             =>  $new_name
+        ];
+
+        Employee::create($form_data);
+
+        return response()->json(['success' => 'Zaměstnanec uložen do databáze']);
     }
 
     /**
@@ -112,11 +174,101 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
-        // do validation
-        Employee::find($id)->update(request()->all());
-        return ['success' => true, 'message' => 'Updated Successfully'];
+        $image_name = $request->hidden_image;
+        $image = $request->file('image');
+        if ($image != '') {
+            $rules = [
+                'personal_number'   =>  'required',
+                'title_preffix',
+                'last_name'         =>  'required',
+                'first_name'        =>  'required',
+                'middle_name',
+                'married_name',
+                'title_suffix',
+                'department_id'     =>  'required',
+                'job_id'            =>  'required',
+                'email',
+                'start_date',
+                'end_date',
+                'comment',
+                'phone',
+                'mobile',
+                'id_card',
+                'id_color',
+                'coffee',
+                'status',
+                'employment'        =>  'required',
+                'image'             =>  'image|max:4096'
+            ];
+
+            $error = Validator::make($request->all(), $rules);
+            if ($error->fails()) {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+
+            $image_name = $image->getClientOriginalName();
+            $image->move(public_path('foto'), $image_name);
+        } else {
+            $rules = [
+                'personal_number'   =>  'required',
+                'title_preffix',
+                'last_name'         =>  'required',
+                'first_name'        =>  'required',
+                'middle_name',
+                'married_name',
+                'title_suffix',
+                'department_id'     =>  'required',
+                'job_id'            =>  'required',
+                'email',
+                'start_date',
+                'end_date',
+                'comment',
+                'phone',
+                'mobile',
+                'id_card',
+                'id_color',
+                'coffee',
+                'status',
+                'employment'        =>  'required',
+                'image',
+            ];
+
+            $error = Validator::make($request->all(), $rules);
+
+            if ($error->fails()) {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
+        }
+
+        $form_data = [
+            'personal_number'   =>  $request->personal_number,
+            'title_preffix'     =>  $request->title_preffix,
+            'last_name'         =>  $request->last_name,
+            'first_name'        =>  $request->first_name,
+            'middle_name'       =>  $request->middle_name,
+            'married_name'      =>  $request->married_name,
+            'title_suffix'      =>  $request->title_suffix,
+            'department_id'     =>  $request->department_id,
+            'job_id'            =>  $request->job_id,
+            'email'             =>  $request->email,
+            'start_date'        =>  $request->start_date,
+            'end_date'          =>  $request->end_date,
+            'comment'           =>  $request->comment,
+            'phone'             =>  $request->phone,
+            'mobile'            =>  $request->mobile,
+            'id_card'           =>  $request->id_card,
+            'id_color'          =>  $request->id_color,
+            'coffee'            =>  $request->coffee,
+            'status'            =>  $request->status,
+            'employment'        =>  $request->employment,
+            'image'             =>  $image_name
+        ];
+
+        Employee::whereId($request->hidden_id)->update($form_data);
+
+        return response()->json(['success' => 'Zaměstnanec aktualizován']);
     }
 
     /**

@@ -35,158 +35,198 @@
           <h5 class="modal-title"></h5>
           <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <form id="inputForm" action="{{ route('employees.create') }}" method="post"></form>
-          <div class="row mb-3">
-            <div class="col-2">
-              <label class="form-label">{{ __('Personal number') }}</label>
-              <input class="form-control" id="personal_number" name="personal_number" type="text" placeholder="{{ __('Personal number') }}">
+        <form id="inputForm" action="{{ route('employees.create') }}">
+          @csrf
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12">
+                <span id="form_result"></span>
+              </div>
             </div>
-            <div class="col-2">
-              <label class="form-label">{{ __('Titles preffix') }}</label>
-              <input class="form-control" id="title_preffix" name="title_preffix" type="text" placeholder="{{ __('Titles preffix') }}">
-            </div>
-            <div class="col-3">
-              <label class="form-label">{{ __('Last name') }}</label>
-              <input class="form-control" id="last_name" name="last_name" type="text" placeholder="{{ __('Last name') }}">
-            </div>
-            <div class="col-3">
-              <label class="form-label">{{ __('First name') }}</label>
-              <input class="form-control" id="first_name" name="first_name" type="text" placeholder="{{ __('First name') }}">
-            </div>
-            <div class="col-2">
-              <label class="form-label">{{ __('Titles suffix') }}</label>
-              <input class="form-control" id="title_suffix" name="title_suffixx" type="text" placeholder="{{ __('Titles suffix') }}">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-2">
-              <label class="form-label">{{ __('Middle name') }}</label>
-              <input class="form-control" id="middle_name" name="middle_name" type="text" placeholder="{{ __('Middle name') }}">
-            </div>
-            <div class="col-3">
-              <label class="form-label">{{ __('Married name') }}</label>
-              <input class="form-control" id="married_name" name="married_name" type="text" placeholder="{{ __('Married name') }}">
-            </div>
-            <div class="col-1">
-              <label class="form-label">{{ __('Phone') }}</label>
-              <input class="form-control" id="phone" name="phone" type="text" placeholder="{{ __('Phone') }}">
-            </div>
-            <div class="col-2">
-              <label class="form-label">{{ __('Mobil') }}</label>
-              <input class="form-control" id="mobile" name="mobile" type="text" placeholder="{{ __('Mobil') }}">
-            </div>
-            <div class="col-2">
-              <label class="form-label">{{ __('ID Card') }}</label>
-              <select class="form-select" id="id_card" name="id_card" data-max-options="2">
-                <option value="Nový nástup" selected>Nový nástup</option>
-                <option value="Vytvořit kartu">Vytvořit kartu</option>
-                <option value="Vytvořit nálepku">Vytvořit nálepku</option>
-                <option value="Předat nálepku">Předat nálepku</option>
-                <option value="Aktual. nálepku">Aktualizovat nálepku</option>
-                <option value="Vydána">Vydáno</option>
-                <option value="Vrácena">Vrácena</option>
-              </select>
-            </div>
-            <div class="col-2">
-              <label class="form-label">{{ __('Status') }}</label>
-              <select class="form-select" id="status" name="status">
-                <option value="inactive" selected>Neaktivní</option>
-                <option value="active" selected>Aktivní</option>
-                <option value="maternal">Mateřská</option>
-              </select>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-2">
-              <label class="form-label">{{ __('Email') }}</label>
-              <input class="form-control" id="email" name="email" type="text" placeholder="{{ __('Email') }}">
-            </div>
-            <div class="col-1">
-              <label class="form-label">{{ __('Coffee') }}</label>
-              <input class="form-control" id="coffee" name="coffee" type="text" placeholder="{{ __('Coffee') }}">
-            </div>
-            <div class="col-2">
-              <label class="form-label">{{ __('ID Card color') }}</label>
-              <select class="form-select" id="id_color" name="id_color">
-                @foreach ($department_colors as $department_color)
-                  <option class="bg-{{ $department_color->code }}-lt text-white" value="{{ $department_color->code }}" @if (old('id_color') == $department_color->code) selected @endif>
-                    {{ $department_color->name }}
-                  </option>
-                @endforeach
-              </select>
-            </div>
-            <div class="col-4">
-              <label class="form-label">{{ __('Department') }}</label>
-              <select class="form-select" id="department_id" name="department_id">
-                @foreach ($departments as $department)
-                  <option value="{{ $department->id }}" @if (old('department_id') == $department->id) selected @endif>{{ $department->center_code }} -
-                    {{ $department->department_name }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="col-3">
-              <div class="mb-3">
-                <label class="form-label">{{ __('Job') }}</label>
-                <select class="form-select" id="job_id" name="job_id">
-                  @foreach ($jobs as $job)
-                    <option value="{{ $job->id }}" @if (old('job_id') == $job->id) selected @endif>{{ $job->job_title }}</option>
-                  @endforeach
+            <div class="row mb-3">
+              <div class="col-2">
+                <label class="form-label">{{ __('Personal number') }}</label>
+                <input class="form-control" id="personal_number" name="personal_number" type="text" placeholder="{{ __('Personal number') }}">
+              </div>
+              <div class="col-2">
+                <label class="form-label">{{ __('Titles preffix') }}</label>
+                <select class="form-select" name="title_preffix" id="title_preffix">
+                  <option value=""></option>
+                  <option value="Bc.">Bc.</option>
+                  <option value="MUDr.">MUDr.</option>
+                  <option value="Ing.">Ing.</option>
+                  <option value="PharmDr.">PharmDr.</option>
+                  <option value="Mgr.">Mgr.</option>
+                  <option value="MUDr. Ing.">MUDr. Ing.</option>
+                  <option value="Ing. Mgr.">Ing. Mgr.</option>
+                </select>
+              </div>
+              <div class="col-3">
+                <label class="form-label">{{ __('Last name') }}</label>
+                <input class="form-control" id="last_name" name="last_name" type="text" placeholder="{{ __('Last name') }}">
+              </div>
+              <div class="col-3">
+                <label class="form-label">{{ __('First name') }}</label>
+                <input class="form-control" id="first_name" name="first_name" type="text" placeholder="{{ __('First name') }}">
+              </div>
+              <div class="col-2">
+                <label class="form-label">{{ __('Titles suffix') }}</label>
+                <select class="form-select" name="title_suffix" id="title_suffix">
+                  <option value=""></option>
+                  <option value="DiS.">DiS.</option>
+                  <option value="MBA">MBA</option>
+                  <option value="LL.M.">LL.M.</option>
+                  <option value="MBA, LL.M.">MBA, LL.M.</option>
                 </select>
               </div>
             </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-2">
-              <label class="form-label">{{ __('Photo') }}</label>
-              <div class="d-flex justify-content-start align-items-start">
-                <span id="store_image"></span>
+            <div class="row mb-3">
+              <div class="col-2">
+                <label class="form-label">{{ __('Middle name') }}</label>
+                <input class="form-control" id="middle_name" name="middle_name" type="text" placeholder="{{ __('Middle name') }}">
+              </div>
+              <div class="col-2">
+                <label class="form-label">{{ __('Married name') }}</label>
+                <input class="form-control" id="married_name" name="married_name" type="text" placeholder="{{ __('Married name') }}">
+              </div>
+              <div class="col-1">
+                <label class="form-label">{{ __('Phone') }}</label>
+                <input class="form-control" id="phone" name="phone" type="text" placeholder="{{ __('Phone') }}">
+              </div>
+              <div class="col-2">
+                <label class="form-label">{{ __('Mobil') }}</label>
+                <input class="form-control" id="mobile" name="mobile" type="text" placeholder="{{ __('Mobil') }}">
+              </div>
+              <div class="col-2">
+                <label class="form-label">{{ __('ID Card') }}</label>
+                <select class="form-select" id="id_card" name="id_card">
+                  <option value="Nový nástup">Nový nástup</option>
+                  <option value="Vytvořit kartu">Vytvořit kartu</option>
+                  <option value="Vytvořit nálepku">Vytvořit nálepku</option>
+                  <option value="Předat nálepku">Předat nálepku</option>
+                  <option value="Aktual. nálepku">Aktualizovat nálepku</option>
+                  <option value="Vydáno">Vydáno</option>
+                  <option value="Vrácena">Vrácena</option>
+                </select>
+              </div>
+              <div class="col-2">
+                <label class="form-label">{{ __('Status') }}</label>
+                <select class="form-select" id="status" name="status">
+                  <option value="active">Aktivní</option>
+                  <option value="inactive">Neaktivní</option>
+                  <option value="maternal">Mateřská</option>
+                </select>
+              </div>
+              <div class="col-1">
+                <label class="form-label">{{ __('Employment') }}</label>
+                <select class="form-select" id="employment" name="employment">
+                  <option value="HPP">HPP</option>
+                  <option value="DPČ">DPČ</option>
+                  <option value="DPP">DPP</option>
+                  <option value="EVP">EVP</option>
+                  <option value="ČSO">ČSO</option>
+                </select>
               </div>
             </div>
-            <div class="col-10">
-              <label class="form-label">{{ __('Description') }}</label>
-              <textarea class="form-control" id="comment" name="comment" type="text" placeholder="{{ __('Description') }}" rows="8"></textarea>
+            <div class="row mb-3">
+              <div class="col-2">
+                <label class="form-label">{{ __('Email') }}</label>
+                <input class="form-control" id="email" name="email" type="text" placeholder="{{ __('Email') }}">
+              </div>
+              <div class="col-1">
+                <label class="form-label">{{ __('Coffee') }}</label>
+               <select class="form-select" id="coffee" name="coffee">
+                  <option value=""></option>
+                  <option value="N">Ne</option>
+                  <option value="A">Ano</option>
+                </select>
+              </div>
+              <div class="col-2">
+                <label class="form-label">{{ __('ID Card color') }}</label>
+                <select class="form-select" id="id_color" name="id_color">
+                    <option value=""></option>
+                  @foreach ($department_colors as $department_color)
+                    <option class="bg-{{ $department_color->code }}-lt text-white" value="{{ $department_color->code }}" @if (old('id_color') == $department_color->code) selected @endif>
+                      {{ $department_color->name }}
+                    </option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="col-4">
+                <label class="form-label">{{ __('Department') }}</label>
+                <select class="form-select" id="department_id" name="department_id">
+                  <option value=""></option>
+                  @foreach ($departments as $department)
+                    <option value="{{ $department->id }}" @if (old('department_id') == $department->id) selected @endif>{{ $department->center_code }} -
+                      {{ $department->department_name }}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="col-3">
+                <div class="mb-3">
+                  <label class="form-label">{{ __('Job') }}</label>
+                  <select class="form-select" id="job_id" name="job_id">
+                    <option value=""></option>
+                    @foreach ($jobs as $job)
+                      <option value="{{ $job->id }}" @if (old('job_id') == $job->id) selected @endif>{{ $job->job_title }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-2">
+                <label class="form-label">{{ __('Current photo') }}</label>
+                <div class="d-flex justify-content-starr align-items-start">
+                  <span id="store_image"></span>
+                </div>
+              </div>
+              <div class="col-10">
+                <label class="form-label">{{ __('Description') }}</label>
+                <textarea class="form-control" id="comment" name="comment" type="text" placeholder="{{ __('Description') }}" rows="8"></textarea>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4">
+                <label class="form-label">{{ __('Select file with photo') }}</label>
+                <input class="form-control" id="image" name="image" type="file" placeholder="{{ __('Select a photo') }}">
+              </div>
+              <div class="col-2">
+                <label class="form-label">{{ __('Start date') }}</label>
+                <input class="form-control" id="start_date" name="start_date" type="date" placeholder="{{ __('Start date') }}">
+              </div>
+              <div class="col-2">
+                <label class="form-label">{{ __('End date') }}</label>
+                <input class="form-control" id="end_date" name="end_date" type="date" placeholder="{{ __('End date') }}">
+              </div>
+              <div class="col-2">
+                <label class="form-label">{{ __('Created at') }}</label>
+                <input class="form-control" id="created_at" name="created_at" type="date" placeholder="{{ __('Created at') }}">
+              </div>
+              <div class="col-2">
+                <label class="form-label">{{ __('Updated at') }}</label>
+                <input class="form-control" id="updated_at" name="updated_at" type="date" placeholder="{{ __('Updated at') }}">
+              </div>
+              <input id="action" name="action" type="hidden" />
+              <input id="hidden_id" name="hidden_id" type="hidden" />
             </div>
           </div>
-          <div class="row mb-3">
-            <div class="col-4">
-              <label class="form-label">{{ __('Select a photo') }}</label>
-              <input class="form-control" id="image" name="image" type="file" placeholder="{{ __('Select a photo') }}">
-            </div>
-            <div class="col-2">
-              <label class="form-label">{{ __('Start date') }}</label>
-              <input class="form-control" id="start_date" name="start_date" type="date" placeholder="{{ __('Start date') }}">
-            </div>
-            <div class="col-2">
-              <label class="form-label">{{ __('End date') }}</label>
-              <input class="form-control" id="end_date" name="end_date" type="date" placeholder="{{ __('End date') }}">
-            </div>
-            <div class="col-2">
-              <label class="form-label">{{ __('Created at') }}</label>
-              <input class="form-control" id="created_at" name="created_at" type="date" placeholder="{{ __('Created at') }}">
-            </div>
-            <div class="col-2">
-              <label class="form-label">{{ __('Updated at') }}</label>
-              <input class="form-control" id="updated_at" name="updated_at" type="date" placeholder="{{ __('Updated at') }}">
-            </div>
+          <div class="modal-footer">
+            <button class="btn btn-white" data-bs-dismiss="modal">
+              {{ __('Close') }}
+            </button>
+            <button class="btn btn-primary ms-auto" id="action_button" name="action_button" type="submit"></button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-white" data-bs-dismiss="modal">
-            {{ __('Cancel') }}
-          </button>
-          <button class="btn btn-primary ms-auto" id="action_button"></button>
-        </div>
+        </form>
       </div>
     </div>
-  </div>
   </div>
 
 
   {{-- Delete Modal --}}
   <div class="modal modal-blur fade" id="confirmModal" role="dialog" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-      <div class="modal-content">
+      <div class="modal-content shadow-lg">
         <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="{{ __('Close') }}"></button>
         <div class="modal-status bg-danger"></div>
         <div class="modal-body py-4 text-center">
@@ -220,7 +260,7 @@
   </div>
 
   <script src="{{ asset('js/jquery.js') }}"></script>
-  {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
   <script src="{{ asset('js/czech-string.js') }}"></script>
@@ -264,7 +304,10 @@
           },
           {
             data: 'personal_number',
-            "width": "1%"
+            "width": "1%",
+            render: function(data, type, full, meta) {
+              return "<span class='text-center text-blue'><strong>" + data + "</strong></span>";
+            },
           },
           {
             data: 'title_preffix',
@@ -323,7 +366,7 @@
           },
           {
             data: 'start_date',
-            "width": "3%",
+            "width": "4%",
             render: function(data, type, full, meta) {
               var date = moment(data).locale('cs');
               return date.format('DD. MM. YYYY');
@@ -338,43 +381,24 @@
         ],
       });
     });
-  </script>
 
-  <script>
     $('#openCreateModal').click(function() {
+      $('#inputForm')[0].reset();
       $('#formModal').modal('show');
       $('.modal-title').text("{{ __('Create new employee') }}");
       $('#action_button').text("{{ __('Create new employee') }}");
       $('#action').val("Add");
-      $('#personal_number').val('');
-      $('#title_preffix').val('');
-      $('#last_name').val('');
-      $('#middle_name').val('');
-      $('#first_name').val('');
-      $('#title_suffix').val('');
-      $('#married_name').val('');
-      $('#phone').val('');
-      $('#mobile').val('');
       $('#id_card').val('Nový nástup');
       $('#department_id').val('');
       $('#job_id').val('');
-      $('#comment').val('');
       $('#status').val('inactive');
-      $('#coffee').val('');
+      $('#employment').val('HPP');
+      $('#coffee').val('N');
       $('#id_color').val('');
-      $('#employment').val('');
-      $('#start_date').val('');
-      $('#end_date').val('');
-      $('#created_at').val('');
-      $('#updated_at').val('');
-      $('#store_image').html(
-        "<img src={{ URL::to('/') }}/foto/00000.png height='193px' class='z-depth-1 img-thumbnail-big' /></img>"
-      );
+      $('#store_image').html("<img src={{ URL::to('/') }}/foto/00000.png height='193px' class='z-depth-1 img-thumbnail-big' /></img>");
+      $('#store_image').append("<input type='hidden' id='hidden_image' name='hidden_image' value='00000.png' />");
     })
-  </script>
 
-  {{-- Edit record --}}
-  <script>
     $(document).on('click', '.edit', function() {
       var id = $(this).attr('id');
       $('#form_result').html('');
@@ -400,6 +424,7 @@
           $('#job_id').val(html.data.job_id);
           $('#comment').val(html.data.comment);
           $('#status').val(html.data.status);
+          $('#employment').val(html.data.employment);
           $('#coffee').val(html.data.coffee);
           $('#id_color').val(html.data.id_color);
           $('#employment').val(html.data.employment);
@@ -408,21 +433,79 @@
           $('#created_at').val(html.data.created_at);
           $('#updated_at').val(html.data.updated_at);
           $('#store_image').html("<a data-lightbox='employee' href='{{ URL::to('/') }}/foto/" + html.data.image + "'><img src={{ URL::to('/') }}/foto/" + html.data
-            .image + " height='193px' class='z-depth-1 img-thumbnail-big' /></a>");
-          $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.image + "' />");
+            .image + " height='193px' class='z-depth-1 img-thumbnail-big'></a>");
+          $('#store_image').append("<input type='hidden' id='hidden_image' name='hidden_image' value='" + html.data.image + "' />");
           $('#hidden_id').val(html.data.id);
         }
       })
     });
-  </script>
 
-  {{-- Delete record --}}
-  <script>
+    $('#inputForm').on('submit', function(event) {
+      event.preventDefault();
+      if ($('#action').val() == 'Add') {
+        $.ajax({
+          url: "{{ route('employees.store') }}",
+          method: "POST",
+          data: new FormData(this),
+          contentType: false,
+          cache: false,
+          processData: false,
+          dataType: "json",
+          success: function(data) {
+            var html = '';
+            if (data.errors) {
+              html = '<div class="alert alert-danger text-danger shadow-sm"><ul>';
+              for (var count = 0; count < data.errors.length; count++) {
+                html += '<li>' + data.errors[count] + '</li>';
+              }
+              html += '</ul><a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>';
+            }
+            if (data.success) {
+              html = '<div class="alert alert-success text-success shadow-sm"><ul><li>' + data.success + '</li></ul><a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>';
+              $('#inputForm')[0].reset();
+              $('.dataTable').DataTable().ajax.reload(null, false);
+            }
+            $('#form_result').html(html);
+          }
+        })
+      }
+
+      if ($('#action').val() == "Edit") {
+        $.ajax({
+          url: "{{ route('employees.update') }}",
+          method: "POST",
+          data: new FormData(this),
+          contentType: false,
+          cache: false,
+          processData: false,
+          dataType: "json",
+          success: function(data) {
+            var html = '';
+            if (data.errors) {
+              html = '<div class="alert alert-danger text-danger shadow-sm"><ul>';
+              for (var count = 0; count < data.errors.length; count++) {
+                html += '<li>' + data.errors[count] + '</li>';
+              }
+              html += '</ul><a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a></div>';
+            }
+            if (data.success) {
+              html = '<div class="alert alert-success text-success shadow-sm"><ul><li>' + data.success + '</li></ul></div>';
+              $('#inputForm')[0].reset();
+              $('#store_image').html('');
+              $('.dataTable').DataTable().ajax.reload(null, false);
+            }
+            $('#form_result_2').html(html);
+            $('#formModal').modal('hide');
+          }
+        });
+      };
+    });
+
     $(document).on('click', '.delete', function() {
       employee_id = $(this).attr('id');
       $('#ok_button').text("{{ __('Delete') }}");
       $('#confirmModal').modal('show');
-    });
+    })
 
     $('#ok_button').click(function() {
       $.ajax({
@@ -438,10 +521,10 @@
           }, 1000);
         }
       })
-    });
-  </script>
+    })
+    </script>
 
-  <script>
+    <script>
     lightbox.option({
       'resizeDuration': 400,
       'wrapAround': true,
@@ -449,7 +532,7 @@
       'maxHeight': 600,
       'albumLabel': "Fotografie %1 z %2",
       'fitImagesInViewport': true
-    })
+    });
   </script>
 
 </body>
