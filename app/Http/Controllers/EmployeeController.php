@@ -9,7 +9,6 @@ use App\Models\Job;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -90,7 +89,7 @@ class EmployeeController extends Controller
             'phone',
             'mobile',
             'id_card'           =>  'required',
-            'id_color',
+            'id_color'          =>  'required',
             'coffee',
             'employment'        =>  'required',
             'status',
@@ -201,7 +200,7 @@ class EmployeeController extends Controller
                 'phone',
                 'mobile',
                 'id_card',
-                'id_color',
+                'id_color'          =>  'required',
                 'coffee',
                 'status',
                 'employment'        =>  'required',
@@ -235,7 +234,7 @@ class EmployeeController extends Controller
                 'phone',
                 'mobile',
                 'id_card',
-                'id_color',
+                'id_color'          =>  'required',
                 'coffee',
                 'status',
                 'employment'        =>  'required',

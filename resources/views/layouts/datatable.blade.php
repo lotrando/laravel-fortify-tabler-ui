@@ -544,8 +544,7 @@
               $('#store_image').html('');
               $('.dataTable').DataTable().ajax.reload(null, false);
             }
-            $('#form_result_2').html(html);
-            $('#formModal').modal('hide');
+            $('#form_result').html(html);
           }
         });
       };
