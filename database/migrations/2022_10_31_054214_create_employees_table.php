@@ -35,7 +35,7 @@ class CreateEmployeesTable extends Migration
             $table->string('id_color');
             $table->enum('coffee', ['A', 'N'])->default('N');
             $table->string('employment');
-            $table->enum('status', ['active', 'inactive', 'maternal'])->default('inactive');
+            $table->enum('status', ['Aktivní', 'Neaktivní', 'Mateřská'])->default('Neaktivní');
             $table->timestamps();
         });
     }

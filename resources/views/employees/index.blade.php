@@ -10,7 +10,7 @@
           <div class="card-header align-items-center justify-content-between d-flex">
             <h1 class="text-muted text-uppercase mb-0"><i class="fas fa-users"></i> {{ __('Zaměstanci') }}</h1>
             <div>
-              <button class="btn btn-success" id="openCreateModal">
+              <button class="btn btn-lime" id="openCreateModal">
                 <i class="fas fa-user-plus"></i>
               </button>
             </div>
@@ -30,8 +30,8 @@
             <table class="table-bordered table-hover dataTable w-100 table">
               <thead class="bg-secondary table bg-opacity-50 text-center text-white">
                 <tr>
-                  <th>{{ __('Number') }}</th>
                   <th>{{ __('Image') }}</th>
+                  <th>{{ __('Number') }}</th>
                   <th>{{ __('Titles preffix') }}</th>
                   <th>{{ __('Last name') }}</th>
                   <th>{{ __('First name') }}</th>

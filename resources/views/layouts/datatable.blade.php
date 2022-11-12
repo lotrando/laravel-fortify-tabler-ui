@@ -110,7 +110,7 @@
               <label class="form-label">{{ __('ID Card color') }}</label>
               <select class="form-select" id="id_color" name="id_color">
                 @foreach ($department_colors as $department_color)
-                  <option class="bg-{{ $department_color->code }} text-white" value="{{ $department_color->code }}" @if (old('id_color') == $department_color->code) selected @endif>
+                  <option class="bg-{{ $department_color->code }}-lt text-white" value="{{ $department_color->code }}" @if (old('id_color') == $department_color->code) selected @endif>
                     {{ $department_color->name }}
                   </option>
                 @endforeach
@@ -254,10 +254,6 @@
           targets: [3]
         }],
         columns: [{
-            data: 'personal_number',
-            "width": "0.5%"
-          },
-          {
             data: 'image',
             "width": "1%",
             render: function(data, type, full, meta) {
@@ -267,8 +263,12 @@
             orderable: false,
           },
           {
+            data: 'personal_number',
+            "width": "1%"
+          },
+          {
             data: 'title_preffix',
-            "width": "2%"
+            "width": "3%"
           },
           {
             data: 'last_name',
@@ -309,12 +309,15 @@
           },
           {
             data: 'status',
-            "width": "1%",
+            "width": "2%",
             render: function(data, type, full, meta) {
+              if (data == 'inactive') {
+                return "<span class='badge bg-red p-1 me-1'></span>Neaktivní";
+              }
               if (data == 'active') {
-                return "<span class='badge bg-green me-1'></span>Aktivní";
+                return "<span class='badge bg-green p-1 me-1'></span>Aktivní";
               } else {
-                return "<span class='badge bg-warning me-1'></span>Mateřská";
+                return "<span class='badge bg-yellow p-1 me-1'></span>Mateřská";
               }
             }
           },
@@ -405,7 +408,7 @@
           $('#created_at').val(html.data.created_at);
           $('#updated_at').val(html.data.updated_at);
           $('#store_image').html("<a data-lightbox='employee' href='{{ URL::to('/') }}/foto/" + html.data.image + "'><img src={{ URL::to('/') }}/foto/" + html.data
-            .image + " height='193px' class='z-depth-1 img-thumbnail-big bg-" + html.data.id_color + "' /></a>");
+            .image + " height='193px' class='z-depth-1 img-thumbnail-big' /></a>");
           $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.image + "' />");
           $('#hidden_id').val(html.data.id);
         }
