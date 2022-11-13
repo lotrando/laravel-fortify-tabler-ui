@@ -6,7 +6,7 @@
       <div class="col-12">
         <div class="card mb-3 mt-3 shadow-sm">
           <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
-            <h1 class="text-muted mb-0"><i class="fas fa-users fa-1x mx-1"></i> {{ __('Employees of KHN a.s.') }}</h1>
+            <h1 class="text-muted mb-0"><i class="fas fa-users fa-1x mx-1"></i> {{ __('Employees of KHN') }}</h1>
             <div>
               <button class="btn btn-lime p-2" id="openCreateModal" title="Nový">
                 <i class="fas fa-user-plus fa-1x m-1"></i>
@@ -56,7 +56,7 @@
         <div id="modal-header">
           <h5 class="modal-title"></h5>
           <i id="modal-icon"></i>
-          <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
+          {{-- <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button> --}}
         </div>
         <form id="inputForm" action="{{ route('employees.create') }}">
           @csrf
