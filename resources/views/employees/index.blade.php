@@ -20,7 +20,7 @@
               </div>
             </div>
             <table class="table-bordered table-hover dataTable w-100 table">
-              <thead class="bg-secondary table bg-opacity-50 text-center text-white">
+              <thead class="bg-azure-lt table bg-opacity-50 text-center text-white">
                 <tr>
                   <th class="text-center">{{ __('Image') }}</th>
                   <th class="text-center">{{ __('Number') }}</th>
@@ -613,14 +613,5 @@
         }
       })
     })
-
-    lightbox.option({
-      'resizeDuration': 400,
-      'wrapAround': true,
-      'positionFromTop': 100,
-      'maxHeight': 600,
-      'albumLabel': "{{ __('Photo') }} %1 {{ __('from') }} %2",
-      'fitImagesInViewport': true
-    });
   </script>
 @endsection
