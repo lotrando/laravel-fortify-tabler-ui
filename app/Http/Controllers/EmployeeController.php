@@ -34,9 +34,23 @@ class EmployeeController extends Controller
                 ->addColumn('action', function ($data) {
                     $buttons = '
                         <center>
-                            <button title="Upravit" name="edit" id="' . $data->id . '" class="edit btn-link p-1"><i class="fas fa-edit"></i></button>
-                            <button title="Odstranit Fotografii" name="remove" id="' . $data->id . '" class="remove btn-link p-1"><i class="fas fa-user-tag"></i></button>
-                            <button title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn-link p-1"><i class="fas fa-trash"></i></button>
+                               <button class="btn-link" type="button" id="dropdownMenuButton-' . $data->id . '" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton-' . $data->id . '">
+                                <li class="dropdown-item edit" name="edit" id="' . $data->id . '">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" /><path d="M16 5l3 3" /></svg>
+                                    Upravit zaměstnance
+                                </li>
+                                <li class="dropdown-item remove" name="remove" id="' . $data->id . '">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2"></path><circle cx="12" cy="13" r="3"></circle></svg>
+                                    Odstranit fotografii
+                                </li>
+                            <li class="dropdown-item delete" name="delete" id="' . $data->id . '">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 7h16"></path><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path><path d="M10 12l4 4m0 -4l-4 4"></path></svg>
+                                    Odstranit zaměstnance
+                            </li>
+                            </ul>
                         </center>
                         ';
                     return $buttons;

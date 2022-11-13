@@ -9,7 +9,7 @@
             <h1 class="text-muted mb-0"><i class="fas fa-users"></i> {{ __('Employees of KHN a.s.') }}</h1>
             <div>
               <button class="btn btn-lime p-2" id="openCreateModal" title="Nový">
-                <i class="fas fa-user-plus m-1"></i>{{ __('New employee') }}
+                <i class="fas fa-user-plus m-1"></i>
               </button>
             </div>
           </div>
@@ -35,7 +35,7 @@
                   <th>{{ __('Mobile') }}</th>
                   <th>{{ __('Status') }}</th>
                   <th>{{ __('Start date') }}</th>
-                  <th class="text-center">{{ __('Action') }}</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -196,7 +196,7 @@
               <div class="col-2">
                 <label class="form-label">{{ __('Preview new photo') }}</label>
                 <div class="d-flex justify-content-start align-items-start">
-                  <img class="z-depth-1 img-thumbnail-big hover-shadow" id="preview_image" height='193px'></img>
+                  <img class="z-depth-1 img-thumbnail-big" id="preview_image" height='193px'></img>
                 </div>
               </div>
               <div class="col-8">
@@ -301,7 +301,7 @@
           <div class="w-100">
             <div class="row">
               <div class="col">
-                <button class="btn w-100 hover-shadow" data-bs-dismiss="modal">
+                <button class="btn btn-muted w-100 hover-shadow" data-bs-dismiss="modal">
                   {{ __('Cancel') }}
                 </button>
               </div>
@@ -318,6 +318,7 @@
 
 @section('scripts')
   <script>
+    // Data Table
     $(document).ready(function() {
       $('.dataTable').DataTable({
         processing: true,
@@ -418,7 +419,7 @@
           },
           {
             data: 'action',
-            "width": "5%",
+            "width": "1%",
             orderable: false,
             searchable: false
           },
@@ -462,9 +463,8 @@
           $('#created_at').val(html.data.created_at);
           $('#updated_at').val(html.data.updated_at);
           $("#preview_image").attr("src", "{{ URL::to('/') }}/foto/no_image.png");
-          $('#store_image').html("<a data-lightbox='employee' data-title='" + html.data.personal_number + ' - ' + html.data.last_name + ' ' + html.data.first_name +
-            "' href='{{ URL::to('/') }}/foto/" + html.data.image + "'><img src={{ URL::to('/') }}/foto/" + html.data.image + " height='193px' class='bg-" + html.data
-            .department.color_id + "-lt z-depth-1 img-thumbnail-big hover-shadow'></a>");
+          $('#store_image').html("<img src={{ URL::to('/') }}/foto/" + html.data.image + " height='193px' class='bg-" + html.data.department.color_id +
+            "-lt z-depth-1 img-thumbnail-big'></a>");
           $('#store_image').append("<input type='hidden' id='hidden_image' name='hidden_image' value='" + html.data.image + "' />");
           $('#hidden_id').val(html.data.id);
         }
@@ -485,9 +485,7 @@
       $('#employment').val('HPP');
       $('#coffee').val('N');
       $("#preview_image").attr("src", "{{ URL::to('/') }}/foto/no_image.png");
-      $('#store_image').html(
-        "<a data-lightbox='employee' data-title='No_image' href='{{ URL::to('/') }}/foto/no_image.png'><img src={{ URL::to('/') }}/foto/no_image.png height='193px' class='bg-muted-lt z-depth-1 img-thumbnail-big hover-shadow'></a>"
-      );
+      $('#store_image').html("<img src={{ URL::to('/') }}/foto/no_image.png height='193px' class='bg-muted-lt z-depth-1 img-thumbnail-big'></a>");
       $('#store_image').append("<input type='hidden' id='hidden_image' name='hidden_image' value='' />");
     })
 
