@@ -5,11 +5,11 @@
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="card mb-3 mt-3 shadow-sm">
-          <div class="card-header align-items-center justify-content-between bg-azure-lt d-flex">
-            <h1 class="text-muted mb-0"><i class="fas fa-users"></i> {{ __('Employees of KHN a.s.') }}</h1>
+          <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
+            <h1 class="text-muted mb-0"><i class="fas fa-users fa-1x mx-1"></i> {{ __('Employees of KHN a.s.') }}</h1>
             <div>
               <button class="btn btn-lime p-2" id="openCreateModal" title="Nový">
-                <i class="fas fa-user-plus m-1"></i>
+                <i class="fas fa-user-plus fa-1x m-1"></i>
               </button>
             </div>
           </div>
@@ -28,14 +28,22 @@
                   <th>{{ __('Last name') }}</th>
                   <th>{{ __('First name') }}</th>
                   <th>{{ __('Titles suffix') }}</th>
-                  <th>{{ __('Vema Kod') }}</th>
+                  <th>{{ __('Vema') }}</th>
                   <th>{{ __('Department') }}</th>
                   <th>{{ __('Job title') }}</th>
                   <th>{{ __('Phone') }}</th>
                   <th>{{ __('Mobile') }}</th>
                   <th>{{ __('Status') }}</th>
                   <th>{{ __('Start date') }}</th>
-                  <th></th>
+                  <th class="text-center">
+                    <svg class="text-azure" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 30" stroke-width="2" stroke="currentColor" fill="none"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <line x1="4" y1="6" x2="20" y2="6"></line>
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <line x1="4" y1="18" x2="20" y2="18"></line>
+                    </svg>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -322,6 +330,7 @@
     $(document).ready(function() {
       $('.dataTable').DataTable({
         processing: true,
+        processingAnim: false,
         serverSide: true,
         stateSave: true,
         pageSave: true,
@@ -333,7 +342,8 @@
           [10, 20, 30, 60, 100, "Všechny"]
         ],
         language: {
-          "url": "{{ asset('js/cs.json') }}"
+          "url": "{{ asset('js/cs.json') }}",
+          "sProcessing": "<img style='height:100px;' src='img/processing.gif' />",
         },
         ajax: {
           url: "{{ route('employees.index') }}",
@@ -372,15 +382,15 @@
           },
           {
             data: 'title_suffix',
-            "width": "2%"
-          },
-          {
-            data: 'department.center_code',
             "width": "3%"
           },
           {
+            data: 'department.center_code',
+            "width": "1%"
+          },
+          {
             data: 'department.department_name',
-            "width": "8%"
+            "width": "9%"
           },
           {
             data: 'job.job_title',
@@ -389,11 +399,11 @@
           {
             data: 'phone',
             className: "text-center",
-            "width": "1%"
+            "width": "2%"
           },
           {
             data: 'mobile',
-            "width": "3%"
+            "width": "5%"
           },
           {
             data: 'status',

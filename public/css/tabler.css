@@ -18788,11 +18788,15 @@ a.step-item:hover {
   transform: translateY(0);
 }
 
+div.dataTables_processing>div:last-child {
+  display: none;
+}
+
 .table thead th,
 .markdown>table thead th {
   /*     color: #626976; */
   /*     background: var(--tblr-border-color-light); */
-  font-size: 0.725rem;
+  font-size: 0.825rem;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: .04em;
