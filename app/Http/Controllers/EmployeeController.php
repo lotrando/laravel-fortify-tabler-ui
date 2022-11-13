@@ -35,9 +35,18 @@ class EmployeeController extends Controller
                 ->addColumn('action', function ($data) {
                     $buttons = '
                         <center>
-                            <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-icon btn-azure p-2"><i class="fas fa-pen"></i></button>
-                            <button type="button" title="Odstranit Fotografii" name="remove" id="' . $data->id . '" class="remove btn btn-icon btn-yellow p-2"><i class="fas fa-user-slash"></i></button>
-                            <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-icon btn-red p-2"><i class="fas fa-trash-alt"></i></button>
+                        <a class="link-secondary cursor-pointer" data-bs-toggle="tooltip" title="gggg" onclick="showPassword()">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/eye -->
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <circle cx="12" cy="12" r="2" />
+                    <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" />
+                  </svg>
+                </a>
+                            <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-icon btn-azure p-2"><i class="fas fa-user-edit"></i></button>
+                            <button type="button" title="Odstranit Fotografii" name="remove" id="' . $data->id . '" class="remove btn btn-icon btn-yellow p-2"><i class="fas fa-user-tag"></i></button>
+                            <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-icon btn-red p-2"><i class="fas fa-user-minus"></i></button>
                         </center>
                         ';
                     return $buttons;
@@ -162,7 +171,7 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $data = Employee::findOrFail($id);
+        $data = Employee::with('department')->findOrFail($id);
         if (request()->ajax()) {
             return response()->json(['data' => $data]);
         }

@@ -32,7 +32,6 @@ class Employee extends Model
         'phone',
         'mobile',
         'id_card',
-        'id_color',
         'coffee',
         'employment',
         'status'

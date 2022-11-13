@@ -17,6 +17,7 @@ class CreateDepartmentsTable extends Migration
             $table->id();
             $table->string('department_code');
             $table->string('center_code');
+            $table->string('color_id');
             $table->string('department_name');
         });
     }

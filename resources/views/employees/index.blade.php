@@ -9,7 +9,7 @@
             <h1 class="text-muted mb-0"><i class="fas fa-users"></i> {{ __('Employees of KHN a.s.') }}</h1>
             <div>
               <button class="btn btn-lime p-2" id="openCreateModal" title="Nový">
-                <i class="fas fa-user-plus"></i>
+                <i class="fas fa-user-plus m-1"></i>{{ __('New employee') }}
               </button>
             </div>
           </div>
@@ -22,8 +22,8 @@
             <table class="table-bordered table-hover dataTable w-100 table">
               <thead class="bg-secondary table bg-opacity-50 text-center text-white">
                 <tr>
-                  <th>{{ __('Image') }}</th>
-                  <th>{{ __('Number') }}</th>
+                  <th class="text-center">{{ __('Image') }}</th>
+                  <th class="text-center">{{ __('Number') }}</th>
                   <th>{{ __('Titles preffix') }}</th>
                   <th>{{ __('Last name') }}</th>
                   <th>{{ __('First name') }}</th>
@@ -55,6 +55,7 @@
       <div class="modal-content shadow-lg">
         <div id="modal-header">
           <h5 class="modal-title"></h5>
+          <i id="modal-icon"></i>
           <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
         </div>
         <form id="inputForm" action="{{ route('employees.create') }}">
@@ -151,26 +152,16 @@
               </div>
             </div>
             <div class="row mb-2">
-              <div class="col-2">
+              <div class="col-3">
                 <label class="form-label">{{ __('Email') }}</label>
                 <input class="form-control" id="email" name="email" type="text" placeholder="{{ __('Email') }}">
               </div>
-              <div class="col-1">
+              <div class="col-2">
                 <label class="form-label">{{ __('Coffee') }}</label>
                 <select class="form-select" id="coffee" name="coffee">
                   <option value=""></option>
                   <option value="N">Ne</option>
                   <option value="A">Ano</option>
-                </select>
-              </div>
-              <div class="col-2">
-                <label class="form-label">{{ __('ID Card color') }}</label>
-                <select class="form-select" id="id_color" name="id_color">
-                  @foreach ($department_colors as $department_color)
-                    <option class="bg-{{ $department_color->code }}-lt text-white" value="{{ $department_color->code }}" @if (old('id_color') == $department_color->code) selected @endif>
-                      {{ $department_color->name }}
-                    </option>
-                  @endforeach
                 </select>
               </div>
               <div class="col-4">
@@ -222,11 +213,11 @@
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Start date') }}</label>
-                <input class="form-control" id="start_date" name="start_date" type="date" placeholder="{{ __('Start date') }}">
+                <input class="form-control" id="start_date" name="start_date" type="text" placeholder="{{ __('Start date') }}">
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('End date') }}</label>
-                <input class="form-control" id="end_date" name="end_date" type="date" placeholder="{{ __('End date') }}">
+                <input class="form-control" id="end_date" name="end_date" type="text" placeholder="{{ __('End date') }}">
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Created at') }}</label>
@@ -353,9 +344,9 @@
         columns: [{
             data: 'image',
             "width": "1%",
-            render: function(data, type, full, meta) {
-              return "<div class='cent img-hover-zoom'><img src={{ URL::to('/foto') }}/" +
-                data + " class='zoom img-thumbnail' width='35' height='45' /></a></div>";
+            render: function(data, type, row, full, meta) {
+              return "<div class='img-hover-zoom'><center><img src={{ URL::to('/foto') }}/" +
+                data + " class='zoom img-thumbnail' /></center></div>";
             },
             orderable: false,
           },
@@ -363,7 +354,7 @@
             data: 'personal_number',
             "width": "1%",
             render: function(data, type, row, full, meta) {
-              return "<span class='text-center text-" + row.id_color + "'><strong>" + data + "</strong></span>";
+              return "<span class='text-center text-" + row.department.color_id + "'><center><strong>" + data + "</strong></center></span>";
             },
           },
           {
@@ -444,9 +435,10 @@
         url: "/employees/" + id + "/edit",
         dataType: "json",
         success: function(html) {
-          $("#modal-header").removeClass();
+          $("#modal-header, #modal-icon").removeClass();
           $('#formModal').modal('show');
-          $('#modal-header').addClass("modal-header bg-" + html.data.id_color + "-lt");
+          $('#modal-icon').addClass('fas fa-user-edit fa-2x m-2');
+          $('#modal-header').addClass("modal-header bg-" + html.data.department.color_id + "-lt");
           $('#action_button, .modal-title').text("{{ __('Edit employee') }}");
           $('#action').val("Edit");
           $('#personal_number').val(html.data.personal_number);
@@ -464,7 +456,6 @@
           $('#comment').val(html.data.comment);
           $('#status').val(html.data.status);
           $('#coffee').val(html.data.coffee);
-          $('#id_color').val(html.data.id_color);
           $('#employment').val(html.data.employment);
           $('#start_date').val(html.data.start_date);
           $('#end_date').val(html.data.end_date);
@@ -473,7 +464,7 @@
           $("#preview_image").attr("src", "{{ URL::to('/') }}/foto/no_image.png");
           $('#store_image').html("<a data-lightbox='employee' data-title='" + html.data.personal_number + ' - ' + html.data.last_name + ' ' + html.data.first_name +
             "' href='{{ URL::to('/') }}/foto/" + html.data.image + "'><img src={{ URL::to('/') }}/foto/" + html.data.image + " height='193px' class='bg-" + html.data
-            .id_color + "-lt z-depth-1 img-thumbnail-big hover-shadow'></a>");
+            .department.color_id + "-lt z-depth-1 img-thumbnail-big hover-shadow'></a>");
           $('#store_image').append("<input type='hidden' id='hidden_image' name='hidden_image' value='" + html.data.image + "' />");
           $('#hidden_id').val(html.data.id);
         }
@@ -482,13 +473,13 @@
 
     $('#openCreateModal').click(function() {
       $('#inputForm')[0].reset();
-      $("#modal-header").removeClass();
+      $("#modal-icon, #modal-header").removeClass();
       $('#formModal').modal('show');
+      $('#modal-icon').addClass('fas fa-user-plus fa-2x m-2');
       $('#modal-header').addClass("modal-header bg-muted-lt");
       $('#action_button, .modal-title').text("{{ __('Create new employee') }}");
       $('#action').val("Add");
       $('#department_id, #job_id').val('');
-      $('#id_color').val('muted');
       $('#id_card').val('Nový nástup');
       $('#status').val('inactive');
       $('#employment').val('HPP');

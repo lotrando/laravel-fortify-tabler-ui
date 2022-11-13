@@ -32,12 +32,12 @@
   </section>
 
   <script src="{{ asset('js/jquery.js') }}"></script>
+  <script src="{{ asset('js/tabler.min.js') }}"></script>
+  <script src="{{ asset('js/demo.min.js') }}"></script>
   <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
   <script src="{{ asset('js/czech-string.js') }}"></script>
   <script src="{{ asset('js/lightbox.js') }}"></script>
-  <script src="{{ asset('js/tabler.min.js') }}"></script>
-  <script src="{{ asset('js/demo.min.js') }}"></script>
   <script src="{{ asset('js/moment-with-locales.js') }}"></script>
 
   @yield('scripts')

@@ -3,16 +3,16 @@
 @section('main')
   <div class="container-fluid">
     <div class="page page-center">
-      <div class="container-tight py-4">
+      <div class="container-tight py-2">
         <form class="card card-md shadow-sm" action="{{ route('register') }}" method="POST">
           @csrf
           <div class="card-body">
-            <div class="mb-4 text-center">
-              <a class="navbar-brand navbar-brand-autodark" href="#"><img src="{{ asset('static/logo-khn.png') }}" alt="Tabler logo" height="80"></a>
+            <div class="mb-1 text-center">
+              <a class="navbar-brand navbar-brand-autodark" href="#"><img src="{{ asset('static/logo-khn.png') }}" alt="Tabler logo" height="60"></a>
             </div>
             <div class="mb-6">
               @if ($errors->any())
-                <div class="alert alert-danger">
+                <div class="alert alert-danger text-danger shadow">
                   <ul>
                     @foreach ($errors->all() as $error)
                       <li>{{ $error }}</li>
@@ -21,15 +21,15 @@
                 </div>
               @endif
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
               <label class="form-label">{{ __('Personal number') }}</label>
               <input class="form-control" name="personal_number" type="text" value="{{ old('personal_number') }}" placeholder="{{ __('Personal number') }}">
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
               <label class="form-label">{{ __('Name') }}</label>
               <input class="form-control" name="name" type="text" value="{{ old('name') }}" placeholder="{{ __('Name') }}">
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
               <label class="form-label">{{ __('Email address') }}</label>
               <input class="form-control" name="email" type="email" value="{{ old('email') }}" placeholder="{{ __('Email address') }}">
             </div>
@@ -66,29 +66,28 @@
               </label>
             </div>
             <div class="form-footer">
-              <button class="btn btn-primary w-100 text-uppercase" id="submitButton" type="submit" disabled value="{{ __('Sign up') }}"
-               >{{ __('Sign up') }}</button>
+              <button class="btn btn-primary w-100 text-uppercase" id="submitButton" type="submit" value="{{ __('Sign up') }}" disabled>{{ __('Sign up') }}</button>
             </div>
         </form>
-      <div class="hr-text">{{ __('or') }}</div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col">
-                <a class="btn btn-white w-100 hover-shadow" href="{{ route('password.request') }}">
-                  {{ __('Forgot your password?') }}
-                </a>
-              </div>
-              <div class="col">
-                <a class="btn btn-white w-100 hover-shadow" href="{{ route('login') }}">
-                  {{ __('Sign in') }}
-                </a>
-              </div>
+        <div class="hr-text">{{ __('or') }}</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <a class="btn btn-white w-100 hover-shadow" href="{{ route('password.request') }}">
+                {{ __('Forgot your password?') }}
+              </a>
+            </div>
+            <div class="col">
+              <a class="btn btn-white w-100 hover-shadow" href="{{ route('login') }}">
+                {{ __('Sign in') }}
+              </a>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
-    </div>
+  </div>
   </div>
 
 
@@ -103,9 +102,9 @@
         <div class="modal-body">
           <h3>Společnost o Vás může shromažďovat údaje, které společnosti sami sdělíte</h3>
 
-          <p>Takovými Osobními údaji jsou zejména údaje, které uvedete ve vyplněném registračním, objednávkovém či jiném formuláři, nebo které Společnosti
-            sdělíte prostřednictvím mailu, telefonu, faxu či jiného obdobného zařízení. Jedná se především o jméno, příjmení, korespondenční adresu, e-mailovou adresu, telefonní
-            číslo, údaje o bankovním účtu, údaje o zvolené platební metodě apod.
+          <p class="text-justify">Takovými Osobními údaji jsou zejména údaje, které uvedete ve vyplněném registračním, objednávkovém či jiném formuláři, nebo které Společnosti
+            sdělíte prostřednictvím mailu, telefonu, mobilu, faxu či jiného obdobného zařízení. Jedná se především o křestní jméno, příjmení, korespondenční adresu, e-mailovou
+            adresu, telefonní číslo, údaje o bankovním účtu, údaje o zvolené platební metodě apod.
           </p>
         </div>
         <div class="modal-footer">
@@ -140,6 +139,5 @@
         form.submitButton.disabled = true;;
       }
     }
-    form.submit()
   </script>
 @endsection
