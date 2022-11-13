@@ -18797,10 +18797,10 @@ div.dataTables_processing>div:last-child {
   /*     color: #626976; */
   /*     background: var(--tblr-border-color-light); */
   font-size: 0.825rem;
-  font-weight: 400;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .04em;
-  line-height: 1.6;
+  line-height: 1.5;
   /*! color: #626976; */
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
