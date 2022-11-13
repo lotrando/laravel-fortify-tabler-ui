@@ -240,7 +240,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-white hover-shadow" data-bs-dismiss="modal" type="button">
+            <button class="btn btn-muted hover-shadow" data-bs-dismiss="modal" type="button">
               {{ __('Close') }}
             </button>
             <button class="btn btn-primary ms-auto hover-shadow" id="action_button" name="action_button" type="submit"></button>
@@ -271,7 +271,7 @@
           <div class="w-100">
             <div class="row">
               <div class="col">
-                <button class="btn w-100 hover-shadow" data-bs-dismiss="modal">
+                <button class="btn btn-muted w-100 hover-shadow" data-bs-dismiss="modal">
                   {{ __('Cancel') }}
                 </button>
               </div>
