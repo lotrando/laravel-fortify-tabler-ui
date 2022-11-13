@@ -35,9 +35,9 @@ class EmployeeController extends Controller
                 ->addColumn('action', function ($data) {
                     $buttons = '
                         <center>
-                            <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-azure p-2"><i class="fas fa-pen"></i></button>
-                            <button type="button" title="Odstranit Fotografii" name="edit" id="' . $data->id . '" class="remove btn btn-yellow p-2"><i class="fas fa-file-excel"></i></button>
-                            <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-red p-2"><i class="fas fa-trash-alt"></i></button>
+                            <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-icon btn-azure p-2"><i class="fas fa-pen"></i></button>
+                            <button type="button" title="Odstranit Fotografii" name="remove" id="' . $data->id . '" class="remove btn btn-icon btn-yellow p-2"><i class="fas fa-user-slash"></i></button>
+                            <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-icon btn-red p-2"><i class="fas fa-trash-alt"></i></button>
                         </center>
                         ';
                     return $buttons;
@@ -163,9 +163,6 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $data = Employee::findOrFail($id);
-
-        // dd($data);
-
         if (request()->ajax()) {
             return response()->json(['data' => $data]);
         }

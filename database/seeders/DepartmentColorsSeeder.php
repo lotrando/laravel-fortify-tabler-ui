@@ -15,6 +15,11 @@ class DepartmentColorsSeeder extends Seeder
     public function run()
     {
         DB::table('department_colors')->insert([
+            'code' => 'muted',
+            'name' => 'Šedá'
+        ]);
+
+        DB::table('department_colors')->insert([
             'code' => 'blue',
             'name' => 'Modrá'
         ]);
