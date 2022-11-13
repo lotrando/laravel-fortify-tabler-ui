@@ -12,7 +12,7 @@
           {{-- <h1 class="text-center">{{ __('Sign in') }}</h1> --}}
           <div class="mb-6">
             @if ($errors->any())
-              <div class="alert alert-danger shadow">
+              <div class="alert alert-danger text-danger shadow">
                 <ul>
                   @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>

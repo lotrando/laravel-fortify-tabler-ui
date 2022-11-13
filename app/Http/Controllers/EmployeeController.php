@@ -24,7 +24,6 @@ class EmployeeController extends Controller
 
         $departments = Department::all();
         $jobs = Job::all();
-        $department_colors = DepartmentColors::all();
 
         if ($request->ajax()) {
 
@@ -35,18 +34,9 @@ class EmployeeController extends Controller
                 ->addColumn('action', function ($data) {
                     $buttons = '
                         <center>
-                        <a class="link-secondary cursor-pointer" data-bs-toggle="tooltip" title="gggg" onclick="showPassword()">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/eye -->
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <circle cx="12" cy="12" r="2" />
-                    <path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" />
-                  </svg>
-                </a>
-                            <button type="button" title="Upravit" name="edit" id="' . $data->id . '" class="edit btn btn-icon btn-azure p-2"><i class="fas fa-user-edit"></i></button>
-                            <button type="button" title="Odstranit Fotografii" name="remove" id="' . $data->id . '" class="remove btn btn-icon btn-yellow p-2"><i class="fas fa-user-tag"></i></button>
-                            <button type="button" title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn btn-icon btn-red p-2"><i class="fas fa-user-minus"></i></button>
+                            <button title="Upravit" name="edit" id="' . $data->id . '" class="edit btn-link p-1"><i class="fas fa-edit"></i></button>
+                            <button title="Odstranit Fotografii" name="remove" id="' . $data->id . '" class="remove btn-link p-1"><i class="fas fa-user-tag"></i></button>
+                            <button title="Odstranit" name="delete" id="' . $data->id . '" class="delete btn-link p-1"><i class="fas fa-trash"></i></button>
                         </center>
                         ';
                     return $buttons;
@@ -58,8 +48,6 @@ class EmployeeController extends Controller
         return view('employees.index')->with([
             'departments' => $departments,
             'jobs' => $jobs,
-            'department_colors' => $department_colors,
-            ['success' => true, 'message' => 'Inserted Successfully']
         ]);
     }
 
@@ -98,9 +86,7 @@ class EmployeeController extends Controller
             'phone',
             'mobile',
             'id_card'           =>  'required',
-            'id_color'          =>  'required',
             'coffee',
-            'employment'        =>  'required',
             'status',
             'employment'        =>  'required',
             'image'             =>  'image|max:4096'
@@ -140,7 +126,6 @@ class EmployeeController extends Controller
             'phone'             =>  $request->phone,
             'mobile'            =>  $request->mobile,
             'id_card'           =>  $request->id_card,
-            'id_color'          =>  $request->id_color,
             'coffee'            =>  $request->coffee,
             'status'            =>  $request->status,
             'employment'        =>  $request->employment,
@@ -190,7 +175,8 @@ class EmployeeController extends Controller
         $image = $request->file('image');
         if ($image != '') {
             $rules = [
-                'personal_number'   =>  'required',
+                'personal_number'   =>
+                'required|min:5|max:5|unique:employees,id',
                 'title_preffix',
                 'last_name'         =>  'required',
                 'first_name'        =>  'required',
@@ -200,13 +186,12 @@ class EmployeeController extends Controller
                 'department_id'     =>  'required',
                 'job_id'            =>  'required',
                 'email',
-                'start_date',
+                'start_date'        =>  'required',
                 'end_date',
                 'comment',
                 'phone',
                 'mobile',
-                'id_card',
-                'id_color'          =>  'required',
+                'id_card'           =>  'required',
                 'coffee',
                 'status',
                 'employment'        =>  'required',
@@ -240,7 +225,6 @@ class EmployeeController extends Controller
                 'phone',
                 'mobile',
                 'id_card',
-                'id_color'          =>  'required',
                 'coffee',
                 'status',
                 'employment'        =>  'required',
@@ -271,7 +255,6 @@ class EmployeeController extends Controller
             'phone'             =>  $request->phone,
             'mobile'            =>  $request->mobile,
             'id_card'           =>  $request->id_card,
-            'id_color'          =>  $request->id_color,
             'coffee'            =>  $request->coffee,
             'status'            =>  $request->status,
             'employment'        =>  $request->employment,

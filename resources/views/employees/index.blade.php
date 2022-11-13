@@ -186,7 +186,7 @@
                 </div>
               </div>
             </div>
-            <div class="row mb-1">
+            <div class="row mb-2">
               <div class="col-2">
                 <label class="form-label">{{ __('Current photo') }}</label>
                 <div class="d-flex justify-content-start align-items-start">
@@ -213,11 +213,11 @@
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Start date') }}</label>
-                <input class="form-control" id="start_date" name="start_date" type="text" placeholder="{{ __('Start date') }}">
+                <input class="form-control" id="start_date" name="start_date" type="date" placeholder="{{ __('Start date') }}">
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('End date') }}</label>
-                <input class="form-control" id="end_date" name="end_date" type="text" placeholder="{{ __('End date') }}">
+                <input class="form-control" id="end_date" name="end_date" type="date" placeholder="{{ __('End date') }}">
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Created at') }}</label>
