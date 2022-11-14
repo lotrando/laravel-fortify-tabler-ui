@@ -13,7 +13,7 @@
               </button>
             </div>
           </div>
-          <div class="card-body">
+          <div class="card-body p-0">
             <div class="row">
               <div class="col-12">
                 <span id="form_result_window"></span>
