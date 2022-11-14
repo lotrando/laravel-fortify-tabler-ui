@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-12">
-        <div class="card mb-3 mt-3 shadow-sm">
+        <div class="card mb-2 mt-2 shadow-sm">
           <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
             <h1 class="text-muted mb-0"><i class="fas fa-users fa-1x mx-1"></i> {{ __('Employees of KHN') }}</h1>
             <div>

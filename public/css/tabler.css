@@ -693,8 +693,8 @@ textarea {
 .container-xl,
 .container-xxl {
   width: 100%;
-  padding-right: var(--tblr-gutter-x, 1.5rem);
-  padding-left: var(--tblr-gutter-x, 1.5rem);
+  padding-right: var(--tblr-gutter-x, 0.5rem);
+  padding-left: var(--tblr-gutter-x, 0.5rem);
   margin-right: auto;
   margin-left: auto;
 }
