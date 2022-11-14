@@ -22,7 +22,7 @@
             <table class="table-bordered table-hover dataTable w-100 table">
               <thead>
                 <tr class="bg-azure-lt table bg-opacity-50 text-center text-white">
-                  <th>{{ __('Image') }}</th>
+                  <th class="text-center">{{ __('Image') }}</th>
                   <th>{{ __('Number') }}</th>
                   <th>{{ __('Titles preffix') }}</th>
                   <th>{{ __('Last name') }}</th>
@@ -369,7 +369,7 @@
           },
           {
             data: 'title_preffix',
-            "width": "5%"
+            "width": "3%"
           },
           {
             data: 'last_name',
@@ -398,15 +398,15 @@
           {
             data: 'phone',
             className: "text-center",
-            "width": "2%"
+            "width": "1%"
           },
           {
             data: 'mobile',
-            "width": "5%"
+            "width": "1%"
           },
           {
             data: 'status',
-            "width": "2%",
+            "width": "1%",
             render: function(data, type, full, meta) {
               if (data == 'inactive') {
                 return "<span class='badge bg-red p-1 me-1'></span>Neaktivní";
@@ -420,7 +420,7 @@
           },
           {
             data: 'start_date',
-            "width": "6%",
+            "width": "4%",
             render: function(data, type, full, meta) {
               var date = moment(data).locale('cs');
               return date.format('DD. MM. YYYY');
