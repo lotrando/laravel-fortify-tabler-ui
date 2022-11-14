@@ -324,9 +324,6 @@
         serverSide: true,
         stateSave: true,
         pageSave: true,
-        // scrollY: 670,
-        // scrollCollapse: true,
-        // scroller: true,
         fixedHeader: {
           header: true,
           footer: false
@@ -451,7 +448,7 @@
           $('#modal-header').addClass("modal-header bg-" + html.data.department.color_id + "-lt");
           $('#action_button, .modal-title').text("{{ __('Edit employee') }}");
           $('#action').val("Edit");
-          $('#personal_number').val(html.data.personal_number);
+          $('#personal_number').val(html.data.personal_number).attr('readonly', true);
           $('#title_preffix').val(html.data.title_preffix);
           $('#last_name').val(html.data.last_name);
           $('#middle_name').val(html.data.middle_name);
@@ -488,6 +485,7 @@
       $('#modal-header').addClass("modal-header bg-muted-lt");
       $('#action_button, .modal-title').text("{{ __('Create new employee') }}");
       $('#action').val("Add");
+      $('#personal_number').attr('readonly', false)
       $('#department_id, #job_id').val('');
       $('#id_card').val('Nový nástup');
       $('#status').val('inactive');
