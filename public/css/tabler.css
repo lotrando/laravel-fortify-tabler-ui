@@ -336,6 +336,15 @@ th {
   text-align: -webkit-match-parent;
 }
 
+table.dataTable {
+  clear: both;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  max-width: none !important;
+  border-collapse: separate !important;
+  border-spacing: 0;
+}
+
 thead,
 tbody,
 tfoot,

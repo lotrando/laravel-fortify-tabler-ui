@@ -20,10 +20,10 @@
               </div>
             </div>
             <table class="table-bordered table-hover dataTable w-100 table">
-              <thead class="bg-azure-lt table bg-opacity-50 text-center text-white">
-                <tr>
-                  <th class="text-center">{{ __('Image') }}</th>
-                  <th class="text-center">{{ __('Number') }}</th>
+              <thead>
+                <tr class="bg-azure-lt table bg-opacity-50 text-center text-white">
+                  <th>{{ __('Image') }}</th>
+                  <th>{{ __('Number') }}</th>
                   <th>{{ __('Titles preffix') }}</th>
                   <th>{{ __('Last name') }}</th>
                   <th>{{ __('First name') }}</th>
@@ -38,8 +38,6 @@
                   <th class="text-center"><i class="fas fa-bars"></i></th>
                 </tr>
               </thead>
-              <tbody>
-              </tbody>
             </table>
           </div>
         </div>
@@ -326,6 +324,13 @@
         serverSide: true,
         stateSave: true,
         pageSave: true,
+        // scrollY: 670,
+        // scrollCollapse: true,
+        // scroller: true,
+        fixedHeader: {
+          header: true,
+          footer: false
+        },
         order: [
           [3, "asc"]
         ],
@@ -336,6 +341,8 @@
         language: {
           "url": "{{ asset('js/cs.json') }}",
           "sProcessing": "<img style='height:100px;' src='img/processing.gif' />",
+          "search": "_INPUT_",
+          "searchPlaceholder": "Hledej ..."
         },
         ajax: {
           url: "{{ route('employees.index') }}",
@@ -362,7 +369,7 @@
           },
           {
             data: 'title_preffix',
-            "width": "3%"
+            "width": "5%"
           },
           {
             data: 'last_name',
@@ -413,7 +420,7 @@
           },
           {
             data: 'start_date',
-            "width": "5%",
+            "width": "6%",
             render: function(data, type, full, meta) {
               var date = moment(data).locale('cs');
               return date.format('DD. MM. YYYY');
