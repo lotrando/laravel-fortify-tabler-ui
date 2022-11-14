@@ -13,10 +13,10 @@
               </button>
             </div>
           </div>
-          <div class="card-body p-0">
+          <div class="card-body p-2">
             <div class="row">
               <div class="col-12">
-                <span id="form_result_window"></span>
+                <span class="" id="form_result_window"></span>
               </div>
             </div>
             <table class="table-bordered table-hover dataTable w-100 table">

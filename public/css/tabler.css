@@ -2473,9 +2473,6 @@ textarea {
   min-height: calc(1.4285714em + 0.25rem + 2px);
   padding-top: 0.255rem;
   padding-bottom: 0.255rem;
-  margin: 0.400em;
-  margin-top: 0.800em;
-  margin-right: 0.800em;
   font-size: 0.85rem;
   border-radius: 5px;
 }
@@ -2614,7 +2611,7 @@ textarea.form-control-lg {
   padding-top: 0.255rem;
   padding-bottom: 0.255rem;
   padding-left: 0.5rem;
-  margin: 0.400em;
+  margin-bottom: 0.550em;
   font-size: 0.85rem;
   border-radius: 5px;
 }
@@ -18804,15 +18801,6 @@ a.step-item:hover {
 
 div.dataTables_processing>div:last-child {
   display: none;
-}
-
-.dataTables_length,
-.dataTables_info,
-.dataTables_paginate {
-  padding-left: 0.73rem;
-  padding-right: 0.53rem;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
 }
 
 .table thead th,
