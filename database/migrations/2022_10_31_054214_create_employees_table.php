@@ -16,7 +16,7 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->string('personal_number');
-            $table->string('image')->default('00000.png');
+            $table->string('image');
             $table->string('title_preffix')->nullable();
             $table->string('last_name');
             $table->string('middle_name')->nullable();
@@ -25,12 +25,12 @@ class CreateEmployeesTable extends Migration
             $table->string('title_suffix')->nullable();
             $table->string('department_id');
             $table->string('job_id');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->date('start_date');
-            $table->date('end_date');
-            $table->text('comment');
-            $table->string('phone');
-            $table->string('mobile');
+            $table->date('end_date')->nullable();
+            $table->text('comment')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('mobile')->nullable();
             $table->string('id_card');
             $table->enum('coffee', ['A', 'N'])->default('N')->nullable();
             $table->string('employment');

@@ -20,7 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DepartmentSeeder::class,
             JobSeeder::class,
-            DepartmentColorsSeeder::class
         ]);
 
         User::factory(10)->create();

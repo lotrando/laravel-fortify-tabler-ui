@@ -227,7 +227,7 @@ class DepartmentSeeder extends Seeder
         DB::table('departments')->insert([
             'department_code' => '999',
             'center_code' => '9999',
-            'color_id' => 'green',
+            'color_id' => 'muted',
             'department_name' => 'Externí pracovník',
         ]);
     }

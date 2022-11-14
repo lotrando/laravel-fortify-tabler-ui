@@ -34,7 +34,7 @@
                   <th>{{ __('Phone') }}</th>
                   <th>{{ __('Mobile') }}</th>
                   <th>{{ __('Status') }}</th>
-                  <th>{{ __('Start date') }}</th>
+                  <th>{{ __('Boarding') }}</th>
                   <th class="text-center"><i class="fas fa-bars"></i></th>
                 </tr>
               </thead>
@@ -72,7 +72,7 @@
               <div class="col-2">
                 <label class="form-label">{{ __('Titles preffix') }}</label>
                 <select class="form-select" id="title_preffix" name="title_preffix">
-                  <option value=""></option>
+                  <option value="">-</option>
                   <option value="Bc.">Bc.</option>
                   <option value="MUDr.">MUDr.</option>
                   <option value="Ing.">Ing.</option>
@@ -93,7 +93,7 @@
               <div class="col-2">
                 <label class="form-label">{{ __('Titles suffix') }}</label>
                 <select class="form-select" id="title_suffix" name="title_suffix">
-                  <option value=""></option>
+                  <option value="">-</option>
                   <option value="DiS.">DiS.</option>
                   <option value="MBA">MBA</option>
                   <option value="LL.M.">LL.M.</option>
@@ -133,9 +133,9 @@
               <div class="col-2">
                 <label class="form-label">{{ __('Status') }}</label>
                 <select class="form-select" id="status" name="status">
-                  <option value="active">Aktivní</option>
-                  <option value="inactive">Neaktivní</option>
-                  <option value="maternal">Mateřská</option>
+                  <option value="Neaktivní">Neaktivní</option>
+                  <option value="Aktivní">Aktivní</option>
+                  <option value="Mateřská">Mateřská</option>
                 </select>
               </div>
               <div class="col-1">
@@ -157,7 +157,6 @@
               <div class="col-2">
                 <label class="form-label">{{ __('Coffee') }}</label>
                 <select class="form-select" id="coffee" name="coffee">
-                  <option value=""></option>
                   <option value="N">Ne</option>
                   <option value="A">Ano</option>
                 </select>
@@ -405,19 +404,22 @@
             data: 'status',
             "width": "1%",
             render: function(data, type, full, meta) {
-              if (data == 'inactive') {
+              if (data == 'Neaktivní') {
                 return "<span class='badge bg-red p-1 me-1'></span>Neaktivní";
               }
-              if (data == 'active') {
+              if (data == 'Aktivní') {
                 return "<span class='badge bg-green p-1 me-1'></span>Aktivní";
-              } else {
+              }
+              if (data == 'Mateřská') {
                 return "<span class='badge bg-yellow p-1 me-1'></span>Mateřská";
+              } else {
+                return "<span class='badge bg-muted p-1 me-1'></span>N/A";
               }
             }
           },
           {
             data: 'start_date',
-            "width": "4%",
+            "width": "1%",
             render: function(data, type, full, meta) {
               var date = moment(data).locale('cs');
               return date.format('DD. MM. YYYY');
@@ -434,7 +436,6 @@
     });
 
     // Form Modal Functions
-
     $(document).on('click', '.edit', function() {
       var id = $(this).attr('id');
       $('#form_result_modal, form_result_window').html('');
@@ -488,7 +489,7 @@
       $('#personal_number').attr('readonly', false)
       $('#department_id, #job_id').val('');
       $('#id_card').val('Nový nástup');
-      $('#status').val('inactive');
+      $('#status').val('Neaktivní');
       $('#employment').val('HPP');
       $('#coffee').val('N');
       $("#preview_image").attr("src", "{{ URL::to('/') }}/foto/no_image.png");
