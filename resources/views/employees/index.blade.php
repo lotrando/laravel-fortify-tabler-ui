@@ -23,7 +23,7 @@
               <thead>
                 <tr class="bg-azure-lt table bg-opacity-50 text-center text-white">
                   <th class="text-center">{{ __('Image') }}</th>
-                  <th>{{ __('Number') }}</th>
+                  <th class="text-center">{{ __('Number') }}</th>
                   <th>{{ __('Titles preffix') }}</th>
                   <th>{{ __('Last name') }}</th>
                   <th>{{ __('First name') }}</th>
@@ -72,7 +72,7 @@
               <div class="col-2">
                 <label class="form-label">{{ __('Titles preffix') }}</label>
                 <select class="form-select" id="title_preffix" name="title_preffix">
-                  <option value="">-</option>
+                  <option value=""></option>
                   <option value="Bc.">Bc.</option>
                   <option value="MUDr.">MUDr.</option>
                   <option value="Ing.">Ing.</option>
@@ -93,7 +93,7 @@
               <div class="col-2">
                 <label class="form-label">{{ __('Titles suffix') }}</label>
                 <select class="form-select" id="title_suffix" name="title_suffix">
-                  <option value="">-</option>
+                  <option value=""></option>
                   <option value="DiS.">DiS.</option>
                   <option value="MBA">MBA</option>
                   <option value="LL.M.">LL.M.</option>
