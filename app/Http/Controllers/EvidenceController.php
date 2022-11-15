@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use App\Models\Evidence;
-use App\Models\Printer;
 use App\Models\Toner;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -21,14 +19,12 @@ class EvidenceController extends Controller
      */
     public function index(Request $request)
     {
-
-        $departments  = Department::all();
-        $toners       = Toner::all();
-        $printers     = Printer::all();
+        $departments = Department::all();
+        $toners = Toner::all();
 
         if ($request->ajax()) {
 
-            $model = Evidence::with('department', 'toner', 'printer')->select('*');
+            $model = Evidence::with('department', 'toner', 'user')->select('*');
 
             return DataTables::eloquent($model)
 
@@ -48,7 +44,7 @@ class EvidenceController extends Controller
                                         <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
                                         <path d="M16 5l3 3" />
                                     </svg>
-                                    Upravit výdej
+                                    Upravit zaměstnance
                                 </li>
                                 <li class="dropdown-item delete" name="delete" id="' . $data->id . '">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -56,7 +52,7 @@ class EvidenceController extends Controller
                                         <path d="M4 7h16"></path><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
                                         <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path><path d="M10 12l4 4m0 -4l-4 4"></path>
                                     </svg>
-                                    Odstranit výdej
+                                    Odstranit zaměstnance
                                 </li>
                             </ul>
                         </center>
@@ -67,10 +63,9 @@ class EvidenceController extends Controller
                 ->toJson();
         }
 
-        return view('evidences.index')->with([
-            'departments'   => $departments,
-            'toners'        => $toners,
-            'printers'      => $printers
+        return view('evidence.index')->with([
+            'departments' => $departments,
+            'toners' => $toners
         ]);
     }
 
@@ -107,7 +102,7 @@ class EvidenceController extends Controller
         $form_data = [
             'department_id'     =>  $request->department_id,
             'user_id'           =>  Auth::user()->id,
-            'Evidence_id'          =>  $request->Evidence_id
+            'Evidence_id'       =>  $request->Evidence_id
         ];
 
         Evidence::create($form_data);
@@ -132,7 +127,7 @@ class EvidenceController extends Controller
      */
     public function edit($id)
     {
-        $data = Evidence::with('department', 'printer', 'toner', 'user')->findOrFail($id);
+        $data = Evidence::with('department', 'toner', 'user')->findOrFail($id);
         if (request()->ajax()) {
             return response()->json(['data' => $data]);
         }
@@ -177,7 +172,7 @@ class EvidenceController extends Controller
      */
     public function destroy($id)
     {
-        $user = Evidence::find($id);
-        $user->delete();
+        $evidence = Evidence::find($id);
+        $evidence->delete();
     }
 }

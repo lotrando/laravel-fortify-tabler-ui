@@ -15,24 +15,24 @@ class PrinterSeeder extends Seeder
     public function run()
     {
         DB::table('printers')->insert([
-            'vendor' => 'HP',
+            'printer_vendor' => 'HP',
             'printer_type' => 'LaserJet',
-            'printer_name' => '1018',
-            'toner_id' => 'Q2612A',
+            'printer_number' => '1018',
+            'toner_id' => '1',
         ]);
 
         DB::table('printers')->insert([
-            'vendor' => 'HP',
+            'printer_vendor' => 'HP',
             'printer_type' => 'LaserJet',
-            'printer_name' => '1020',
-            'toner_id' => 'Q2612A',
+            'printer_number' => '1020',
+            'toner_id' => '1',
         ]);
 
         DB::table('printers')->insert([
-            'vendor' => 'HP',
+            'printer_vendor' => 'HP',
             'printer_type' => 'LaserJet',
-            'printer_name' => '1022',
-            'toner_id' => 'Q2612A',
+            'printer_number' => '1022',
+            'toner_id' => '1',
         ]);
     }
 }

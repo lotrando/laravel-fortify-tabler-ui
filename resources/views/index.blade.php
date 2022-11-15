@@ -10,14 +10,4 @@
       </div>
     </div>
   </div>
-  <script>
-    function showPassword() {
-      var element = document.getElementById("password");
-      if (element.type === "password") {
-        element.type = "text";
-      } else {
-        element.type = "password";
-      }
-    };
-  </script>
 @endsection

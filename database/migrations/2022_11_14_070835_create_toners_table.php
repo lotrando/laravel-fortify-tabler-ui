@@ -15,10 +15,10 @@ class CreateTonersTable extends Migration
     {
         Schema::create('toners', function (Blueprint $table) {
             $table->id();
-            $table->toner_code();
-            $table->toner_type();
-            $table->toner_size();
-            $table->printer_id();
+            $table->string('toner_code');
+            $table->string('toner_type');
+            $table->string('toner_size');
+            $table->integer('toner_price');
         });
     }
 

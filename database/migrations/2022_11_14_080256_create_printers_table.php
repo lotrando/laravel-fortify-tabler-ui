@@ -18,8 +18,7 @@ class CreatePrintersTable extends Migration
             $table->string('printer_vendor');
             $table->string('printer_type');
             $table->string('printer_number');
-            $table->string('it_number');
-            $table->toner_id();
+            $table->string('toner_id');
         });
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EvidenceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,13 @@ Route::get('home', function () {
     return view('home');
 })->middleware('verified', 'auth');
 
+// Employee
 Route::resource('employees', EmployeeController::class);
 Route::post('employees/update', [EmployeeController::class, 'update'])->name('employees.update');
 Route::get('employees/destroy/{id}', [EmployeeController::class, 'destroy']);
 Route::get('employees/destroy-photo/{id}', [EmployeeController::class, 'destroyPhoto'])->name('employees.photo');
+
+// evidence
+Route::resource('evidences', EvidenceController::class);
+Route::post('evidences/update', [EvidenceController::class, 'update'])->name('evidences.update');
+Route::get('evidences/destroy/{id}', [EvidenceController::class, 'destroy']);
