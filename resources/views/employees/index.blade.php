@@ -16,7 +16,7 @@
           <div class="card-body p-2">
             <div class="row">
               <div class="col-12">
-                <span class="" id="form_result_window"></span>
+                <span id="form_result_window"></span>
               </div>
             </div>
             <table class="table-bordered table-hover dataTable w-100 table">
@@ -24,17 +24,17 @@
                 <tr class="bg-azure-lt table bg-opacity-50 text-center text-white">
                   <th class="text-center">{{ __('Image') }}</th>
                   <th class="text-center">{{ __('Number') }}</th>
-                  <th>{{ __('Titles preffix') }}</th>
+                  <th>{{ __('Titles') }}</th>
                   <th>{{ __('Last name') }}</th>
                   <th>{{ __('First name') }}</th>
-                  <th>{{ __('Titles suffix') }}</th>
                   <th>{{ __('Vema') }}</th>
                   <th>{{ __('Department') }}</th>
                   <th>{{ __('Job title') }}</th>
+                  <th>{{ __('Email') }}</th>
                   <th>{{ __('Phone') }}</th>
                   <th>{{ __('Mobile') }}</th>
                   <th>{{ __('Status') }}</th>
-                  <th>{{ __('Boarding') }}</th>
+                  <th>{{ __('Start date') }}</th>
                   <th class="text-center"><i class="fas fa-bars"></i></th>
                 </tr>
               </thead>
@@ -111,11 +111,11 @@
                 <input class="form-control" id="married_name" name="married_name" type="text" placeholder="{{ __('Married name') }}">
               </div>
               <div class="col-1">
-                <label class="form-label">{{ __('Phone') }}</label>
+                <label class="form-label">{{ __('Bussines phone') }}</label>
                 <input class="form-control" id="phone" name="phone" type="text" placeholder="{{ __('Phone') }}">
               </div>
               <div class="col-2">
-                <label class="form-label">{{ __('Mobil') }}</label>
+                <label class="form-label">{{ __('Company cell phone') }}</label>
                 <input class="form-control" id="mobile" name="mobile" type="text" placeholder="{{ __('Mobil') }}">
               </div>
               <div class="col-2">
@@ -365,7 +365,7 @@
           },
           {
             data: 'title_preffix',
-            "width": "3%"
+            "width": "1%"
           },
           {
             data: 'last_name',
@@ -376,20 +376,27 @@
             "width": "3%"
           },
           {
-            data: 'title_suffix',
-            "width": "3%"
-          },
-          {
             data: 'department.center_code',
             "width": "1%"
           },
           {
             data: 'department.department_name',
-            "width": "9%"
+            "width": "8%"
           },
           {
             data: 'job.job_title',
-            "width": "8%"
+            "width": "7%"
+          },
+          {
+            data: 'email',
+            "width": "3%",
+            render: function(data, type, full, meta) {
+              if (data == null) {
+                return ""
+              } else {
+                return "<a class='text-center' href='mailto:" + data + "'>" + data + "</a>";
+              }
+            },
           },
           {
             data: 'phone',
@@ -398,7 +405,7 @@
           },
           {
             data: 'mobile',
-            "width": "1%"
+            "width": "2%"
           },
           {
             data: 'status',

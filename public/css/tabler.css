@@ -2264,8 +2264,9 @@ textarea {
 }
 
 .form-label {
-  margin-bottom: 0.5rem;
-  font-size: 0.875rem;
+  margin-bottom: 0.1rem;
+  font-size: 0.775rem;
+  color: #a39a9a;
   font-weight: 500;
 }
 
@@ -15970,6 +15971,33 @@ Card tabs
   height: 1.25rem !important;
   margin-right: .5rem;
   color: #626976;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.dropdown-item-icon-delete {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  margin-right: .5rem;
+  color: #d41727;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.dropdown-item-icon-edit {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  margin-right: .5rem;
+  color: #3250a8;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.dropdown-item-icon-remove {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  margin-right: .5rem;
+  color: #b5731d;
   opacity: 0.7;
   text-align: center;
 }
