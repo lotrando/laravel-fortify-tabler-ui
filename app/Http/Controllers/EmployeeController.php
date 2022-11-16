@@ -8,7 +8,9 @@ use App\Models\Job;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
+use Rap2hpoutre\FastExcel\FastExcel;
 use Yajra\DataTables\Facades\DataTables;
 
 class EmployeeController extends Controller
@@ -23,6 +25,18 @@ class EmployeeController extends Controller
 
         $departments = Department::all();
         $jobs = Job::all();
+        $columns = Schema::getColumnListing('employees');
+
+        // $columns = [
+        //     [
+        //         'key'               =>      'personal_number',
+        //         'name'              =>      'Osobní číslo'
+        //     ],
+        //     [
+        //         'key'               =>      'title_preffix',
+        //         'name'              =>      'Tituly před'
+        //     ]
+        // ];
 
         if ($request->ajax()) {
 
@@ -77,19 +91,54 @@ class EmployeeController extends Controller
         }
 
         return view('employees.index')->with([
-            'departments' => $departments,
-            'jobs' => $jobs,
+            'departments'   => $departments,
+            'jobs'          => $jobs,
+            'columns'       => $columns
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Export collection to *.xlsx file.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function exportTableXls()
     {
-        //
+        $employees = Employee::with('department', 'job')->orderBy('last_name', 'ASC')->get();
+        return (new FastExcel($employees))->download('zamestanci_khn_' . date('d.m.Y', strtotime(now())) . '.xlsx', function ($user) {
+            return [
+                'Osobní číslo'      =>  $user->personal_number,
+                'Tituly před'       =>  $user->title_preffix,
+                'Příjmení'          =>  $user->last_name,
+                'Jméno'             =>  $user->first_name,
+                'Tituly za'         =>  $user->title_suffix,
+                'Vema'              =>  $user->department->center_code,
+                'Středisko'         =>  $user->department->department_code,
+                'Oddělení'          =>  $user->department->department_name,
+                'Funkce'            =>  $user->job,
+                'Email'             =>  $user->email,
+                'Nástup'            =>  date('d. m. Y', strtotime($user->start_date)),
+                'Klapka'            =>  $user->phone,
+                'Mobil'             =>  $user->mobile,
+                'Id Karta'          =>  $user->id_card,
+                'Kávomat'           =>  $user->coffee,
+                'Stav'              =>  $user->status,
+                'Poměr'             =>  $user->employment,
+            ];
+        });
+    }
+
+    /**
+     * Export collection to *.xlsx file.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function exportTableCsv(Request $request)
+    {
+        $columns = $request->input('column');
+        // $columns = implode(',', $columns);
+        $employees = Employee::orderBy('last_name', 'ASC')->get($columns);
+        return (new FastExcel($employees))->download('zamestanci_khn_' . date('d.m.Y', strtotime(now())) . '.csv');
     }
 
     /**

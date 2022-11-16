@@ -8,9 +8,9 @@
           <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
             <h1 class="text-muted mb-0"><i class="fas fa-users fa-1x mx-1"></i> {{ __('Employees of KHN') }}</h1>
             <div>
-              <button class="btn btn-lime p-2" id="openCreateModal" title="Nový">
-                <i class="fas fa-user-plus fa-1x m-1"></i>
-              </button>
+              <button class="btn btn-purple p-2" id="exportTableModal" title="Export CSV">Export CSV</button>
+              <a class="btn btn-green p-2" id="exportTableXls" href="{{ route('employees.export.xls') }}" title="Export XLS">Export XLS</a>
+              <button class="btn btn-lime p-2" id="openCreateModal" title="Nový"><i class="fas fa-user-plus fa-1x m-1"></i></button>
             </div>
           </div>
           <div class="card-body p-2">
@@ -154,7 +154,7 @@
                 <label class="form-label">{{ __('Email') }}</label>
                 <input class="form-control" id="email" name="email" type="text" placeholder="{{ __('Email') }}">
               </div>
-              <div class="col-2">
+              <div class="col-1">
                 <label class="form-label">{{ __('Coffee') }}</label>
                 <select class="form-select" id="coffee" name="coffee">
                   <option value="N">Ne</option>
@@ -170,6 +170,10 @@
                       {{ $department->department_name }}</option>
                   @endforeach
                 </select>
+              </div>
+              <div class="col-1">
+                <label class="form-label">{{ __('Center') }}</label>
+                <input class="form-control" id="department_code" name="department_code" type="text" placeholder="{{ __('N/A') }}" readonly>
               </div>
               <div class="col-3">
                 <div class="mb-3">
@@ -308,6 +312,40 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- Export Employees --}}
+  <div class="modal modal-blur fade" id="exportModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-top" role="document">
+      <div class="modal-content shadow-lg">
+        <div id="modal-export-header">
+          <h5 class="modal-title"></h5>
+          <i id="modal-export-icon"></i>
+        </div>
+        <form id="exportForm" action="{{ route('employees.export.csv') }}">
+          @csrf
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-4">
+                <label class="form-label">{{ __('Columns') }}</label>
+                <select class="form-select" id="column" name="column[]" multiple size=23>
+                  @foreach ($columns as $column)
+                    <option value="{{ $column }}" @if (old('column') == $column) selected @endif>{{ $column }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            <input id="action" name="action" type="hidden" />
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-muted hover-shadow" data-bs-dismiss="modal" type="button">
+              {{ __('Close') }}
+            </button>
+            <button class="btn btn-primary ms-auto hover-shadow" id="export_button" name="export_button" type="submit"></button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -471,6 +509,7 @@
           $('#comment').val(html.data.comment);
           $('#status').val(html.data.status);
           $('#coffee').val(html.data.coffee);
+          $('#department_code').val(html.data.department.department_code);
           $('#employment').val(html.data.employment);
           $('#start_date').val(html.data.start_date);
           $('#end_date').val(html.data.end_date);
@@ -494,7 +533,7 @@
       $('#action_button, .modal-title').text("{{ __('Create new employee') }}");
       $('#action').val("Add");
       $('#personal_number').attr('readonly', false)
-      $('#department_id, #job_id').val('');
+      $('#department_id, #job_id, #department_code').val('');
       $('#id_card').val('Nový nástup');
       $('#status').val('Neaktivní');
       $('#employment').val('HPP');
@@ -502,6 +541,16 @@
       $("#preview_image").attr("src", "{{ URL::to('/') }}/foto/no_image.png");
       $('#store_image').html("<img src={{ URL::to('/') }}/foto/no_image.png height='193px' class='bg-muted-lt z-depth-1 img-thumbnail-big'></a>");
       $('#store_image').append("<input type='hidden' id='hidden_image' name='hidden_image' value='' />");
+    })
+
+    $('#exportTableModal').click(function() {
+      $('#exportForm')[0].reset();
+      $("#modal-export-icon, #modal-export-header").removeClass();
+      $('#exportModal').modal('show');
+      $('#modal-export-icon').addClass('fas fa-file-csv fa-2x m-2');
+      $('#modal-export-header').addClass("modal-header bg-purple-lt");
+      $('#export_button, .modal-title').text("{{ __('Export employees to CSV') }}");
+      $('#action').val("Export");
     })
 
     $('#inputForm').on('submit', function(event) {
@@ -565,8 +614,35 @@
             }
           }
         });
+      }
+      if ($('#action').val() == "Export") {
+        event.preventDefault();
+        $.ajax({
+          url: "{{ route('employees.export.csv') }}",
+          method: "POST",
+          data: new FormData(this),
+          contentType: false,
+          cache: false,
+          processData: false,
+          dataType: "json",
+          success: function(data) {
+            var html = '';
+            if (data.errors) {
+              html = '<div class="alert alert-danger text-danger shadow-sm"><ul>';
+              for (var count = 0; count < data.errors.length; count++) {
+                html += '<li>' + data.errors[count] + '</li>';
+              }
+              html += '</ul></div>';
+              $('#form_result_modal').html(html);
+            }
+            if (data.success) {
+              html = '<div class="alert alert-success text-success shadow-sm"><ul><li>' + data.success + '</li></ul></div>';
+              $('#form_result_window').html(html);
+              $('#exportModal').modal('hide');
+            }
+          }
+        });
       };
-
     });
 
     // Preview Image
@@ -604,6 +680,14 @@
           }, 1000);
         }
       })
+    })
+
+    // Export XLS
+    $('#exportTableXls').click(function() {
+      $('#exportTableXls').text("{{ __('Exporting ...') }}");
+      setTimeout(function() {
+        $('#exportTableXls').html("{{ __('Export XLS') }}");
+      }, 500);
     })
 
     // Remove Employee Foto

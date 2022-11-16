@@ -28,6 +28,8 @@ Route::resource('employees', EmployeeController::class);
 Route::post('employees/update', [EmployeeController::class, 'update'])->name('employees.update');
 Route::get('employees/destroy/{id}', [EmployeeController::class, 'destroy']);
 Route::get('employees/destroy-photo/{id}', [EmployeeController::class, 'destroyPhoto'])->name('employees.photo');
+Route::get('exportcsv', [EmployeeController::class, 'exportTableCsv'])->name('employees.export.csv');
+Route::get('exportxls', [EmployeeController::class, 'exportTableXls'])->name('employees.export.xls');
 
 // evidence
 Route::resource('evidences', EvidenceController::class);
