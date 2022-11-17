@@ -8,13 +8,21 @@
           <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
             <h1 class="text-muted mb-0"><i class="fas fa-users fa-1x mx-1"></i> {{ __('Employees of KHN') }}</h1>
             @auth
+              <div class="ms-auto d-print-none col-auto">
+                <div class="btn-list">
+                  <button class="btn btn-azure" id="exportPhoneList" href="{{ route('employees.phonelist') }}" title="{{ __('Phonelist') }}">
+                    {{ __('Phonelist') }}
+                  </button>
+                  <a class="btn btn-blue" id="exportList" href="{{ route('employees.list') }}" title="{{ __('Quick list') }}">{{ __('Quick table') }}</a>
+                  </a>
+                  <button class="btn btn-purple" id="exportTable" title="{{ __('Export') }}">{{ __('Export') }}</button>
+                  <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal" title="{{ __('New') }}">
+                    {{ __('New') }}
+                  </button>
+                </div>
+              </div>
               <div>
-                <a class="btn btn-azure p-2" id="exportPhoneList" href="{{ route('employees.phonelist') }}" title="{{ __('Phonelist') }}"><i
-                    class="fas fa-address-book fa-1x m-1"></i>{{ __('Phonelist') }}</a>
-                <a class="btn btn-blue p-2" id="exportList" href="{{ route('employees.list') }}" title="{{ __('Quick list') }}"><i
-                    class="fas fa-list fa-1x m-1"></i>{{ __('Quick table') }}</a>
-                <button class="btn btn-purple p-2" id="exportTable" title="{{ __('Export') }}"><i class="fas fa-file-export fa-1x m-1"></i>{{ __('Export') }}</button>
-                <button class="btn btn-lime p-2" id="openCreateModal" title="{{ __('New') }}"><i class="fas fa-user-plus fa-1x m-1"></i>{{ __('New') }}</button>
+
               </div>
             @endauth
           </div>
