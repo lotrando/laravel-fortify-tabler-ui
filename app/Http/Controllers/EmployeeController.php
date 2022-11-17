@@ -39,7 +39,7 @@ class EmployeeController extends Controller
                     if (Auth::user()) {
                         $buttons = '
                         <center>
-                            <span class="btn btn-icon hover-shadow" id="dropdownMenuButton-' . $data->id . '" data-bs-toggle="dropdown">
+                            <span title="Možnosti" class="cursor-pointer btn btn-icon hover-shadow" id="dropdownMenuButton-' . $data->id . '" data-bs-toggle="dropdown">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line>
                             </svg>
@@ -143,7 +143,7 @@ class EmployeeController extends Controller
      */
     public function exportList()
     {
-        $employees = Employee::with('department', 'job')->orderBy('last_name', 'ASC')->get();
+        $employees = Employee::with('department', 'job', 'user')->orderBy('last_name', 'ASC')->get();
         return (new FastExcel($employees))->download('zamestanci_khn_seznam' . date('d.m.Y', strtotime(now())) . '.xlsx', function ($employee) {
             return [
                 'Osobní číslo'      =>  $employee->personal_number,
@@ -281,17 +281,17 @@ class EmployeeController extends Controller
             if ($employees) {
                 foreach ($employees as $employee) {
                     $output .=
-                        '<div class="card card-sm mt-1">
+                        '<div class="card card-sm mt-2">
                                 <div class="card-body bg-' . $employee->department->color_id . '-lt">
                                 <div class="row align-items-top">
                                     <div class="col-auto">
-                                    <img class="avatar text-white mb-1" src="foto/' .  $employee->image . '" alt="' .  $employee->personal_number . '" style="width: 35px; height:50px"><br>
-                                    <span class="text-' .  $employee->department->color_id . ' text-center">' .  $employee->personal_number . '</span>
+                                    <img class="avatar text-white mb-1" src="foto/' .  $employee->image . '" alt="' .  $employee->personal_number . '" style="width: 42px; height:55px"><br>
+                                    <span class="mx-1 text-' .  $employee->department->color_id . '"><strong>' .  $employee->personal_number . '</strong></span>
                                     </div>
                                     <div class="col">
                                         <div class="font-weight-medium text-muted">' .  $employee->title_preffix . ' ' . $employee->last_name . ' ' . $employee->first_name . ' ' . $employee->title_suffix . '</div>
-                                    <div class="hr-text m-2">
-                                        <span>' .  __("info")  . '</span>
+                                    <div class="hr-text my-2">
+                                        <span>' .  __("pracovní zařazení")  . '</span>
                                     </div>
                                     <div class="text-muted">
                                         ' .  $employee->department->center_code . ' - ' .  $employee->department->department_name . '

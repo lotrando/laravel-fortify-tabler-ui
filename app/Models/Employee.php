@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Department;
 use App\Models\Job;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -46,6 +47,11 @@ class Employee extends Model
     public function job()
     {
         return $this->belongsTo(Job::class, 'job_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'personal_number');
     }
 
     protected function serializeDate($dates)

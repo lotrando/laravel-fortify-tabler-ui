@@ -9,11 +9,12 @@
             <h1 class="text-muted mb-0"><i class="fas fa-users fa-1x mx-1"></i> {{ __('Employees of KHN') }}</h1>
             @auth
               <div>
-                <button class="btn btn-purple p-2" id="exportTable" title="Export"><i class="fas fa-file-export fa-1x m-1"></i>Export</button>
-                <a class="btn btn-green p-2" id="exportPhoneList" href="{{ route('employees.phonelist') }}" title="Telefoní seznam"><i
+                <a class="btn btn-azure p-2" id="exportPhoneList" href="{{ route('employees.phonelist') }}" title="{{ __('Phonelist') }}"><i
                     class="fas fa-address-book fa-1x m-1"></i>{{ __('Phonelist') }}</a>
-                <a class="btn btn-blue p-2" id="exportList" href="{{ route('employees.list') }}" title="Kompletní seznam"><i class="fas fa-book fa-1x m-1"></i>{{ __('List') }}</a>
-                <button class="btn btn-lime p-2" id="openCreateModal" title="Nový"><i class="fas fa-user-plus fa-1x m-1"></i>{{ __('New') }}</button>
+                <a class="btn btn-blue p-2" id="exportList" href="{{ route('employees.list') }}" title="{{ __('Quick list') }}"><i
+                    class="fas fa-list fa-1x m-1"></i>{{ __('Quick table') }}</a>
+                <button class="btn btn-purple p-2" id="exportTable" title="{{ __('Export') }}"><i class="fas fa-file-export fa-1x m-1"></i>{{ __('Export') }}</button>
+                <button class="btn btn-lime p-2" id="openCreateModal" title="{{ __('New') }}"><i class="fas fa-user-plus fa-1x m-1"></i>{{ __('New') }}</button>
               </div>
             @endauth
           </div>
@@ -90,7 +91,7 @@
                 <label class="form-label">{{ __('Last name') }}</label>
                 <input class="form-control" id="last_name" name="last_name" type="text" placeholder="{{ __('Last name') }}">
               </div>
-              <div class="col-3">
+              <div class="col-2">
                 <label class="form-label">{{ __('First name') }}</label>
                 <input class="form-control" id="first_name" name="first_name" type="text" placeholder="{{ __('First name') }}">
               </div>
@@ -102,6 +103,16 @@
                   <option value="MBA">MBA</option>
                   <option value="LL.M.">LL.M.</option>
                   <option value="MBA, LL.M.">MBA, LL.M.</option>
+                </select>
+              </div>
+              <div class="col-1">
+                <label class="form-label">{{ __('Employment') }}</label>
+                <select class="form-select" id="employment" name="employment">
+                  <option value="HPP">HPP</option>
+                  <option value="DPČ">DPČ</option>
+                  <option value="DPP">DPP</option>
+                  <option value="EVP">EVP</option>
+                  <option value="ČSO">ČSO</option>
                 </select>
               </div>
             </div>
@@ -118,7 +129,7 @@
                 <label class="form-label">{{ __('Bussines phone') }}</label>
                 <input class="form-control" id="phone" name="phone" type="text" placeholder="{{ __('Phone') }}">
               </div>
-              <div class="col-1">
+              <div class="col">
                 <label class="form-label">{{ __('Position') }}</label>
                 <input class="form-control" id="position" name="position" type="text" placeholder="">
               </div>
@@ -126,14 +137,14 @@
                 <label class="form-label">{{ __('Company cell phone') }}</label>
                 <input class="form-control" id="mobile" name="mobile" type="text" placeholder="{{ __('Mobil') }}">
               </div>
-              <div class="col-1">
+              <div class="col-2">
                 <label class="form-label">{{ __('ID Card') }}</label>
                 <select class="form-select" id="id_card" name="id_card">
                   <option value="Nový nástup">Nový nástup</option>
                   <option value="Vytvořit kartu">Vytvořit kartu</option>
                   <option value="Vytvořit nálepku">Vytvořit nálepku</option>
                   <option value="Předat nálepku">Předat nálepku</option>
-                  <option value="Aktual. nálepku">Aktualizovat nálepku</option>
+                  <option value="Aktual. nálepku">Aktual. nálepku</option>
                   <option value="Vydáno">Vydáno</option>
                   <option value="Vrácena">Vrácena</option>
                 </select>
@@ -144,16 +155,6 @@
                   <option value="Neaktivní">Neaktivní</option>
                   <option value="Aktivní">Aktivní</option>
                   <option value="Mateřská">Mateřská</option>
-                </select>
-              </div>
-              <div class="col-1">
-                <label class="form-label">{{ __('Employment') }}</label>
-                <select class="form-select" id="employment" name="employment">
-                  <option value="HPP">HPP</option>
-                  <option value="DPČ">DPČ</option>
-                  <option value="DPP">DPP</option>
-                  <option value="EVP">EVP</option>
-                  <option value="ČSO">ČSO</option>
                 </select>
               </div>
             </div>
@@ -331,7 +332,7 @@
 
   {{-- Export Employees --}}
   <div class="modal modal-blur fade" id="exportModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-md modal-dialog-top" role="document">
+    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
       <div class="modal-content shadow-lg">
         <div id="modal-export-header">
           <h5 class="modal-title"></h5>
@@ -484,18 +485,16 @@
           },
           {
             data: 'status',
-            "width": "1%",
+            "width": "0.5%",
             render: function(data, type, full, meta) {
               if (data == 'Neaktivní') {
-                return "<span class='badge bg-red p-1 me-1'></span>Neaktivní";
+                return "<span title='{{ __('Inactive') }}' class='cursor-help mx-3 badge bg-red p-1 me-1'></span>";
               }
               if (data == 'Aktivní') {
-                return "<span class='badge bg-green p-1 me-1'></span>Aktivní";
+                return "<span title='{{ __('Active') }}' class='cursor-help mx-3 badge bg-green p-1 me-1'></span>";
               }
               if (data == 'Mateřská') {
-                return "<span class='badge bg-yellow p-1 me-1'></span>Mateřská";
-              } else {
-                return "<span class='badge bg-muted p-1 me-1'></span>N/A";
+                return "<span title='{{ __('Maternal') }}' class='cursor-help mx-3 badge bg-yellow p-1 me-1'></span>";
               }
             }
           },

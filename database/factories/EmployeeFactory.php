@@ -19,7 +19,7 @@ class EmployeeFactory extends Factory
 
         return [
             'personal_number' => $personalNumber,
-            'image'           => '/foto/' . $personalNumber . '.jpg',
+            'image'           => $personalNumber . '.jpg',
             'title_preffix'   => $this->faker->title(),
             'last_name'       => $this->faker->lastName(),
             'first_name'      => $this->faker->firstName(),
@@ -34,10 +34,9 @@ class EmployeeFactory extends Factory
             'phone'           => $this->faker->numberBetween(341, 556),
             'mobile'          => $this->faker->e164PhoneNumber(),
             'id_card'         => $this->faker->randomElement(['Nový nástup', 'Vytvořit kartu', 'Předat nálepku', 'Aktualizovat nálepku', 'Ok', 'Vrácena']),
-            'id_color'        => $this->faker->hexColor(),
             'coffee'          => $this->faker->randomElement(['N', 'A']),
             'employment'      => $this->faker->randomElement(['HPP', 'DPP', 'DPČ', 'EVP', 'ČSO']),
-            'status'          => $this->faker->randomElement(['active', 'inactive', 'maternal']),
+            'status'          => $this->faker->randomElement(['Aktivní', 'Neaktivní', 'Mateřská']),
         ];
     }
 }

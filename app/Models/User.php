@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Department;
+use App\Models\Employee;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -45,8 +46,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function department()
+    public function employee()
     {
-        return $this->belongsTo(Department::class);
+        return $this->belongsTo(Employee::class);
     }
 }
