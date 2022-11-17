@@ -190,10 +190,10 @@
           </div>
           <div class="nav-item dropdown">
             <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" href="#" aria-label="Open user menu">
-              <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+              <span class="avatar avatar-sm" style="background-image: url(./foto/61625.jpg)"></span>
               <div class="d-none d-xl-block ps-2">
-                <div>Paweł Kuna</div>
-                <div class="small text-muted mt-1">UI Designer</div>
+                <div>{{ Auth::user()->name }}</div>
+                <div class="small text-muted mt-1">{{ Auth::user()->personal_number }}</div>
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">

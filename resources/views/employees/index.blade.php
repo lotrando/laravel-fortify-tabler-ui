@@ -10,13 +10,17 @@
             @auth
               <div class="ms-auto d-print-none col-auto">
                 <div class="btn-list">
-                  <a class="btn btn-azure" id="exportPhoneList" href="{{ route('employees.phonelist') }}" title="{{ __('Phonelist') }}">
+                  <a class="btn btn-azure" id="exportPhoneList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Generate phonelist to Excel file') }}"
+                    href="{{ route('employees.phonelist') }}">
                     {{ __('Phonelist') }}
                   </a>
-                  <a class="btn btn-blue" id="exportList" href="{{ route('employees.list') }}" title="{{ __('Quick list') }}">{{ __('Quick table') }}</a>
+                  <a class="btn btn-blue" id="exportList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Quick Excel table file') }}"
+                    href="{{ route('employees.list') }}">{{ __('Quick table') }}</a>
                   </a>
-                  <button class="btn btn-purple" id="exportTable" title="{{ __('Export') }}">{{ __('Export') }}</button>
-                  <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal" title="{{ __('New') }}">
+                  <button class="btn btn-purple" id="exportTable" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-original-title="{{ __('Export data') }}">{{ __('Export') }}</button>
+                  <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-original-title="{{ __('Create employee') }}">
                     {{ __('New') }}
                   </button>
                 </div>
