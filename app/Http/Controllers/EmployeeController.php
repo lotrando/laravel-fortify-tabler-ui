@@ -39,7 +39,7 @@ class EmployeeController extends Controller
                     if (Auth::user()) {
                         $buttons = '
                         <center>
-                            <span class="btn btn-icon dropdown-toggle btn-link" id="dropdownMenuButton-' . $data->id . '" data-bs-toggle="dropdown">
+                            <span class="btn btn-icon hover-shadow" id="dropdownMenuButton-' . $data->id . '" data-bs-toggle="dropdown">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line>
                             </svg>
@@ -98,35 +98,36 @@ class EmployeeController extends Controller
     public function exportPhoneList()
     {
         $sheets = new SheetCollection([
-            'Ředitelství'                       => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 17)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Provozní úsek'                     => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 24)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Údržba'                            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 25)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Interní oddělení'                  => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 1)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Interní odborné ambulance'         => Employee::with('department', 'job')->where('status', 'Aktivní')->whereIn('department_id', [2, 3, 4, 5, 21, 26])->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Neurologické oddělení'             => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 6)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Neurologická ambulance'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 7)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Odělení chirurgie páteře'          => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 8)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'JIP'                               => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 9)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Ambulance chirurgie páteře'        => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 10)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Ortopedické oddělení'              => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 28)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Rehabilitační oddělení'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 11)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Rehabilitační oddělení'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 11)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Rehabilitační ambulance'           => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 12)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Oddělení pracovního lékařství'     => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 13)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'OKB'                               => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 14)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'RDG'                               => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 15)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Operační sály'                     => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 16)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Stravovací provoz - kantýna'       => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 18)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Úklid'                             => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 19)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Anesteziologická ambulance'        => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 20)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Lékárny KHN'                           => Employee::with('department', 'job')->where('status', 'Aktivní')->whereIn('department_id', [22, 29])->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Mezioborová JIP'                   => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 23)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
-            'Oddělení následné péče'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 30)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Ředitelství'                       => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 17)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Provozní úsek'                     => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 24)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Údržba'                            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 25)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Interní oddělení'                  => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 1)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Interní odborné ambulance'         => Employee::with('department', 'job')->where('status', 'Aktivní')->whereIn('department_id', [2, 3, 4, 5, 21, 26])->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Neurologické oddělení'             => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 6)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Neurologická ambulance'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 7)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Odělení chirurgie páteře'          => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 8)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'JIP'                               => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 9)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Ambulance chirurgie páteře'        => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 10)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Ortopedické oddělení'              => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 28)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Rehabilitační oddělení'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 11)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Rehabilitační oddělení'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 11)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Rehabilitační ambulance'           => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 12)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Oddělení pracovního lékařství'     => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 13)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'OKB'                               => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 14)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'RDG'                               => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 15)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Operační sály'                     => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 16)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Stravovací provoz - kantýna'       => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 18)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Úklid'                             => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 19)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Anesteziologická ambulance'        => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 20)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Lékárny KHN'                           => Employee::with('department', 'job')->where('status', 'Aktivní')->whereIn('department_id', [22, 29])->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Mezioborová JIP'                   => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 23)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Oddělení následné péče'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 30)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
         ]);
 
         // $employees = Employee::with('department', 'job')->where('status', 'Aktivní')->where('phone', '<>', '')->orderBy('position', 'ASC')->get();
         return (new FastExcel($sheets))->download('Telefonní_seznam_KHN_ke_dni_' . date('d.m.Y', strtotime(now())) . '.xlsx', function ($employee) {
             return [
+                '#'                 =>  $employee->position,
                 'Jméno'             =>  $employee->last_name . ' ' . $employee->first_name . ' ' . $employee->title_preffix,
                 'Funkce'            =>  $employee->job->job_title,
                 'Klapka'            =>  $employee->phone,

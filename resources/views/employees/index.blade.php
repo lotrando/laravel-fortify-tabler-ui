@@ -119,7 +119,7 @@
                 <input class="form-control" id="phone" name="phone" type="text" placeholder="{{ __('Phone') }}">
               </div>
               <div class="col-1">
-                <label class="form-label">{{ __('Phonelist pos.') }}</label>
+                <label class="form-label">{{ __('Position') }}</label>
                 <input class="form-control" id="position" name="position" type="text" placeholder="">
               </div>
               <div class="col-2">
