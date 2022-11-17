@@ -131,7 +131,7 @@
               </div>
               <div class="col">
                 <label class="form-label">{{ __('Position') }}</label>
-                <input class="form-control" id="position" name="position" type="text" placeholder="">
+                <input class="form-control" id="position" name="position" type="text" placeholder="999">
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Company cell phone') }}</label>
@@ -524,6 +524,7 @@
         url: "/employees/" + id + "/edit",
         dataType: "json",
         success: function(html) {
+          $('#inputForm')[0].reset();
           $("#modal-header, #modal-icon").removeClass();
           $('#formModal').modal('show');
           $('#modal-icon').addClass('fas fa-user-edit fa-2x m-2');
@@ -544,6 +545,7 @@
           $('#job_id').val(html.data.job_id);
           $('#comment').val(html.data.comment);
           $('#status').val(html.data.status);
+          $('#email').val(html.data.email);
           $('#coffee').val(html.data.coffee);
           $('#department_code').val(html.data.department.department_code);
           $('#employment').val(html.data.employment);
@@ -574,8 +576,8 @@
       $('#id_card').val('Nový nástup');
       $('#status').val('Neaktivní');
       $('#employment').val('HPP');
+      $('#position').val(999);
       $('#coffee').val('N');
-      $('#position').val('');
       $("#preview_image").attr("src", "{{ URL::to('/') }}/foto/no_image.png");
       $('#store_image').html("<img src={{ URL::to('/') }}/foto/no_image.png height='193px' class='bg-muted-lt z-depth-1 img-thumbnail-big'></a>");
       $('#store_image').append("<input type='hidden' id='hidden_image' name='hidden_image' value='' />");
