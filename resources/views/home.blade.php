@@ -1,9 +1,17 @@
 @extends('layouts.app')
 
 @section('main')
-  <div class="page">
-    <div class="container-fluid py-2 pt-3">
-      <div class="card card-md shadow-sm">
+  <div class="container-fluid mt-2">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header card-header-light d-flex align-items-center justify-content-end">
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button class="btn btn-danger" type="submit">
+              {{ __('Logout') }}
+            </button>
+          </form>
+        </div>
         @if ($errors->any())
           <div class="alert alert-danger text-danger">
             <ul>
@@ -14,30 +22,18 @@
           </div>
         @endif
         <div class="card-body">
-          <div class="d-flex align-items-center justify-content-between">
-            <div class="text-muted">{{ __('You are logged in!') }}</div>
-
-            <form method="POST" action="{{ route('logout') }}">
-              @csrf
-              <button class="btn btn-danger" type="submit">
-                {{ __('Logout') }}
-              </button>
-            </form>
+          <div class="container-fluid py-2">
+            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updateProfileInformation()))
+              @include('profile.update-profile-information-form')
+            @endif
+            @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
+              @include('profile.update-password-form')
+            @endif
           </div>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-12">
-        @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updateProfileInformation()))
-          @include('profile.update-profile-information-form')
-        @endif
-        @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
-          @include('profile.update-password-form')
-        @endif
-      </div>
-    </div>
+  </div>
   </div>
   </div>
 @endsection
