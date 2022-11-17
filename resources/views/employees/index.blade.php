@@ -10,9 +10,9 @@
             @auth
               <div class="ms-auto d-print-none col-auto">
                 <div class="btn-list">
-                  <button class="btn btn-azure" id="exportPhoneList" href="{{ route('employees.phonelist') }}" title="{{ __('Phonelist') }}">
+                  <a class="btn btn-azure" id="exportPhoneList" href="{{ route('employees.phonelist') }}" title="{{ __('Phonelist') }}">
                     {{ __('Phonelist') }}
-                  </button>
+                  </a>
                   <a class="btn btn-blue" id="exportList" href="{{ route('employees.list') }}" title="{{ __('Quick list') }}">{{ __('Quick table') }}</a>
                   </a>
                   <button class="btn btn-purple" id="exportTable" title="{{ __('Export') }}">{{ __('Export') }}</button>
