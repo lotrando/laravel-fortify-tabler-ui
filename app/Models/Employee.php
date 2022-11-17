@@ -34,6 +34,7 @@ class Employee extends Model
         'id_card',
         'coffee',
         'employment',
+        'position',
         'status'
     ];
 

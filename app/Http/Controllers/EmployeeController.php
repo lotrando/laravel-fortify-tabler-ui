@@ -7,10 +7,12 @@ use App\Models\Employee;
 use App\Models\Job;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Rap2hpoutre\FastExcel\FastExcel;
+use Rap2hpoutre\FastExcel\SheetCollection;
 use Yajra\DataTables\Facades\DataTables;
 
 class EmployeeController extends Controller
@@ -27,17 +29,6 @@ class EmployeeController extends Controller
         $jobs = Job::all();
         $columns = Schema::getColumnListing('employees');
 
-        // $columns = [
-        //     [
-        //         'key'               =>      'personal_number',
-        //         'name'              =>      'Osobní číslo'
-        //     ],
-        //     [
-        //         'key'               =>      'title_preffix',
-        //         'name'              =>      'Tituly před'
-        //     ]
-        // ];
-
         if ($request->ajax()) {
 
             $model = Employee::with('department', 'job')->select('*');
@@ -45,9 +36,10 @@ class EmployeeController extends Controller
             return DataTables::eloquent($model)
 
                 ->addColumn('action', function ($data) {
-                    $buttons = '
+                    if (Auth::user()) {
+                        $buttons = '
                         <center>
-                            <span class="btn btn-icon btn-link" id="dropdownMenuButton-' . $data->id . '" data-bs-toggle="dropdown">
+                            <span class="btn btn-icon dropdown-toggle btn-link" id="dropdownMenuButton-' . $data->id . '" data-bs-toggle="dropdown">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon dropdown-item-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line>
                             </svg>
@@ -84,7 +76,8 @@ class EmployeeController extends Controller
                             </ul>
                         </center>
                         ';
-                    return $buttons;
+                        return $buttons;
+                    }
                 })
 
                 ->toJson();
@@ -102,43 +95,87 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function exportTableXls()
+    public function exportPhoneList()
     {
-        $employees = Employee::with('department', 'job')->orderBy('last_name', 'ASC')->get();
-        return (new FastExcel($employees))->download('zamestanci_khn_' . date('d.m.Y', strtotime(now())) . '.xlsx', function ($user) {
+        $sheets = new SheetCollection([
+            'Ředitelství'                       => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 17)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Provozní úsek'                     => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 24)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Údržba'                            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 25)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Interní oddělení'                  => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 1)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Interní odborné ambulance'         => Employee::with('department', 'job')->where('status', 'Aktivní')->whereIn('department_id', [2, 3, 4, 5, 21, 26])->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Neurologické oddělení'             => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 6)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Neurologická ambulance'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 7)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Odělení chirurgie páteře'          => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 8)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'JIP'                               => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 9)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Ambulance chirurgie páteře'        => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 10)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Ortopedické oddělení'              => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 28)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Rehabilitační oddělení'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 11)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Rehabilitační oddělení'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 11)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Rehabilitační ambulance'           => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 12)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Oddělení pracovního lékařství'     => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 13)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'OKB'                               => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 14)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'RDG'                               => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 15)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Operační sály'                     => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 16)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Stravovací provoz - kantýna'       => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 18)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Úklid'                             => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 19)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Anesteziologická ambulance'        => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 20)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Lékárny KHN'                           => Employee::with('department', 'job')->where('status', 'Aktivní')->whereIn('department_id', [22, 29])->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Mezioborová JIP'                   => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 23)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+            'Oddělení následné péče'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 30)->where('phone', '<>', '')->orderBy('job_id', 'ASC')->get(),
+        ]);
+
+        // $employees = Employee::with('department', 'job')->where('status', 'Aktivní')->where('phone', '<>', '')->orderBy('position', 'ASC')->get();
+        return (new FastExcel($sheets))->download('Telefonní_seznam_KHN_ke_dni_' . date('d.m.Y', strtotime(now())) . '.xlsx', function ($employee) {
             return [
-                'Osobní číslo'      =>  $user->personal_number,
-                'Tituly před'       =>  $user->title_preffix,
-                'Příjmení'          =>  $user->last_name,
-                'Jméno'             =>  $user->first_name,
-                'Tituly za'         =>  $user->title_suffix,
-                'Vema'              =>  $user->department->center_code,
-                'Středisko'         =>  $user->department->department_code,
-                'Oddělení'          =>  $user->department->department_name,
-                'Funkce'            =>  $user->job,
-                'Email'             =>  $user->email,
-                'Nástup'            =>  date('d. m. Y', strtotime($user->start_date)),
-                'Klapka'            =>  $user->phone,
-                'Mobil'             =>  $user->mobile,
-                'Id Karta'          =>  $user->id_card,
-                'Kávomat'           =>  $user->coffee,
-                'Stav'              =>  $user->status,
-                'Poměr'             =>  $user->employment,
+                'Jméno'             =>  $employee->last_name . ' ' . $employee->first_name . ' ' . $employee->title_preffix,
+                'Funkce'            =>  $employee->job->job_title,
+                'Klapka'            =>  $employee->phone,
+                'Mobil'             =>  $employee->mobile,
             ];
         });
     }
 
     /**
-     * Export collection to *.xlsx file.
+     * Export collection to complete list xlsx file.
      *
      * @return \Illuminate\Http\Response
      */
-    public function exportTableCsv(Request $request)
+    public function exportList()
+    {
+        $employees = Employee::with('department', 'job')->orderBy('last_name', 'ASC')->get();
+        return (new FastExcel($employees))->download('zamestanci_khn_seznam' . date('d.m.Y', strtotime(now())) . '.xlsx', function ($employee) {
+            return [
+                'Osobní číslo'      =>  $employee->personal_number,
+                'Tituly před'       =>  $employee->title_preffix,
+                'Příjmení'          =>  $employee->last_name,
+                'Jméno'             =>  $employee->first_name,
+                'Tituly za'         =>  $employee->title_suffix,
+                'Oddělení'          =>  $employee->department->department_name,
+                'Funkce'            =>  $employee->job->job_title,
+                'E-mail'            =>  $employee->email,
+                'Nástup'            =>  date('d. m. Y', strtotime($employee->start_date)),
+                'Klapka'            =>  $employee->phone,
+                'Mobil'             =>  $employee->mobile,
+                'Poměr'             =>  $employee->employment,
+                'Vytvořeno'         =>  date('d. m. Y', strtotime($employee->created_at)),
+                'Upraveno'          =>  date('d. m. Y', strtotime($employee->updated_at))
+            ];
+        });
+    }
+
+    /**
+     * Export collection to xlsx or csv file.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function exportTable(Request $request)
     {
         $columns = $request->input('column');
-        // $columns = implode(',', $columns);
-        $employees = Employee::orderBy('last_name', 'ASC')->get($columns);
-        return (new FastExcel($employees))->download('zamestanci_khn_' . date('d.m.Y', strtotime(now())) . '.csv');
+        $sort = $request->input('sort');
+        $direction = $request->input('direction');
+        $format = $request->input('format');
+        $employees = Employee::orderBy($sort, $direction)->get($columns);
+        return (new FastExcel($employees))->download('zamestanci_khn_' . date('d.m.Y', strtotime(now())) . '.' . $format);
     }
 
     /**
@@ -168,6 +205,7 @@ class EmployeeController extends Controller
             'id_card'           =>  'required',
             'coffee',
             'status',
+            'position',
             'employment'        =>  'required',
             'image'             =>  'image|max:4096'
         ];
@@ -218,14 +256,57 @@ class EmployeeController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display vcards of employees.
      *
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function vcards()
     {
-        //
+        $employees = Employee::with('department', 'job')->orderBy('last_name', 'ASC')->paginate(28);
+        return view('vcards')->with(['employees'   => $employees]);
+    }
+
+    public function vcardSearch(Request $request)
+    {
+        if ($request->ajax()) {
+            $output = "";
+            $employees = Employee::with('department', 'job')
+                ->where('personal_number', 'LIKE', '%' . $request->search . "%")
+                ->orWhere('last_name', 'LIKE', '%' . $request->search . "%")
+                ->orwhere('first_name', 'LIKE', '%' . $request->search . "%")
+                ->orwhere('title_preffix', 'LIKE', '%' . $request->search . "%")
+                ->get();
+            if ($employees) {
+                foreach ($employees as $employee) {
+                    $output .=
+                        '<div class="card card-sm mt-1">
+                                <div class="card-body bg-' . $employee->department->color_id . '-lt">
+                                <div class="row align-items-top">
+                                    <div class="col-auto">
+                                    <img class="avatar text-white mb-1" src="foto/' .  $employee->image . '" alt="' .  $employee->personal_number . '" style="width: 35px; height:50px"><br>
+                                    <span class="text-' .  $employee->department->color_id . ' text-center">' .  $employee->personal_number . '</span>
+                                    </div>
+                                    <div class="col">
+                                        <div class="font-weight-medium text-muted">' .  $employee->title_preffix . ' ' . $employee->last_name . ' ' . $employee->first_name . ' ' . $employee->title_suffix . '</div>
+                                    <div class="hr-text m-2">
+                                        <span>' .  __("info")  . '</span>
+                                    </div>
+                                    <div class="text-muted">
+                                        ' .  $employee->department->center_code . ' - ' .  $employee->department->department_name . '
+                                    </div>
+                                    <div class="text-mute subheader">
+                                        ' .  $employee->job->job_title . '
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        ';
+                }
+                return Response($output);
+            }
+        }
     }
 
     /**
@@ -307,6 +388,7 @@ class EmployeeController extends Controller
                 'id_card',
                 'coffee',
                 'status',
+                'position',
                 'employment'        =>  'required',
                 'image',
             ];
@@ -337,7 +419,8 @@ class EmployeeController extends Controller
             'id_card'           =>  $request->id_card,
             'coffee'            =>  $request->coffee,
             'status'            =>  $request->status,
-            'employment'        =>  $request->employment,
+            'status'            =>  $request->status,
+            'position'          =>  $request->position,
             'image'             =>  $image_name
         ];
 

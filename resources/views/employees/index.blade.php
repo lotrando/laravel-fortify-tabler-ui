@@ -7,11 +7,15 @@
         <div class="card mb-2 mt-2 shadow-sm">
           <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
             <h1 class="text-muted mb-0"><i class="fas fa-users fa-1x mx-1"></i> {{ __('Employees of KHN') }}</h1>
-            <div>
-              <button class="btn btn-purple p-2" id="exportTableModal" title="Export CSV">Export CSV</button>
-              <a class="btn btn-green p-2" id="exportTableXls" href="{{ route('employees.export.xls') }}" title="Export XLS">Export XLS</a>
-              <button class="btn btn-lime p-2" id="openCreateModal" title="Nový"><i class="fas fa-user-plus fa-1x m-1"></i></button>
-            </div>
+            @auth
+              <div>
+                <button class="btn btn-purple p-2" id="exportTable" title="Export"><i class="fas fa-file-export fa-1x m-1"></i>Export</button>
+                <a class="btn btn-green p-2" id="exportPhoneList" href="{{ route('employees.phonelist') }}" title="Telefoní seznam"><i
+                    class="fas fa-address-book fa-1x m-1"></i>{{ __('Phonelist') }}</a>
+                <a class="btn btn-blue p-2" id="exportList" href="{{ route('employees.list') }}" title="Kompletní seznam"><i class="fas fa-book fa-1x m-1"></i>{{ __('List') }}</a>
+                <button class="btn btn-lime p-2" id="openCreateModal" title="Nový"><i class="fas fa-user-plus fa-1x m-1"></i>{{ __('New') }}</button>
+              </div>
+            @endauth
           </div>
           <div class="card-body p-2">
             <div class="row">
@@ -114,11 +118,15 @@
                 <label class="form-label">{{ __('Bussines phone') }}</label>
                 <input class="form-control" id="phone" name="phone" type="text" placeholder="{{ __('Phone') }}">
               </div>
+              <div class="col-1">
+                <label class="form-label">{{ __('Phonelist pos.') }}</label>
+                <input class="form-control" id="position" name="position" type="text" placeholder="">
+              </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Company cell phone') }}</label>
                 <input class="form-control" id="mobile" name="mobile" type="text" placeholder="{{ __('Mobil') }}">
               </div>
-              <div class="col-2">
+              <div class="col-1">
                 <label class="form-label">{{ __('ID Card') }}</label>
                 <select class="form-select" id="id_card" name="id_card">
                   <option value="Nový nástup">Nový nástup</option>
@@ -285,6 +293,11 @@
         {{-- <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="{{ __('Close') }}"></button> --}}
         <div class="modal-status bg-warning"></div>
         <div class="modal-body py-4 text-center">
+          <div class="row">
+            <div class="col-12">
+              <span id="form_result_modal"></span>
+            </div>
+          </div>
           <svg class="icon icon-tabler icon-tabler-photo-off text-warning icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -318,22 +331,46 @@
 
   {{-- Export Employees --}}
   <div class="modal modal-blur fade" id="exportModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-top" role="document">
+    <div class="modal-dialog modal-md modal-dialog-top" role="document">
       <div class="modal-content shadow-lg">
         <div id="modal-export-header">
           <h5 class="modal-title"></h5>
           <i id="modal-export-icon"></i>
         </div>
-        <form id="exportForm" action="{{ route('employees.export.csv') }}">
+        <form id="exportForm" action="{{ route('employees.export') }}">
           @csrf
           <div class="modal-body">
+            <div class="row mb-2">
+              <div class="col-12">
+                <label class="form-label">{{ __('Export columns') }}</label>
+                <select class="form-select" id="column" name="column[]" multiple size=24>
+                  @foreach ($columns as $column)
+                    <option class="export-option" value="{{ $column }}" @if (old('column') == $column) selected @endif selected>{{ $column }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
             <div class="row">
               <div class="col-4">
-                <label class="form-label">{{ __('Columns') }}</label>
-                <select class="form-select" id="column" name="column[]" multiple size=23>
+                <label class="form-label">{{ __('Sort by') }}</label>
+                <select class="form-select" id="sort" name="sort">
                   @foreach ($columns as $column)
-                    <option value="{{ $column }}" @if (old('column') == $column) selected @endif>{{ $column }}</option>
+                    <option value="{{ $column }}" @if (old('sort') == $column) selected @endif>{{ $column }}</option>
                   @endforeach
+                </select>
+              </div>
+              <div class="col-4">
+                <label class="form-label">{{ __('Direction') }}</label>
+                <select class="form-select" id="direction" name="direction">
+                  <option value="ASC" @if (old('direction') == 'ASC') selected @endif>{{ __('Ascending') }}</option>
+                  <option value="DESC" @if (old('direction') == 'DESC')  @endif>{{ __('Descending') }}</option>
+                </select>
+              </div>
+              <div class="col-4">
+                <label class="form-label">{{ __('Format') }}</label>
+                <select class="form-select" id="format" name="format">
+                  <option value="xlsx" @if (old('format') == 'xlsx')  @endif>{{ __('*.xlsx') }}</option>
+                  <option value="csv" @if (old('format') == 'csv')  @endif>{{ __('*.csv') }}</option>
                 </select>
               </div>
             </div>
@@ -511,6 +548,7 @@
           $('#coffee').val(html.data.coffee);
           $('#department_code').val(html.data.department.department_code);
           $('#employment').val(html.data.employment);
+          $('#position').val(html.data.position);
           $('#start_date').val(html.data.start_date);
           $('#end_date').val(html.data.end_date);
           $('#created_at').val(html.data.created_at);
@@ -538,18 +576,19 @@
       $('#status').val('Neaktivní');
       $('#employment').val('HPP');
       $('#coffee').val('N');
+      $('#position').val('');
       $("#preview_image").attr("src", "{{ URL::to('/') }}/foto/no_image.png");
       $('#store_image').html("<img src={{ URL::to('/') }}/foto/no_image.png height='193px' class='bg-muted-lt z-depth-1 img-thumbnail-big'></a>");
       $('#store_image').append("<input type='hidden' id='hidden_image' name='hidden_image' value='' />");
     })
 
-    $('#exportTableModal').click(function() {
+    $('#exportTable').click(function() {
       $('#exportForm')[0].reset();
       $("#modal-export-icon, #modal-export-header").removeClass();
       $('#exportModal').modal('show');
-      $('#modal-export-icon').addClass('fas fa-file-csv fa-2x m-2');
+      $('#modal-export-icon').addClass('fas fa-file-export fa-2x m-2');
       $('#modal-export-header').addClass("modal-header bg-purple-lt");
-      $('#export_button, .modal-title').text("{{ __('Export employees to CSV') }}");
+      $('#export_button, .modal-title').text("{{ __('Export employees to file') }}");
       $('#action').val("Export");
     })
 
@@ -618,7 +657,7 @@
       if ($('#action').val() == "Export") {
         event.preventDefault();
         $.ajax({
-          url: "{{ route('employees.export.csv') }}",
+          url: "{{ route('employees.export') }}",
           method: "POST",
           data: new FormData(this),
           contentType: false,
@@ -682,14 +721,6 @@
       })
     })
 
-    // Export XLS
-    $('#exportTableXls').click(function() {
-      $('#exportTableXls').text("{{ __('Exporting ...') }}");
-      setTimeout(function() {
-        $('#exportTableXls').html("{{ __('Export XLS') }}");
-      }, 500);
-    })
-
     // Remove Employee Foto
     $(document).on('click', '.remove', function() {
       employee_id = $(this).attr('id');
@@ -712,5 +743,11 @@
         }
       })
     })
+
+    $('.export-option').mousedown(function(e) {
+      e.preventDefault();
+      $(this).prop('selected', !$(this).prop('selected'));
+      return false;
+    });
   </script>
 @endsection

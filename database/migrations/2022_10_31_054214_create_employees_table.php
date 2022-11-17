@@ -34,6 +34,7 @@ class CreateEmployeesTable extends Migration
             $table->string('id_card');
             $table->enum('coffee', ['A', 'N'])->default('N')->nullable();
             $table->string('employment');
+            $table->string('position')->nullable();
             $table->enum('status', ['Aktivní', 'Neaktivní', 'Mateřská'])->default('Neaktivní');
             $table->timestamps();
         });
