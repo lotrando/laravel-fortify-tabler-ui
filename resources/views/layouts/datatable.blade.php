@@ -27,7 +27,7 @@
   <div class="page">
     <!-- Navbar -->
     <header class="navbar navbar-expand-md navbar-light d-print-none">
-      <div class="container-fluid">
+      <div class="container-xl">
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-menu" type="button" aria-controls="navbar-menu" aria-expanded="false"
           aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -40,25 +40,16 @@
         <div class="navbar-nav order-md-last flex-row">
           <div class="nav-item d-none d-md-flex me-3">
             <div class="btn-list">
-              <a class="btn" href="https://github.com/tabler/tabler" target="_blank" rel="noreferrer">
+              <a class="btn" href="#" target="_blank" rel="noreferrer">
                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                  stroke-linecap="round" stroke-linejoin="round">
+                <svg class="icon text-red icon-tabler icon-tabler-help" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                  stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path
-                    d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5">
-                  </path>
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <line x1="12" y1="17" x2="12" y2="17.01"></line>
+                  <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4"></path>
                 </svg>
-                Source code
-              </a>
-              <a class="btn" href="https://github.com/sponsors/codecalm" target="_blank" rel="noreferrer">
-                <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
-                <svg class="icon text-pink" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                  fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path>
-                </svg>
-                Sponsor
+                Helpdesk
               </a>
             </div>
           </div>
@@ -202,7 +193,7 @@
               <a class="dropdown-item" href="#">Feedback</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="./settings.html">Settings</a>
-              <a class="dropdown-item" href="./sign-in.html">Logout</a>
+              <a class="dropdown-item" id="logoutModal">Logout</a>
             </div>
           </div>
         </div>
@@ -211,7 +202,7 @@
     <div class="navbar-expand-md">
       <div class="collapse navbar-collapse" id="navbar-menu">
         <div class="navbar navbar-light">
-          <div class="container-fluid">
+          <div class="container-xl">
             <ul class="navbar-nav">
               <li class="nav-item active">
                 <a class="nav-link" href="./">
@@ -653,7 +644,26 @@
                 </div>
               </li>
             </ul>
-            <div class="my-md-0 flex-grow-1 flex-md-grow-0 order-md-last order-first my-2">
+            @auth
+              <div class="ms-auto d-print-none col-auto">
+                <div class="btn-list">
+                  <a class="btn btn-azure" id="exportPhoneList" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-original-title="{{ __('Generate phonelist to Excel file') }}" href="{{ route('employees.phonelist') }}">
+                    {{ __('Phonelist') }}
+                  </a>
+                  <a class="btn btn-blue" id="exportList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Quick Excel table file') }}"
+                    href="{{ route('employees.list') }}">{{ __('Quick table') }}</a>
+                  </a>
+                  <button class="btn btn-purple" id="exportTable" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-original-title="{{ __('Export data') }}">{{ __('Export') }}</button>
+                  <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-original-title="{{ __('Create employee') }}">
+                    {{ __('New') }}
+                  </button>
+                </div>
+              </div>
+            @endauth
+            {{-- <div class="my-md-0 flex-grow-1 flex-md-grow-0 order-md-last order-first my-2">
               <form action="./" method="get" autocomplete="off" novalidate="">
                 <div class="input-icon">
                   <span class="input-icon-addon">
@@ -668,7 +678,7 @@
                   <input class="form-control" type="text" value="" aria-label="Search in website" placeholder="Search…">
                 </div>
               </form>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
@@ -731,7 +741,7 @@
         <div class="container-fluid">
           <div class="row align-items-center flex-row-reverse text-center">
             <div class="col-lg-auto ms-lg-auto">
-              <ul class="list-inline list-inline-dots mb-0">
+              <ul class="list-inline list-inline-dots mx-3">
                 <li class="list-inline-item"><a class="link-secondary" href="./docs/">Documentation</a></li>
                 <li class="list-inline-item"><a class="link-secondary" href="./license.html">License</a></li>
                 <li class="list-inline-item"><a class="link-secondary" href="https://github.com/tabler/tabler" target="_blank" rel="noopener">Source code</a></li>
@@ -748,16 +758,15 @@
                 </li>
               </ul>
             </div>
-            <div class="col-12 col-lg-auto mt-lg-0 mt-3">
+            <div class="col-12 col-lg-auto mt-lg-0 mx-3">
               <ul class="list-inline list-inline-dots mb-0">
                 <li class="list-inline-item">
-                  Copyright © 2022
-                  <a class="link-secondary" href=".">Tabler</a>.
-                  All rights reserved.
+                  Copyright © 2022 pro Karvinskou hornickou nemocnici a.s. vytvořil
+                  <a class="link-secondary" href=".">Klika Miroslav</a>
                 </li>
                 <li class="list-inline-item">
                   <a class="link-secondary" href="./changelog.html" rel="noopener">
-                    v1.0.0-beta16
+                    v1.0.1
                   </a>
                 </li>
               </ul>

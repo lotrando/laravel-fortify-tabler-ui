@@ -14026,8 +14026,8 @@ Navbar vertical
 }
 
 .page-body {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
+  margin-top: 0.30rem;
+  margin-bottom: 0.30rem;
 }
 
 .page-body-card {
@@ -14141,7 +14141,7 @@ Navbar vertical
 .footer {
   border-top: 1px solid #e6e7e9;
   background-color: #ffffff;
-  padding: 2rem 0;
+  padding: 0.5rem 0.2rem;
   color: #626976;
   margin-top: auto;
 }

@@ -5,31 +5,9 @@
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="card mb-2 mt-2 shadow-sm">
-          <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
-            <h1 class="text-muted mb-0"><i class="fas fa-users fa-1x mx-1"></i> {{ __('Employees of KHN') }}</h1>
-            @auth
-              <div class="ms-auto d-print-none col-auto">
-                <div class="btn-list">
-                  <a class="btn btn-azure" id="exportPhoneList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Generate phonelist to Excel file') }}"
-                    href="{{ route('employees.phonelist') }}">
-                    {{ __('Phonelist') }}
-                  </a>
-                  <a class="btn btn-blue" id="exportList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Quick Excel table file') }}"
-                    href="{{ route('employees.list') }}">{{ __('Quick table') }}</a>
-                  </a>
-                  <button class="btn btn-purple" id="exportTable" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    data-bs-original-title="{{ __('Export data') }}">{{ __('Export') }}</button>
-                  <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    data-bs-original-title="{{ __('Create employee') }}">
-                    {{ __('New') }}
-                  </button>
-                </div>
-              </div>
-              <div>
-
-              </div>
-            @endauth
-          </div>
+          {{-- <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
+            <h1 class="text-muted m-0 mb-0"><i class="fas fa-users"></i> {{ __('Employees of KHN') }}</h1>
+          </div> --}}
           <div class="card-body p-2">
             <div class="row">
               <div class="col-12">
