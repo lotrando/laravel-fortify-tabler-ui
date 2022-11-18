@@ -27,7 +27,7 @@
   <div class="page">
     <!-- Navbar -->
     <header class="navbar navbar-expand-md navbar-light d-print-none">
-      <div class="container-xl">
+      <div class="container-fluid">
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-menu" type="button" aria-controls="navbar-menu" aria-expanded="false"
           aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -202,7 +202,7 @@
     <div class="navbar-expand-md">
       <div class="collapse navbar-collapse" id="navbar-menu">
         <div class="navbar navbar-light">
-          <div class="container-xl">
+          <div class="container-fluid">
             <ul class="navbar-nav">
               <li class="nav-item active">
                 <a class="nav-link" href="./">
@@ -649,16 +649,51 @@
                 <div class="btn-list">
                   <a class="btn btn-azure" id="exportPhoneList" data-bs-toggle="tooltip" data-bs-placement="bottom"
                     data-bs-original-title="{{ __('Generate phonelist to Excel file') }}" href="{{ route('employees.phonelist') }}">
+                    <svg class="icon icon-tabler icon-tabler-address-book" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z"></path>
+                      <path d="M10 16h6"></path>
+                      <circle cx="13" cy="11" r="2"></circle>
+                      <path d="M4 8h3"></path>
+                      <path d="M4 12h3"></path>
+                      <path d="M4 16h3"></path>
+                    </svg>
                     {{ __('Phonelist') }}
                   </a>
                   <a class="btn btn-blue" id="exportList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Quick Excel table file') }}"
-                    href="{{ route('employees.list') }}">{{ __('Quick table') }}</a>
+                    href="{{ route('employees.list') }}">
+                    <svg class="icon icon-tabler icon-tabler-file-spreadsheet" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                      <path d="M8 11h8v7h-8z"></path>
+                      <path d="M8 15h8"></path>
+                      <path d="M11 11v7"></path>
+                    </svg>
+                    {{ __('Quick table') }}
                   </a>
-                  <button class="btn btn-purple" id="exportTable" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    data-bs-original-title="{{ __('Export data') }}">{{ __('Export') }}</button>
+                  </a>
+                  <button class="btn btn-purple" id="exportTable" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Export data') }}">
+                    <svg class="icon icon-tabler icon-tabler-file-export" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                      <path d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3"></path>
+                    </svg>
+                    {{ __('Export') }}
+                  </button>
                   <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    data-bs-original-title="{{ __('Create employee') }}">
-                    {{ __('New') }}
+                    data-bs-original-title="{{ __('Creates a new employee') }}">
+                    <svg class="icon icon-tabler icon-tabler-user-plus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                      <path d="M16 11h6m-3 -3v6"></path>
+                    </svg>
+                    {{ __('New employee') }}
                   </button>
                 </div>
               </div>
