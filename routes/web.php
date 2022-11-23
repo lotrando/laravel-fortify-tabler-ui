@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EvidenceController;
+use App\Http\Controllers\SlideController;
+use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +25,13 @@ Route::get('home', function () {
     return view('home');
 })->middleware('verified', 'auth');
 
+Route::resource('slides', SlideController::class);
+Route::resource('train', TrainingController::class);
+
 Route::resource('employees', EmployeeController::class);
 Route::get('vcards', [EmployeeController::class, 'vcards'])->name('employees.vcards');
 Route::get('search', [EmployeeController::class, 'vcardSearch'])->name('employees.search');
+
 
 Route::group(['middleware' => 'auth'], function () {
     // Employee

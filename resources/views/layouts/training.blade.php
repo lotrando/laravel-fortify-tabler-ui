@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Intranet KHN - {{ __('Employees') }}</title>
+  <title>Intranet KHN - {{ __('Training') }}</title>
   <link type="image/png" href="{{ asset('static/logo-khn.png') }}" rel="shortcut icon">
   <link href="{{ asset('https://use.fontawesome.com/releases/v5.11.2/css/all.css') }}" rel="stylesheet">
   <link href="{{ asset('css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
@@ -183,8 +183,8 @@
             <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" href="#" aria-label="Open user menu">
               <span class="avatar avatar-sm" style="background-image: url(./foto/61625.jpg)"></span>
               <div class="d-none d-xl-block ps-2">
-                <div>{{ Auth::user()->name }}</div>
-                <div class="small text-muted mt-1">{{ Auth::user()->personal_number }}</div>
+                <div>{{ Auth::user()->name ?? '' }}</div>
+                <div class="small text-muted mt-1">{{ Auth::user()->personal_number ?? '' }}</div>
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -645,59 +645,6 @@
               </li>
             </ul>
             @auth
-              <div class="ms-auto d-print-none col-auto">
-                <div class="btn-list">
-                  <a class="btn btn-azure" id="exportPhoneList" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    data-bs-original-title="{{ __('Generate phonelist to Excel file') }}" href="{{ route('employees.phonelist') }}">
-                    <svg class="icon icon-tabler icon-tabler-address-book" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z"></path>
-                      <path d="M10 16h6"></path>
-                      <circle cx="13" cy="11" r="2"></circle>
-                      <path d="M4 8h3"></path>
-                      <path d="M4 12h3"></path>
-                      <path d="M4 16h3"></path>
-                    </svg>
-                    {{ __('Phonelist') }}
-                  </a>
-                  <a class="btn btn-blue" id="exportList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Quick data to table') }}"
-                    href="{{ route('employees.list') }}">
-                    <svg class="icon icon-tabler icon-tabler-file-spreadsheet" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
-                      <path d="M8 11h8v7h-8z"></path>
-                      <path d="M8 15h8"></path>
-                      <path d="M11 11v7"></path>
-                    </svg>
-                    {{ __('Quick table') }}
-                  </a>
-                  </a>
-                  <button class="btn btn-purple" id="exportTable" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    data-bs-original-title="{{ __('Export data to CSV of XLS') }}">
-                    <svg class="icon icon-tabler icon-tabler-file-export" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                      <path d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3"></path>
-                    </svg>
-                    {{ __('Export') }}
-                  </button>
-                  <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    data-bs-original-title="{{ __('Creates a new employee') }}">
-                    <svg class="icon icon-tabler icon-tabler-user-plus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <circle cx="9" cy="7" r="4"></circle>
-                      <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                      <path d="M16 11h6m-3 -3v6"></path>
-                    </svg>
-                    {{ __('New employee') }}
-                  </button>
-                </div>
-              </div>
             @endauth
             {{-- <div class="my-md-0 flex-grow-1 flex-md-grow-0 order-md-last order-first my-2">
               <form action="./" method="get" autocomplete="off" novalidate="">
@@ -820,13 +767,6 @@
   <script src="{{ asset('js/jquery.js') }}"></script>
   <script src="{{ asset('js/tabler.min.js') }}"></script>
   <script src="{{ asset('js/demo.min.js') }}"></script>
-  <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
-  <script src="{{ asset('js/dataTables.scroller.min.js') }}"></script>
-  <script src="{{ asset('js/dataTables.fixedHeader.min.js') }}"></script>
-  <script src="{{ asset('js/czech-string.js') }}"></script>
-  <script src="{{ asset('js/moment-with-locales.js') }}"></script>
-
   @yield('scripts')
 </body>
 
