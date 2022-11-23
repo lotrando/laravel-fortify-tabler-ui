@@ -16,8 +16,8 @@ class TrainigSeeder extends Seeder
     public function run()
     {
         DB::table('trainings')->insert([
-            'title' => 1,
-            'category' => 'Slide-2',
+            'title' => 'Školení o požární ochrany pro zaměstnance KHN a.s.',
+            'category' => 'BOZP',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

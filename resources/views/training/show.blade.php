@@ -11,35 +11,34 @@
   .mySlides {
     display: none;
     overflow: hidden;
-    border-radius: 10px;
   }
 
   /* Next & previous buttons */
-  .prev,
-  .next {
+  .prev {
     cursor: pointer;
     position: absolute;
     top: 50%;
+    left: -12%;
     width: auto;
     margin-top: -45px;
-    padding: 10px;
     font-weight: bold;
-    font-size: 52px;
     transition: 0.6s ease;
-    border-radius: 0 15px 15px 0;
+    border-radius: 10px;
     user-select: none;
   }
 
   /* Position the "next button" to the right */
   .next {
-    right: 0;
-    border-radius: 15px 0 0 15px;
-  }
-
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover,
-  .next:hover {
-    background-color: rgba(145, 98, 98, 0.8);
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: -12%;
+    width: auto;
+    margin-top: -45px;
+    font-weight: bold;
+    transition: 0.6s ease;
+    border-radius: 10px;
+    user-select: none;
   }
 
   /* Caption text */
@@ -58,7 +57,7 @@
   .numbertext {
     color: #f2f2f2;
     font-size: 25px;
-    padding: 3px 15px;
+    padding: 3px 8px;
     position: absolute;
     font-family: 'Roboto Condensed';
     top: 0;
@@ -66,13 +65,13 @@
 
   /* Dots indicators */
   .dot {
-    cursor: cursor;
+    cursor: none;
     color: white;
     padding-top: 1px;
     height: 22px;
     width: 22px;
     margin: 0 0px;
-    background-color: #bbb;
+    background-color: rgba(114, 121, 134, 0.659);
     font-family: 'Roboto Condensed';
     font-size: 14px;
     border-radius: 15%;
@@ -82,22 +81,31 @@
 
   /* Active Dot */
   .active-dot {
-    background-color: #ac1b1b;
+    background-color: #206bc4;
   }
 </style>
 @section('main')
   @foreach ($data as $item)
-    <h2 class="m-4 text-center">{{ $item->title }}</h2>
-    <div class="slideshow-container mt-1">
+    <div class="slideshow-container">
       @if ($item->slide->count())
         @foreach ($item->slide as $slide)
-          <div class="mySlides">
-            <div class="numbertext">{{ $slide->position }}/{{ $item->slide->count() }}</div>
-            <img src="../trainings/slides/{{ $slide->directory }}/{{ $slide->path }}" style="width:100%">
+          <div class="col-12">
+            <div class="card mySlides mt-5 shadow-lg">
+              <div class="ribbon ribbon-top bg-yellow">
+                {{ $slide->position }}/{{ $item->slide->count() }}
+              </div>
+              <div class="card-header d-flex align-content-between align-items-center">
+                <h1 class="card-title">{{ $item->title }}</h1>
+              </div>
+
+              <div class="card-body p-1">
+                <img src="../trainings/slides/{{ $slide->directory }}/{{ $slide->path }}" style="width:100%">
+              </div>
+            </div>
           </div>
           <!-- Next and previous buttons -->
-          <a class="prev text-white" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next text-white" onclick="plusSlides(1)">&#10095;</a>
+          <a class="btn btn-primary hover-shadow text-decoration-none prev p-3 text-white" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="btn btn-primary hover-shadow text-decoration-none next p-3 text-white" onclick="plusSlides(1)">&#10095;</a>
         @endforeach
       @endif
     </div>
