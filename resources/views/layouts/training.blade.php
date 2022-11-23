@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Intranet KHN - {{ __('Employees') }}</title>
+  <title>Intranet KHN - {{ __('Training') }}</title>
   <link type="image/png" href="{{ asset('static/logo-khn.png') }}" rel="shortcut icon">
   <link href="{{ asset('https://use.fontawesome.com/releases/v5.11.2/css/all.css') }}" rel="stylesheet">
   <link href="{{ asset('css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">

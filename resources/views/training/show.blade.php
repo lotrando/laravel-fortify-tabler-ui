@@ -91,15 +91,14 @@
         @foreach ($item->slide as $slide)
           <div class="col-12">
             <div class="card mySlides mt-5 shadow-lg">
-              <div class="ribbon ribbon-top bg-yellow">
+              <div class="ribbon ribbon bg-red">
                 {{ $slide->position }}/{{ $item->slide->count() }}
+              </div>
+              <div class="card-body p-2">
+                <img src="../trainings/slides/{{ $slide->directory }}/{{ $slide->path }}" style="width:100%">
               </div>
               <div class="card-header d-flex align-content-between align-items-center">
                 <h1 class="card-title">{{ $item->title }}</h1>
-              </div>
-
-              <div class="card-body p-1">
-                <img src="../trainings/slides/{{ $slide->directory }}/{{ $slide->path }}" style="width:100%">
               </div>
             </div>
           </div>
