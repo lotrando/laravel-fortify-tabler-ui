@@ -1,16 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
 @section('main')
   <div class="container-fluid mt-2">
     <div class="col-12">
       <div class="card">
-        <div class="card-header card-header-light d-flex align-items-center justify-content-end">
-          <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button class="btn btn-danger" type="submit">
-              {{ __('Logout') }}
-            </button>
-          </form>
+        <div class="card-header card-header-light d-flex align-items-center justify-content-between">
+          <h1 class="text-muted mb-0">
+            {{ __('Home') }}
+          </h1>
         </div>
         @if ($errors->any())
           <div class="alert alert-danger text-danger">

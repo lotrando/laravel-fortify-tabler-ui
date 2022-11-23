@@ -7,9 +7,6 @@
   <title>Intranet KHN - {{ __('Employees') }}</title>
   <link type="image/png" href="{{ asset('static/logo-khn.png') }}" rel="shortcut icon">
   <link href="{{ asset('https://use.fontawesome.com/releases/v5.11.2/css/all.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/fixedHeader.dataTables.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/scroller.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/tabler.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-flags.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-payments.min.css') }}" rel="stylesheet" />
@@ -42,12 +39,15 @@
             <div class="btn-list">
               <a class="btn" href="#" target="_blank" rel="noreferrer">
                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-                <svg class="icon text-red icon-tabler icon-tabler-help" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                <svg class="icon text-red icon-tabler icon-tabler-lifebuoy" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
                   stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <circle cx="12" cy="12" r="4"></circle>
                   <circle cx="12" cy="12" r="9"></circle>
-                  <line x1="12" y1="17" x2="12" y2="17.01"></line>
-                  <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4"></path>
+                  <line x1="15" y1="15" x2="18.35" y2="18.35"></line>
+                  <line x1="9" y1="15" x2="5.65" y2="18.35"></line>
+                  <line x1="5.65" y1="5.65" x2="9" y2="9"></line>
+                  <line x1="18.35" y1="5.65" x2="15" y2="9"></line>
                 </svg>
                 Helpdesk
               </a>
@@ -183,8 +183,8 @@
             <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" href="#" aria-label="Open user menu">
               <span class="avatar avatar-sm" style="background-image: url(./foto/61625.jpg)"></span>
               <div class="d-none d-xl-block ps-2">
-                <div>{{ Auth::user()->name ?? ""}}</div>
-                <div class="small text-muted mt-1">{{ Auth::user()->personal_number ?? ""}}</div>
+                <div>{{ Auth::check() ? Auth::user()->name : null }}</div>
+                <div class="small text-muted mt-1">{{ Auth::check() ? Auth::user()->personal_number : personal_number }}</div>
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -193,7 +193,7 @@
               <a class="dropdown-item" href="#">Feedback</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="./settings.html">Settings</a>
-              <a class="dropdown-item" id="logoutModal">Logout</a>
+              <a class="dropdown-item" id="logout" href=".">Logout</a>
             </div>
           </div>
         </div>
@@ -661,7 +661,7 @@
                     </svg>
                     {{ __('Phonelist') }}
                   </a>
-                  <a class="btn btn-blue" id="exportList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Quick data to table') }}"
+                  <a class="btn btn-blue" id="exportList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Quick Excel table file') }}"
                     href="{{ route('employees.list') }}">
                     <svg class="icon icon-tabler icon-tabler-file-spreadsheet" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                       stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -675,8 +675,7 @@
                     {{ __('Quick table') }}
                   </a>
                   </a>
-                  <button class="btn btn-purple" id="exportTable" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    data-bs-original-title="{{ __('Export data to CSV of XLS') }}">
+                  <button class="btn btn-purple" id="exportTable" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Export data') }}">
                     <svg class="icon icon-tabler icon-tabler-file-export" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -778,18 +777,16 @@
           <div class="row align-items-center flex-row-reverse text-center">
             <div class="col-lg-auto ms-lg-auto">
               <ul class="list-inline list-inline-dots mx-3">
-                <li class="list-inline-item"><a class="link-secondary" href="./docs/">Documentation</a></li>
-                <li class="list-inline-item"><a class="link-secondary" href="./license.html">License</a></li>
-                <li class="list-inline-item"><a class="link-secondary" href="https://github.com/tabler/tabler" target="_blank" rel="noopener">Source code</a></li>
+                <li class="list-inline-item"><a class="link-secondary" href="{{ route('employees.index') }}">Zaměstnanci</a></li>
                 <li class="list-inline-item">
-                  <a class="link-secondary" href="https://github.com/sponsors/codecalm" target="_blank" rel="noopener">
+                  <a class="link-secondary" href="." target="_blank" rel="noopener">
                     <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
                     <svg class="icon text-pink icon-filled icon-inline" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"></path>
                     </svg>
-                    Sponsor
+                    {{ __('Author') }}
                   </a>
                 </li>
               </ul>
@@ -797,13 +794,10 @@
             <div class="col-12 col-lg-auto mt-lg-0 mx-3">
               <ul class="list-inline list-inline-dots mb-0">
                 <li class="list-inline-item">
-                  Copyright © 2022 pro Karvinskou hornickou nemocnici a.s. vytvořil
-                  <a class="link-secondary" href=".">Klika Miroslav</a>
+                  Copyright © 2022 pro Karvinskou hornickou nemocnici a.s. vytvořil<a class="link-secondary" href=".">Klika Miroslav</a>
                 </li>
                 <li class="list-inline-item">
-                  <a class="link-secondary" href="./changelog.html" rel="noopener">
-                    v1.0.1
-                  </a>
+                  <a class="link-secondary" href="." rel="noopener">v1.0.1</a>
                 </li>
               </ul>
             </div>
@@ -814,20 +808,68 @@
   </div>
 
   <section>
-    @yield('modals')
+    {{-- Delete Employee Modal --}}
+    <div class="modal modal-blur fade" id="logoutModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content shadow-lg">
+          <div class="modal-status bg-danger"></div>
+          <div class="modal-body py-4 text-center">
+            <svg class="icon text-danger icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 9v2m0 4v.01" />
+              <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+            </svg>
+            <h3>{{ __('Are you sure?') }}</h3>
+            <div class="text-muted">{{ __('Do you really want to logout?') }}
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="w-100">
+              <div class="row">
+                <div class="col">
+                  <button class="btn btn-muted w-100 hover-shadow" data-bs-dismiss="modal">
+                    {{ __('Cancel') }}
+                  </button>
+                </div>
+                <div class="col">
+                  <button class="btn btn-danger w-100 hover-shadow" id="logout_button"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <script src="{{ asset('js/jquery.js') }}"></script>
   <script src="{{ asset('js/tabler.min.js') }}"></script>
   <script src="{{ asset('js/demo.min.js') }}"></script>
-  <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
-  <script src="{{ asset('js/dataTables.scroller.min.js') }}"></script>
-  <script src="{{ asset('js/dataTables.fixedHeader.min.js') }}"></script>
-  <script src="{{ asset('js/czech-string.js') }}"></script>
-  <script src="{{ asset('js/moment-with-locales.js') }}"></script>
 
   @yield('scripts')
+  <script>
+    // Delete Employee
+    $(document).on('click', '#logout', function() {
+      $('#logout_button').text("{{ __('Logout') }}");
+      $('#confirmModal').modal('show');
+    })
+
+    $('#logout_button').click(function() {
+      $.ajax({
+        url: "logout",
+        beforeSend: function() {
+          $('#logout_button').text("{{ __('Loging out ...') }}");
+        },
+        success: function(data) {
+          setTimeout(function() {
+            $('#logoutModal').modal('hide');
+            $('#logout_button').text("{{ __('Logout') }}");
+          }, 1000);
+        }
+      })
+    })
+  </script>
 </body>
 
 </html>
