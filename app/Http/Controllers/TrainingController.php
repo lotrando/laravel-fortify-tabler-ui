@@ -14,7 +14,7 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        $data = Training::with('slide')->get();
+        $data = Training::with('slide', 'attendance')->get();
         return view('training.index')->with(['data' => $data]);
     }
 

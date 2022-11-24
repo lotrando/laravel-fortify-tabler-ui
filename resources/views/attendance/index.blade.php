@@ -1,9 +1,7 @@
-@extends('layouts.clear')
+@extends('layouts.datatable')
 
 @section('main')
-  @foreach ($data as $item)
     <h2>{{ $item->title }}</h2>
-    @if ($item->slide->count())
       <table class="table-bordered table-hover dataTable w-100 table">
         <thead>
           <tr class="bg-azure-lt table bg-opacity-50 text-center text-white">
@@ -14,17 +12,12 @@
             <th class="col-1">{{ __('Updated') }}</th>
           </tr>
         </thead>
-        @foreach ($item->slide as $slide)
-          <tr>
-            <td>
-              <center>{{ $slide->position }}</center>
-            </td>
-            <td>
-              <center><img class="card p-1" src="trainings/slides/{{ $slide->directory }}/{{ $slide->path }}" alt="{{ $slide->slide_title }}" height="80px"></center>
-            </td>
-            <td>{{ $slide->slide_title }}</td>
-            <td>{{ $slide->created_at->format('d. m. Y') }}</td>
-            <td>{{ $slide->updated_at->format('d. m. Y') }}</td>
+        @foreach ($attendances as $attendance)
+            <td>{{ $attendance->personal_number }}</td>
+            <td>{{ $attendance->last_name }}</td>
+            <td>{{ $attendance->first_name }}</td>
+            <td>{{ $attendance->start_time->format('d. m. Y') }}</td>
+            <td>{{ $attendance->endt_time->format('d. m. Y') }}</td>
           </tr>
         @endforeach
       </table>

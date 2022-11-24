@@ -33,8 +33,8 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-          <a href="{{ route('employees.index') }}">
-            <img class="navbar-brand-image" src="{{ asset('static/logo.svg') }}" alt="Logo KHN a.s." width="110" height="50">
+          <a href="{{ url('/') }}">
+            <img class="navbar-brand-image" src="{{ asset('img/logo.png') }}" alt="Logo KHN a.s.">
           </a>
         </h1>
         <div class="navbar-nav order-md-last flex-row">
@@ -183,8 +183,8 @@
             <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" href="#" aria-label="Open user menu">
               <span class="avatar avatar-sm" style="background-image: url(./foto/61625.jpg)"></span>
               <div class="d-none d-xl-block ps-2">
-                <div>{{ Auth::user()->name }}</div>
-                <div class="small text-muted mt-1">{{ Auth::user()->personal_number }}</div>
+                <div>{{ Auth::user()->name ?? '' }}</div>
+                <div class="small text-muted mt-1">{{ Auth::user()->personal_number ?? '' }}</div>
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">

@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EvidenceController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\TrainingController;
+use App\Models\Attendance;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +29,7 @@ Route::get('home', function () {
 
 Route::resource('slides', SlideController::class);
 Route::resource('train', TrainingController::class);
+Route::resource('attendances', AttendanceController::class);
 
 Route::resource('employees', EmployeeController::class);
 Route::get('vcards', [EmployeeController::class, 'vcards'])->name('employees.vcards');
