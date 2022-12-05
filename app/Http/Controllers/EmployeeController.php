@@ -25,7 +25,7 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
 
-        $departments = Department::all();
+        $departments = Department::orderBy('department_name')->get();
         $jobs = Job::all();
         $columns = Schema::getColumnListing('employees');
 
