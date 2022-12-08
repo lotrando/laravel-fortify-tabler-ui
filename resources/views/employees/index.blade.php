@@ -5,9 +5,11 @@
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="card mb-2 mt-2 shadow-sm">
-          {{-- <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
-            <h1 class="text-muted m-0 mb-0"><i class="fas fa-users"></i> {{ __('Employees of KHN') }}</h1>
-          </div> --}}
+          <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
+            <h3 class="text-muted m-0 mb-0 p-0"><i class="fas fa-users"></i>
+              {{ __('Employees of KHN') }}
+            </h3>
+          </div>
           <div class="card-body p-2">
             <div class="row">
               <div class="col-12">

@@ -42,196 +42,71 @@
         <div class="navbar-nav order-md-last flex-row">
           <div class="nav-item d-none d-md-flex me-3">
             <div class="btn-list">
-              <a class="btn" href="#" target="_blank" rel="noreferrer">
+              <a class="btn" href="" rel="noreferrer">
                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-                <svg class="icon text-red icon-tabler icon-tabler-help"
+                <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24"
+                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                     fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <line x1="15" y1="15" x2="18.35" y2="18.35"></line>
+                  <line x1="9" y1="15" x2="5.65" y2="18.35"></line>
+                  <line x1="5.65" y1="5.65" x2="9" y2="9"></line>
+                  <line x1="18.35" y1="5.65" x2="15" y2="9"></line>
+                </svg>
+                Helpdesk
+              </a>
+              <a class="btn" href="{{ route('register') }}" rel="noreferrer">
+                <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                <svg class="icon icon-tabler icon-tabler-login" xmlns="http://www.w3.org/2000/svg"
+                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                     stroke="currentColor" fill="none" stroke-linecap="round"
+                     stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path
+                        d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
+                  </path>
+                  <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
+                </svg>
+                Register
+              </a>
+              <a class="btn" href="{{ route('login') }}" rel="noreferrer">
+                <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                <svg class="icon icon-tabler icon-tabler-lock-open"
                      xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                      viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                      stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <line x1="12" y1="17" x2="12" y2="17.01"></line>
-                  <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4"></path>
+                  <rect x="5" y="11" width="14" height="10"
+                        rx="2"></rect>
+                  <circle cx="12" cy="16" r="1"></circle>
+                  <path d="M8 11v-5a4 4 0 0 1 8 0"></path>
                 </svg>
-                Helpdesk
+                Login
               </a>
-            </div>
-          </div>
-          <div class="d-none d-md-flex">
-            <a class="nav-link hide-theme-dark px-0" data-bs-toggle="tooltip"
-               data-bs-placement="bottom" data-bs-original-title="Enable dark mode"
-               href="?theme=dark" aria-label="Enable dark mode">
-              <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                   viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                   stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path
-                      d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z">
-                </path>
-              </svg>
-            </a>
-            <a class="nav-link hide-theme-light px-0" data-bs-toggle="tooltip"
-               data-bs-placement="bottom" data-bs-original-title="Enable light mode"
-               href="?theme=light" aria-label="Enable light mode">
-              <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                   viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                   stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <circle cx="12" cy="12" r="4"></circle>
-                <path
-                      d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7">
-                </path>
-              </svg>
-            </a>
-            <div class="nav-item dropdown d-none d-md-flex me-3">
-              <a class="nav-link px-0" data-bs-toggle="dropdown" href="#"
-                 aria-label="Show notifications" tabindex="-1">
-                <!-- Download SVG icon from http://tabler-icons.io/i/bell -->
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                     fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path
-                        d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6">
-                  </path>
-                  <path d="M9 17v1a3 3 0 0 0 6 0v-1"></path>
-                </svg>
-                <span class="badge bg-red"></span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card">
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Last updates</h3>
-                  </div>
-                  <div class="list-group list-group-flush list-group-hoverable">
-                    <div class="list-group-item">
-                      <div class="row align-items-center">
-                        <div class="col-auto"><span
-                                class="status-dot status-dot-animated bg-red d-block"></span></div>
-                        <div class="col text-truncate">
-                          <a class="text-body d-block" href="#">Example 1</a>
-                          <div class="d-block text-muted text-truncate mt-n1">
-                            Change deprecated html tags to text decoration classes (#29604)
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <a class="list-group-item-actions" href="#">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                            <svg class="icon text-muted" xmlns="http://www.w3.org/2000/svg"
-                                 width="24" height="24" viewBox="0 0 24 24"
-                                 stroke-width="2" stroke="currentColor" fill="none"
-                                 stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                              <path
-                                    d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
-                              </path>
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="list-group-item">
-                      <div class="row align-items-center">
-                        <div class="col-auto"><span class="status-dot d-block"></span></div>
-                        <div class="col text-truncate">
-                          <a class="text-body d-block" href="#">Example 2</a>
-                          <div class="d-block text-muted text-truncate mt-n1">
-                            justify-content:between ⇒ justify-content:space-between (#29734)
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <a class="list-group-item-actions show" href="#">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                            <svg class="icon text-yellow" xmlns="http://www.w3.org/2000/svg"
-                                 width="24" height="24" viewBox="0 0 24 24"
-                                 stroke-width="2" stroke="currentColor" fill="none"
-                                 stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                              <path
-                                    d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
-                              </path>
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="list-group-item">
-                      <div class="row align-items-center">
-                        <div class="col-auto"><span class="status-dot d-block"></span></div>
-                        <div class="col text-truncate">
-                          <a class="text-body d-block" href="#">Example 3</a>
-                          <div class="d-block text-muted text-truncate mt-n1">
-                            Update change-version.js (#29736)
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <a class="list-group-item-actions" href="#">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                            <svg class="icon text-muted" xmlns="http://www.w3.org/2000/svg"
-                                 width="24" height="24" viewBox="0 0 24 24"
-                                 stroke-width="2" stroke="currentColor" fill="none"
-                                 stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                              <path
-                                    d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
-                              </path>
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="list-group-item">
-                      <div class="row align-items-center">
-                        <div class="col-auto"><span
-                                class="status-dot status-dot-animated bg-green d-block"></span>
-                        </div>
-                        <div class="col text-truncate">
-                          <a class="text-body d-block" href="#">Example 4</a>
-                          <div class="d-block text-muted text-truncate mt-n1">
-                            Regenerate package-lock.json (#29730)
-                          </div>
-                        </div>
-                        <div class="col-auto">
-                          <a class="list-group-item-actions" href="#">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                            <svg class="icon text-muted" xmlns="http://www.w3.org/2000/svg"
-                                 width="24" height="24" viewBox="0 0 24 24"
-                                 stroke-width="2" stroke="currentColor" fill="none"
-                                 stroke-linecap="round" stroke-linejoin="round">
-                              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                              <path
-                                    d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
-                              </path>
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <div class="nav-item dropdown">
-            <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
-               href="#" aria-label="Open user menu">
-              <span class="avatar avatar-sm"
-                    style="background-image: url(./foto/61625.jpg)"></span>
-              <div class="d-none d-xl-block ps-2">
-                <div>{{ Auth::user()->name ?? '' }}</div>
-                <div class="small text-muted mt-1">{{ Auth::user()->personal_number ?? '' }}</div>
+            @auth
+              <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
+                 href="#" aria-label="Open user menu">
+                <span class="avatar avatar-sm"
+                      style="background-image: url(./foto/{{ Auth::user()->personal_number . '.jpg' ?? 'no_image.png' }})"></span>
+                <div class="d-none d-xl-block ps-2">
+                  <div>{{ Auth::user()->name ?? '' }}</div>
+                  <div class="small text-muted mt-1">{{ Auth::user()->personal_number ?? '' }}</div>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <a class="dropdown-item" href="#">Status</a>
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#">Feedback</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="./settings.html">Settings</a>
+                <a class="dropdown-item" id="logoutModal">Logout</a>
               </div>
-            </a>
-            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <a class="dropdown-item" href="#">Status</a>
-              <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="#">Feedback</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="./settings.html">Settings</a>
-              <a class="dropdown-item" id="logoutModal">Logout</a>
-            </div>
+            @endauth
           </div>
         </div>
       </div>
@@ -256,7 +131,7 @@
                     </svg>
                   </span>
                   <span class="nav-link-title">
-                    Home
+                    Oznámení
                   </span>
                 </a>
               </li>
@@ -279,47 +154,41 @@
                     </svg>
                   </span>
                   <span class="nav-link-title">
-                    Interface
+                    Stravování
                   </span>
                 </a>
                 <div class="dropdown-menu">
                   <div class="dropdown-menu-columns">
                     <div class="dropdown-menu-column">
                       <a class="dropdown-item" href="./empty.html">
-                        Empty page
+                        Nabídka kantýny
                       </a>
                       <a class="dropdown-item" href="./accordion.html">
-                        Accordion
-                      </a>
-                      <a class="dropdown-item" href="./blank.html">
-                        Blank page
+                        Objednávka obědů
                       </a>
                       <a class="dropdown-item" href="./badges.html">
-                        Badges
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                      </a>
-                      <a class="dropdown-item" href="./buttons.html">
-                        Buttons
+                        Rezervace
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                       <div class="dropend">
                         <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
                            data-bs-auto-close="outside" href="#sidebar-cards" role="button"
                            aria-expanded="false">
-                          Cards
+                          Podmenu
                           <span
-                                class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                         </a>
                         <div class="dropdown-menu">
                           <a class="dropdown-item" href="./cards.html">
-                            Sample cards
+                            Podmenu 1
                           </a>
                           <a class="dropdown-item" href="./card-actions.html">
-                            Card actions
+                            Podmenu 1
                             <span
-                                  class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                                  class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                           </a>
                           <a class="dropdown-item" href="./cards-masonry.html">
-                            Cards Masonry
+                            Podmenu 1
                           </a>
                         </div>
                       </div>
@@ -328,11 +197,11 @@
                       </a>
                       <a class="dropdown-item" href="./datagrid.html">
                         Data grid
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                       <a class="dropdown-item" href="./datatables.html">
                         Datatables
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                       <a class="dropdown-item" href="./dropdowns.html">
                         Dropdowns
@@ -348,7 +217,7 @@
                       </a>
                       <a class="dropdown-item" href="./maps-vector.html">
                         Vector maps
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                       <a class="dropdown-item" href="./navigation.html">
                         Navigation
@@ -367,7 +236,7 @@
                       </a>
                       <a class="dropdown-item" href="./steps.html">
                         Steps
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                       <a class="dropdown-item" href="./tabs.html">
                         Tabs
@@ -377,7 +246,7 @@
                       </a>
                       <a class="dropdown-item" href="./carousel.html">
                         Carousel
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                       <a class="dropdown-item" href="./lists.html">
                         Lists
@@ -393,19 +262,19 @@
                       </a>
                       <a class="dropdown-item" href="./dropzone.html">
                         Dropzone
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                       <a class="dropdown-item" href="./lightbox.html">
                         Lightbox
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                       <a class="dropdown-item" href="./tinymce.html">
                         TinyMCE
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                       <a class="dropdown-item" href="./inline-player.html">
                         Inline player
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                       <div class="dropend">
                         <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
@@ -508,73 +377,26 @@
                     </svg>
                   </span>
                   <span class="nav-link-title">
-                    Extra
+                    Média
                   </span>
                 </a>
                 <div class="dropdown-menu">
                   <div class="dropdown-menu-columns">
                     <div class="dropdown-menu-column">
                       <a class="dropdown-item" href="./activity.html">
-                        Activity
+                        Radio
                       </a>
                       <a class="dropdown-item" href="./gallery.html">
-                        Gallery
-                      </a>
-                      <a class="dropdown-item" href="./invoice.html">
-                        Invoice
-                      </a>
-                      <a class="dropdown-item" href="./search-results.html">
-                        Search results
-                      </a>
-                      <a class="dropdown-item" href="./pricing.html">
-                        Pricing cards
-                      </a>
-                      <a class="dropdown-item" href="./pricing-table.html">
-                        Pricing table
-                      </a>
-                      <a class="dropdown-item" href="./faq.html">
-                        FAQ
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                      </a>
-                      <a class="dropdown-item" href="./users.html">
-                        Users
-                      </a>
-                      <a class="dropdown-item" href="./license.html">
-                        License
+                        Videa
                       </a>
                     </div>
                     <div class="dropdown-menu-column">
-                      <a class="dropdown-item" href="./logs.html">
-                        Logs
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                      </a>
                       <a class="dropdown-item" href="./music.html">
-                        Music
+                        Nutriční terapeuti
                       </a>
                       <a class="dropdown-item" href="./photogrid.html">
-                        Photogrid
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                      </a>
-                      <a class="dropdown-item" href="./tasks.html">
-                        Tasks
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                      </a>
-                      <a class="dropdown-item" href="./uptime.html">
-                        Uptime monitor
-                      </a>
-                      <a class="dropdown-item" href="./widgets.html">
-                        Widgets
-                      </a>
-                      <a class="dropdown-item" href="./wizard.html">
-                        Wizard
-                      </a>
-                      <a class="dropdown-item" href="./settings.html">
-                        Settings
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                      </a>
-                      <a class="dropdown-item" href="./job-listing.html">
-                        Job listing
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
+                        Fotografie
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                     </div>
                   </div>
@@ -602,77 +424,47 @@
                     </svg>
                   </span>
                   <span class="nav-link-title">
-                    Layout
+                    Aplikace
                   </span>
                 </a>
                 <div class="dropdown-menu">
                   <div class="dropdown-menu-columns">
                     <div class="dropdown-menu-column">
                       <a class="dropdown-item" href="./layout-horizontal.html">
-                        Horizontal
+                        První sloupec
                       </a>
                       <a class="dropdown-item" href="./layout-boxed.html">
-                        Boxed
-                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">New</span>
-                      </a>
-                      <a class="dropdown-item" href="./layout-vertical.html">
-                        Vertical
-                      </a>
-                      <a class="dropdown-item" href="./layout-vertical-transparent.html">
-                        Vertical transparent
-                      </a>
-                      <a class="dropdown-item" href="./layout-vertical-right.html">
-                        Right vertical
-                      </a>
-                      <a class="dropdown-item" href="./layout-condensed.html">
-                        Condensed
-                      </a>
-                      <a class="dropdown-item" href="./layout-combo.html">
-                        Combined
+                        Položka prvního sloupce
+                        <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                     </div>
                     <div class="dropdown-menu-column">
                       <a class="dropdown-item" href="./layout-navbar-dark.html">
-                        Navbar dark
+                        Druhý sloupec
                       </a>
                       <a class="dropdown-item" href="./layout-navbar-sticky.html">
-                        Navbar sticky
-                      </a>
-                      <a class="dropdown-item" href="./layout-navbar-overlap.html">
-                        Navbar overlap
-                      </a>
-                      <a class="dropdown-item" href="./layout-rtl.html">
-                        RTL mode
-                      </a>
-                      <a class="dropdown-item" href="./layout-fluid.html">
-                        Fluid
-                      </a>
-                      <a class="dropdown-item" href="./layout-fluid-vertical.html">
-                        Fluid vertical
+                        Položka druhého sloupce
                       </a>
                     </div>
                   </div>
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./icons.html">
+                <a class="nav-link" href="//email.khn.cz" target="_blank">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/ghost -->
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                         height="24" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round"
-                         stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-mail"
+                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path
-                            d="M5 11a7 7 0 0 1 14 0v7a1.78 1.78 0 0 1 -3.1 1.4a1.65 1.65 0 0 0 -2.6 0a1.65 1.65 0 0 1 -2.6 0a1.65 1.65 0 0 0 -2.6 0a1.78 1.78 0 0 1 -3.1 -1.4v-7">
-                      </path>
-                      <line x1="10" y1="10" x2="10.01" y2="10"></line>
-                      <line x1="14" y1="10" x2="14.01" y2="10"></line>
-                      <path d="M10 14a3.5 3.5 0 0 0 4 0"></path>
+                      <rect x="3" y="5" width="18" height="14"
+                            rx="2"></rect>
+                      <polyline points="3 7 12 13 21 7"></polyline>
                     </svg>
                   </span>
                   <span class="nav-link-title">
-                    2979 icons
+                    Pošta
                   </span>
                 </a>
               </li>
@@ -696,33 +488,15 @@
                     </svg>
                   </span>
                   <span class="nav-link-title">
-                    Help
+                    Pomoc
                   </span>
                 </a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="./docs/">
-                    Documentation
+                    Helpdesk
                   </a>
                   <a class="dropdown-item" href="./changelog.html">
-                    Changelog
-                  </a>
-                  <a class="dropdown-item" href="https://github.com/tabler/tabler"
-                     target="_blank" rel="noopener">
-                    Source code
-                  </a>
-                  <a class="dropdown-item text-pink" href="https://github.com/sponsors/codecalm"
-                     target="_blank" rel="noopener">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
-                    <svg class="icon icon-inline me-1" xmlns="http://www.w3.org/2000/svg"
-                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round"
-                         stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path
-                            d="M19.5 12.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572">
-                      </path>
-                    </svg>
-                    Sponsor project!
+                    Návody
                   </a>
                 </div>
               </li>
@@ -787,7 +561,7 @@
                   </button>
                   <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal"
                           data-bs-toggle="tooltip" data-bs-placement="bottom"
-                          data-bs-original-title="{{ __('Creates a new employee') }}">
+                          data-bs-original-title="{{ __('Creates a Nové employee') }}">
                     <svg class="icon icon-tabler icon-tabler-user-plus"
                          xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                          viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -797,7 +571,7 @@
                       <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
                       <path d="M16 11h6m-3 -3v6"></path>
                     </svg>
-                    {{ __('New employee') }}
+                    {{ __('Nové employee') }}
                   </button>
                 </div>
               </div>
@@ -841,7 +615,7 @@
               <div class="btn-list">
                 <span class="d-none d-sm-inline">
                   <a class="btn" href="#">
-                    New view
+                    Nové view
                   </a>
                 </span>
                 <a class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report" href="#">
@@ -852,9 +626,9 @@
                     <line x1="12" y1="5" x2="12" y2="19"></line>
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                   </svg>
-                  Create new report
+                  Create Nové report
                 </a>
-                <a class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" href="#" aria-label="Create new report">
+                <a class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" href="#" aria-label="Create Nové report">
                   <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                   <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                     fill="none" stroke-linecap="round" stroke-linejoin="round">
