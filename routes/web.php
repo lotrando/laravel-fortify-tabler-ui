@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome')->name('welcome');
+    return view('welcome');
 });
 
 Route::get('home', function () {

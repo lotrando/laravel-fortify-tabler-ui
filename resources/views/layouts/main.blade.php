@@ -31,6 +31,8 @@
 
   <script src="{{ asset('js/tabler.js') }}"></script>
   <script src="{{ asset('js/demo.js') }}"></script>
+
+  @yield('scripts')
 </body>
 
 </html>
