@@ -65,12 +65,13 @@
           <div class="nav-item dropdown">
             <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" href="#"
                aria-label="Open user menu">
-              <span class="avatar avatar-sm"
-                    style="background-image: url(./foto/{{ Auth::user()->personal_number . '.jpg' ?? 'no_image.png' }})"></span>
-              <div class="d-none d-xl-block ps-2">
+              <div class="d-none d-xl-block ps-2 m-2">
                 <div>{{ Auth::user()->name ?? '' }}</div>
                 <div class="small text-muted mt-1">{{ Auth::user()->personal_number ?? '' }}</div>
               </div>
+              <span class="avatar avatar-sm"
+                    style="background-image: url(./foto/{{ Auth::user()->personal_number . '.jpg' ?? 'no_image.png' }})">
+              </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
               <a class="dropdown-item" href="#">{{ __('Status') }}</a>
@@ -728,10 +729,10 @@
         <div class="row align-items-center">
           <div class="col">
             <!-- Page pre-title -->
-            <h2 class="page-title">
+            <h2 class="page-title text-primary">
               {{ __('Oznámení') }}
             </h2>
-            <div class="page-pretitle">
+            <div class="page-pretitle text-mute">
               {{ __('Důležitá sdělení') }}
             </div>
           </div>
@@ -768,9 +769,50 @@
     </div>
     <div class="page-body">
       <div class="container-fluid">
-        <div class="row row-deck row-cards">
-          <div class="col-6">
+        <div class="row row-deck row-cards g-2 mb-2">
+          <div class="col-8">
             <div class="card">
+              <div class="card-header">
+                Test 1
+              </div>
+              <div class="card-body">
+                <div class="d-flex align-items-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis illum cum possimus
+                  hic voluptatum mollitia repellendus accusantium, ducimus dolore aliquam nisi
+                  temporibus nam odio tempore voluptates nulla labore, sapiente dignissimos aliquid
+                  facere consectetur sed! Itaque obcaecati sapiente consequuntur temporibus veniam
+                  dolores, eum officia maxime illum incidunt optio quidem, in sequi. Lorem ipsum dolor
+                  sit amet consectetur adipisicing elit. Laboriosam soluta aliquid nobis unde quae
+                  odit placeat. In minus omnis eaque itaque ipsum, obcaecati assumenda? Similique
+                  labore reiciendis illum modi quasi.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                Test 1
+              </div>
+              <div class="card-body">
+                <div class="d-flex align-items-center">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis illum cum possimus
+                  hic voluptatum mollitia repellendus accusantium, ducimus dolore aliquam nisi
+                  temporibus nam odio tempore voluptates nulla labore, sapiente dignissimos aliquid
+                  facere consectetur sed! Itaque obcaecati sapiente consequuntur temporibus veniam
+                  dolores, eum officia maxime illum incidunt optio quidem, in sequi. Lorem ipsum dolor
+                  sit amet consectetur adipisicing elit. Laboriosam soluta aliquid nobis unde quae
+                  odit placeat. In minus omnis eaque itaque ipsum, obcaecati assumenda? Similique
+                  labore reiciendis illum modi quasi.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-deck row-cards mb-2">
+          <div class="col-8">
+            <div class="card">
+              <div class="card-header">
+                Test 2
+              </div>
               <div class="card-body">
                 <div class="d-flex align-items-center">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis illum cum possimus
@@ -791,11 +833,19 @@
           <div class="col-lg-auto ms-lg-auto">
             <ul class="list-inline list-inline-dots mb-0">
               <li class="list-inline-item">
-                <a class="link-secondary" href="https://github.com/sponsors/codecalm"
-                   target="_blank" rel="noopener">
-                  <span class="link-secondary">
-                    v1.0.1
-                  </span>
+                <a class="link-secondary" href="mailto:klika@khn.cz" target="_blank"
+                   rel="noopener">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
+                  <svg class="icon text-pink icon-filled icon-inline"
+                       xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                       viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                       stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path
+                          d="M19.5 12.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572">
+                    </path>
+                  </svg>
+                  vytvořil Klika Miroslav
                 </a>
               </li>
             </ul>
@@ -803,11 +853,9 @@
           <div class="col-12 col-lg-auto mt-lg-0 mt-3">
             <ul class="list-inline list-inline-dots mb-0">
               <li class="list-inline-item">
-                Copyright &copy; 2022 Klika Miroslav
-                <a class="link-secondary" href="."> - KHN a.s.</a>
-                Všechna práva vyhrazena.
+                &copy; 2022 - <a class="link-secondary" href="https://www.khn.cz" target="_blank"
+                   rel="noopener">KHN a.s.</a> - všechna práva vyhrazena
               </li>
-
             </ul>
           </div>
         </div>
