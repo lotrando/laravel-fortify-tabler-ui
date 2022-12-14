@@ -77,8 +77,8 @@
               <a class="dropdown-item" href="#">{{ __('Status') }}</a>
               <a class="dropdown-item" href="#">{{ __('Profile') }}</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="./settings.html">{{ __('Setting') }}</a>
-              <a class="dropdown-item" id="logoutModal">{{ __('Logout') }}</a>
+              <a class="dropdown-item" data-bs-toggle="modal"
+                 data-bs-target="#logout-modal">{{ __('Logout') }}</a>
             </div>
           </div>
         </div>
@@ -723,103 +723,117 @@
 
 @section('main')
   <div class="page-wrapper">
-    <div class="container-fluid">
-      <!-- Page title -->
-      <div class="page-header d-print-none">
-        <div class="row align-items-center">
-          <div class="col">
-            <!-- Page pre-title -->
-            <h2 class="page-title text-primary">
-              {{ __('Oznámení') }}
-            </h2>
-            <div class="page-pretitle text-mute">
-              {{ __('Důležitá sdělení') }}
-            </div>
-          </div>
-          <!-- Page title actions -->
-          <div class="ms-auto d-print-none col-auto">
-            <div class="btn-list">
-              <a class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal"
-                 data-bs-target="#modal-report" href="#">
-                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                     fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <line x1="12" y1="5" x2="12" y2="19" />
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                </svg>
-                {{ __('New item') }}
-              </a>
-              <a class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal"
-                 data-bs-target="#modal-report" href="#" aria-label="Create new report">
-                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                     fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <line x1="12" y1="5" x2="12" y2="19" />
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="page-body">
       <div class="container-fluid">
-        <div class="row row-deck row-cards g-2 mb-2">
-          <div class="col-8">
-            <div class="card">
-              <div class="card-header">
-                Test 1
-              </div>
-              <div class="card-body">
-                <div class="d-flex align-items-center">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis illum cum possimus
-                  hic voluptatum mollitia repellendus accusantium, ducimus dolore aliquam nisi
-                  temporibus nam odio tempore voluptates nulla labore, sapiente dignissimos aliquid
-                  facere consectetur sed! Itaque obcaecati sapiente consequuntur temporibus veniam
-                  dolores, eum officia maxime illum incidunt optio quidem, in sequi. Lorem ipsum dolor
-                  sit amet consectetur adipisicing elit. Laboriosam soluta aliquid nobis unde quae
-                  odit placeat. In minus omnis eaque itaque ipsum, obcaecati assumenda? Similique
-                  labore reiciendis illum modi quasi.
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-7">
+            <!-- Page title -->
+            <div class="page-header d-print-none">
+              <div class="row align-items-center">
+                <div class="col">
+                  <!-- Page pre-title -->
+                  <h2 class="page-title text-primary">
+                    {{ __('Oznámení') }}
+                  </h2>
+                  <div class="page-pretitle text-mute mb-1">
+                    {{ __('Důležitá sdělení') }}
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-header">
-                Test 1
+            <div class="card mb-3">
+              <div class="card-header bg-info-lt">
+                Výsledky HCI - celostátní hodnotící projekt "Nemocnice ČR"
+              </div>
+              <div class="card-body">
+                <div class="d-flex-col align-items-center">
+                  <p>Naše nemocnice se stala „Nejlepší nemocnicí v České republice u hospitalizovaných
+                    pacientů“, a zároveň se opět stala „Nejlepší nemocnicí kraje“ jak u
+                    hospitalizovaných a ambulantních pacientů, tak zaměstnanců, kde ve všech třech
+                    kategoriích získala 1. místo.</p>
+                  <p>Vedení společnosti děkuje všem zaměstnancům za získaná ocenění, která jsou
+                    výsledkem
+                    jejich odpovědného přístupu k jejich každodenní náročné práci ve zdravotnictví, a
+                    pacientům za projevenou důvěru.</p>
+                </div>
+              </div>
+            </div>
+            <div class="card mb-3">
+              <div class="card-header bg-muted-lt">
+                Kulturní akce
               </div>
               <div class="card-body">
                 <div class="d-flex align-items-center">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis illum cum possimus
-                  hic voluptatum mollitia repellendus accusantium, ducimus dolore aliquam nisi
-                  temporibus nam odio tempore voluptates nulla labore, sapiente dignissimos aliquid
-                  facere consectetur sed! Itaque obcaecati sapiente consequuntur temporibus veniam
-                  dolores, eum officia maxime illum incidunt optio quidem, in sequi. Lorem ipsum dolor
-                  sit amet consectetur adipisicing elit. Laboriosam soluta aliquid nobis unde quae
-                  odit placeat. In minus omnis eaque itaque ipsum, obcaecati assumenda? Similique
-                  labore reiciendis illum modi quasi.
+                  <p class="text-justified">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Officiis illum cum possimus
+                    hic voluptatum mollitia repellendus accusantium, ducimus dolore aliquam nisi
+                    temporibus nam odio tempore voluptates nulla labore, sapiente dignissimos aliquid
+                    facere consectetur sed! Itaque obcaecati sapiente consequuntur temporibus veniam
+                    dolores, eum officia maxime illum incidunt optio quidem, in sequi. Lorem ipsum
+                    dolor sit amet consectetur adipisicing elit. Laboriosam soluta aliquid nobis unde
+                    quae
+                    odit placeat. In minus omnis eaque itaque ipsum, obcaecati assumenda? Similique
+                    labore reiciendis illum modi quasi.</p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row row-deck row-cards mb-2">
-          <div class="col-8">
-            <div class="card">
-              <div class="card-header">
-                Test 2
+          <div class="col-12 col-md-6 col-lg-5">
+            <!-- Page title -->
+            <div class="page-header d-print-none">
+              <div class="row align-items-center">
+                <div class="col">
+                  <!-- Page pre-title -->
+                  <h2 class="page-title text-primary">
+                    {{ __('Oznámení') }}
+                  </h2>
+                  <div class="page-pretitle text-mute mb-1">
+                    {{ __('Odstávky a servis') }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card mb-3">
+              <div class="card-header bg-danger-lt">
+                Pravidelný servis CT
               </div>
               <div class="card-body">
-                <div class="d-flex align-items-center">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis illum cum possimus
-                  hic voluptatum mollitia repellendus accusantium, ducimus dolore aliquam nisi
-                  temporibus nam odio tempore voluptates nulla labore, sapiente dignissimos aliquid
-                  facere consectetur sed! Itaque obcaecati sapiente consequuntur temporibus veniam
-                  dolores, eum officia maxime illum incidunt optio quidem, in sequi.
+                <div class="d-flex-col align-items-center">
+                  <p class="text-justify">Z důvodu pravidelného servisu dnes 6.12.2022 od 9:00 do cca
+                    15:00 CT mimo provoz.</p>
+                  <p class="m-0 text-end">Mgr. Kiedroňová Halina<br>vedoucí radiologický
+                    asistent</p>
+                </div>
+              </div>
+            </div>
+            <div class="card mb-3">
+              <div class="card-header bg-indigo-lt">
+                Změna ve službách neurologického oddělení
+              </div>
+              <div class="card-body">
+                <div class="d-flex-col align-items-center">
+                  <table class="table-bordered table-hover table"
+                         style="width: 100%; height: 90px;">
+                    <tbody>
+                      <tr>
+                        <td style="width: 10%; text-align: center; vertical-align: middle;">11.12.
+                        </td>
+                        <td>MUDr. Vlachopulu / MUDr. Paloušková</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align: center;">18.12.</td>
+                        <td>MUDr. Strakoš</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align: center;">21.12.</td>
+                        <td>MUDr. Strakoš</td>
+                      </tr>
+                      <tr>
+                        <td style="text-align: center;">22.12.</td>
+                        <td>MUDr. Holubová</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
@@ -835,17 +849,7 @@
               <li class="list-inline-item">
                 <a class="link-secondary" href="mailto:klika@khn.cz" target="_blank"
                    rel="noopener">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
-                  <svg class="icon text-pink icon-filled icon-inline"
-                       xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                       viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                       stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path
-                          d="M19.5 12.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572">
-                    </path>
-                  </svg>
-                  vytvořil Klika Miroslav
+                  &copy; {{ now()->year }} - vytvořil Klika Miroslav
                 </a>
               </li>
             </ul>
@@ -853,8 +857,8 @@
           <div class="col-12 col-lg-auto mt-lg-0 mt-3">
             <ul class="list-inline list-inline-dots mb-0">
               <li class="list-inline-item">
-                &copy; 2022 - <a class="link-secondary" href="https://www.khn.cz" target="_blank"
-                   rel="noopener">KHN a.s.</a> - všechna práva vyhrazena
+                &copy; {{ now()->year }} - <a class="link-secondary" href="https://www.khn.cz"
+                   target="_blank" rel="noopener">KHN a.s.</a> - všechna práva vyhrazena
               </li>
             </ul>
           </div>
