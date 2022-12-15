@@ -1,4 +1,4 @@
-@extends('layouts.datatable')
+@extends('layouts.adverse')
 
 @section('main')
   <div class="container-fluid">
@@ -6,8 +6,8 @@
       <div class="col-12">
         <div class="card mb-2 mt-2 shadow-sm">
           <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
-            <h3 class="text-muted m-0 mb-0 p-0"><i class="fas fa-users"></i>
-              {{ __('Employees of KHN') }}
+            <h3 class="text-muted m-0 mb-0 p-0"><i class="fas fa-calendar-check"></i>
+              {{ __('Adverse events of KHN') }}
             </h3>
           </div>
           <div class="card-body p-2">
@@ -19,19 +19,13 @@
             <table class="table-bordered table-hover dataTable w-100 table">
               <thead>
                 <tr class="bg-azure-lt table bg-opacity-50 text-center text-white">
-                  <th class="text-center">{{ __('Image') }}</th>
-                  <th class="text-center">{{ __('Number') }}</th>
-                  <th>{{ __('Titles') }}</th>
-                  <th>{{ __('Last name') }}</th>
-                  <th>{{ __('First name') }}</th>
-                  <th>{{ __('Vema') }}</th>
+                  <th>{{ __('Code') }}</th>
                   <th>{{ __('Department') }}</th>
-                  <th>{{ __('Job title') }}</th>
-                  <th>{{ __('Email') }}</th>
-                  <th>{{ __('Phone') }}</th>
-                  <th>{{ __('Mobile') }}</th>
+                  <th>{{ __('Date') }}</th>
+                  <th>{{ __('Time') }}</th>
+                  <th>{{ __('Type') }}</th>
+                  <th>{{ __('Worker') }}</th>
                   <th>{{ __('Status') }}</th>
-                  <th>{{ __('Start date') }}</th>
                   <th class="text-center"><i class="fas fa-bars"></i></th>
                 </tr>
               </thead>
@@ -185,56 +179,8 @@
                   @endforeach
                 </select>
               </div>
-              <div class="col-1">
-                <label class="form-label">{{ __('Center') }}</label>
-                <input class="form-control" id="department_code" name="department_code"
-                       type="text" placeholder="{{ __('N/A') }}" readonly>
-              </div>
-              <div class="col-3">
-                <div class="mb-3">
-                  <label class="form-label">{{ __('Job') }}</label>
-                  <select class="form-select" id="job_id" name="job_id">
-                    <option value=""></option>
-                    @foreach ($jobs as $job)
-                      <option value="{{ $job->id }}"
-                              @if (old('job_id') == $job->id) selected @endif>{{ $job->job_title }}
-                      </option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="row mb-2">
-              <div class="col-2">
-                <label class="form-label">{{ __('Current photo') }}</label>
-                <div class="d-flex justify-content-start align-items-start">
-                  <span id="store_image"></span>
-                </div>
-              </div>
-              <div class="col-2">
-                <label class="form-label">{{ __('Preview new photo') }}</label>
-                <div class="d-flex justify-content-start align-items-start">
-                  <img class="z-depth-1 img-thumbnail-big" id="preview_image" height='193px'></img>
-                </div>
-              </div>
-              <div class="col-8">
-                <label class="form-label">{{ __('Description') }}</label>
-                <textarea class="form-control" id="comment" name="comment" type="text"
-                          placeholder="{{ __('Description') }}" rows="8"></textarea>
-              </div>
             </div>
             <div class="row">
-              <div class="col-4">
-                <div class="form-group">
-                  <label class="form-label">{{ __('Select file with new photo') }}</label>
-                  <input class="form-control" id="image" name="image" type="file">
-                </div>
-              </div>
-              <div class="col-2">
-                <label class="form-label">{{ __('Start date') }}</label>
-                <input class="form-control" id="start_date" name="start_date" type="date"
-                       placeholder="{{ __('Start date') }}" onkeydown="return false">
-              </div>
               <div class="col-2">
                 <label class="form-label">{{ __('End date') }}</label>
                 <input class="form-control" id="end_date" name="end_date" type="date"
@@ -266,7 +212,7 @@
     </div>
   </div>
 
-  {{-- Delete Employee Modal --}}
+  {{-- Delete Event Modal --}}
   <div class="modal modal-blur fade" id="confirmModal" data-bs-backdrop="static"
        data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
@@ -285,7 +231,7 @@
           </svg>
           <h3>{{ __('Are you sure?') }}</h3>
           <div class="text-muted">
-            {{ __('Do you really want to remove employee?') }}<br>{{ __('This operation cannot be undone') }}
+            {{ __('Do you really want to remove event?') }}<br>{{ __('This operation cannot be undone') }}
           </div>
         </div>
         <div class="modal-footer">
@@ -335,95 +281,53 @@
           "searchPlaceholder": "Hledej ..."
         },
         ajax: {
-          url: "{{ route('employees.index') }}",
+          url: "{{ route('adversevents.index') }}",
         },
         columnDefs: [{
           type: 'czech',
-          targets: [3]
+          targets: [2]
         }],
         columns: [{
-            data: 'image',
-            "width": "1%",
-            render: function(data, type, row, full, meta) {
-              return "<div class='img-hover-zoom'><center><img src={{ URL::to('/foto') }}/" +
-                data + " class='zoom img-thumbnail' /></center></div>";
-            },
-            orderable: false,
-          },
-          {
-            data: 'personal_number',
-            "width": "1%",
-            render: function(data, type, row, full, meta) {
-              return "<span class='text-center text-" + row.department.color_id +
-                "'><center><strong>" + data + "</strong></center></span>";
-            },
-          },
-          {
-            data: 'title_preffix',
-            "width": "1%"
-          },
-          {
-            data: 'last_name',
-            "width": "3%",
-          },
-          {
-            data: 'first_name',
-            "width": "3%"
-          },
-          {
-            data: 'department.center_code',
+            data: 'department.department_code',
             "width": "1%"
           },
           {
             data: 'department.department_name',
+            "width": "6%"
+          },
+          {
+            data: 'datum_cas',
+            "width": "3%",
+            render: function(data, type, full, meta) {
+              var date = moment(data).locale('cs');
+              return date.format('DD. MM. YYYY');
+            }
+          },
+          {
+            data: 'cas',
+            "width": "2%"
+          },
+          {
+            data: 'spec_druh',
             "width": "8%"
           },
           {
-            data: 'job.job_title',
-            "width": "7%"
-          },
-          {
-            data: 'email',
-            "width": "3%",
-            render: function(data, type, full, meta) {
-              if (data == null) {
-                return ""
-              } else {
-                return "<a class='text-center' href='mailto:" + data + "'>" + data +
-                  "</a>";
-              }
-            },
-          },
-          {
-            data: 'phone',
-            className: "text-center",
-            "width": "1%"
-          },
-          {
-            data: 'mobile',
-            "width": "2%"
+            data: 'pracovnik',
+            "width": "8%"
           },
           {
             data: 'status',
             "width": "0.5%",
             render: function(data, type, full, meta) {
-              if (data == 'Neaktivní') {
-                return "<span title='{{ __('Inactive') }}' class='cursor-help mx-3 badge bg-red p-1 me-1'></span>";
+              if (data == 'Odesláno') {
+                return "<span title='{{ __('Odesláno') }}' class='cursor-help mx-3 badge bg-info p-1 me-1'></span>";
               }
-              if (data == 'Aktivní') {
-                return "<span title='{{ __('Active') }}' class='cursor-help mx-3 badge bg-green p-1 me-1'></span>";
+              if (data == 'Rozpracováno') {
+                return "<span title='{{ __('Rozpracováno') }}' class='cursor-help mx-3 badge bg-warning p-1 me-1'></span>";
               }
-              if (data == 'Mateřská') {
-                return "<span title='{{ __('Maternal') }}' class='cursor-help mx-3 badge bg-yellow p-1 me-1'></span>";
+              if (data == 'Dokončeno') {
+                return "<span title='{{ __('Dokončeno') }}' class='cursor-help mx-3 badge bg-green p-1 me-1'></span>";
               }
-            }
-          },
-          {
-            data: 'start_date',
-            "width": "1%",
-            render: function(data, type, full, meta) {
-              var date = moment(data).locale('cs');
-              return date.format('DD. MM. YYYY');
             }
           },
           {
@@ -436,12 +340,12 @@
       });
     });
 
-    // Form Modal Functions
+    // Form Modal Edit Functions
     $(document).on('click', '.edit', function() {
       var id = $(this).attr('id');
       $('#form_result_modal, form_result_window').html('');
       $.ajax({
-        url: "/employees/" + id + "/edit",
+        url: "/adversevent/" + id + "/edit",
         dataType: "json",
         success: function(html) {
           $('#inputForm')[0].reset();
@@ -450,38 +354,12 @@
           $('#modal-icon').addClass('fas fa-user-edit fa-2x m-2');
           $('#modal-header').addClass("modal-header bg-" + html.data.department.color_id +
             "-lt");
-          $('#action_button, .modal-title').text("{{ __('Edit employee') }}");
+          $('#action_button, .modal-title').text("{{ __('Edit Adverse Event') }}");
           $('#action').val("Edit");
-          $('#personal_number').val(html.data.personal_number).attr('readonly', true);
-          $('#title_preffix').val(html.data.title_preffix);
-          $('#last_name').val(html.data.last_name);
-          $('#middle_name').val(html.data.middle_name);
-          $('#first_name').val(html.data.first_name);
-          $('#title_suffix').val(html.data.title_suffix);
-          $('#married_name').val(html.data.married_name);
-          $('#phone').val(html.data.phone);
-          $('#mobile').val(html.data.mobile);
-          $('#id_card').val(html.data.id_card);
           $('#department_id').val(html.data.department_id);
-          $('#job_id').val(html.data.job_id);
-          $('#comment').val(html.data.comment);
           $('#status').val(html.data.status);
-          $('#email').val(html.data.email);
-          $('#coffee').val(html.data.coffee);
-          $('#department_code').val(html.data.department.department_code);
-          $('#employment').val(html.data.employment);
-          $('#position').val(html.data.position);
-          $('#start_date').val(html.data.start_date);
-          $('#end_date').val(html.data.end_date);
           $('#created_at').val(html.data.created_at);
           $('#updated_at').val(html.data.updated_at);
-          $("#preview_image").attr("src", "{{ URL::to('/') }}/foto/no_image.png");
-          $('#store_image').html("<img src={{ URL::to('/') }}/foto/" + html.data.image +
-            " height='193px' class='bg-" + html.data.department.color_id +
-            "-lt z-depth-1 img-thumbnail-big'></a>");
-          $('#store_image').append(
-            "<input type='hidden' id='hidden_image' name='hidden_image' value='" + html
-            .data.image + "' />");
           $('#hidden_id').val(html.data.id);
         }
       })
@@ -493,38 +371,17 @@
       $('#formModal').modal('show');
       $('#modal-icon').addClass('fas fa-user-plus fa-2x m-2');
       $('#modal-header').addClass("modal-header bg-muted-lt");
-      $('#action_button, .modal-title').text("{{ __('Create new employee') }}");
+      $('#action_button, .modal-title').text("{{ __('Create new Adverse Event') }}");
       $('#action').val("Add");
-      $('#personal_number').attr('readonly', false)
-      $('#department_id, #job_id, #department_code').val('');
-      $('#id_card').val('Nový nástup');
-      $('#status').val('Neaktivní');
-      $('#employment').val('HPP');
-      $('#position').val(999);
-      $('#coffee').val('N');
-      $("#preview_image").attr("src", "{{ URL::to('/') }}/foto/no_image.png");
-      $('#store_image').html(
-        "<img src={{ URL::to('/') }}/foto/no_image.png height='193px' class='bg-muted-lt z-depth-1 img-thumbnail-big'></a>"
-      );
-      $('#store_image').append(
-        "<input type='hidden' id='hidden_image' name='hidden_image' value='' />");
-    })
-
-    $('#exportTable').click(function() {
-      $('#exportForm')[0].reset();
-      $("#modal-export-icon, #modal-export-header").removeClass();
-      $('#exportModal').modal('show');
-      $('#modal-export-icon').addClass('fas fa-file-export fa-2x m-2');
-      $('#modal-export-header').addClass("modal-header bg-purple-lt");
-      $('#export_button, .modal-title').text("{{ __('Export employees to file') }}");
-      $('#action').val("Export");
+      $('#department_id, #department_code').val('');
+      $('#status').val('Rozpracováno');
     })
 
     $('#inputForm').on('submit', function(event) {
       event.preventDefault();
       if ($('#action').val() == 'Add') {
         $.ajax({
-          url: "{{ route('employees.store') }}",
+          url: "{{ route('adversevents.store') }}",
           method: "POST",
           data: new FormData(this),
           contentType: false,
@@ -547,7 +404,6 @@
                 data.success +
                 '</li></ul><a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a></div>';
               $('#inputForm')[0].reset();
-              $("#preview_image").attr("src", "{{ URL::to('/') }}/foto/no_image.png");
               $('.dataTable').DataTable().ajax.reload(null, false);
               $('#form_result_modal').html(html);
             }
@@ -558,7 +414,7 @@
       if ($('#action').val() == "Edit") {
         event.preventDefault();
         $.ajax({
-          url: "{{ route('employees.update') }}",
+          url: "adversevents/destroy/" + event_id,
           method: "POST",
           data: new FormData(this),
           contentType: false,
@@ -587,16 +443,16 @@
       }
     });
 
-    // Delete Employee
+    // Delete Event
     $(document).on('click', '.delete', function() {
-      employee_id = $(this).attr('id');
+      event_id = $(this).attr('id');
       $('#ok_button').text("{{ __('Delete') }}");
       $('#confirmModal').modal('show');
     })
 
     $('#ok_button').click(function() {
       $.ajax({
-        url: "employees/destroy/" + employee_id,
+        url: "adversevents/destroy/" + employee_id,
         beforeSend: function() {
           $('#ok_button').text("{{ __('Deleting ...') }}");
         },
@@ -609,34 +465,5 @@
         }
       })
     })
-
-    // Remove Employee Foto
-    $(document).on('click', '.remove', function() {
-      employee_id = $(this).attr('id');
-      $('#remove_button').text("{{ __('Remove') }}");
-      $('#photoModal').modal('show');
-    })
-
-    $('#remove_button').click(function() {
-      $.ajax({
-        url: "employees/destroy-photo/" + employee_id,
-        beforeSend: function() {
-          $('#remove_button').text("{{ __('Removing ...') }}");
-        },
-        success: function(data) {
-          setTimeout(function() {
-            $('#photoModal').modal('hide');
-            $('#remove_button').text("{{ __('Remove') }}");
-            $('.dataTable').DataTable().ajax.reload(null, false);
-          }, 1000);
-        }
-      })
-    })
-
-    $('.export-option').mousedown(function(e) {
-      e.preventDefault();
-      $(this).prop('selected', !$(this).prop('selected'));
-      return false;
-    });
   </script>
 @endsection

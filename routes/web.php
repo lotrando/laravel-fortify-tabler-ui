@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdverseventController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EvidenceController;
@@ -32,6 +33,8 @@ Route::resource('train', TrainingController::class);
 Route::resource('attendances', AttendanceController::class);
 
 Route::resource('employees', EmployeeController::class);
+Route::resource('adversevents', AdverseventController::class);
+
 Route::get('vcards', [EmployeeController::class, 'vcards'])->name('employees.vcards');
 Route::get('search', [EmployeeController::class, 'vcardSearch'])->name('employees.search');
 
