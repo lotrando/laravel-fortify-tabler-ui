@@ -16,7 +16,7 @@
       <div class="navbar-nav order-md-last flex-row">
         <div class="nav-item d-none d-md-flex">
           <div class="btn-list">
-            <a class="btn" href="" rel="noreferrer">
+            <a class="btn" href="{{ route('adversevents.index') }}" rel="noreferrer">
               <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
               <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24"
                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"

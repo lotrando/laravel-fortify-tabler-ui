@@ -598,50 +598,7 @@
     </div>
     <div class="page-wrapper">
       <!-- Page header -->
-      {{-- <div class="page-header d-print-none">
-        <div class="container-xl">
-          <div class="row g-2 align-items-center">
-            <div class="col">
-              <!-- Page pre-title -->
-              <div class="page-pretitle">
-                Overview
-              </div>
-              <h2 class="page-title">
-                Dashboard
-              </h2>
-            </div>
-            <!-- Page title actions -->
-            <div class="ms-auto d-print-none col-auto">
-              <div class="btn-list">
-                <span class="d-none d-sm-inline">
-                  <a class="btn" href="#">
-                    Nové view
-                  </a>
-                </span>
-                <a class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report" href="#">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                  </svg>
-                  Create Nové report
-                </a>
-                <a class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" href="#" aria-label="Create Nové report">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> --}}
+
       <!-- Page body -->
       <div class="page-body">
         <div class="container-fluid">
