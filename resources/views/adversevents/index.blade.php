@@ -795,7 +795,7 @@
   {{-- Main Form Modal --}}
   <div class="modal modal-blur fade" id="formModal" data-bs-backdrop="static"
        data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-top" role="document">
+    <div class="modal-dialog modal-full-width modal-dialog-centered" role="document">
       <div class="modal-content shadow-lg">
         <div id="modal-header">
           <h5 class="modal-title"></h5>
@@ -810,7 +810,7 @@
                 <span id="form_result_modal"></span>
               </div>
             </div>
-            <div class="hr-text mt-0">{{ __('Základní údaje nežádoucí události') }}</div>
+            <div class="hr-text my-3">{{ __('Základní údaje nežádoucí události') }}</div>
             <div class="row mb-2">
               <div class="col-4">
                 <label class="form-label">{{ __('Department') }}</label>
@@ -827,7 +827,8 @@
               <div class="col-3">
                 <label class="form-label">{{ __('Místo') }}</label>
                 <input class="form-control" id="misto" name="misto" type="text"
-                       placeholder="{{ __('Místo') }}">
+                       value="{{ old('misto') }}">
+
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Datum') }}</label>
@@ -837,7 +838,7 @@
               <div class="col-1">
                 <label class="form-label">{{ __('Čas') }}</label>
                 <input class="form-control" id="cas" name="cas" type="time"
-                       placeholder="{{ __('Čas') }}" onkeydown="return false">
+                       placeholder="{{ __('Čas') }}">
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Status') }}</label>
@@ -905,7 +906,7 @@
                        placeholder="{{ __('Číslo chorobopisu') }}">
               </div>
             </div>
-            <div class="hr-text">{{ __('Popis okolností nežádoucí události') }}</div>
+            <div class="hr-text m-3">{{ __('Popis okolností nežádoucí události') }}</div>
             <div class="row mb-2">
               <div class="col-12 col-md-4 mb-sm-2">
                 <label class="form-label">{{ __('K čemu došlo') }}</label>
@@ -923,14 +924,14 @@
                           placeholder="{{ __('Navržená preventivní opatření') }}" rows="3"></textarea>
               </div>
             </div>
-            <div class="row mb-2">
+            <div class="row">
               <div class="col-12 mb-sm-2">
                 <label class="form-label">{{ __('Číslo chorobopisu') }}</label>
                 <input class="form-control" id="chorobopis" name="chorobopis" type="text"
                        placeholder="{{ __('Číslo chorobopisu') }}">
               </div>
             </div>
-            <div class="hr-text">{{ __('Vypiš jen v případě pádu pacienta') }}</div>
+            <div class="hr-text my-3">{{ __('Vypiš jen v případě pádu pacienta') }}</div>
             <div class="row mb-2">
               <div class="col-12 col-md-3 mb-sm-2">
                 <label class="form-label">{{ __('Příčina pádu') }}</label>
@@ -1018,7 +1019,7 @@
                           placeholder="{{ __('Zhodnocení zdrav. stavu, lékařem') }}" rows="3"></textarea>
               </div>
             </div>
-            <div class="row mb-2">
+            <div class="row">
               <div class="col-12 col-md-2 mb-sm-2">
                 <label class="form-label">Datum a čas hodnocení lékaře</label>
                 <input class="form-control" id="datum" name="datum" type="date"
@@ -1225,23 +1226,12 @@
       $('#inputForm')[0].reset();
       $("#modal-icon, #modal-header").removeClass();
       $('#formModal').modal('show');
-      $('#modal-icon').addClass('fas fa-user-plus fa-2x m-2');
+      $('#modal-icon').addClass('fas fa-exclamation-triangle fa-2x m-2');
       $('#modal-header').addClass("modal-header bg-muted-lt");
       $('#action_button, .modal-title').text("{{ __('Create new event') }}");
       $('#action').val("Add");
-      $('#personal_number').attr('readonly', false)
       $('#department_id, #department_code').val('');
-      $('#status').val('test');
-    })
-
-    $('#exportTable').click(function() {
-      $('#exportForm')[0].reset();
-      $("#modal-export-icon, #modal-export-header").removeClass();
-      $('#exportModal').modal('show');
-      $('#modal-export-icon').addClass('fas fa-file-export fa-2x m-2');
-      $('#modal-export-header').addClass("modal-header bg-purple-lt");
-      $('#export_button, .modal-title').text("{{ __('Export employees to file') }}");
-      $('#action').val("Export");
+      $('#status').val('Rozpracováno');
     })
 
     $('#inputForm').on('submit', function(event) {
