@@ -1,4 +1,4 @@
-@extends('layouts.datatable')
+@extends('layouts.employee')
 
 @section('main')
   <div class="container-fluid">
