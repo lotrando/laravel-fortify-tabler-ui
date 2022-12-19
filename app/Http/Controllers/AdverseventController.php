@@ -231,10 +231,9 @@ class AdverseventController extends Controller
      * @param  \App\Models\Adversevent  $adversevent
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Adversevent $adversevent)
     {
-        $event = Adversevent::find($id);
-        $event->delete();
+        $adversevent->delete();
         return response()->json(['success' => __('Event deleted successfully ')]);
     }
 }
