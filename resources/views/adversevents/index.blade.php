@@ -3,9 +3,7 @@
 @section('header')
   <header class="navbar navbar-expand-md navbar-light d-print-none">
     <div class="container-fluid">
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
-              type="button" aria-controls="navbar-menu" aria-expanded="false"
-              aria-label="Toggle navigation">
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-menu" type="button" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
@@ -18,9 +16,8 @@
           <div class="btn-list">
             <a class="btn" href="{{ route('adversevents.index') }}" rel="noreferrer">
               <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-              <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24"
-                   height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                   fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                   stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M8 16v-4a4 4 0 0 1 8 0v4"></path>
                 <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"></path>
@@ -31,9 +28,8 @@
             </a>
             <a class="btn" href="" rel="noreferrer">
               <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-              <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24"
-                   height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                   fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                   stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <circle cx="12" cy="12" r="4"></circle>
                 <circle cx="12" cy="12" r="9"></circle>
@@ -46,13 +42,10 @@
             </a>
             <a class="btn" href="{{ route('register') }}" rel="noreferrer">
               <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-              <svg class="icon icon-tabler icon-tabler-login" xmlns="http://www.w3.org/2000/svg"
-                   width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                   stroke="currentColor" fill="none" stroke-linecap="round"
-                   stroke-linejoin="round">
+              <svg class="icon icon-tabler icon-tabler-login" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                   stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path
-                      d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
+                <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
                 </path>
                 <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
               </svg>
@@ -60,10 +53,8 @@
             </a>
             <a class="btn" href="{{ route('login') }}" rel="noreferrer">
               <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-              <svg class="icon icon-tabler icon-tabler-lock-open" xmlns="http://www.w3.org/2000/svg"
-                   width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                   stroke="currentColor" fill="none" stroke-linecap="round"
-                   stroke-linejoin="round">
+              <svg class="icon icon-tabler icon-tabler-lock-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                   stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <rect x="5" y="11" width="14" height="10" rx="2">
                 </rect>
@@ -76,22 +67,19 @@
         </div>
         @auth
           <div class="nav-item dropdown">
-            <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" href="#"
-               aria-label="Open user menu">
+            <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" href="#" aria-label="Open user menu">
               <div class="d-none d-xl-block ps-2 m-2">
                 <div>{{ Auth::user()->name ?? '' }}</div>
                 <div class="small text-muted mt-1">{{ Auth::user()->personal_number ?? '' }}</div>
               </div>
-              <span class="avatar avatar-sm"
-                    style="background-image: url(./foto/{{ Auth::user()->personal_number . '.jpg' ?? 'no_image.png' }})">
+              <span class="avatar avatar-sm" style="background-image: url(./foto/{{ Auth::user()->personal_number . '.jpg' ?? 'no_image.png' }})">
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
               <a class="dropdown-item" href="#">{{ __('Status') }}</a>
               <a class="dropdown-item" href="#">{{ __('Profile') }}</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" data-bs-toggle="modal"
-                 data-bs-target="#logout-modal">{{ __('Logout') }}</a>
+              <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logout-modal">{{ __('Logout') }}</a>
             </div>
           </div>
         </div>
@@ -106,16 +94,12 @@
       <div class="navbar navbar-light">
         <div class="container-fluid">
           <ul class="navbar-nav">
+            {{-- Oznámení Dropdown --}}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                 data-bs-auto-close="outside" href="#navbar-base" role="button"
-                 aria-expanded="false">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-base" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                  <svg class="icon icon-tabler icon-tabler-info-circle"
-                       xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                       viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                       stroke-linecap="round" stroke-linejoin="round">
+                  <svg class="icon icon-tabler" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                       fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <circle cx="12" cy="12" r="9"></circle>
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
@@ -126,19 +110,14 @@
                   {{ __('Oznámení') }}
                 </span>
               </a>
+
               <div class="dropdown-menu">
-                <a class="dropdown-item"
-                   href="{{ url('http://akordapp/SISAkord/Login.aspx?ReturnUrl=%2fSISAkord%2f') }}"
-                   target="_blank">
+                <a class="dropdown-item" href="{{ url('http://akordapp/SISAkord/Login.aspx?ReturnUrl=%2fSISAkord%2f') }}" target="_blank">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                    <svg class="icon icon-tabler icon-tabler-album"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <rect x="4" y="4" width="16" height="16"
-                            rx="2"></rect>
+                      <rect x="4" y="4" width="16" height="16" rx="2"></rect>
                       <path d="M12 4v7l2 -2l2 2v-7"></path>
                     </svg>
                   </span>
@@ -148,11 +127,8 @@
                 </a>
                 <a class="dropdown-item" href="./navigation.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                    <svg class="icon icon-tabler icon-tabler-building-hospital"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-building-hospital" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <line x1="3" y1="21" x2="21" y2="21"></line>
                       <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"></path>
@@ -167,16 +143,12 @@
                 </a>
                 <a class="dropdown-item" href="./navigation.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                    <svg class="icon icon-tabler icon-tabler-urgent"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-urgent" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path d="M8 16v-4a4 4 0 0 1 8 0v4"></path>
                       <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"></path>
-                      <rect x="6" y="16" width="12" height="4"
-                            rx="1"></rect>
+                      <rect x="6" y="16" width="12" height="4" rx="1"></rect>
                     </svg>
                   </span>
                   <span class="nav-link-title">
@@ -185,14 +157,10 @@
                 </a>
                 <a class="dropdown-item" href="./navigation.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                    <svg class="icon icon-tabler icon-tabler-tool"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-tool" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path
-                            d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5">
+                      <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5">
                       </path>
                     </svg>
                   </span>
@@ -202,14 +170,10 @@
                 </a>
                 <a class="dropdown-item" href="./navigation.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                    <svg class="icon icon-tabler icon-tabler-armchair"
-                         xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-armchair" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path
-                            d="M5 11a2 2 0 0 1 2 2v2h10v-2a2 2 0 1 1 4 0v4a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2z">
+                      <path d="M5 11a2 2 0 0 1 2 2v2h10v-2a2 2 0 1 1 4 0v4a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2z">
                       </path>
                       <path d="M5 11v-5a3 3 0 0 1 3 -3h8a3 3 0 0 1 3 3v5"></path>
                       <path d="M6 19v2"></path>
@@ -222,11 +186,8 @@
                 </a>
                 <a class="dropdown-item" href="./navigation.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                    <svg class="icon icon-tabler icon-tabler-transform"
-                         xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-transform" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path d="M5 13v.875c0 3.383 2.686 6.125 6 6.125"></path>
                       <circle cx="6" cy="6" r="3"></circle>
@@ -242,15 +203,11 @@
                 </a>
                 <a class="dropdown-item" href="./navigation.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                    <svg class="icon icon-tabler icon-tabler-info-square"
-                         xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-info-square" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                      <rect x="4" y="4" width="16" height="16"
-                            rx="2"></rect>
+                      <rect x="4" y="4" width="16" height="16" rx="2"></rect>
                       <polyline points="11 12 12 12 12 16 13 16"></polyline>
                     </svg>
                   </span>
@@ -260,20 +217,15 @@
                 </a>
                 <a class="dropdown-item" href="./navigation.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                    <svg class="icon icon-tabler icon-tabler-masks-theater"
-                         xmlns="http://www.w3.org/2000/svg" width="36" height="36"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-masks-theater" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path
-                            d="M13.192 9h6.616a2 2 0 0 1 1.992 2.183l-.567 6.182a4 4 0 0 1 -3.983 3.635h-1.5a4 4 0 0 1 -3.983 -3.635l-.567 -6.182a2 2 0 0 1 1.992 -2.183z">
+                      <path d="M13.192 9h6.616a2 2 0 0 1 1.992 2.183l-.567 6.182a4 4 0 0 1 -3.983 3.635h-1.5a4 4 0 0 1 -3.983 -3.635l-.567 -6.182a2 2 0 0 1 1.992 -2.183z">
                       </path>
                       <path d="M15 13h.01"></path>
                       <path d="M18 13h.01"></path>
                       <path d="M15 16.5c1 .667 2 .667 3 0"></path>
-                      <path
-                            d="M8.632 15.982a4.037 4.037 0 0 1 -.382 .018h-1.5a4 4 0 0 1 -3.983 -3.635l-.567 -6.182a2 2 0 0 1 1.992 -2.183h6.616a2 2 0 0 1 2 2">
+                      <path d="M8.632 15.982a4.037 4.037 0 0 1 -.382 .018h-1.5a4 4 0 0 1 -3.983 -3.635l-.567 -6.182a2 2 0 0 1 1.992 -2.183h6.616a2 2 0 0 1 2 2">
                       </path>
                       <path d="M6 8h.01"></path>
                       <path d="M9 8h.01"></path>
@@ -286,19 +238,14 @@
                 </a>
               </div>
             </li>
+            {{-- Stravování --}}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                 data-bs-auto-close="outside" href="#navbar-base" role="button"
-                 aria-expanded="false">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-base" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                  <svg class="icon icon-tabler icon-tabler-tools-kitchen-2"
-                       xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                       viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                       stroke-linecap="round" stroke-linejoin="round">
+                  <svg class="icon icon-tabler icon-tabler-tools-kitchen-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                       stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path
-                          d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12zm0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3">
+                    <path d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12zm0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3">
                     </path>
                   </svg>
                 </span>
@@ -307,25 +254,18 @@
                 </span>
               </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item"
-                   href="{{ url('http://akordapp/SISAkord/Login.aspx?ReturnUrl=%2fSISAkord%2f') }}"
-                   target="_blank">
+                <a class="dropdown-item" href="{{ url('http://akordapp/SISAkord/Login.aspx?ReturnUrl=%2fSISAkord%2f') }}" target="_blank">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                    <svg class="icon icon-tabler icon-tabler-meat"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-meat" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path
-                            d="M13.62 8.382l1.966 -1.967a2 2 0 1 1 3.414 -1.415a2 2 0 1 1 -1.413 3.414l-1.82 1.821">
+                      <path d="M13.62 8.382l1.966 -1.967a2 2 0 1 1 3.414 -1.415a2 2 0 1 1 -1.413 3.414l-1.82 1.821">
                       </path>
                       <path
                             d="M5.904 18.596c2.733 2.734 5.9 4 7.07 2.829c1.172 -1.172 -.094 -4.338 -2.828 -7.071c-2.733 -2.734 -5.9 -4 -7.07 -2.829c-1.172 1.172 .094 4.338 2.828 7.071z">
                       </path>
                       <path d="M7.5 16l1 1"></path>
-                      <path
-                            d="M12.975 21.425c3.905 -3.906 4.855 -9.288 2.121 -12.021c-2.733 -2.734 -8.115 -1.784 -12.02 2.121">
+                      <path d="M12.975 21.425c3.905 -3.906 4.855 -9.288 2.121 -12.021c-2.733 -2.734 -8.115 -1.784 -12.02 2.121">
                       </path>
                     </svg>
                   </span>
@@ -336,10 +276,8 @@
                 <a class="dropdown-item" href="./navigation.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                    <svg class="icon icon-tabler icon-tabler-baguette"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-baguette" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path
                             d="M5.628 11.283l5.644 -5.637c2.665 -2.663 5.924 -3.747 8.663 -1.205l.188 .181a2.987 2.987 0 0 1 0 4.228l-11.287 11.274a2.996 2.996 0 0 1 -4.089 .135l-.143 -.135c-2.728 -2.724 -1.704 -6.117 1.024 -8.841z">
@@ -359,13 +297,10 @@
               <a class="nav-link" href="https://email.khn.cz" target="_blank">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                  <svg class="icon icon-tabler icon-tabler-mail" xmlns="http://www.w3.org/2000/svg"
-                       width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                       stroke="currentColor" fill="none" stroke-linecap="round"
-                       stroke-linejoin="round">
+                  <svg class="icon icon-tabler icon-tabler-mail" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <rect x="3" y="5" width="18" height="14"
-                          rx="2"></rect>
+                    <rect x="3" y="5" width="18" height="14" rx="2"></rect>
                     <polyline points="3 7 12 13 21 7"></polyline>
                   </svg>
                 </span>
@@ -392,15 +327,11 @@
               </a>
             </li> --}}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                 data-bs-auto-close="outside" href="#navbar-extra" role="button"
-                 aria-expanded="false">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-extra" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                  <svg class="icon icon-tabler icon-tabler-book" xmlns="http://www.w3.org/2000/svg"
-                       width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                       stroke="currentColor" fill="none" stroke-linecap="round"
-                       stroke-linejoin="round">
+                  <svg class="icon icon-tabler icon-tabler-book" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path>
                     <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path>
@@ -417,10 +348,8 @@
                 <a class="dropdown-item" href="./activity.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-users"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-users" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <circle cx="9" cy="7" r="4"></circle>
                       <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
@@ -435,13 +364,10 @@
                 <a class="dropdown-item" href="./gallery.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-nurse"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-nurse" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path
-                            d="M12 6c2.941 0 5.685 .847 8 2.31l-2 9.69h-12l-2 -9.691a14.93 14.93 0 0 1 8 -2.309z">
+                      <path d="M12 6c2.941 0 5.685 .847 8 2.31l-2 9.69h-12l-2 -9.691a14.93 14.93 0 0 1 8 -2.309z">
                       </path>
                       <path d="M10 12h4"></path>
                       <path d="M12 10v4"></path>
@@ -454,10 +380,8 @@
                 <a class="dropdown-item" href="./gallery.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-hand-sanitizer"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-hand-sanitizer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path d="M7 21h10v-10a3 3 0 0 0 -3 -3h-4a3 3 0 0 0 -3 3v10z"></path>
                       <path d="M15 3h-6a2 2 0 0 0 -2 2"></path>
@@ -473,10 +397,8 @@
                 <a class="dropdown-item" href="./gallery.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-user-plus"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-user-plus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <circle cx="9" cy="7" r="4"></circle>
                       <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
@@ -490,10 +412,8 @@
                 <a class="dropdown-item" href="./gallery.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-microscope"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-microscope" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path d="M5 21h14"></path>
                       <path d="M6 18h2"></path>
@@ -511,10 +431,8 @@
                 <a class="dropdown-item" href="./gallery.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-radioactive"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-radioactive" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path d="M13.5 14.6l3 5.19a9 9 0 0 0 4.5 -7.79h-6a3 3 0 0 1 -1.5 2.6"></path>
                       <path d="M13.5 9.4l3 -5.19a9 9 0 0 0 -9 0l3 5.19a3 3 0 0 1 3 0"></path>
@@ -528,14 +446,11 @@
                 <a class="dropdown-item" href="./gallery.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-devices-2"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-devices-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path d="M10 15h-6a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h6"></path>
-                      <rect x="13" y="4" width="8" height="16"
-                            rx="1"></rect>
+                      <rect x="13" y="4" width="8" height="16" rx="1"></rect>
                       <line x1="7" y1="19" x2="10" y2="19"></line>
                       <line x1="17" y1="8" x2="17" y2="8.01"></line>
                       <circle cx="17" cy="16" r="1"></circle>
@@ -549,13 +464,10 @@
                 <a class="dropdown-item" href="./gallery.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-heartbeat"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-heartbeat" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path
-                            d="M19.5 13.572l-7.5 7.428l-2.896 -2.868m-6.117 -8.104a5 5 0 0 1 9.013 -3.022a5 5 0 1 1 7.5 6.572">
+                      <path d="M19.5 13.572l-7.5 7.428l-2.896 -2.868m-6.117 -8.104a5 5 0 0 1 9.013 -3.022a5 5 0 1 1 7.5 6.572">
                       </path>
                       <path d="M3 13h2l2 3l2 -6l1 3h3"></path>
                     </svg>
@@ -568,17 +480,14 @@
                   <a class="dropdown-item" href="./gallery.html">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                       <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                      <svg class="icon icon-tabler icon-tabler-cards"
-                           xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                           viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                           fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <svg class="icon icon-tabler icon-tabler-cards" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                           stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path
                               d="M3.604 7.197l7.138 -3.109a0.96 .96 0 0 1 1.27 .527l4.924 11.902a1.004 1.004 0 0 1 -.514 1.304l-7.137 3.109a0.96 .96 0 0 1 -1.271 -.527l-4.924 -11.903a1.005 1.005 0 0 1 .514 -1.304z">
                         </path>
                         <path d="M15 4h1a1 1 0 0 1 1 1v3.5"></path>
-                        <path
-                              d="M20 6c.264 .112 .52 .217 .768 .315a1 1 0 0 1 .53 1.311l-2.298 5.374">
+                        <path d="M20 6c.264 .112 .52 .217 .768 .315a1 1 0 0 1 .53 1.311l-2.298 5.374">
                         </path>
                       </svg>
                     </span>
@@ -589,16 +498,12 @@
                   <a class="dropdown-item" href="./gallery.html">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                       <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                      <svg class="icon icon-tabler icon-tabler-clipboard-check"
-                           xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                           viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                           fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <svg class="icon icon-tabler icon-tabler-clipboard-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                           stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path
-                              d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2">
+                        <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2">
                         </path>
-                        <rect x="9" y="3" width="6" height="4"
-                              rx="2"></rect>
+                        <rect x="9" y="3" width="6" height="4" rx="2"></rect>
                         <path d="M9 14l2 2l4 -4"></path>
                       </svg>
                     </span>
@@ -609,10 +514,8 @@
                   <a class="dropdown-item" href="./gallery.html">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                       <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                      <svg class="icon icon-tabler icon-tabler-help"
-                           xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                           viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                           fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <svg class="icon icon-tabler icon-tabler-help" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                           stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <circle cx="12" cy="12" r="9"></circle>
                         <line x1="12" y1="17" x2="12" y2="17.01"></line>
@@ -632,18 +535,13 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                 data-bs-auto-close="outside" href="#navbar-layout" role="button"
-                 aria-expanded="false">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-layout" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
-                  <svg class="icon icon-tabler icon-tabler-article"
-                       xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                       viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                       stroke-linecap="round" stroke-linejoin="round">
+                  <svg class="icon icon-tabler icon-tabler-article" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <rect x="3" y="4" width="18" height="16"
-                          rx="2"></rect>
+                    <rect x="3" y="4" width="18" height="16" rx="2"></rect>
                     <path d="M7 8h10"></path>
                     <path d="M7 12h10"></path>
                     <path d="M7 16h10"></path>
@@ -658,13 +556,10 @@
                   <div class="dropdown-menu-column">
                     <a class="dropdown-item" href="http://192.168.81.121:8000/radio.m3u">
                       <span class="nav-link-icon d-md-none d-lg-inline-block">
-                        <svg class="icon icon-tabler icon-tabler-radio"
-                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="icon icon-tabler icon-tabler-radio" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                             stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                          <path
-                                d="M14 3l-9.371 3.749a1 1 0 0 0 -.629 .928v11.323a1 1 0 0 0 1 1h14a1 1 0 0 0 1 -1v-11a1 1 0 0 0 -1 -1h-14.5">
+                          <path d="M14 3l-9.371 3.749a1 1 0 0 0 -.629 .928v11.323a1 1 0 0 0 1 1h14a1 1 0 0 0 1 -1v-11a1 1 0 0 0 -1 -1h-14.5">
                           </path>
                           <path d="M4 12h16"></path>
                           <path d="M7 12v-2"></path>
@@ -678,13 +573,10 @@
                     </a>
                     <a class="dropdown-item" href="./layout-vertical.html">
                       <span class="nav-link-icon d-md-none d-lg-inline-block">
-                        <svg class="icon icon-tabler icon-tabler-movie"
-                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                             fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="icon icon-tabler icon-tabler-movie" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                             stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                          <rect x="4" y="4" width="16" height="16"
-                                rx="2"></rect>
+                          <rect x="4" y="4" width="16" height="16" rx="2"></rect>
                           <line x1="8" y1="4" x2="8" y2="20">
                           </line>
                           <line x1="16" y1="4" x2="16" y2="20">
@@ -715,16 +607,14 @@
               <div class="input-icon">
                 <span class="input-icon-addon">
                   <!-- Download SVG icon from http://tabler-icons.io/i/search -->
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                       height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                        fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <circle cx="10" cy="10" r="7" />
                     <line x1="21" y1="21" x2="15" y2="15" />
                   </svg>
                 </span>
-                <input class="form-control" type="text" aria-label="Search in website"
-                       placeholder="Hledej ...">
+                <input class="form-control" type="text" aria-label="Search in website" placeholder="Hledej ...">
               </div>
             </form>
           </div>
@@ -745,18 +635,14 @@
             </h3>
             <div class="ms-auto d-print-none col-auto">
               <div class="btn-list">
-                <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal"
-                        data-bs-toggle="tooltip" data-bs-placement="bottom"
+                <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal" data-bs-toggle="tooltip" data-bs-placement="bottom"
                         data-bs-original-title="{{ __('Creates a Nové employee') }}">
-                  <svg class="icon icon-tabler icon-tabler-urgent"
-                       xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                       viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                       stroke-linecap="round" stroke-linejoin="round">
+                  <svg class="icon icon-tabler icon-tabler-urgent" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M8 16v-4a4 4 0 0 1 8 0v4"></path>
                     <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"></path>
-                    <rect x="6" y="16" width="12" height="4"
-                          rx="1"></rect>
+                    <rect x="6" y="16" width="12" height="4" rx="1"></rect>
                   </svg>
                   {{ __('Nová událost') }}
                 </button>
@@ -793,9 +679,8 @@
 
 @section('modals')
   {{-- Main Form Modal --}}
-  <div class="modal modal-blur fade" id="formModal" data-bs-backdrop="static"
-       data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-top" role="document">
+  <div class="modal modal-blur fade" id="formModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-full-width modal-dialog-top" role="document">
       <div class="modal-content shadow-lg">
         <div id="modal-header">
           <h5 class="modal-title"></h5>
@@ -815,10 +700,8 @@
               <div class="col-4">
                 <label class="form-label">{{ __('Department') }}</label>
                 <select class="form-select" id="department_id" name="department_id">
-                  <option value=""></option>
                   @foreach ($departments as $department)
-                    <option value="{{ $department->id }}"
-                            @if (old('department_id') == $department->id) selected @endif>
+                    <option value="{{ $department->id }}" @if (old('department_id') == $department->id) selected @endif>
                       {{ $department->center_code }} -
                       {{ $department->department_name }}</option>
                   @endforeach
@@ -826,18 +709,15 @@
               </div>
               <div class="col-3">
                 <label class="form-label">{{ __('Místo') }}</label>
-                <input class="form-control" id="misto" name="misto" type="text"
-                       placeholder="{{ __('Místo') }}">
+                <input class="form-control" id="misto" name="misto" type="text" placeholder="{{ __('Místo') }}">
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Datum') }}</label>
-                <input class="form-control" id="datum_cas" name="datum_cas" type="date"
-                       placeholder="{{ __('Datum') }}" onkeydown="return false">
+                <input class="form-control" id="datum_cas" name="datum_cas" type="date" placeholder="{{ __('Datum') }}" onkeydown="return false">
               </div>
               <div class="col-1">
                 <label class="form-label">{{ __('Čas') }}</label>
-                <input class="form-control" id="cas" name="cas" type="time"
-                       placeholder="{{ __('Čas') }}" onkeydown="return false">
+                <input class="form-control" id="cas" name="cas" type="time" placeholder="{{ __('Čas') }}">
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Status') }}</label>
@@ -874,68 +754,57 @@
               </div>
               <div class="col-5">
                 <label class="form-label">{{ __('Specifikace jiného druhu') }}</label>
-                <input class="form-control" id="spec_druh" name="spec_druh" type="text"
-                       placeholder="{{ __('Vyplňte v případě jiného druhu') }}">
+                <input class="form-control" id="jinydoplnek" name="jinydoplnek" type="text" placeholder="{{ __('Vyplňte v případě jiného druhu') }}">
               </div>
               <div class="col-3">
                 <label class="form-label">{{ __('Jméno pracovníka') }}</label>
-                <input class="form-control" id="pracovnik" name="pracovnik" type="text"
-                       placeholder="{{ __('Jméno pracovníka') }}">
+                <input class="form-control" id="pracovnik" name="pracovnik" type="text" placeholder="{{ __('Jméno pracovníka') }}">
               </div>
             </div>
             <div class="row mb-2">
               <div class="col-4">
                 <label class="form-label">{{ __('Svědci') }}</label>
-                <input class="form-control" id="svedek" name="svedek" type="text"
-                       placeholder="{{ __('Svědek nebo svědci') }}">
+                <input class="form-control" id="svedek" name="svedek" type="text" placeholder="{{ __('Svědek nebo svědci') }}">
               </div>
               <div class="col-3">
                 <label class="form-label">{{ __('Pacient') }}</label>
-                <input class="form-control" id="pacient" name="pacient" type="text"
-                       placeholder="{{ __('Jméno pacienta') }}">
+                <input class="form-control" id="pacient" name="pacient" type="text" placeholder="{{ __('Jméno pacienta') }}">
               </div>
               <div class="col-2">
                 <label class="form-label">{{ __('Datum narození pacienta') }}</label>
-                <input class="form-control" id="datumnaroz" name="datumnaroz" type="date"
-                       placeholder="{{ __('Datum narození pacienta') }}">
+                <input class="form-control" id="datumnaroz" name="datumnaroz" type="date" placeholder="{{ __('Datum narození pacienta') }}">
               </div>
               <div class="col-3">
                 <label class="form-label">{{ __('Číslo chorobopisu') }}</label>
-                <input class="form-control" id="chorobopis" name="chorobopis" type="text"
-                       placeholder="{{ __('Číslo chorobopisu') }}">
+                <input class="form-control" id="chorobopis" name="chorobopis" type="text" placeholder="{{ __('Číslo chorobopisu') }}">
               </div>
             </div>
             <div class="hr-text">{{ __('Popis okolností nežádoucí události') }}</div>
             <div class="row mb-2">
               <div class="col-12 col-md-4 mb-sm-2">
                 <label class="form-label">{{ __('K čemu došlo') }}</label>
-                <textarea class="form-control" id="udalost" name="udalost" type="text"
-                          placeholder="{{ __('K čemu došlo') }}" rows="3"></textarea>
+                <textarea class="form-control" id="udalost" name="udalost" type="text" placeholder="{{ __('K čemu došlo') }}" rows="3"></textarea>
               </div>
               <div class="col-12 col-md-4 mb-sm-2">
                 <label class="form-label">{{ __('Následující řešení po zjištění ') }}</label>
-                <textarea class="form-control" id="reseni" name="reseni" type="text"
-                          placeholder="{{ __('Následující řešení po zjištění ') }}" rows="3"></textarea>
+                <textarea class="form-control" id="reseni" name="reseni" type="text" placeholder="{{ __('Následující řešení po zjištění ') }}" rows="3"></textarea>
               </div>
               <div class="col-12 col-md-4 mb-sm-2">
                 <label class="form-label">{{ __('Navržená preventivní opatření') }}</label>
-                <textarea class="form-control" id="opatreni" name="opatreni" type="text"
-                          placeholder="{{ __('Navržená preventivní opatření') }}" rows="3"></textarea>
+                <textarea class="form-control" id="opatreni" name="opatreni" type="text" placeholder="{{ __('Navržená preventivní opatření') }}" rows="3"></textarea>
               </div>
             </div>
             <div class="row mb-2">
               <div class="col-12 mb-sm-2">
-                <label class="form-label">{{ __('Číslo chorobopisu') }}</label>
-                <input class="form-control" id="chorobopis" name="chorobopis" type="text"
-                       placeholder="{{ __('Číslo chorobopisu') }}">
+                <label class="form-label">{{ __('Informován') }}</label>
+                <input class="form-control" id="informovan" name="informovan" type="text" placeholder="{{ __('Číslo chorobopisu') }}">
               </div>
             </div>
             <div class="hr-text">{{ __('Vypiš jen v případě pádu pacienta') }}</div>
             <div class="row mb-2">
               <div class="col-12 col-md-3 mb-sm-2">
                 <label class="form-label">{{ __('Příčina pádu') }}</label>
-                <select class="form-select" id="pricina" name="pricina" aria-required="true"
-                        style="width: 100%;">
+                <select class="form-select" id="pricina" name="pricina" aria-required="true" style="width: 100%;">
                   <option value="" selected="selected">
                   </option>
                   <option value="pád z lůžka s postranicemi">Pád z lůžka s postranicemi
@@ -953,8 +822,7 @@
               </div>
               <div class="col-12 col-md-2 mb-sm-2">
                 <label class="form-label">{{ __('Stav pacienta po pádu') }}</label>
-                <select class="form-select" id="stav_pacienta" name="stav_pacienta"
-                        aria-required="true" style="width: 100%;">
+                <select class="form-select" id="stav_pacienta" name="stav_pacienta" aria-required="true" style="width: 100%;">
                   <option id="stav-0" value="" selected="selected"></option>
                   <option id="stav-1" value="orientovaný/á">orientovaný/á</option>
                   <option id="stav-2" value="zmatený/á">zmatený/á</option>
@@ -963,8 +831,7 @@
               </div>
               <div class="col-12 col-md-2 mb-sm-2">
                 <label class="form-label">{{ __('Lokalizace zranění po pádu') }}</label>
-                <select class="form-select" id="lokalizace" name="lokalizace"
-                        aria-required="true" style="width: 100%;">
+                <select class="form-select" id="lokalizace" name="lokalizace" aria-required="true" style="width: 100%;">
                   <option id="lokalizace-0" value="" selected="selected"></option>
                   <option id="lokalizace-1" value="hlava">Hlava</option>
                   <option id="lokalizace-2" value="hrudník">Hrudník</option>
@@ -981,8 +848,7 @@
               </div>
               <div class="col-12 col-md-3 mb-sm-2">
                 <label class="form-label">{{ __('Příznaky po pádu') }}</label>
-                <select class="form-select" id="druh_zraneni" name="druh_zraneni"
-                        aria-required="true" style="width: 100%;">
+                <select class="form-select" id="druh_zraneni" name="druh_zraneni" aria-required="true" style="width: 100%;">
                   <option id="druh-0" value="" selected="selected">
                   </option>
                   <option id="druh-1" value="Bezvědomí (lehké zranění)">Bezvědomí (lehké
@@ -1009,30 +875,25 @@
             <div class="row mb-2">
               <div class="col-12 col-md-6 mb-sm-2">
                 <label class="form-label">{{ __('Předchozí preventivní opatření') }}</label>
-                <textarea class="form-control" id="udalost" name="udalost" type="text"
-                          placeholder="{{ __('Předchozí preventivní opatření') }}" rows="3"></textarea>
+                <textarea class="form-control" id="udalost" name="udalost" type="text" placeholder="{{ __('Předchozí preventivní opatření') }}" rows="3"></textarea>
               </div>
               <div class="col-12 col-md-6 mb-sm-2">
                 <label class="form-label">{{ __('Zhodnocení zdrav. stavu, lékařem') }}</label>
-                <textarea class="form-control" id="udalost" name="udalost" type="text"
-                          placeholder="{{ __('Zhodnocení zdrav. stavu, lékařem') }}" rows="3"></textarea>
+                <textarea class="form-control" id="udalost" name="udalost" type="text" placeholder="{{ __('Zhodnocení zdrav. stavu, lékařem') }}" rows="3"></textarea>
               </div>
             </div>
             <div class="row mb-2">
               <div class="col-12 col-md-2 mb-sm-2">
                 <label class="form-label">Datum a čas hodnocení lékaře</label>
-                <input class="form-control" id="datum" name="datum" type="date"
-                       placeholder="Upřesnění k překladu, jiný">
+                <input class="form-control" id="datum" name="datum" type="date" placeholder="Upřesnění k překladu, jiný">
               </div>
               <div class="col-12 col-md-3 mb-sm-2">
                 <label class="form-label">Jméno lékaře</label>
-                <input class="form-control" id="upresneni" name="upresneni" type="text"
-                       placeholder="Jméno lékaře">
+                <input class="form-control" id="upresneni" name="upresneni" type="text" placeholder="Jméno lékaře">
               </div>
               <div class="col-12 col-md-2 mb-sm-2">
                 <label class="form-label">{{ __('Další vývoj') }}</label>
-                <select class="form-select" id="vyvoj" name="vyvoj" aria-required="true"
-                        style="width: 100%;">
+                <select class="form-select" id="vyvoj" name="vyvoj" aria-required="true" style="width: 100%;">
                   <option id="vyvoj-0" value="" selected="selected"></option>
                   <option id="vyvoj-1" value="žádný">žádný</option>
                   <option id="vyvoj-3" value="operace">operace</option>
@@ -1043,8 +904,7 @@
               </div>
               <div class="col-12 col-md-5 mb-sm-2">
                 <label class="form-label">Upřesnění k překladu nebo jiný</label>
-                <input class="form-control" id="upresneni" name="upresneni" type="text"
-                       placeholder="Upřesnění k překladu, jiný">
+                <input class="form-control" id="upresneni" name="upresneni" type="text" placeholder="Upřesnění k překladu, jiný">
               </div>
             </div>
           </div>
@@ -1055,30 +915,25 @@
             <button class="btn btn-muted hover-shadow" data-bs-dismiss="modal" type="button">
               {{ __('Close') }}
             </button>
-            <button class="btn btn-primary ms-auto hover-shadow" id="action_button"
-                    name="action_button" type="submit"></button>
+            <button class="btn btn-primary ms-auto hover-shadow" id="action_button" name="action_button" type="submit"></button>
           </div>
         </form>
       </div>
     </div>
   </div>
 
-  {{-- Delete Employee Modal --}}
-  <div class="modal modal-blur fade" id="confirmModal" data-bs-backdrop="static"
-       data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
+  {{-- Delete Event Modal --}}
+  <div class="modal modal-blur fade" id="confirmModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content shadow-lg">
         {{-- <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="{{ __('Close') }}"></button> --}}
         <div class="modal-status bg-danger"></div>
         <div class="modal-body py-4 text-center">
-          <svg class="icon text-danger icon-lg mb-2" xmlns="http://www.w3.org/2000/svg"
-               width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-               stroke="currentColor" fill="none" stroke-linecap="round"
-               stroke-linejoin="round">
+          <svg class="icon text-danger icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+               stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M12 9v2m0 4v.01" />
-            <path
-                  d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+            <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
           </svg>
           <h3>{{ __('Are you sure?') }}</h3>
           <div class="text-muted">
@@ -1225,13 +1080,13 @@
       $('#inputForm')[0].reset();
       $("#modal-icon, #modal-header").removeClass();
       $('#formModal').modal('show');
-      $('#modal-icon').addClass('fas fa-user-plus fa-2x m-2');
+      $('#modal-icon').addClass('fas fa-first-aid fa-2x m-2');
       $('#modal-header').addClass("modal-header bg-muted-lt");
       $('#action_button, .modal-title').text("{{ __('Create new event') }}");
       $('#action').val("Add");
       $('#personal_number').attr('readonly', false)
-      $('#department_id, #department_code').val('');
-      $('#status').val('test');
+      $('#department_id, #department_code, #spec_druh').val('');
+      $('#status').val('Rozpracováno');
     })
 
     $('#exportTable').click(function() {
