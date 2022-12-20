@@ -685,7 +685,6 @@
         <div id="modal-header">
           <h5 class="modal-title"></h5>
           <i id="modal-icon"></i>
-          {{-- <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button> --}}
         </div>
         <form id="inputForm" action="{{ route('adversevents.create') }}">
           @csrf
@@ -696,8 +695,8 @@
               </div>
             </div>
             <div class="hr-text mt-0">{{ __('Základní údaje nežádoucí události') }}</div>
-            <div class="row mb-2">
-              <div class="col-4">
+            <div class="row">
+              <div class="col-12 col-lg-4 pb-1">
                 <label class="form-label">{{ __('Department') }}</label>
                 <select class="form-select" id="department_id" name="department_id">
                   @foreach ($departments as $department)
@@ -707,30 +706,23 @@
                   @endforeach
                 </select>
               </div>
-              <div class="col-3">
+              <div class="col-12 col-lg-4 pb-1">
                 <label class="form-label">{{ __('Místo') }}</label>
-                <input class="form-control" id="misto" name="misto" type="text" placeholder="{{ __('Místo') }}">
+                <input class="form-control" id="misto" name="misto" type="text" placeholder="{{ __('Místo kde se událost stala') }}">
               </div>
-              <div class="col-2">
+              <div class="col-6 col-lg-2 pb-1">
                 <label class="form-label">{{ __('Datum') }}</label>
-                <input class="form-control" id="datum_cas" name="datum_cas" type="date" placeholder="{{ __('Datum') }}" onkeydown="return false">
+                <input class="form-control" id="datum_cas" name="datum_cas" type="date" value="{{ date('Y-m-d') ?? old('date') }}" placeholder="{{ __('Dnešní datum') }}"
+                       onkeydown="return false">
               </div>
-              <div class="col-1">
+              <div class="col-6 col-lg-2 pb-1">
                 <label class="form-label">{{ __('Čas') }}</label>
-                <input class="form-control" id="cas" name="cas" type="time" placeholder="{{ __('Čas') }}">
-              </div>
-              <div class="col-2">
-                <label class="form-label">{{ __('Status') }}</label>
-                <select class="form-select" id="status" name="status">
-                  <option value="Rozpracováno">Rozpracováno</option>
-                  <option value="Odesláno">Odesláno</option>
-                  <option value="Dokončeno">Dokončeno</option>
-                </select>
+                <input class="form-control" id="cas" name="cas" type="time" value="{{ date('H:i') ?? old('time') }}" placeholder="{{ __('Aktuální čas') }}">
               </div>
             </div>
-            <div class="row mb-2">
-              <div class="col-4">
-                <label class="form-label">{{ __('Specifikace NU') }}</label>
+            <div class="row">
+              <div class="col-6 col-lg-3 pb-1">
+                <label class="form-label">{{ __('Specifikace nežádoucí události') }}</label>
                 <select class="form-select" id="spec_druh" name="spec_druh" type="text">
                   <option value="Administrativní problém">Administrativní problém</option>
                   <option value="Klinický výkon">Klinický výkon</option>
@@ -752,35 +744,35 @@
                   <option value="Jiný">Jiný</option>
                 </select>
               </div>
-              <div class="col-5">
-                <label class="form-label">{{ __('Specifikace jiného druhu') }}</label>
+              <div class="col-6 col-lg-3 pb-1">
+                <label class="form-label">{{ __('Jiný druh nežádoucí události') }}</label>
                 <input class="form-control" id="jinydoplnek" name="jinydoplnek" type="text" placeholder="{{ __('Vyplňte v případě jiného druhu') }}">
               </div>
-              <div class="col-3">
-                <label class="form-label">{{ __('Jméno pracovníka') }}</label>
-                <input class="form-control" id="pracovnik" name="pracovnik" type="text" placeholder="{{ __('Jméno pracovníka') }}">
+              <div class="col-6 col-lg-3 pb-1">
+                <label class="form-label">{{ __('Svědci') }}</label>
+                <input class="form-control" id="svedek" name="svedek" type="text" placeholder="{{ __('Svědek nebo svědci události') }}">
+              </div>
+              <div class="col-6 col-lg-3 pb-1">
+                <label class="form-label">{{ __('Chorobopis') }}</label>
+                <input class="form-control" id="chorobopis" name="chorobopis" type="text" placeholder="{{ __('číslo chorobopisu') }}">
               </div>
             </div>
-            <div class="row mb-2">
-              <div class="col-4">
-                <label class="form-label">{{ __('Svědci') }}</label>
-                <input class="form-control" id="svedek" name="svedek" type="text" placeholder="{{ __('Svědek nebo svědci') }}">
+            <div class="row">
+              <div class="col-5 col-lg-3 pb-1">
+                <label class="form-label">{{ __('Jméno pacienta') }}</label>
+                <input class="form-control" id="pacient" name="pacient" type="text" placeholder="{{ __('Jméno poškozeného pacienta') }}">
               </div>
-              <div class="col-3">
-                <label class="form-label">{{ __('Pacient') }}</label>
-                <input class="form-control" id="pacient" name="pacient" type="text" placeholder="{{ __('Jméno pacienta') }}">
-              </div>
-              <div class="col-2">
+              <div class="col-2 col-lg-3 pb-1">
                 <label class="form-label">{{ __('Datum narození pacienta') }}</label>
                 <input class="form-control" id="datumnaroz" name="datumnaroz" type="date" placeholder="{{ __('Datum narození pacienta') }}">
               </div>
-              <div class="col-3">
-                <label class="form-label">{{ __('Číslo chorobopisu') }}</label>
-                <input class="form-control" id="chorobopis" name="chorobopis" type="text" placeholder="{{ __('Číslo chorobopisu') }}">
+              <div class="col-5 col-lg-3 pb-1">
+                <label class="form-label">{{ __('Jméno pracovníka') }}</label>
+                <input class="form-control" id="pracovnik" name="pracovnik" type="text" placeholder="{{ __('Jméno pracovníka který událost zapsal') }}">
               </div>
             </div>
             <div class="hr-text">{{ __('Popis okolností nežádoucí události') }}</div>
-            <div class="row mb-2">
+            <div class="row">
               <div class="col-12 col-md-4 mb-sm-2">
                 <label class="form-label">{{ __('K čemu došlo') }}</label>
                 <textarea class="form-control" id="udalost" name="udalost" type="text" placeholder="{{ __('K čemu došlo') }}" rows="3"></textarea>
@@ -797,7 +789,7 @@
             <div class="row mb-2">
               <div class="col-12 mb-sm-2">
                 <label class="form-label">{{ __('Informován') }}</label>
-                <input class="form-control" id="informovan" name="informovan" type="text" placeholder="{{ __('Číslo chorobopisu') }}">
+                <input class="form-control" id="informovan" name="informovan" type="text" placeholder="{{ __('Kdo s kolegů byl informován') }}">
               </div>
             </div>
             <div class="hr-text">{{ __('Vypiš jen v případě pádu pacienta') }}</div>
@@ -875,11 +867,12 @@
             <div class="row mb-2">
               <div class="col-12 col-md-6 mb-sm-2">
                 <label class="form-label">{{ __('Předchozí preventivní opatření') }}</label>
-                <textarea class="form-control" id="udalost" name="udalost" type="text" placeholder="{{ __('Předchozí preventivní opatření') }}" rows="3"></textarea>
+                <textarea class="form-control" id="preventivni_opatreni" name="preventivni_opatreni" type="text" placeholder="{{ __('Předchozí preventivní opatření') }}"
+                          rows="3"></textarea>
               </div>
               <div class="col-12 col-md-6 mb-sm-2">
                 <label class="form-label">{{ __('Zhodnocení zdrav. stavu, lékařem') }}</label>
-                <textarea class="form-control" id="udalost" name="udalost" type="text" placeholder="{{ __('Zhodnocení zdrav. stavu, lékařem') }}" rows="3"></textarea>
+                <textarea class="form-control" id="zhodnocen_stavu" name="zhodnocen_stavu" type="text" placeholder="{{ __('Zhodnocení zdrav. stavu, lékařem') }}" rows="3"></textarea>
               </div>
             </div>
             <div class="row mb-2">
@@ -891,7 +884,7 @@
                 <label class="form-label">Jméno lékaře</label>
                 <input class="form-control" id="upresneni" name="upresneni" type="text" placeholder="Jméno lékaře">
               </div>
-              <div class="col-12 col-md-2 mb-sm-2">
+              <div class="col-12 col-md-1 mb-sm-2">
                 <label class="form-label">{{ __('Další vývoj') }}</label>
                 <select class="form-select" id="vyvoj" name="vyvoj" aria-required="true" style="width: 100%;">
                   <option id="vyvoj-0" value="" selected="selected"></option>
@@ -905,6 +898,14 @@
               <div class="col-12 col-md-5 mb-sm-2">
                 <label class="form-label">Upřesnění k překladu nebo jiný</label>
                 <input class="form-control" id="upresneni" name="upresneni" type="text" placeholder="Upřesnění k překladu, jiný">
+              </div>
+              <div class="col-12 col-md-1 mb-sm-2">
+                <label class="form-label">{{ __('Status') }}</label>
+                <select class="form-select" id="status" name="status">
+                  <option value="Rozpracováno">Rozpracováno</option>
+                  <option value="Odesláno">Odesláno</option>
+                  <option value="Dokončeno">Dokončeno</option>
+                </select>
               </div>
             </div>
           </div>

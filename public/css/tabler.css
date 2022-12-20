@@ -2266,7 +2266,7 @@ textarea {
 .form-label {
   margin-bottom: 0.1rem;
   font-size: 0.775rem;
-  color: #a39a9a;
+  color: #8c9299;
   font-weight: 500;
 }
 
@@ -2304,7 +2304,7 @@ textarea {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.4285714;
-  color: inherit;
+  color: #666666;
   background-color: #ffffff;
   background-clip: padding-box;
   border: 1px solid #d9dbde;

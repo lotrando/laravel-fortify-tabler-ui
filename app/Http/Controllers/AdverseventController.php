@@ -114,10 +114,6 @@ class AdverseventController extends Controller
             'status'                => 'required',
             'resitel'               => 'required',
             'vyjadreni'             => 'required',
-            'resitel1'              => 'required',
-            'vyjadreni1'            => 'required',
-            'resitel2'              => 'required',
-            'vyjadreni2'            => 'required',
         ];
 
         $error = Validator::make($request->all(), $rules);
