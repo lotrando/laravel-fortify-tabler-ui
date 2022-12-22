@@ -113,5 +113,6 @@
   "Do you really want to log out?": "Opravdu se chcete odhlásit?",
   "This operation cannot be undone": "Tuto operaci nelze vrátit zpět",
   "Login with Github": "Přihlásit s Githubem",
-  "Login with Twitter": "Přihlásit s Twitterem"
+  "Login with Twitter": "Přihlásit s Twitterem",
+  "Create new adverse event": "Vytvořit novou nežadoucí událost"
 }

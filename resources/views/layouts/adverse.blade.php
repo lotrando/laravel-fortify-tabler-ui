@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ __('Adverse events') }}</title>
   <link type="image/png" href="{{ asset('img/adversevents.png') }}" rel="shortcut icon">
-  <link href="{{ asset('https://use.fontawesome.com/releases/v5.11.2/css/all.css') }}"
-        rel="stylesheet">
+  <link href="{{ asset('https://use.fontawesome.com/releases/v5.11.2/css/all.css') }}" rel="stylesheet">
   <link href="{{ asset('css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/fixedHeader.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/scroller.dataTables.min.css') }}" rel="stylesheet">

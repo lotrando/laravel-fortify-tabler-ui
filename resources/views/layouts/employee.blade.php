@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ __('Employees') }}</title>
   <link type="image/png" href="{{ asset('img/employees.png') }}" rel="shortcut icon">
-  <link href="{{ asset('https://use.fontawesome.com/releases/v5.11.2/css/all.css') }}"
-        rel="stylesheet">
+  <link href="{{ asset('https://use.fontawesome.com/releases/v5.11.2/css/all.css') }}" rel="stylesheet">
   <link href="{{ asset('css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/fixedHeader.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/scroller.dataTables.min.css') }}" rel="stylesheet">
@@ -29,8 +29,7 @@
     <!-- Navbar -->
     <header class="navbar navbar-expand-md navbar-light d-print-none">
       <div class="container-fluid">
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
-                type="button" aria-controls="navbar-menu" aria-expanded="false"
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-menu" type="button" aria-controls="navbar-menu" aria-expanded="false"
                 aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,8 +43,7 @@
             <div class="btn-list">
               <a class="btn" href="" rel="noreferrer">
                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-                <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24"
-                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                      fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <circle cx="12" cy="12" r="4"></circle>
@@ -59,13 +57,10 @@
               </a>
               <a class="btn" href="{{ route('register') }}" rel="noreferrer">
                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-                <svg class="icon icon-tabler icon-tabler-login" xmlns="http://www.w3.org/2000/svg"
-                     width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                     stroke="currentColor" fill="none" stroke-linecap="round"
-                     stroke-linejoin="round">
+                <svg class="icon icon-tabler icon-tabler-login" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                     stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path
-                        d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
+                  <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
                   </path>
                   <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
                 </svg>
@@ -73,13 +68,10 @@
               </a>
               <a class="btn" href="{{ route('login') }}" rel="noreferrer">
                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-                <svg class="icon icon-tabler icon-tabler-lock-open"
-                     xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                     stroke-linecap="round" stroke-linejoin="round">
+                <svg class="icon icon-tabler icon-tabler-lock-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                     stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <rect x="5" y="11" width="14" height="10"
-                        rx="2"></rect>
+                  <rect x="5" y="11" width="14" height="10" rx="2"></rect>
                   <circle cx="12" cy="16" r="1"></circle>
                   <path d="M8 11v-5a4 4 0 0 1 8 0"></path>
                 </svg>
@@ -89,10 +81,8 @@
           </div>
           <div class="nav-item dropdown">
             @auth
-              <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
-                 href="#" aria-label="Open user menu">
-                <span class="avatar avatar-sm"
-                      style="background-image: url(./foto/{{ Auth::user()->personal_number . '.jpg' ?? 'no_image.png' }})"></span>
+              <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" href="#" aria-label="Open user menu">
+                <span class="avatar avatar-sm" style="background-image: url(./foto/{{ Auth::user()->personal_number . '.jpg' ?? 'no_image.png' }})"></span>
                 <div class="d-none d-xl-block ps-2">
                   <div>{{ Auth::user()->name ?? '' }}</div>
                   <div class="small text-muted mt-1">{{ Auth::user()->personal_number ?? '' }}</div>
@@ -120,10 +110,8 @@
                 <a class="nav-link" href="./">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                         height="24" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round"
-                         stroke-linejoin="round">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <polyline points="5 12 3 12 12 3 21 12 19 12"></polyline>
                       <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
@@ -136,15 +124,11 @@
                 </a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                   data-bs-auto-close="outside" href="#navbar-base" role="button"
-                   aria-expanded="false">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-base" role="button" aria-expanded="false">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                         height="24" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round"
-                         stroke-linejoin="round">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"></polyline>
                       <line x1="12" y1="12" x2="20" y2="7.5"></line>
@@ -171,12 +155,10 @@
                         <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                       <div class="dropend">
-                        <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                           data-bs-auto-close="outside" href="#sidebar-cards" role="button"
+                        <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#sidebar-cards" role="button"
                            aria-expanded="false">
                           Podmenu
-                          <span
-                                class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
+                          <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                         </a>
                         <div class="dropdown-menu">
                           <a class="dropdown-item" href="./cards.html">
@@ -184,8 +166,7 @@
                           </a>
                           <a class="dropdown-item" href="./card-actions.html">
                             Podmenu 1
-                            <span
-                                  class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
+                            <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                           </a>
                           <a class="dropdown-item" href="./cards-masonry.html">
                             Podmenu 1
@@ -277,9 +258,8 @@
                         <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Nové</span>
                       </a>
                       <div class="dropend">
-                        <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                           data-bs-auto-close="outside" href="#sidebar-authentication"
-                           role="button" aria-expanded="false">
+                        <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#sidebar-authentication" role="button"
+                           aria-expanded="false">
                           Authentication
                         </a>
                         <div class="dropdown-menu">
@@ -307,18 +287,14 @@
                         </div>
                       </div>
                       <div class="dropend">
-                        <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
-                           data-bs-auto-close="outside" href="#sidebar-error" role="button"
+                        <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#sidebar-error" role="button"
                            aria-expanded="false">
                           <!-- Download SVG icon from http://tabler-icons.io/i/file-minus -->
-                          <svg class="icon icon-inline me-1" xmlns="http://www.w3.org/2000/svg"
-                               width="24" height="24" viewBox="0 0 24 24"
-                               stroke-width="2" stroke="currentColor" fill="none"
-                               stroke-linecap="round" stroke-linejoin="round">
+                          <svg class="icon icon-inline me-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                               stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                            <path
-                                  d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
+                            <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
                             </path>
                             <line x1="9" y1="14" x2="15" y2="14">
                             </line>
@@ -345,10 +321,8 @@
                 <a class="nav-link" href="./form-elements.html">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                         height="24" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round"
-                         stroke-linejoin="round">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <polyline points="9 11 12 14 20 6"></polyline>
                       <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9">
@@ -361,18 +335,13 @@
                 </a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                   data-bs-auto-close="outside" href="#navbar-extra" role="button"
-                   aria-expanded="false">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-extra" role="button" aria-expanded="false">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                         height="24" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round"
-                         stroke-linejoin="round">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path
-                            d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
+                      <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
                       </path>
                     </svg>
                   </span>
@@ -403,24 +372,16 @@
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                   data-bs-auto-close="outside" href="#navbar-layout" role="button"
-                   aria-expanded="false">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-layout" role="button" aria-expanded="false">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                         height="24" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round"
-                         stroke-linejoin="round">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <rect x="4" y="4" width="6" height="5"
-                            rx="2"></rect>
-                      <rect x="4" y="13" width="6" height="7"
-                            rx="2"></rect>
-                      <rect x="14" y="4" width="6" height="7"
-                            rx="2"></rect>
-                      <rect x="14" y="15" width="6" height="5"
-                            rx="2"></rect>
+                      <rect x="4" y="4" width="6" height="5" rx="2"></rect>
+                      <rect x="4" y="13" width="6" height="7" rx="2"></rect>
+                      <rect x="14" y="4" width="6" height="7" rx="2"></rect>
+                      <rect x="14" y="15" width="6" height="5" rx="2"></rect>
                     </svg>
                   </span>
                   <span class="nav-link-title">
@@ -453,13 +414,10 @@
                 <a class="nav-link" href="//email.khn.cz" target="_blank">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/ghost -->
-                    <svg class="icon icon-tabler icon-tabler-mail"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                         fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-mail" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <rect x="3" y="5" width="18" height="14"
-                            rx="2"></rect>
+                      <rect x="3" y="5" width="18" height="14" rx="2"></rect>
                       <polyline points="3 7 12 13 21 7"></polyline>
                     </svg>
                   </span>
@@ -469,15 +427,11 @@
                 </a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-                   data-bs-auto-close="outside" href="#navbar-help" role="button"
-                   aria-expanded="false">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-help" role="button" aria-expanded="false">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/lifebuoy -->
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                         height="24" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round"
-                         stroke-linejoin="round">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <circle cx="12" cy="12" r="4"></circle>
                       <circle cx="12" cy="12" r="9"></circle>
@@ -504,17 +458,12 @@
             @auth
               <div class="ms-auto d-print-none col-auto">
                 <div class="btn-list">
-                  <a class="btn btn-azure" id="exportPhoneList" data-bs-toggle="tooltip"
-                     data-bs-placement="bottom"
-                     data-bs-original-title="{{ __('Generate phonelist to Excel file') }}"
-                     href="{{ route('employees.phonelist') }}">
-                    <svg class="icon icon-tabler icon-tabler-address-book"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                  <a class="btn btn-azure" id="exportPhoneList" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                     data-bs-original-title="{{ __('Generate phonelist to Excel file') }}" href="{{ route('employees.phonelist') }}">
+                    <svg class="icon icon-tabler icon-tabler-address-book" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path
-                            d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z">
+                      <path d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z">
                       </path>
                       <path d="M10 16h6"></path>
                       <circle cx="13" cy="11" r="2"></circle>
@@ -524,18 +473,13 @@
                     </svg>
                     {{ __('Phonelist') }}
                   </a>
-                  <a class="btn btn-blue" id="exportList" data-bs-toggle="tooltip"
-                     data-bs-placement="bottom"
-                     data-bs-original-title="{{ __('Quick data to table') }}"
+                  <a class="btn btn-blue" id="exportList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Quick data to table') }}"
                      href="{{ route('employees.list') }}">
-                    <svg class="icon icon-tabler icon-tabler-file-spreadsheet"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-file-spreadsheet" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                      <path
-                            d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
+                      <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
                       </path>
                       <path d="M8 11h8v7h-8z"></path>
                       <path d="M8 15h8"></path>
@@ -544,28 +488,21 @@
                     {{ __('Quick table') }}
                   </a>
                   </a>
-                  <button class="btn btn-purple" id="exportTable" data-bs-toggle="tooltip"
-                          data-bs-placement="bottom"
+                  <button class="btn btn-purple" id="exportTable" data-bs-toggle="tooltip" data-bs-placement="bottom"
                           data-bs-original-title="{{ __('Export data to CSV of XLS') }}">
-                    <svg class="icon icon-tabler icon-tabler-file-export"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-file-export" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                      <path
-                            d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3">
+                      <path d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3">
                       </path>
                     </svg>
                     {{ __('Export') }}
                   </button>
-                  <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal"
-                          data-bs-toggle="tooltip" data-bs-placement="bottom"
+                  <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal" data-bs-toggle="tooltip" data-bs-placement="bottom"
                           data-bs-original-title="{{ __('Creates a Nové employee') }}">
-                    <svg class="icon icon-tabler icon-tabler-user-plus"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                         stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-user-plus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <circle cx="9" cy="7" r="4"></circle>
                       <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
@@ -612,24 +549,16 @@
           <div class="row align-items-center flex-row-reverse text-center">
             <div class="col-lg-auto ms-lg-auto">
               <ul class="list-inline list-inline-dots mx-3">
-                <li class="list-inline-item"><a class="link-secondary"
-                     href="./docs/">Documentation</a></li>
-                <li class="list-inline-item"><a class="link-secondary"
-                     href="./license.html">License</a></li>
-                <li class="list-inline-item"><a class="link-secondary"
-                     href="https://github.com/tabler/tabler" target="_blank"
-                     rel="noopener">Source code</a></li>
+                <li class="list-inline-item"><a class="link-secondary" href="./docs/">Documentation</a></li>
+                <li class="list-inline-item"><a class="link-secondary" href="./license.html">License</a></li>
+                <li class="list-inline-item"><a class="link-secondary" href="https://github.com/tabler/tabler" target="_blank" rel="noopener">Source code</a></li>
                 <li class="list-inline-item">
-                  <a class="link-secondary" href="https://github.com/sponsors/codecalm"
-                     target="_blank" rel="noopener">
+                  <a class="link-secondary" href="https://github.com/sponsors/codecalm" target="_blank" rel="noopener">
                     <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
-                    <svg class="icon text-pink icon-filled icon-inline"
-                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                         fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon text-pink icon-filled icon-inline" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path
-                            d="M19.5 12.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572">
+                      <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572">
                       </path>
                     </svg>
                     Sponsor

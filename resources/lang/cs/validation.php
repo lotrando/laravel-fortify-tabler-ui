@@ -123,17 +123,19 @@ return [
         ],
     ],
     'attributes'            => [
-        'department_id'     => 'oddělení',
-        'misto'             => 'místo',
-        'datum_cas'         => 'datum',
-        'cas'               => 'čas',
-        'spec_druh'         => 'pole specifikace nežádoucí události',
-        'jinydoplnek'       => 'pole specifikace jiného druhu nežádoucí události',
-        'pracovnik'         => 'jméno pracovníka',
-        'svedci'            => 'jména svědka nebo svědků',
-        'pacient'           => 'jméno pacienta',
-        'datumnaroz'        => 'datum narození pacienta',
-        'udalost'           => 'pole k čemu došlo'
+        'department_id'     => 'Oddělení',
+        'misto'             => 'Místo',
+        'datum_cas'         => 'Datum',
+        'cas'               => 'Čas',
+        'spec_druh'         => 'pole Specifikace nežádoucí události',
+        'jinydoplnek'       => 'pole Specifikace jiného druhu nežádoucí události',
+        'pracovnik'         => 'Jméno pracovníka',
+        'svedci'            => 'Jména svědka nebo svědků',
+        'pacient'           => 'Jméno pacienta',
+        'datumnaroz'        => 'Datum narození pacienta',
+        'udalost'           => 'pole K čemu došlo',
+        'reseni'            => 'pole Následující řešení po zjištění',
+        'opatreni'          => 'pole Navržená preventivní opatření'
     ],
     'values'                => [
         'after_or_equal'    => [

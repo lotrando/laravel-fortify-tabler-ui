@@ -19164,13 +19164,13 @@ Hr text
 .hr-text {
   display: flex;
   align-items: center;
-  margin: 2rem 0 1rem 0;
+  margin: 1rem 0 1rem 0;
   font-size: 0.725rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .04em;
   line-height: 1.6;
-  color: #a39a9a;
+  color: #bdb6b6;
   height: 1px;
 }
 
