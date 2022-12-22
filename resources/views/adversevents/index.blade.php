@@ -1207,7 +1207,7 @@
 
     $('#ok_button').click(function() {
       $.ajax({
-        url: "/adversevents/" + event_id,
+        url: "adversevents/" + event_id,
         beforeSend: function() {
           $('#ok_button').text("{{ __('Deleting ...') }}");
         },
