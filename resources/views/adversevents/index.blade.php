@@ -694,7 +694,6 @@
                 <span id="form_result_modal"></span>
               </div>
             </div>
-            <div class="hr-text mt-0">{{ __('Základní údaje nežádoucí události') }}</div>
             <div class="row">
               <div class="col-12 col-lg-4 pb-1">
                 <label class="form-label">{{ __('Department') }}</label>
@@ -771,7 +770,6 @@
                 <input class="form-control" id="pracovnik" name="pracovnik" type="text" placeholder="{{ __('Jméno pracovníka který událost zapsal') }}">
               </div>
             </div>
-            <div class="hr-text">{{ __('Popis okolností nežádoucí události') }}</div>
             <div class="row">
               <div class="col-12 col-md-4 mb-sm-2">
                 <label class="form-label">{{ __('K čemu došlo') }}</label>
@@ -786,7 +784,7 @@
                 <textarea class="form-control" id="opatreni" name="opatreni" type="text" placeholder="{{ __('Navržená preventivní opatření') }}" rows="3"></textarea>
               </div>
             </div>
-            <div class="row mb-2">
+            <div class="row mb-1">
               <div class="col-12 mb-sm-2">
                 <label class="form-label">{{ __('Informován') }}</label>
                 <input class="form-control" id="informovan" name="informovan" type="text" placeholder="{{ __('Kdo s kolegů byl informován') }}">
