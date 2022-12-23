@@ -24,6 +24,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('blank', function () {
+    return view('blank');
+});
+
 Route::get('home', function () {
     return view('home');
 })->middleware('verified', 'auth');

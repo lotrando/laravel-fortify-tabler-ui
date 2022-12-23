@@ -41,8 +41,30 @@
         <div class="navbar-nav order-md-last flex-row">
           <div class="nav-item d-none d-md-flex me-3">
             <div class="btn-list">
-              <a class="btn" href="" rel="noreferrer">
+              <a class="btn hover-shadow-sm" href="{{ route('adversevents.index') }}" rel="noreferrer">
                 <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                     fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M8 16v-4a4 4 0 0 1 8 0v4"></path>
+                  <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"></path>
+                  <rect x="6" y="16" width="12" height="4" rx="1">
+                  </rect>
+                </svg>
+                {{ __('Nežádoucí události') }}
+              </a>
+              <a class="btn hover-shadow-sm" href="{{ route('employees.index') }}" rel="noreferrer">
+                <svg class="icon text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                     fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                </svg>
+                {{ __('Employees') }}
+              </a>
+              <a class="btn hover-shadow-sm" href="" rel="noreferrer">
                 <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                      fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -53,40 +75,43 @@
                   <line x1="5.65" y1="5.65" x2="9" y2="9"></line>
                   <line x1="18.35" y1="5.65" x2="15" y2="9"></line>
                 </svg>
-                Helpdesk
+                {{ __('Helpdesk') }}
               </a>
-              <a class="btn" href="{{ route('register') }}" rel="noreferrer">
-                <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-                <svg class="icon icon-tabler icon-tabler-login" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                     stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
-                  </path>
-                  <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
-                </svg>
-                Register
-              </a>
-              <a class="btn" href="{{ route('login') }}" rel="noreferrer">
-                <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-                <svg class="icon icon-tabler icon-tabler-lock-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                     stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <rect x="5" y="11" width="14" height="10" rx="2"></rect>
-                  <circle cx="12" cy="16" r="1"></circle>
-                  <path d="M8 11v-5a4 4 0 0 1 8 0"></path>
-                </svg>
-                Login
-              </a>
+              @guest
+                <a class="btn hover-shadow-sm" href="{{ route('register') }}" rel="noreferrer">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                  <svg class="icon icon-tabler icon-tabler-login" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
+                    </path>
+                    <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
+                  </svg>
+                  {{ __('Register') }}
+                </a>
+                <a class="btn hover-shadow-sm" href="{{ route('login') }}" rel="noreferrer">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                  <svg class="icon icon-tabler icon-tabler-lock-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <rect x="5" y="11" width="14" height="10" rx="2">
+                    </rect>
+                    <circle cx="12" cy="16" r="1"></circle>
+                    <path d="M8 11v-5a4 4 0 0 1 8 0"></path>
+                  </svg>
+                  {{ __('Login') }}
+                </a>
+              @endguest
             </div>
           </div>
           <div class="nav-item dropdown">
             @auth
               <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" href="#" aria-label="Open user menu">
-                <span class="avatar avatar-sm" style="background-image: url(./foto/{{ Auth::user()->personal_number . '.jpg' ?? 'no_image.png' }})"></span>
-                <div class="d-none d-xl-block ps-2">
+                <div class="d-none d-xl-block px-2">
                   <div>{{ Auth::user()->name ?? '' }}</div>
                   <div class="small text-muted mt-1">{{ Auth::user()->personal_number ?? '' }}</div>
                 </div>
+                <span class="avatar avatar-sm" style="background-image: url(./foto/{{ Auth::user()->personal_number . '.jpg' ?? 'no_image.png' }})"></span>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                 <a class="dropdown-item" href="#">Status</a>

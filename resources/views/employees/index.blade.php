@@ -7,7 +7,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-        <a href="#">
+        <a href="{{ url('http://www.khn.cz') }}">
           <img class="navbar-brand-image" src="{{ asset('img/logo.png') }}" alt="Logo KHN a.s.">
         </a>
       </h1>
@@ -50,29 +50,31 @@
               </svg>
               {{ __('Helpdesk') }}
             </a>
-            <a class="btn hover-shadow-sm" href="{{ route('register') }}" rel="noreferrer">
-              <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-              <svg class="icon icon-tabler icon-tabler-login" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                   stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
-                </path>
-                <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
-              </svg>
-              {{ __('Register') }}
-            </a>
-            <a class="btn hover-shadow-sm" href="{{ route('login') }}" rel="noreferrer">
-              <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
-              <svg class="icon icon-tabler icon-tabler-lock-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                   stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <rect x="5" y="11" width="14" height="10" rx="2">
-                </rect>
-                <circle cx="12" cy="16" r="1"></circle>
-                <path d="M8 11v-5a4 4 0 0 1 8 0"></path>
-              </svg>
-              {{ __('Login') }}
-            </a>
+            @guest
+              <a class="btn hover-shadow-sm" href="{{ route('register') }}" rel="noreferrer">
+                <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                <svg class="icon icon-tabler icon-tabler-login" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                     stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
+                  </path>
+                  <path d="M20 12h-13l3 -3m0 6l-3 -3"></path>
+                </svg>
+                {{ __('Register') }}
+              </a>
+              <a class="btn hover-shadow-sm" href="{{ route('login') }}" rel="noreferrer">
+                <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                <svg class="icon icon-tabler icon-tabler-lock-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                     stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <rect x="5" y="11" width="14" height="10" rx="2">
+                  </rect>
+                  <circle cx="12" cy="16" r="1"></circle>
+                  <path d="M8 11v-5a4 4 0 0 1 8 0"></path>
+                </svg>
+                {{ __('Login') }}
+              </a>
+            @endguest
           </div>
         </div>
         @auth
