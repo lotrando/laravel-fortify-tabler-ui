@@ -983,15 +983,18 @@
           },
           {
             data: 'department.center_code',
-            "width": "1%"
+            "width": "1%",
+            orderable: false,
           },
           {
             data: 'department.department_name',
-            "width": "8%"
+            "width": "8%",
+            orderable: false,
           },
           {
             data: 'job.job_title',
-            "width": "7%"
+            "width": "7%",
+            orderable: false,
           },
           {
             data: 'email',
