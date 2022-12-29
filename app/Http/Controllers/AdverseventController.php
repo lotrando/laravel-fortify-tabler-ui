@@ -20,11 +20,12 @@ class AdverseventController extends Controller
     {
         $departments = Department::orderBy('department_name')->get();
 
-        $model = Adversevent::with('department')->select('*');
+        $model = Adversevent::join('departments', 'adversevents.department_id', '=', 'departments.id')
+            ->select('*', 'adversevents.id',);
 
         if ($request->ajax()) {
 
-            return DataTables::eloquent($model)
+            return Datatables::eloquent($model)
 
                 ->addColumn('action', function ($data) {
                     $buttons = '
@@ -172,9 +173,12 @@ class AdverseventController extends Controller
      * @param  \App\Models\Adversevent  $adversevent
      * @return \Illuminate\Http\Response
      */
-    public function edit(Adversevent $adversevent)
+    public function edit($id)
     {
-        //
+        $data = Adversevent::with('department')->findOrFail($id);
+        if (request()->ajax()) {
+            return response()->json(['data' => $data]);
+        }
     }
 
     /**
@@ -187,8 +191,33 @@ class AdverseventController extends Controller
     public function update(Request $request)
     {
         $rules = [
-            'department_id'     =>  'required',
-            'status',
+            'department_id'         => 'required',
+            'misto'                 => 'required',
+            'datum_cas'             => 'required',
+            'cas'                   => 'required',
+            'spec_druh'             => 'required',
+            'jinydoplnek'           => 'nullable',
+            'chorobopis'            => 'nullable',
+            'pacient'               => 'required',
+            'datumnaroz'            => 'required',
+            'pracovnik'             => 'required',
+            'svedek'                => 'nullable',
+            'udalost'               => 'required',
+            'reseni'                => 'required',
+            'opatreni'              => 'required',
+            'informovan'            => 'nullable',
+            'pricina'               => 'nullable',
+            'jina_pricina'          => 'nullable',
+            'stav_pacienta'         => 'nullable',
+            'lokalizace'            => 'nullable',
+            'druh_zraneni'          => 'nullable',
+            'preventivni_opatreni'  => 'nullable',
+            'zhodnoceni_stavu'      => 'nullable',
+            'datum'                 => 'nullable',
+            'jmeno_lekare'          => 'nullable',
+            'vyvoj'                 => 'nullable',
+            'upresneni'             => 'nullable',
+            'status'                => 'required',
         ];
 
         $error = Validator::make($request->all(), $rules);
@@ -198,8 +227,35 @@ class AdverseventController extends Controller
         }
 
         $form_data = [
-            'department_id'     =>  $request->department_id,
-            'status'            =>  $request->status,
+            'department_id'         => $request->department_id,
+            'misto'                 => $request->misto,
+            'datum_cas'             => $request->datum_cas,
+            'cas'                   => $request->cas,
+            'spec_druh'             => $request->spec_druh,
+            'jinydoplnek'           => $request->jinydoplnek,
+            'pracovnik'             => $request->pracovnik,
+            'svedek'                => $request->svedek,
+            'pacient'               => $request->pacient,
+            'datumnaroz'            => $request->datumnaroz,
+            'chorobopis'            => $request->chorobopis,
+            'udalost'               => $request->udalost,
+            'reseni'                => $request->reseni,
+            'opatreni'              => $request->opatreni,
+            'informovan'            => $request->informovan,
+            'pricina'               => $request->pricina,
+            'jina_pricina'          => $request->jina_pricina,
+            'stav_pacienta'         => $request->stav_pacienta,
+            'lokalizace'            => $request->lokalizace,
+            'druh_zraneni'          => $request->druh_zraneni,
+            'preventivni_opatreni'  => $request->preventivni_opatreni,
+            'zhodnoceni_stavu'      => $request->zhodnoceni_stavu,
+            'datum'                 => $request->datum,
+            'jmeno_lekare'          => $request->jmeno_lekare,
+            'vyvoj'                 => $request->vyvoj,
+            'upresneni'             => $request->upresneni,
+            'status'                => $request->status,
+            'resitel'               => $request->rešitel,
+            'vyjadreni'             => $request->vyjadreni,
         ];
 
         Adversevent::whereId($request->hidden_id)->update($form_data);
@@ -213,9 +269,8 @@ class AdverseventController extends Controller
      * @param  \App\Models\Adversevent  $adversevent
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Adversevent $adversevent)
     {
-        $adversevent = Adversevent::find($id);
         $adversevent->delete();
         return response()->json(['success' => __('Event deleted successfully ')]);
     }

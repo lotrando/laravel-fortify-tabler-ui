@@ -1007,11 +1007,11 @@
           targets: [3]
         }],
         columns: [{
-            data: 'department.department_code',
+            data: 'department_code',
             "width": "1%",
           },
           {
-            data: 'department.department_name',
+            data: 'department_name',
             "width": "5%"
           },
           {
