@@ -648,7 +648,7 @@
             <div class="ms-auto d-print-none col-auto">
               <div class="btn-list">
                 <button class="btn btn-success d-none d-sm-inline-block" id="openCreateModal" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                        data-bs-original-title="{{ __('Creates a Nové employee') }}">
+                        data-bs-original-title="{{ __('Creates new adverse event') }}">
                   <svg class="icon icon-tabler icon-tabler-urgent" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -1069,7 +1069,7 @@
         if ($(this).val() == "Jiný") {
           $('#jinydoplnek').prop('disabled', false);
         } else {
-          $('#jinydoplnek').prop('disabled', true);
+          $('#jinydoplnek').val('').prop('disabled', true);
         }
       });
     });
@@ -1097,12 +1097,36 @@
           $("#modal-header, #modal-icon").removeClass();
           $('#formModal').modal('show');
           $('#modal-icon').addClass('fas fa-user-edit fa-2x m-2');
-          $('#modal-header').addClass("modal-header bg-" + html.data.department.color_id +
-            "-lt");
+          $('#modal-header').addClass("modal-header bg-red-lt");
           $('#action_button, .modal-title').text("{{ __('Edit adverse event') }}");
           $('#action').val("Edit");
           $('#department_code').val(html.data.department.department_code);
           $('#department_id').val(html.data.department_id);
+          $('#misto').val(html.data.misto);
+          $('#datum_cas').val(html.data.datum_cas);
+          $('#cas').val(html.data.cas);
+          $('#spec_druh').val(html.data.spec_druh);
+          $('#chorobopis').val(html.data.chorobopis);
+          if ($('#spec_druh').val() === "Pád") {
+            $('#pad_panel').removeClass('d-none').addClass('d-block')
+          } else {
+            $('#pad_panel').removeClass('d-blok').addClass('d-none')
+          }
+          if ($('#spec_druh').val() === "Jiný") {
+            $('#jinydoplnek').prop('disabled', false);
+            $('#jinydoplnek').val(html.data.jinydoplnek);
+          } else {
+            $('#jinydoplnek').prop('disabled', true);
+            $('#jinydoplnek').val();
+          }
+          $('#pacient').val(html.data.pacient);
+          $('#datumnaroz').val(html.data.datumnaroz);
+          $('#pracovnik').val(html.data.pracovnik);
+          $('#svedek').val(html.data.svedek);
+          $('#udalost').val(html.data.udalost);
+          $('#reseni').val(html.data.reseni);
+          $('#opatreni').val(html.data.opatreni);
+          $('#informovan').val(html.data.informovan);
           $('#status').val(html.data.status);
           $('#created_at').val(html.data.created_at);
           $('#updated_at').val(html.data.updated_at);
@@ -1122,16 +1146,6 @@
       $('#personal_number').attr('readonly', false)
       $('#department_id, #department_code, #spec_druh').val('');
       $('#status').val('Rozpracováno');
-    })
-
-    $('#exportTable').click(function() {
-      $('#exportForm')[0].reset();
-      $("#modal-export-icon, #modal-export-header").removeClass();
-      $('#exportModal').modal('show');
-      $('#modal-export-icon').addClass('fas fa-file-export fa-2x m-2');
-      $('#modal-export-header').addClass("modal-header bg-purple-lt");
-      $('#export_button, .modal-title').text("{{ __('Export employees to file') }}");
-      $('#action').val("Export");
     })
 
     $('#inputForm').on('submit', function(event) {
@@ -1157,12 +1171,11 @@
               $('#form_result_modal').html(html);
             }
             if (data.success) {
-              html = '<div class="alert alert-success text-success shadow-sm"><ul><li>' +
-                data.success +
-                '</li></ul><a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a></div>';
+              html = '<div class="alert alert-success text-success shadow-sm"><ul><li>' + data.success + '</li></ul></div>';
+              $('#formModal').modal('hide')
               $('#inputForm')[0].reset();
               $('.dataTable').DataTable().ajax.reload(null, false);
-              $('#form_result_modal').html(html);
+              $('#form_result_window').html(html);
             }
           }
         })
@@ -1209,7 +1222,7 @@
 
     $('#ok_button').click(function() {
       $.ajax({
-        url: "adversevents/" + event_id,
+        url: "adversevent/destroy/" + event_id,
         beforeSend: function() {
           $('#ok_button').text("{{ __('Deleting ...') }}");
         },

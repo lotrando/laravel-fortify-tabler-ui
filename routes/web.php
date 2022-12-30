@@ -52,6 +52,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('phonelist', [EmployeeController::class, 'exportPhoneList'])->name('employees.phonelist');
     Route::get('list', [EmployeeController::class, 'exportList'])->name('employees.list');
 
+    // Adverse Events
+    Route::post('adversevent/update', [AdverseventController::class, 'update'])->name('adverseevents.update');
+    Route::get('adversevent/destroy/{id}', [AdverseventController::class, 'destroy']);
+
     // Evidence
     Route::resource('evidences', EvidenceController::class);
     Route::post('evidences/update', [EvidenceController::class, 'update'])->name('evidences.update');

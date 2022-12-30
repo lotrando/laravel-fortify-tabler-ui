@@ -127,15 +127,20 @@ return [
         'misto'             => 'Místo',
         'datum_cas'         => 'Datum',
         'cas'               => 'Čas',
-        'spec_druh'         => 'pole Specifikace nežádoucí události',
-        'jinydoplnek'       => 'pole Specifikace jiného druhu nežádoucí události',
+        'spec_druh'         => 'Specifikace nežádoucí události',
+        'jinydoplnek'       => 'Specifikace jiného druhu nežádoucí události',
         'pracovnik'         => 'Jméno pracovníka',
         'svedci'            => 'Jména svědka nebo svědků',
         'pacient'           => 'Jméno pacienta',
         'datumnaroz'        => 'Datum narození pacienta',
-        'udalost'           => 'pole K čemu došlo',
-        'reseni'            => 'pole Následující řešení po zjištění',
-        'opatreni'          => 'pole Navržená preventivní opatření'
+        'udalost'           => 'K čemu došlo',
+        'reseni'            => 'Následující řešení po zjištění',
+        'opatreni'          => 'Navržená preventivní opatření',
+        'informovan'        => 'Informován',
+        'pricina'           => 'Příčina pádu',
+        'stav_pacienta'     => 'Stav pacienta',
+        'lokalizace'        => 'Lokalizace zranění po pádu',
+        'druh_zraneni'      => 'Příznaky po pádu'
     ],
     'values'                => [
         'after_or_equal'    => [

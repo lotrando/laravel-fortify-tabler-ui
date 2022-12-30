@@ -290,8 +290,8 @@ class EmployeeController extends Controller
                                     </div>
                                     <div class="col">
                                         <div class="font-weight-medium text-muted">' .  $employee->title_preffix . ' ' . $employee->last_name . ' ' . $employee->first_name . ' ' . $employee->title_suffix . '</div>
-                                    <div class="hr-text my-2">
-                                        <span>' .  __("pracovní zařazení")  . '</span>
+                                    <div class="hr-text my-2" >
+                                        <span style="font-size: 0.6rem">' .  __("pracovní zařazení")  . '</span>
                                     </div>
                                     <div class="text-muted">
                                         ' .  $employee->department->center_code . ' - ' .  $employee->department->department_name . '

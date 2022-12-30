@@ -91,7 +91,7 @@ class AdverseventController extends Controller
             'datum_cas'             => 'required',
             'cas'                   => 'required',
             'spec_druh'             => 'required',
-            'jinydoplnek'           => 'nullable',
+            'jinydoplnek'           => 'sometimes|required|spec_druh:Jiný',
             'chorobopis'            => 'nullable',
             'pacient'               => 'required',
             'datumnaroz'            => 'required',
@@ -100,12 +100,11 @@ class AdverseventController extends Controller
             'udalost'               => 'required',
             'reseni'                => 'required',
             'opatreni'              => 'required',
-            'informovan'            => 'nullable',
-            'pricina'               => 'nullable',
-            'jina_pricina'          => 'nullable',
-            'stav_pacienta'         => 'nullable',
-            'lokalizace'            => 'nullable',
-            'druh_zraneni'          => 'nullable',
+            'informovan'            => 'required',
+            'pricina'               => $request->spec_druh === 'Pád' ? 'sometimes|required' : 'nullable',
+            'stav_pacienta'         => $request->spec_druh === 'Pád' ? 'sometimes|required' : 'nullable',
+            'lokalizace'            => $request->spec_druh === 'Pád' ? 'sometimes|required' : 'nullable',
+            'druh_zraneni'          => $request->spec_druh === 'Pád' ? 'sometimes|required' : 'nullable',
             'preventivni_opatreni'  => 'nullable',
             'zhodnoceni_stavu'      => 'nullable',
             'datum'                 => 'nullable',
@@ -154,6 +153,8 @@ class AdverseventController extends Controller
         ];
 
         Adversevent::create($form_data);
+
+        return response()->json(['success' => 'Nežádoucí událost uložena do databáze']);
     }
 
     /**
@@ -269,9 +270,10 @@ class AdverseventController extends Controller
      * @param  \App\Models\Adversevent  $adversevent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Adversevent $adversevent)
+    public function destroy($id)
     {
-        $adversevent->delete();
-        return response()->json(['success' => __('Event deleted successfully ')]);
+        $adverse = Adversevent::find($id);
+        $adverse->delete();
+        return response()->json(['success' => __('Adverse event deleted successfully')]);
     }
 }
