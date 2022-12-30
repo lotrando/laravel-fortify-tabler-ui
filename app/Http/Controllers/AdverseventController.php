@@ -21,7 +21,7 @@ class AdverseventController extends Controller
         $departments = Department::orderBy('department_name')->get();
 
         $model = Adversevent::join('departments', 'adversevents.department_id', '=', 'departments.id')
-            ->select('*', 'adversevents.id',);
+            ->select('*', 'adversevents.id');
 
         if ($request->ajax()) {
 
@@ -91,10 +91,10 @@ class AdverseventController extends Controller
             'datum_cas'             => 'required',
             'cas'                   => 'required',
             'spec_druh'             => 'required',
-            'jinydoplnek'           => 'sometimes|required|spec_druh:Jiný',
+            'jinydoplnek'           => $request->spec_druh === 'Jiný' ? 'sometimes|required' : 'nullable',
             'chorobopis'            => 'nullable',
-            'pacient'               => 'required',
-            'datumnaroz'            => 'required',
+            'pacient'               => $request->spec_druh === 'Jiný' ? 'nullable' : 'sometimes|required',
+            'datumnaroz'            => $request->spec_druh === 'Jiný' ? 'nullable' : 'sometimes|required',
             'pracovnik'             => 'required',
             'svedek'                => 'nullable',
             'udalost'               => 'required',

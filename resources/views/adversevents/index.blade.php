@@ -670,7 +670,6 @@
             <table class="table-bordered table-hover dataTable w-100 table">
               <thead>
                 <tr class="bg-azure-lt table bg-opacity-50 text-center text-white">
-                  <th>{{ __('Code') }}</th>
                   <th>{{ __('Department') }}</th>
                   <th>{{ __('Místo') }}</th>
                   <th>{{ __('Date') }}</th>
@@ -883,7 +882,7 @@
                 </div>
                 <div class="col-12 col-md-6 mb-2">
                   <label class="form-label">{{ __('Zhodnocení zdrav. stavu, lékařem') }}</label>
-                  <textarea class="form-control" id="zhodnocen_stavu" name="zhodnocen_stavu" type="text" placeholder="{{ __('Zhodnocení zdrav. stavu, lékařem') }}" rows="3"></textarea>
+                  <textarea class="form-control" id="zhodnoceni_stavu" name="zhodnoceni_stavu" type="text" placeholder="{{ __('Zhodnocení zdrav. stavu, lékařem') }}" rows="3"></textarea>
                 </div>
               </div>
               <div class="row">
@@ -893,7 +892,7 @@
                 </div>
                 <div class="col-4 col-lg-3 mb-sm-2">
                   <label class="form-label">Jméno lékaře</label>
-                  <input class="form-control" id="upresneni" name="upresneni" type="text" placeholder="Jméno lékaře">
+                  <input class="form-control" id="jmeno_lekare" name="jmeno_lekare" type="text" placeholder="Jméno lékaře">
                 </div>
                 <div class="col-4 col-lg-2 mb-sm-2">
                   <label class="form-label">{{ __('Další vývoj') }}</label>
@@ -977,6 +976,7 @@
     // Data Table
     $(document).ready(function() {
       $('.dataTable').DataTable({
+        filter: false,
         processing: true,
         processingAnim: false,
         serverSide: true,
@@ -1007,12 +1007,9 @@
           targets: [3]
         }],
         columns: [{
-            data: 'department_code',
-            "width": "1%",
-          },
-          {
             data: 'department_name',
-            "width": "5%"
+            "width": "5%",
+            searchable: false
           },
           {
             data: 'misto',
@@ -1096,7 +1093,7 @@
           $('#inputForm')[0].reset();
           $("#modal-header, #modal-icon").removeClass();
           $('#formModal').modal('show');
-          $('#modal-icon').addClass('fas fa-user-edit fa-2x m-2');
+          $('#modal-icon').addClass('fas fa-first-aid fa-2x m-2');
           $('#modal-header').addClass("modal-header bg-red-lt");
           $('#action_button, .modal-title').text("{{ __('Edit adverse event') }}");
           $('#action').val("Edit");
@@ -1127,6 +1124,16 @@
           $('#reseni').val(html.data.reseni);
           $('#opatreni').val(html.data.opatreni);
           $('#informovan').val(html.data.informovan);
+          $('#pricina').val(html.data.pricina);
+          $('#stav_pacienta').val(html.data.stav_pacienta);
+          $('#lokalizace').val(html.data.lokalizace);
+          $('#druh_zraneni').val(html.data.druh_zraneni);
+          $('#preventivni_opatreni').val(html.data.preventivni_opatreni);
+          $('#zhodnoceni_stavu').val(html.data.zhodnoceni_stavu);
+          $('#datum').val(html.data.datum);
+          $('#jmeno_lekare').val(html.data.jmeno_lekare);
+          $('#vyvoj').val(html.data.vyvoj);
+          $('#upresneni').val(html.data.upresneni);
           $('#status').val(html.data.status);
           $('#created_at').val(html.data.created_at);
           $('#updated_at').val(html.data.updated_at);
@@ -1143,8 +1150,8 @@
       $('#modal-header').addClass("modal-header bg-muted-lt");
       $('#action_button, .modal-title').text("{{ __('Create new adverse event') }}");
       $('#action').val("Add");
-      $('#personal_number').attr('readonly', false)
       $('#department_id, #department_code, #spec_druh').val('');
+      $('#pad_panel').removeClass('d-blok').addClass('d-none');
       $('#status').val('Rozpracováno');
     })
 

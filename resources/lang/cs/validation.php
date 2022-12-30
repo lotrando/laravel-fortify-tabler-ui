@@ -132,6 +132,7 @@ return [
         'pracovnik'         => 'Jméno pracovníka',
         'svedci'            => 'Jména svědka nebo svědků',
         'pacient'           => 'Jméno pacienta',
+        'chorobopis'        => 'Číslo chorobopisu',
         'datumnaroz'        => 'Datum narození pacienta',
         'udalost'           => 'K čemu došlo',
         'reseni'            => 'Následující řešení po zjištění',
