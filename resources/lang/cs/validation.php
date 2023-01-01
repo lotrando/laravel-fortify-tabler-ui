@@ -141,6 +141,7 @@ return [
         'pricina'           => 'Příčina pádu',
         'stav_pacienta'     => 'Stav pacienta',
         'lokalizace'        => 'Lokalizace zranění po pádu',
+        'upresneni'         => 'Upřesnění k jiný',
         'druh_zraneni'      => 'Příznaky po pádu'
     ],
     'values'                => [

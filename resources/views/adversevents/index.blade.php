@@ -897,21 +897,20 @@
                 <div class="col-4 col-lg-2 mb-sm-2">
                   <label class="form-label">{{ __('Další vývoj') }}</label>
                   <select class="form-select" id="vyvoj" name="vyvoj" aria-required="true" style="width: 100%;">
-                    <option id="vyvoj-0" value="" selected="selected"></option>
-                    <option id="vyvoj-1" value="žádný">žádný</option>
-                    <option id="vyvoj-2" value="operace">operace</option>
-                    <option id="vyvoj-3" value="umrtí">umrtí</option>
-                    <option id="vyvoj-4" value="překlad">překlad</option>
-                    <option id="vyvoj-5" value="jiný">jiný</option>
+                    <option id="vyvoj-0" value="žádný" selected="selected">žádný</option>
+                    <option id="vyvoj-1" value="operace">operace</option>
+                    <option id="vyvoj-2" value="umrtí">umrtí</option>
+                    <option id="vyvoj-3" value="překlad">překlad</option>
+                    <option id="vyvoj-4" value="jiný">jiný</option>
                   </select>
                 </div>
                 <div class="col-8 col-lg-3 mb-sm-2">
-                  <label class="form-label">Upřesnění k překladu nebo jiný</label>
-                  <input class="form-control" id="upresneni" name="upresneni" type="text" placeholder="Upřesnění k překladu, jiný">
+                  <label class="form-label">Upřesnění k jiný</label>
+                  <input class="form-control" id="upresneni" name="upresneni" type="text" placeholder="Upřesnění k jiný">
                 </div>
                 <div class="col-4 col-lg-2 mb-sm-2">
                   <label class="form-label">{{ __('Status') }}</label>
-                  <select class="form-select single" id="status" name="status">
+                  <select class="form-select" id="status" name="status">
                     <option value="Rozpracováno">Rozpracováno</option>
                     <option value="Odesláno">Odesláno</option>
                     <option value="Dokončeno">Dokončeno</option>
@@ -1071,6 +1070,17 @@
       });
     });
 
+        $(function() {
+      $('#upresneni').prop('disabled', true);
+      $('#vyvoj').change(function() {
+        if ($(this).val() == "jiný") {
+          $('#upresneni').prop('disabled', false);
+        } else {
+          $('#upresneni').val('').prop('disabled', true);
+        }
+      });
+    });
+
     $(function() {
       $('#pad_panel').addClass('d-none');
       $('#spec_druh').change(function() {
@@ -1145,12 +1155,12 @@
     $('#openCreateModal').click(function() {
       $('#inputForm')[0].reset();
       $("#modal-icon, #modal-header").removeClass();
+      $('#department_id, #department_code, #spec_druh').val('');
       $('#formModal').modal('show');
       $('#modal-icon').addClass('fas fa-first-aid fa-2x m-2');
       $('#modal-header').addClass("modal-header bg-muted-lt");
       $('#action_button, .modal-title').text("{{ __('Create new adverse event') }}");
       $('#action').val("Add");
-      $('#department_id, #department_code, #spec_druh').val('');
       $('#pad_panel').removeClass('d-blok').addClass('d-none');
       $('#status').val('Rozpracováno');
     })

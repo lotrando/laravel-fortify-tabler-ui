@@ -110,7 +110,7 @@ class AdverseventController extends Controller
             'datum'                 => 'nullable',
             'jmeno_lekare'          => 'nullable',
             'vyvoj'                 => 'nullable',
-            'upresneni'             => 'nullable',
+            'upresneni'             => $request->vyvoj === 'jiný' ? 'sometimes|required' : 'nullable',
             'status'                => 'required',
         ];
 
