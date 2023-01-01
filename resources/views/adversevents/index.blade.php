@@ -911,7 +911,7 @@
                 </div>
                 <div class="col-4 col-lg-2 mb-sm-2">
                   <label class="form-label">{{ __('Status') }}</label>
-                  <select class="form-select" id="status" name="status">
+                  <select class="form-select single" id="status" name="status">
                     <option value="Rozpracováno">Rozpracováno</option>
                     <option value="Odesláno">Odesláno</option>
                     <option value="Dokončeno">Dokončeno</option>
