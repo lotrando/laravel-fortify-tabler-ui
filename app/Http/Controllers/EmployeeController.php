@@ -119,7 +119,7 @@ class EmployeeController extends Controller
             'Stravovací provoz - kantýna'       => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 18)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
             'Úklid'                             => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 19)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
             'Anesteziologická ambulance'        => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 20)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
-            'Lékárny KHN'                           => Employee::with('department', 'job')->where('status', 'Aktivní')->whereIn('department_id', [22, 29])->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
+            'Lékárny KHN'                       => Employee::with('department', 'job')->where('status', 'Aktivní')->whereIn('department_id', [22, 29])->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
             'Mezioborová JIP'                   => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 23)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
             'Oddělení následné péče'            => Employee::with('department', 'job')->where('status', 'Aktivní')->where('department_id', 30)->where('phone', '<>', '')->orderBy('position', 'ASC')->get(),
         ]);
