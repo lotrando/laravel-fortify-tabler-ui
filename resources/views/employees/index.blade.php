@@ -918,6 +918,123 @@
       </div>
     </div>
   </div>
+
+  {{-- Delete Employee Photo --}}
+  <div class="modal modal-blur fade" id="photoModal" data-bs-backdrop="static"
+       data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content shadow-lg">
+        {{-- <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="{{ __('Close') }}"></button> --}}
+        <div class="modal-status bg-warning"></div>
+        <div class="modal-body py-4 text-center">
+          <div class="row">
+            <div class="col-12">
+              <span id="form_result_modal"></span>
+            </div>
+          </div>
+          <svg class="icon icon-tabler icon-tabler-photo-off text-warning icon-lg mb-2"
+               xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+               viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <line x1="3" y1="3" x2="21" y2="21"></line>
+            <line x1="15" y1="8" x2="15.01" y2="8"></line>
+            <path
+                  d="M19.121 19.122a3 3 0 0 1 -2.121 .878h-10a3 3 0 0 1 -3 -3v-10c0 -.833 .34 -1.587 .888 -2.131m3.112 -.869h9a3 3 0 0 1 3 3v9">
+            </path>
+            <path d="M4 15l4 -4c.928 -.893 2.072 -.893 3 0l5 5"></path>
+            <path d="M16.32 12.34c.577 -.059 1.162 .162 1.68 .66l2 2"></path>
+          </svg>
+          <h3>{{ __('Are you sure?') }}</h3>
+          <div class="text-muted">
+            {{ __('Do you really want to remove photo?') }}<br>{{ __('This operation cannot be undone') }}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="w-100">
+            <div class="row">
+              <div class="col">
+                <button class="btn btn-muted w-100 hover-shadow" data-bs-dismiss="modal">
+                  {{ __('Cancel') }}
+                </button>
+              </div>
+              <div class="col">
+                <button class="btn btn-warning w-100 hover-shadow" id="remove_button"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- Export Employees --}}
+  <div class="modal modal-blur fade" id="exportModal" data-bs-backdrop="static"
+       data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+      <div class="modal-content shadow-lg">
+        <div id="modal-export-header">
+          <h5 class="modal-title"></h5>
+          <i id="modal-export-icon"></i>
+        </div>
+        <form id="exportForm" action="{{ route('employees.export') }}">
+          @csrf
+          <div class="modal-body">
+            <div class="row mb-2">
+              <div class="col-12">
+                <label class="form-label">{{ __('Export columns') }}</label>
+                <select class="form-select" id="column" name="column[]" multiple size=24>
+                  @foreach ($columns as $column)
+                    <option class="export-option" value="{{ $column }}"
+                            @if (old('column') == $column) selected @endif selected>
+                      {{ $column }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <label class="form-label">{{ __('Sort by') }}</label>
+                <select class="form-select" id="sort" name="sort">
+                  @foreach ($columns as $column)
+                    <option value="{{ $column }}"
+                            @if (old('sort') == $column) selected @endif>{{ $column }}
+                    </option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="col-4">
+                <label class="form-label">{{ __('Direction') }}</label>
+                <select class="form-select" id="direction" name="direction">
+                  <option value="ASC" @if (old('direction') == 'ASC') selected @endif>
+                    {{ __('Ascending') }}</option>
+                  <option value="DESC" @if (old('direction') == 'DESC')  @endif>
+                    {{ __('Descending') }}</option>
+                </select>
+              </div>
+              <div class="col-4">
+                <label class="form-label">{{ __('Format') }}</label>
+                <select class="form-select" id="format" name="format">
+                  <option value="xlsx" @if (old('format') == 'xlsx')  @endif>
+                    {{ __('*.xlsx') }}</option>
+                  <option value="csv" @if (old('format') == 'csv')  @endif>
+                    {{ __('*.csv') }}</option>
+                </select>
+              </div>
+            </div>
+            <input id="action" name="action" type="hidden" />
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-muted hover-shadow" data-bs-dismiss="modal" type="button">
+              {{ __('Close') }}
+            </button>
+            <button class="btn btn-primary ms-auto hover-shadow" id="export_button"
+                    name="export_button" type="submit"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection
 
 @section('scripts')
@@ -945,7 +1062,7 @@
           "url": "{{ asset('js/cs.json') }}",
           "sProcessing": "<img style='height:100px;' src='img/processing.gif' />",
           "search": "_INPUT_",
-          "searchPlaceholder": "Hledej ..."
+          "searchPlaceholder": "Hledej zaměstnance..."
         },
         ajax: {
           url: "{{ route('employees.index') }}",
