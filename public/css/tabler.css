@@ -14321,7 +14321,7 @@ Navbar vertical
 }
 
 .page-pretitle {
-  font-size: 0.625rem;
+  font-size: 0.725rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -14331,9 +14331,9 @@ Navbar vertical
 
 .page-title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.7rem;
   line-height: 1.4;
-  font-weight: 500;
+  font-weight: 600;
   color: inherit;
   display: flex;
   align-items: center;

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdverseventController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EvidenceController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\TrainingController;
 use App\Models\Attendance;
@@ -20,19 +21,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('blank', function () {
-    return view('blank')->with([
-        'pageTitle' => 'Blank'
-    ]);
-});
-
-Route::get('home', function () {
-    return view('home');
-})->middleware('verified', 'auth');
+Route::get('kukturni-oznameni', [PageController::class, 'artPage'])->name('kultura');
+Route::get('akord', [PageController::class, 'akord'])->name('akord');
 
 Route::resource('slides', SlideController::class);
 Route::resource('train', TrainingController::class);
