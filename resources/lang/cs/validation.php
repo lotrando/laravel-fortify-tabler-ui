@@ -132,6 +132,7 @@ return [
         'pracovnik'         => 'Jméno pracovníka',
         'svedci'            => 'Jména svědka nebo svědků',
         'pacient'           => 'Jméno pacienta',
+        'chorobopis'        => 'Číslo chorobopisu',
         'datumnaroz'        => 'Datum narození pacienta',
         'udalost'           => 'K čemu došlo',
         'reseni'            => 'Následující řešení po zjištění',
@@ -140,6 +141,7 @@ return [
         'pricina'           => 'Příčina pádu',
         'stav_pacienta'     => 'Stav pacienta',
         'lokalizace'        => 'Lokalizace zranění po pádu',
+        'upresneni'         => 'Upřesnění k jiný',
         'druh_zraneni'      => 'Příznaky po pádu'
     ],
     'values'                => [
