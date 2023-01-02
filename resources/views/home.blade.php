@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.blank')
 
 @section('header')
   <header class="navbar navbar-expand-md navbar-light d-print-none">

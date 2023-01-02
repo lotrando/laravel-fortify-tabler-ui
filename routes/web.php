@@ -21,8 +21,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('kukturni-oznameni', [PageController::class, 'artPage'])->name('kultura');
-Route::get('akord', [PageController::class, 'akord'])->name('akord');
+
+
+Route::prefix('oznameni')->name('oznameni.')->group(function () {
+    Route::get('akord', [PageController::class, 'akord'])->name('akord');
+    Route::get('kultura', [PageController::class, 'kultura'])->name('kultura');
+});
+
+Route::prefix('stravovani')->name('stravovani.')->group(function () {
+    Route::get('obedy', [PageController::class, 'obedy'])->name('obedy');
+});
+
+
 
 Route::resource('slides', SlideController::class);
 Route::resource('train', TrainingController::class);

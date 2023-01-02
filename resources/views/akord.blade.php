@@ -1,4 +1,4 @@
-@extends('layouts.blank')
+@extends('layouts.blank', [$favicon => 'favicon'])
 
 @section('header')
   {{-- Header Start --}}
@@ -85,10 +85,10 @@
           <!-- Page pre-title -->
           <div class="col">
             <div class="page-pretitle text-primary">
-              {{ __($category) }}
+              {{ __($category) ?? '' }}
             </div>
             <h2 class="page-title text-primary">
-              {{ __($title) }}
+              {{ __($title) ?? '' }}
             </h2>
           </div>
           <!-- Page title actions buttons -->
@@ -99,14 +99,14 @@
                   {{ __('Secondary') }}
                 </a>
               </span>
-              <a class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal_primary">
-                {{ __('Primary') }}
+              <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-success" href="#">
+                Success modal
               </a>
-              <a class="btn btn-warning d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal_warning">
-                {{ __('Warning') }}
+              <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal-warning" href="#">
+                Warning modal
               </a>
-              <a class="btn btn-danger d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal_danger">
-                {{ __('Danger') }}
+              <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-danger" href="#">
+                Danger modal
               </a>
             </div>
           </div>
@@ -151,7 +151,8 @@
               </div>
               <p class="text-justified">
 
-                21.09. 2022 od 12:00 dojde k aktualizace NIS AKORD. Může docházet k výpadku NIS. Pokud se vám po aktualizaci zobrazí hlášení o starší verzi programu, je nutné spustit
+                21.09. 2022 od 12:00 dojde k aktualizace NIS AKORD. Může docházet k výpadku NIS. Pokud se vám po aktualizaci zobrazí hlášení o starší verzi programu, je nutné
+                spustit
                 ikonu aktualizace Akordu na ploše ručně.
 
                 Aktualizace opravuje:
@@ -223,44 +224,95 @@
 @endsection
 
 @section('modals')
-  {{-- Delete Employee Photo --}}
-  <div class="modal modal-blur fade" id="modalReport" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
+  {{-- Success Modal --}}
+  <div class="modal fade" id="modal-success" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content shadow-lg">
-        {{-- <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="{{ __('Close') }}"></button> --}}
-        <div class="modal-status bg-warning"></div>
+        <div class="modal-status bg-success"></div>
         <div class="modal-body py-4 text-center">
-          <div class="row">
-            <div class="col-12">
-              <span id="form_result_modal"></span>
-            </div>
-          </div>
-          <svg class="icon icon-tabler icon-tabler-photo-off text-warning icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-               stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <line x1="3" y1="3" x2="21" y2="21"></line>
-            <line x1="15" y1="8" x2="15.01" y2="8"></line>
-            <path d="M19.121 19.122a3 3 0 0 1 -2.121 .878h-10a3 3 0 0 1 -3 -3v-10c0 -.833 .34 -1.587 .888 -2.131m3.112 -.869h9a3 3 0 0 1 3 3v9">
-            </path>
-            <path d="M4 15l4 -4c.928 -.893 2.072 -.893 3 0l5 5"></path>
-            <path d="M16.32 12.34c.577 -.059 1.162 .162 1.68 .66l2 2"></path>
+          <!-- Download SVG icon from http://tabler-icons.io/i/circle-check -->
+          <svg class="icon text-green icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+               fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <circle cx="12" cy="12" r="9" />
+            <path d="M9 12l2 2l4 -4" />
           </svg>
-          <h3>{{ __('Are you sure?') }}</h3>
-          <div class="text-muted">
-            {{ __('Do you really want to remove photo?') }}<br>{{ __('This operation cannot be undone') }}
-          </div>
+          <h3>Payment succedeed</h3>
+          <div class="text-muted">Your payment of $290 has been successfully submitted. Your invoice has been sent to support@tabler.io.</div>
         </div>
         <div class="modal-footer">
           <div class="w-100">
             <div class="row">
-              <div class="col">
-                <button class="btn btn-muted w-100 hover-shadow" data-bs-dismiss="modal">
-                  {{ __('Cancel') }}
-                </button>
-              </div>
-              <div class="col">
-                <button class="btn btn-warning w-100 hover-shadow" id="remove_button"></button>
-              </div>
+              <div class="col"><a class="btn w-100" data-bs-dismiss="modal" href="#">
+                  Go to dashboard
+                </a></div>
+              <div class="col"><a class="btn btn-success w-100" data-bs-dismiss="modal" href="#">
+                  View invoice
+                </a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- Warning Modal --}}
+  <div class="modal fade" id="modal-warning" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content shadow-lg">
+        <div class="modal-status bg-warning"></div>
+        <div class="modal-body py-4 text-center">
+          <!-- Download SVG icon from http://tabler-icons.io/i/alert-triangle -->
+          <svg class="icon text-warning icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+               stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 9v2m0 4v.01" />
+            <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+          </svg>
+          <h3>Are you sure?</h3>
+          <div class="text-muted">Do you really want to remove 84 files? What you've done cannot be undone.</div>
+        </div>
+        <div class="modal-footer">
+          <div class="w-100">
+            <div class="row">
+              <div class="col"><a class="btn w-100" data-bs-dismiss="modal" href="#">
+                  Cancel
+                </a></div>
+              <div class="col"><a class="btn btn-warning w-100" data-bs-dismiss="modal" href="#">
+                  Ok
+                </a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- Danger Modal --}}
+  <div class="modal fade" id="modal-danger" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+      <div class="modal-content shadow-lg">
+        <div class="modal-status bg-danger"></div>
+        <div class="modal-body py-4 text-center">
+          <!-- Download SVG icon from http://tabler-icons.io/i/alert-triangle -->
+          <svg class="icon text-danger icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+               stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 9v2m0 4v.01" />
+            <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+          </svg>
+          <h3>Are you sure?</h3>
+          <div class="text-muted">Do you really want to remove 84 files? What you've done cannot be undone.</div>
+        </div>
+        <div class="modal-footer">
+          <div class="w-100">
+            <div class="row">
+              <div class="col"><a class="btn w-100" data-bs-dismiss="modal" href="#">
+                  Cancel
+                </a></div>
+              <div class="col"><a class="btn btn-danger w-100" data-bs-dismiss="modal" href="#">
+                  Delete 84 items
+                </a></div>
             </div>
           </div>
         </div>

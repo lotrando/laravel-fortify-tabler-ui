@@ -5,7 +5,8 @@
         <ul class="list-inline list-inline-dots mb-0">
           <li class="list-inline-item">
             © 2022 - 2023 - vytvořil
-            <a class="link-secondary text-primary text-decoration-none" href="mailto:klika@khn.cz" target="_blank" rel="noopener">Klika Miroslav</a>
+            <a class="link-secondary text-primary text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Poslat email autorovi"
+               href="mailto:klika@khn.cz" target="_blank" rel="noopener">Klika Miroslav</a>
             <svg class="icon text-pink icon-filled icon-inline" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                  stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -17,7 +18,8 @@
       <div class="col-12 col-lg-auto mt-lg-0 mt-3">
         <ul class="list-inline list-inline-dots mb-0">
           <li class="list-inline-item">
-            © 2022 - 2023 - <a class="link-secondary text-primary text-decoration-none" href="https://www.khn.cz" target="_blank" rel="noopener">KHN a.s.</a> - všechna práva vyhrazena
+            © 2022 - 2023 - <a class="link-secondary text-primary text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Web KHN a.s."
+               href="https://www.khn.cz" target="_blank" rel="noopener">KHN a.s.</a> - všechna práva vyhrazena
           </li>
         </ul>
       </div>

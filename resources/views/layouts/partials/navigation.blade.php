@@ -4,8 +4,8 @@
         <div class="container-fluid">
           <ul class="navbar-nav">
             {{-- Oznámení Dropdown --}}
-            <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-base" role="button" aria-expanded="false" active>
+            <li class="nav-item dropdown {{ request()->segment(1) == 'oznameni' ? 'active' : '' }}" href="">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-base" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                        fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -34,10 +34,10 @@
                     {{ __('Aktuální změny') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="{{ route('akord') }}">
+                <a class="dropdown-item {{ request()->segment(2) == 'akord' ? 'active' : '' }}" href="{{ route('oznameni.akord') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg class="icon icon-tabler text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                       <line x1="3" y1="21" x2="21" y2="21"></line>
                       <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"></path>
@@ -124,7 +124,7 @@
                     {{ __('Informace') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./navigation.html">
+                <a class="dropdown-item {{ request()->segment(2) == 'kultura' ? 'active' : '' }}" href="{{ route('oznameni.kultura') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg class="icon icon-tabler icon-tabler-masks-theater" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -148,7 +148,7 @@
               </div>
             </li>
             {{-- Stravování --}}
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown {{ request()->segment(1) == 'stravovani' ? 'active' : '' }}">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-base" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-tools-kitchen-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -163,7 +163,7 @@
                 </span>
               </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ url('http://akordapp/SISAkord/Login.aspx?ReturnUrl=%2fSISAkord%2f') }}" target="_blank">
+                <a class="dropdown-item {{ request()->segment(2) == 'obedy' ? 'active' : '' }}" href="{{ route('stravovani.obedy') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg class="icon icon-tabler icon-tabler-meat" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

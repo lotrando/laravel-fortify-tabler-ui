@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link type="image/png" href="{{ asset('img/employees.png') }}" rel="shortcut icon">
+  <link type="image/png" href="{{ asset('img/akord.png') }}" rel="shortcut icon">
 
-  <title>{{ ($title ?? '') }}</title>
+  <title>{{ $category ?? 'Intranet' }} - {{ $title ?? 'KHN' }}</title>
 
   <link href="{{ asset('css/tabler.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-flags.css') }}" rel="stylesheet" />
@@ -32,35 +32,31 @@
 </head>
 
 <body>
-  <div class="page">
-    <!-- Header Start -->
-    @include('layouts.partials.header')
-    <!-- Header End -->
+  <!-- Header Start -->
+  @include('layouts.partials.header')
+  <!-- Header End -->
 
-    <!-- Navigation Start -->
-    @include('layouts.partials.navigation')
-    <!-- Navigation End -->
+  <!-- Navigation Start -->
+  @include('layouts.partials.navigation')
+  <!-- Navigation End -->
 
-    <section>
+  <section>
 
-      @yield('content')
+    @yield('content')
 
-    </section>
+  </section>
 
+  @include('layouts.partials.footer')
 
-    <section>
+  @yield('modals')
 
-      @yield('modals')
+  @include('layouts.partials.logout')
 
-    </section>
-
-    @include('layouts.partials.footer')
-
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/tabler.min.js') }}"></script>
-    <script src="{{ asset('js/demo.min.js') }}"></script>
-    <script src="{{ asset('js/moment-with-locales.js') }}"></script>
-    @include('layouts.partials.scripts')
+  <script src="{{ asset('js/jquery.js') }}"></script>
+  <script src="{{ asset('js/tabler.min.js') }}"></script>
+  <script src="{{ asset('js/demo.min.js') }}"></script>
+  <script src="{{ asset('js/moment-with-locales.js') }}"></script>
+  @include('layouts.partials.scripts')
 
 </body>
 
