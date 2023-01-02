@@ -25,7 +25,9 @@ Route::get('/', function () {
 });
 
 Route::get('blank', function () {
-    return view('blank');
+    return view('blank')->with([
+        'pageTitle' => 'Blank'
+    ]);
 });
 
 Route::get('home', function () {

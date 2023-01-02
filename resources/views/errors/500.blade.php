@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.blank')
 
 @section('main')
   <div class="page page-center">

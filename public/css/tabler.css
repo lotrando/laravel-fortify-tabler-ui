@@ -4610,7 +4610,7 @@ fieldset:disabled .btn {
 }
 
 .card-header {
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 0.5rem;
   margin-bottom: 0;
   color: #626976;
   background-color: #ffffff;
