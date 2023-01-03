@@ -21,15 +21,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get("/", function () {
+    return view('welcome', ['category' => 'Oznámení', 'title' => 'Přehled']);
+});
 
+Route::get("home", function () {
+    return view('home', ['category' => 'Oznámení', 'title' => 'Home']);
+});
 
 Route::prefix('oznameni')->name('oznameni.')->group(function () {
+    Route::get('aktuality', [PageController::class, 'aktuality'])->name('aktuality');
     Route::get('akord', [PageController::class, 'akord'])->name('akord');
     Route::get('kultura', [PageController::class, 'kultura'])->name('kultura');
 });
 
 Route::prefix('stravovani')->name('stravovani.')->group(function () {
     Route::get('obedy', [PageController::class, 'obedy'])->name('obedy');
+    Route::get('kantyna', [PageController::class, 'kantyna'])->name('kantyna');
 });
 
 

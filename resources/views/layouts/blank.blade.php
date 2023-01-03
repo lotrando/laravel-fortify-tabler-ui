@@ -16,13 +16,6 @@
   <link href="{{ asset('css/tabler-vendors.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/demo.css') }}" rel="stylesheet" />
   <style>
-    @import url('https://rsms.me/inter/inter.css');
-
-    :root {
-      --tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-    }
-  </style>
-  <style>
     body {
       font-family: 'Roboto Condensed';
       min-height: 100vh;
