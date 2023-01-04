@@ -1,10 +1,15 @@
-@extends('layouts.blank', [$favicon => 'favicon'])
+@extends('layouts.blank')
+
+@section('favicon')
+  <link type="image/png" href="{{ asset('img/kultura.png') }}" rel="shortcut icon">
+@endsection
 
 @section('header')
   {{-- Header Start --}}
   <header class="navbar navbar-expand-md navbar-light d-print-none">
     <div class="container-fluid">
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-menu" type="button" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-menu" type="button" aria-controls="navbar-menu" aria-expanded="false"
+              aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
