@@ -1,10 +1,15 @@
-@extends('layouts.blank', [$favicon => 'favicon'])
+@extends('layouts.blank')
+
+@section('favicon')
+  <link type="image/png" href="{{ asset('img/kantyna.png') }}" rel="shortcut icon">
+@endsection
 
 @section('header')
   {{-- Header Start --}}
   <header class="navbar navbar-expand-md navbar-light d-print-none">
     <div class="container-fluid">
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-menu" type="button" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-menu" type="button" aria-controls="navbar-menu" aria-expanded="false"
+              aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
@@ -91,25 +96,6 @@
               {{ __($title) ?? '' }}
             </h2>
           </div>
-          <!-- Page title actions buttons -->
-          <div class="ms-auto d-print-none col-auto">
-            <div class="btn-list">
-              <span class="d-none d-sm-inline">
-                <a class="btn" href="#">
-                  {{ __('Secondary') }}
-                </a>
-              </span>
-              <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-success" href="#">
-                Success modal
-              </a>
-              <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal-warning" href="#">
-                Warning modal
-              </a>
-              <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-danger" href="#">
-                Danger modal
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -120,7 +106,7 @@
   <div class="page-body">
     <div class="container-fluid">
       <div class="row g-2 justify-content-center">
-        <div class="col-6">
+        <div class="col-12">
           <div class="card mb-2 mt-2 shadow-sm">
             <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
               <h3 class="text-muted m-0 mb-0 p-0">
@@ -168,53 +154,6 @@
                 Jiné druhy léčby
                 Na záložce Jiné druhy léčby ve formuláři Medikací byla dopracována možnost měnit pořadí jednotlivých ordinací - posun pomocí šipek - nahoru a dolů
               </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="card mb-2 mt-2 shadow-sm">
-            <div class="card-header align-items-center justify-content-between bg-lime-lt d-flex">
-              <h3 class="text-muted m-0 mb-0 p-0">
-                {{ __('Aktualizace - 30.12.2022') }}
-              </h3>
-            </div>
-            <div class="card-body p-2">
-              <div class="row">
-                <div class="col-6">
-                  <span id="form_result_window"></span>
-                </div>
-              </div>
-              <p class="text-justified">Změny</p>
-            </div>
-          </div>
-          <div class="card mb-2 mt-2 shadow-sm">
-            <div class="card-header align-items-center justify-content-between bg-warning-lt d-flex">
-              <h3 class="text-muted m-0 mb-0 p-0">
-                {{ __('Aktualizace - 20.12.2022') }}
-              </h3>
-            </div>
-            <div class="card-body p-2">
-              <div class="row">
-                <div class="col-6">
-                  <span id="form_result_window"></span>
-                </div>
-              </div>
-              <p class="text-justified">Změny:</p>
-            </div>
-          </div>
-          <div class="card mb-2 mt-2 shadow-sm">
-            <div class="card-header align-items-center justify-content-between bg-warning-lt d-flex">
-              <h3 class="text-muted m-0 mb-0 p-0">
-                {{ __('Aktualizace - 12.12.2022') }}
-              </h3>
-            </div>
-            <div class="card-body p-2">
-              <div class="row">
-                <div class="col-6">
-                  <span id="form_result_window"></span>
-                </div>
-              </div>
-              <p class="text-justified">Změny:</p>
             </div>
           </div>
         </div>
