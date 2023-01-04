@@ -10,6 +10,10 @@
     </h1>
     <div class="navbar-nav order-md-last flex-row">
       <div class="nav-item d-none d-md-flex nav-item d-none d-md-flex me-3">
+        {{-- <audio controls>
+          <audio>
+            <source src="{{ url('http://192.168.81.121:8000/radio.m3u') }}" type="audio/mpeg">
+          </audio> --}}
         <div class="btn-list">
           @auth
             <a class="btn {{ request()->segment(1) == 'employees' ? 'bg-primary-lt' : '' }}" href="{{ route('employees.index') }}" rel="noreferrer">

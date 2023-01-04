@@ -6,10 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link type="image/png" href="{{ asset('img/akord.png') }}" rel="shortcut icon">
-
   <title>{{ $category ?? 'Intranet' }} - {{ $title ?? 'KHN' }}</title>
-
+  @yield('favicon')
+  <link href="{{ asset('https://use.fontawesome.com/releases/v5.11.2/css/all.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/fixedHeader.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/tabler.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-flags.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/tabler-payments.css') }}" rel="stylesheet" />

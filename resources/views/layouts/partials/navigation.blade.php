@@ -21,7 +21,7 @@
               </a>
 
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ url('http://akordapp/SISAkord/Login.aspx?ReturnUrl=%2fSISAkord%2f') }}" target="_blank">
+                <a class="dropdown-item {{ request()->segment(2) == 'zmeny' ? 'active' : '' }}" href="{{ route('oznameni.zmeny') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg class="icon icon-tabler" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                          fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -31,7 +31,7 @@
                     </svg>
                   </span>
                   <span class="nav-link-title">
-                    {{ __('Aktuální změny') }}
+                    {{ __('Změny v dokumentaci') }}
                   </span>
                 </a>
                 <a class="dropdown-item {{ request()->segment(2) == 'akord' ? 'active' : '' }}" href="{{ route('oznameni.akord') }}">
@@ -50,21 +50,7 @@
                     {{ __('Akord') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./navigation.html">
-                  <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg class="icon icon-tabler icon-tabler-urgent" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M8 16v-4a4 4 0 0 1 8 0v4"></path>
-                      <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"></path>
-                      <rect x="6" y="16" width="12" height="4" rx="1"></rect>
-                    </svg>
-                  </span>
-                  <span class="nav-link-title">
-                    {{ __('Důležitá sdělení') }}
-                  </span>
-                </a>
-                <a class="dropdown-item" href="./navigation.html">
+                <a class="dropdown-item {{ request()->segment(2) == 'servis' ? 'active' : '' }}" href="{{ route('oznameni.servis') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg class="icon icon-tabler icon-tabler-tool" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

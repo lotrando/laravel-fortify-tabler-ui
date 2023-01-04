@@ -30,8 +30,9 @@ Route::get("home", function () {
 });
 
 Route::prefix('oznameni')->name('oznameni.')->group(function () {
-    Route::get('aktuality', [PageController::class, 'aktuality'])->name('aktuality');
+    Route::get('zmeny', [PageController::class, 'zmeny'])->name('zmeny');
     Route::get('akord', [PageController::class, 'akord'])->name('akord');
+    Route::get('servis', [PageController::class, 'servis'])->name('servis');
     Route::get('kultura', [PageController::class, 'kultura'])->name('kultura');
 });
 
