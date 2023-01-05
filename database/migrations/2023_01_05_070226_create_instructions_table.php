@@ -15,6 +15,12 @@ class CreateInstructionsTable extends Migration
     {
         Schema::create('instructions', function (Blueprint $table) {
             $table->id();
+            $table->string('standard_id');
+            $table->string('standard_category_id');
+            $table->string('name');
+            $table->string('revision');
+            $table->string('addons');
+            $table->enum('status', ['Rozpracováno', 'Schváleno']);
             $table->timestamps();
         });
     }

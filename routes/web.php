@@ -8,19 +8,7 @@ use App\Http\Controllers\InstructionController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\TrainingController;
-use App\Models\Attendance;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get("/", function () {
     return view('welcome', ['category' => 'Oznámení', 'title' => 'Přehled']);
@@ -44,10 +32,16 @@ Route::prefix('stravovani')->name('stravovani.')->group(function () {
     Route::get('kantyna', [PageController::class, 'kantyna'])->name('kantyna');
 });
 
-// Směrnice
-Route::prefix('smernice')->name('smernice.')->group(function () {
+// Standardy
+Route::prefix('standardy')->name('standardy.')->group(function () {
     Route::get('akreditacni', [InstructionController::class, 'akreditacni'])->name('akreditacni');
     Route::get('osetrovatelske', [InstructionController::class, 'osetrovatelske'])->name('osetrovatelske');
+});
+
+// Media
+Route::prefix('media')->name('media.')->group(function () {
+    Route::get('radio', [PageController::class, 'radio'])->name('radio');
+    Route::get('videa', [PageController::class, 'video'])->name('videa');
 });
 
 

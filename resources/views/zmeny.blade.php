@@ -99,16 +99,17 @@
         </div>
       </div>
     </div>
-    <!-- Wrapper End -->
+  </div>
+  <!-- Wrapper End -->
 
-    <!-- Page body -->
-    <div class="page-body">
-      <div class="container-fluid">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-        </div>
+  <!-- Page body -->
+  <div class="page-body">
+    <div class="container-fluid">
+      <div class="h-100 d-flex align-items-center justify-content-center">
       </div>
     </div>
-  @endsection
+  </div>
+@endsection
 </div>
 
 @section('scripts')

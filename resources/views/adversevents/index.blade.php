@@ -6,14 +6,6 @@
 
 @section('title', 'Nežádoucí události')
 
-<!-- Header Start -->
-@include('layouts.partials.header')
-<!-- Header End -->
-
-<!-- Navigation Start -->
-@include('layouts.partials.navigation')
-<!-- Navigation End -->
-
 @section('content')
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -359,7 +351,7 @@
         stateSave: true,
         pageSave: true,
         fixedHeader: {
-          header: true,
+          header: false,
           footer: false
         },
         order: [

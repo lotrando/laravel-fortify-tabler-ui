@@ -412,7 +412,7 @@
                   </a>
                 </div>
             </li>
-            <li class="nav-item dropdown {{ request()->segment(1) == 'smernice' ? 'active' : '' }}">
+            <li class="nav-item dropdown {{ request()->segment(1) == 'standardy' ? 'active' : '' }}">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-extra" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <!-- Download SVG icon from http://tabler-icons.io/i/star -->
@@ -429,21 +429,23 @@
                 </span>
               </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item {{ request()->segment(2) == 'akreditacni' ? 'active' : '' }}" href="{{ route('smernice.akreditacni') }}">
+                <a class="dropdown-item {{ request()->segment(2) == 'akreditacni' ? 'active' : '' }}" href="{{ route('standardy.akreditacni') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-rubber-stamp" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                    <svg class="icon icon-tabler icon-tabler-file-certificate" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M21 17.85h-18c0 -4.05 1.421 -4.05 3.79 -4.05c5.21 0 1.21 -4.59 1.21 -6.8a4 4 0 1 1 8 0c0 2.21 -4 6.8 1.21 6.8c2.369 0 3.79 0 3.79 4.05z"></path>
-                      <path d="M5 21h14"></path>
+                      <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                      <path d="M5 8v-3a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5"></path>
+                      <circle cx="6" cy="14" r="3"></circle>
+                      <path d="M4.5 17l-1.5 5l3 -1.5l3 1.5l-1.5 -5"></path>
                     </svg>
                   </span>
                   <span class="nav-link-title">
                     {{ __('Akreditační') }}
                   </span>
                 </a>
-                <a class="dropdown-item {{ request()->segment(2) == 'osetrovatelske' ? 'active' : '' }}" href="{{ route('smernice.osetrovatelske') }}">
+                <a class="dropdown-item {{ request()->segment(2) == 'osetrovatelske' ? 'active' : '' }}" href="{{ route('standardy.osetrovatelske') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                     <svg class="icon icon-tabler icon-tabler-stethoscope" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
@@ -605,13 +607,11 @@
                   <a class="dropdown-item" href="./gallery.html">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
                       <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                      <svg class="icon icon-tabler icon-tabler-file-certificate" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                      <svg class="icon icon-tabler icon-tabler-rubber-stamp" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                        <path d="M5 8v-3a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5"></path>
-                        <circle cx="6" cy="14" r="3"></circle>
-                        <path d="M4.5 17l-1.5 5l3 -1.5l3 1.5l-1.5 -5"></path>
+                        <path d="M21 17.85h-18c0 -4.05 1.421 -4.05 3.79 -4.05c5.21 0 1.21 -4.59 1.21 -6.8a4 4 0 1 1 8 0c0 2.21 -4 6.8 1.21 6.8c2.369 0 3.79 0 3.79 4.05z"></path>
+                        <path d="M5 21h14"></path>
                       </svg>
                     </span>
                     <span class="nav-link-title">
@@ -620,17 +620,18 @@
                   </a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown {{ request()->segment(1) == 'media' ? 'active' : '' }}">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-layout" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
-                  <svg class="icon icon-tabler icon-tabler-article" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <svg class="icon icon-tabler icon-tabler-device-tv-old" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                       stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <rect x="3" y="4" width="18" height="16" rx="2"></rect>
-                    <path d="M7 8h10"></path>
-                    <path d="M7 12h10"></path>
-                    <path d="M7 16h10"></path>
+                    <rect x="3" y="7" width="18" height="13" rx="2"></rect>
+                    <path d="M16 3l-4 4l-4 -4"></path>
+                    <path d="M15 7v13"></path>
+                    <path d="M18 15v.01"></path>
+                    <path d="M18 12v.01"></path>
                   </svg>
                 </span>
                 <span class="nav-link-title">
@@ -640,7 +641,7 @@
               <div class="dropdown-menu">
                 <div class="dropdown-menu-columns">
                   <div class="dropdown-menu-column">
-                    <a class="dropdown-item" href="http://192.168.81.121:8000/radio.m3u">
+                    <a class="dropdown-item{{ request()->segment(2) == 'radio' ? 'active' : '' }}" href="{{ route('media.radio') }}">
                       <span class="nav-link-icon d-md-none d-lg-inline-block">
                         <svg class="icon icon-tabler icon-tabler-radio" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                              stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -657,7 +658,7 @@
                         Radio
                       </span>
                     </a>
-                    <a class="dropdown-item" href="./layout-vertical.html">
+                    <a class="dropdown-item {{ request()->segment(2) == 'videa' ? 'active' : '' }}" href="{{ route('media.videa') }}">
                       <span class="nav-link-icon d-md-none d-lg-inline-block">
                         <svg class="icon icon-tabler icon-tabler-movie" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                              stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

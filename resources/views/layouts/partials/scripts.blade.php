@@ -4,4 +4,3 @@
   <script src="{{ asset('js/dataTables.select.min.js') }}"></script>
   <script src="{{ asset('js/dataTables.fixedHeader.min.js') }}"></script>
   <script src="{{ asset('js/czech-string.js') }}"></script>
-  <script src="{{ asset('js/moment-with-locales.js') }}"></script>

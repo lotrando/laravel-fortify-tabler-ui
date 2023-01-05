@@ -38,4 +38,16 @@ class PageController extends Controller
     {
         return view('kantyna', ['category' => 'Oznámení', 'title' => 'Kantýna']);
     }
+
+
+    // Media
+    public function radio()
+    {
+        return redirect()->away('http://192.168.0.10/data/hudba/R%c3%a1dia/Evropa%202.m3u');
+    }
+
+    public function video()
+    {
+        return view('videa', ['category' => 'Media', 'title' => 'Videa']);
+    }
 }

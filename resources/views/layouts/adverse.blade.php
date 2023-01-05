@@ -25,13 +25,19 @@
 </head>
 
 <body>
-  <div class="wrapper">
-    @yield('header')
+  <!-- Header Start -->
+  @include('layouts.partials.header')
+  <!-- Header End -->
 
-    @yield('navigation')
+  <!-- Navigation Start -->
+  @include('layouts.partials.navigation')
+  <!-- Navigation End -->
+
+  <section>
 
     @yield('content')
-  </div>
+
+  </section>
 
   <section>
     @yield('modals')

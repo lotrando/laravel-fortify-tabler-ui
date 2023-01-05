@@ -33,16 +33,18 @@
     <div class="container-fluid">
       <div class="col-lg-12">
         <div class="card">
-          <div class="card-header bg-blue-lt">
+          <div class="card-header bg-grey-lt">
             <ul class="nav nav-tabs card-header-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
               <li class="nav-item" role="presentation">
                 <a class="nav-link active" data-bs-toggle="tab" href="#tabs-home-13" role="tab" aria-selected="true">
                   <!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                  <svg class="icon icon-tabler me-2" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                       fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <svg class="icon me-2" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                       stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M21 17.85h-18c0 -4.05 1.421 -4.05 3.79 -4.05c5.21 0 1.21 -4.59 1.21 -6.8a4 4 0 1 1 8 0c0 2.21 -4 6.8 1.21 6.8c2.369 0 3.79 0 3.79 4.05z"></path>
-                    <path d="M5 21h14"></path>
+                    <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                    <path d="M5 8v-3a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5"></path>
+                    <circle cx="6" cy="14" r="3"></circle>
+                    <path d="M4.5 17l-1.5 5l3 -1.5l3 1.5l-1.5 -5"></path>
                   </svg>
                   Akreditační
                 </a>
@@ -70,6 +72,50 @@
                   Léčebné
                 </a>
               </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#tabs-activity-13" role="tab" aria-selected="false" tabindex="-1">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/activity -->
+                  <svg class="icon me-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                       fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M3 12h4l3 8l4 -16l3 8h4"></path>
+                  </svg>
+                  Nove
+                </a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#tabs-activity-13" role="tab" aria-selected="false" tabindex="-1">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/activity -->
+                  <svg class="icon me-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                       fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M3 12h4l3 8l4 -16l3 8h4"></path>
+                  </svg>
+                  Nove
+                </a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#tabs-activity-13" role="tab" aria-selected="false" tabindex="-1">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/activity -->
+                  <svg class="icon me-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                       fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M3 12h4l3 8l4 -16l3 8h4"></path>
+                  </svg>
+                  Nove
+                </a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#tabs-activity-13" role="tab" aria-selected="false" tabindex="-1">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/activity -->
+                  <svg class="icon me-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                       fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M3 12h4l3 8l4 -16l3 8h4"></path>
+                  </svg>
+                  Nove
+                </a>
+              </li>
             </ul>
           </div>
           <div class="card-body">
@@ -94,12 +140,12 @@
                                 <div class="col-auto">
                                   <a href="#">
                                     <span class="avatar">
-                                      <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                      <img src="{{ asset('img/files/pdf.png') }}" alt="PDF">
                                     </span>
                                   </a>
                                 </div>
                                 <div class="col text-truncate">
-                                  <a class="text-reset d-block" href="#">Akreditační standard č. 2.1</a>
+                                  <a class="text-reset d-block" href="#">Akreditační standard č. 1.1</a>
                                   <div class="d-block text-muted text-truncate mt-n1">Správná identifikace pacientů</div>
                                 </div>
                                 <div class="col-auto">
@@ -129,7 +175,7 @@
                                 <div class="col-auto">
                                   <a href="#">
                                     <span class="avatar">
-                                      <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                      <img src="{{ asset('img/files/pdf.png') }}" alt="PDF">
                                     </span>
                                   </a>
                                 </div>
@@ -164,7 +210,7 @@
                                 <div class="col-auto">
                                   <a href="#">
                                     <span class="avatar">
-                                      <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                      <img src="{{ asset('img/files/pdf.png') }}" alt="PDF">
                                     </span>
                                   </a>
                                 </div>
@@ -202,7 +248,7 @@
                                   <div class="col-auto">
                                     <a href="#">
                                       <span class="avatar">
-                                        <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                        <img src="{{ asset('img/files/pdf-add.png') }}" alt="PDF">
                                       </span>
                                     </a>
                                   </div>
@@ -239,7 +285,7 @@
                               <div class="col-auto">
                                 <a href="#">
                                   <span class="avatar">
-                                    <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                    <img src="{{ asset('img/files/pdf.png') }}" alt="PDF">
                                   </span>
                                 </a>
                               </div>
@@ -277,7 +323,7 @@
                                 <div class="col-auto">
                                   <a href="#">
                                     <span class="avatar">
-                                      <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                      <img src="{{ asset('img/files/pdf-add.png') }}" alt="PDF">
                                     </span>
                                   </a>
                                 </div>
@@ -313,7 +359,7 @@
                                 <div class="col-auto">
                                   <a href="#">
                                     <span class="avatar">
-                                      <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                      <img src="{{ asset('img/files/pdf-add.png') }}" alt="PDF">
                                     </span>
                                   </a>
                                 </div>
@@ -373,7 +419,7 @@
                                         <div class="col-auto">
                                           <a href="#">
                                             <span class="avatar">
-                                              <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                              <img src="{{ asset('img/files/pdf.png') }}" alt="PDF">
                                             </span>
                                           </a>
                                         </div>
@@ -408,7 +454,7 @@
                                         <div class="col-auto">
                                           <a href="#">
                                             <span class="avatar">
-                                              <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                              <img src="{{ asset('img/files/pdf.png') }}" alt="PDF">
                                             </span>
                                           </a>
                                         </div>
@@ -443,7 +489,7 @@
                                         <div class="col-auto">
                                           <a href="#">
                                             <span class="avatar">
-                                              <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                              <img src="{{ asset('img/files/pdf.png') }}" alt="PDF">
                                             </span>
                                           </a>
                                         </div>
@@ -482,7 +528,7 @@
                                         <div class="col-auto">
                                           <a href="#">
                                             <span class="avatar">
-                                              <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                              <img src="{{ asset('img/files/pdf.png') }}" alt="PDF">
                                             </span>
                                           </a>
                                         </div>
@@ -519,7 +565,7 @@
                                     <div class="col-auto">
                                       <a href="#">
                                         <span class="avatar">
-                                          <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                          <img src="{{ asset('img/files/pdf.png') }}" alt="PDF">
                                         </span>
                                       </a>
                                     </div>
@@ -557,7 +603,7 @@
                                       <div class="col-auto">
                                         <a href="#">
                                           <span class="avatar">
-                                            <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                            <img src="{{ asset('img/files/pdf.png') }}" alt="PDF">
                                           </span>
                                         </a>
                                       </div>
@@ -593,7 +639,7 @@
                                       <div class="col-auto">
                                         <a href="#">
                                           <span class="avatar">
-                                            <img src="{{ asset('img/files/pdf.svg') }}" alt="PDF">
+                                            <img src="{{ asset('img/files/pdf.png') }}" alt="PDF">
                                           </span>
                                         </a>
                                       </div>

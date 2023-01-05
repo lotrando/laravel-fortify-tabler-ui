@@ -9,6 +9,7 @@
   <title>{{ $category ?? 'Intranet' }} - {{ $title ?? 'KHN' }}</title>
   @yield('favicon')
   <link href="{{ asset('https://use.fontawesome.com/releases/v5.11.2/css/all.css') }}" rel="stylesheet">
+  <link href="{{ asset('libs/plyr/dist/plyr.css') }}" rel="stylesheet">
   <link href="{{ asset('css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/fixedHeader.dataTables.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/tabler.css') }}" rel="stylesheet" />
@@ -47,11 +48,26 @@
   @include('layouts.partials.logout')
 
   <script src="{{ asset('js/jquery.js') }}"></script>
+  <script src="{{ asset('libs/plyr/dist/plyr.min.js') }}"></script>
   <script src="{{ asset('js/tabler.min.js') }}"></script>
   <script src="{{ asset('js/demo.min.js') }}"></script>
   <script src="{{ asset('js/moment-with-locales.js') }}"></script>
+  <script src="{{ asset('js/m3u-player.js') }}" defer></script>
   @include('layouts.partials.scripts')
-
+  <script>
+    // @formatter:off
+    document.addEventListener("DOMContentLoaded", function() {
+      window.Plyr && (new Plyr('#player-youtube'));
+    });
+    // @formatter:on
+  </script>
+  <script>
+    // @formatter:off
+    document.addEventListener("DOMContentLoaded", function() {
+      window.Plyr && (new Plyr('#player-charlotte'));
+    });
+    // @formatter:on
+  </script>
 </body>
 
 </html>
