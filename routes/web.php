@@ -4,6 +4,7 @@ use App\Http\Controllers\AdverseventController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EvidenceController;
+use App\Http\Controllers\InstructionController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\TrainingController;
@@ -29,6 +30,7 @@ Route::get("home", function () {
     return view('home', ['category' => 'Oznámení', 'title' => 'Home']);
 });
 
+// Oznámení
 Route::prefix('oznameni')->name('oznameni.')->group(function () {
     Route::get('zmeny', [PageController::class, 'zmeny'])->name('zmeny');
     Route::get('akord', [PageController::class, 'akord'])->name('akord');
@@ -36,9 +38,16 @@ Route::prefix('oznameni')->name('oznameni.')->group(function () {
     Route::get('kultura', [PageController::class, 'kultura'])->name('kultura');
 });
 
+// Stravování
 Route::prefix('stravovani')->name('stravovani.')->group(function () {
     Route::get('obedy', [PageController::class, 'obedy'])->name('obedy');
     Route::get('kantyna', [PageController::class, 'kantyna'])->name('kantyna');
+});
+
+// Směrnice
+Route::prefix('smernice')->name('smernice.')->group(function () {
+    Route::get('akreditacni', [InstructionController::class, 'akreditacni'])->name('akreditacni');
+    Route::get('osetrovatelske', [InstructionController::class, 'osetrovatelske'])->name('osetrovatelske');
 });
 
 

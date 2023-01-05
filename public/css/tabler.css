@@ -3894,7 +3894,7 @@ fieldset:disabled .btn {
 }
 
 .nav-tabs .nav-link {
-  margin-bottom: -1px;
+  margin-bottom: -9px;
   background: none;
   border: 1px solid transparent;
   border-top-left-radius: 4px;
@@ -4734,8 +4734,8 @@ fieldset:disabled .btn {
   align-items: center;
   width: 100%;
   padding: 1rem 1.25rem;
-  font-size: 0.875rem;
-  color: #1e293b;
+  font-size: 1.0rem;
+  color: #666666;
   text-align: left;
   background-color: transparent;
   border: 0;

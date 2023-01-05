@@ -204,23 +204,6 @@
                 </span>
               </a>
             </li>
-            {{-- <li class="nav-item">
-              <a class="nav-link" href="./form-elements.html">
-                <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24"
-                       height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                       fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <polyline points="9 11 12 14 20 6" />
-                    <path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" />
-                  </svg>
-                </span>
-                <span class="nav-link-title">
-                  Form elements
-                </span>
-              </a>
-            </li> --}}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-extra" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -425,6 +408,214 @@
                     <span class="flag flag-country-ua me-2"></span>
                     <span class="nav-link-title">
                       {{ __('Ukrajinské dokumenty') }}
+                    </span>
+                  </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown {{ request()->segment(1) == 'smernice' ? 'active' : '' }}">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-extra" role="button" aria-expanded="false">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                  <svg class="icon icon-tabler icon-tabler-book-2" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
+                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M19 4v16h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12z"></path>
+                    <path d="M19 16h-12a2 2 0 0 0 -2 2"></path>
+                    <path d="M9 8h6"></path>
+                  </svg>
+                </span>
+                <span class="nav-link-title">
+                  {{ __('Standardy') }}
+                </span>
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item {{ request()->segment(2) == 'akreditacni' ? 'active' : '' }}" href="{{ route('smernice.akreditacni') }}">
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                    <svg class="icon icon-tabler icon-tabler-rubber-stamp" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M21 17.85h-18c0 -4.05 1.421 -4.05 3.79 -4.05c5.21 0 1.21 -4.59 1.21 -6.8a4 4 0 1 1 8 0c0 2.21 -4 6.8 1.21 6.8c2.369 0 3.79 0 3.79 4.05z"></path>
+                      <path d="M5 21h14"></path>
+                    </svg>
+                  </span>
+                  <span class="nav-link-title">
+                    {{ __('Akreditační') }}
+                  </span>
+                </a>
+                <a class="dropdown-item {{ request()->segment(2) == 'osetrovatelske' ? 'active' : '' }}" href="{{ route('smernice.osetrovatelske') }}">
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                    <svg class="icon icon-tabler icon-tabler-stethoscope" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M6 4h-1a2 2 0 0 0 -2 2v3.5h0a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1"></path>
+                      <path d="M8 15a6 6 0 1 0 12 0v-3"></path>
+                      <path d="M11 3v2"></path>
+                      <path d="M6 3v2"></path>
+                      <circle cx="20" cy="10" r="2"></circle>
+                    </svg>
+                  </span>
+                  <span class="nav-link-title">
+                    {{ __('Ošetřovatelské') }}
+                  </span>
+                </a>
+                <a class="dropdown-item" href="./gallery.html">
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                    <svg class="icon icon-tabler icon-tabler-clipboard-heart" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
+                      <rect x="9" y="3" width="6" height="4" rx="2"></rect>
+                      <path
+                            d="M11.993 16.75l2.747 -2.815a1.9 1.9 0 0 0 .005 -2.632a1.775 1.775 0 0 0 -2.56 -.005l-.183 .188l-.183 -.189a1.775 1.775 0 0 0 -2.56 -.004a1.899 1.899 0 0 0 -.004 2.632l2.738 2.825z">
+                      </path>
+                    </svg>
+                  </span>
+                  <span class="nav-link-title">
+                    {{ __('Léčebné') }}
+                  </span>
+                </a>
+                <a class="dropdown-item" href="./gallery.html">
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                    <svg class="icon icon-tabler icon-tabler-report-medical" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
+                      <rect x="9" y="3" width="6" height="4" rx="2"></rect>
+                      <line x1="10" y1="14" x2="14" y2="14"></line>
+                      <line x1="12" y1="12" x2="12" y2="16"></line>
+                    </svg>
+                  </span>
+                  <span class="nav-link-title">
+                    {{ __('Speciální') }}
+                  </span>
+                </a>
+                <a class="dropdown-item" href="./gallery.html">
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                    <svg class="icon icon-tabler icon-tabler-bookmarks" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M13 7a2 2 0 0 1 2 2v12l-5 -3l-5 3v-12a2 2 0 0 1 2 -2h6z"></path>
+                      <path d="M9.265 4a2 2 0 0 1 1.735 -1h6a2 2 0 0 1 2 2v12l-1 -.6"></path>
+                    </svg>
+                  </span>
+                  <span class="nav-link-title">
+                    {{ __('Operační') }}
+                  </span>
+                </a>
+                <a class="dropdown-item" href="./gallery.html">
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                    <svg class="icon icon-tabler icon-tabler-bookmarks" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M13 7a2 2 0 0 1 2 2v12l-5 -3l-5 3v-12a2 2 0 0 1 2 -2h6z"></path>
+                      <path d="M9.265 4a2 2 0 0 1 1.735 -1h6a2 2 0 0 1 2 2v12l-1 -.6"></path>
+                    </svg>
+                  </span>
+                  <span class="nav-link-title">
+                    {{ __('Anesteziologické') }}
+                  </span>
+                </a>
+                <a class="dropdown-item" href="./gallery.html">
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                    <svg class="icon icon-tabler icon-tabler-radioactive" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M13.5 14.6l3 5.19a9 9 0 0 0 4.5 -7.79h-6a3 3 0 0 1 -1.5 2.6"></path>
+                      <path d="M13.5 9.4l3 -5.19a9 9 0 0 0 -9 0l3 5.19a3 3 0 0 1 3 0"></path>
+                      <path d="M10.5 14.6l-3 5.19a9 9 0 0 1 -4.5 -7.79h6a3 3 0 0 0 1.5 2.6"></path>
+                    </svg>
+                  </span>
+                  <span class="nav-link-title">
+                    {{ __('RDG') }}
+                  </span>
+                </a>
+                <a class="dropdown-item" href="./gallery.html">
+                  <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                    <svg class="icon icon-tabler icon-tabler-disabled" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <circle cx="11" cy="5" r="2"></circle>
+                      <polyline points="11 7 11 15 15 15 19 20"></polyline>
+                      <line x1="11" y1="11" x2="16" y2="11"></line>
+                      <path d="M7 11.5a5 5 0 1 0 6 7.5"></path>
+                    </svg>
+                  </span>
+                  <span class="nav-link-title">
+                    {{ __('Rehabilitační') }}
+                  </span>
+                </a>
+                <div class="dropdown-menu-column">
+                  <a class="dropdown-item" href="./gallery.html">
+                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                      <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                      <svg class="icon icon-tabler icon-tabler-helicopter-landing" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                           stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                        <line x1="9" y1="8" x2="9" y2="16"></line>
+                        <line x1="9" y1="12" x2="15" y2="12"></line>
+                        <line x1="15" y1="8" x2="15" y2="16"></line>
+                      </svg>
+                    </span>
+                    <span class="nav-link-title">
+                      {{ __('OPL') }}
+                    </span>
+                  </a>
+                  <a class="dropdown-item" href="./gallery.html">
+                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                      <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                      <svg class="icon icon-tabler icon-tabler-microscope" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                           stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M5 21h14"></path>
+                        <path d="M6 18h2"></path>
+                        <path d="M7 18v3"></path>
+                        <path d="M9 11l3 3l6 -6l-3 -3z"></path>
+                        <path d="M10.5 12.5l-1.5 1.5"></path>
+                        <path d="M17 3l3 3"></path>
+                        <path d="M12 21a6 6 0 0 0 3.715 -10.712"></path>
+                      </svg>
+                    </span>
+                    <span class="nav-link-title">
+                      {{ __('OKB') }}
+                    </span>
+                  </a>
+                  <a class="dropdown-item" href="./gallery.html">
+                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                      <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                      <svg class="icon icon-tabler icon-tabler-messages" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
+                           stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10"></path>
+                        <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2"></path>
+                      </svg>
+                    </span>
+                    <span class="nav-link-title">
+                      {{ __('Logopedické') }}
+                    </span>
+                  </a>
+                  <a class="dropdown-item" href="./gallery.html">
+                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                      <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                      <svg class="icon icon-tabler icon-tabler-file-certificate" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                           stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                        <path d="M5 8v-3a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2h-5"></path>
+                        <circle cx="6" cy="14" r="3"></circle>
+                        <path d="M4.5 17l-1.5 5l3 -1.5l3 1.5l-1.5 -5"></path>
+                      </svg>
+                    </span>
+                    <span class="nav-link-title">
+                      {{ __('Legislativní') }}
                     </span>
                   </a>
                 </div>
