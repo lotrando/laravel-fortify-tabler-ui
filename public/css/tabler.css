@@ -3451,8 +3451,8 @@ fieldset:disabled .btn {
 }
 
 .dropdown-menu[data-bs-popper] {
+  left: -0.1em;
   top: 100%;
-  left: 0;
   margin-top: 1px;
 }
 
