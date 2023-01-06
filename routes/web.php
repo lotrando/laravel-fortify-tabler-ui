@@ -10,10 +10,12 @@ use App\Http\Controllers\SlideController;
 use App\Http\Controllers\TrainingController;
 use Illuminate\Support\Facades\Route;
 
+// Index page
 Route::get("/", function () {
     return view('welcome', ['category' => 'Oznámení', 'title' => 'Přehled']);
 });
 
+// Home page
 Route::get("home", function () {
     return view('home', ['category' => 'Oznámení', 'title' => 'Home']);
 });
@@ -47,19 +49,18 @@ Route::prefix('media')->name('media.')->group(function () {
     Route::get('videa', [PageController::class, 'video'])->name('videa');
 });
 
-
-
+// Attendace
 Route::resource('slides', SlideController::class);
 Route::resource('train', TrainingController::class);
 Route::resource('attendances', AttendanceController::class);
 
+// Employees
 Route::resource('employees', EmployeeController::class);
 Route::resource('adversevents', AdverseventController::class);
-
 Route::get('vcards', [EmployeeController::class, 'vcards'])->name('employees.vcards');
 Route::get('search', [EmployeeController::class, 'vcardSearch'])->name('employees.search');
 
-
+// Auth Routes
 Route::group(['middleware' => 'auth'], function () {
     // Employee
     Route::post('employees/update', [EmployeeController::class, 'update'])->name('employees.update');
