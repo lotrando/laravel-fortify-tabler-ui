@@ -6,9 +6,23 @@
       <div class="col-12">
         <div class="card mb-2 mt-2 shadow-sm">
           <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
-            <h3 class="text-muted m-0 mb-0 p-0"><i class="fas fa-users"></i>
+            <h3 class="text-muted m-0 mb-0 p-0">
               {{ __('Employees of KHN') }}
             </h3>
+            <div class="ms-auto d-print-none col-auto">
+              <div class="btn-list">
+                @auth
+                  <button class="btn btn-purple" id="exportTable" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Export') }}"><i
+                       class="fas fa-file-export fa-1x m-1"></i>Export</button>
+                  <a class="btn btn-green" id="exportPhoneList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Export phone list') }}"
+                     href="{{ route('employees.phonelist') }}" title="Telefoní seznam"><i class="fas fa-address-book fa-1x m-1"></i>{{ __('Phonelist') }}</a>
+                  <a class="btn btn-blue" id="exportList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Export list') }}"
+                     href="{{ route('employees.list') }}" title="Kompletní seznam"><i class="fas fa-book fa-1x m-1"></i>{{ __('List') }}</a>
+                  <button class="btn btn-lime" id="openCreateModal" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Nový') }}"><i
+                       class="fas fa-user-plus fa-1x m-1"></i>{{ __('New') }}</button>
+                @endauth
+              </div>
+            </div>
           </div>
           <div class="card-body p-2">
             <div class="row">

@@ -99,8 +99,7 @@
         </div>
       </div>
     </div>
-    <!-- Wrapper End -->
-
+    <!-- Page header end -->
     <!-- Page body -->
     <div class="page-body">
       <div class="container-fluid">
@@ -108,9 +107,6 @@
         </div>
       </div>
     </div>
-  @endsection
-</div>
-
-@section('scripts')
-  <script src="{{ asset('') }}"></script>
+  </div>
+  <!-- Wrapper End -->
 @endsection

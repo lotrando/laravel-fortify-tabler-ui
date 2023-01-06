@@ -1,7 +1,7 @@
 @extends('layouts.blank')
 
 @section('favicon')
-  <link type="image/png" href="/img/servis.png" rel="shortcut icon" />
+  <link type="image/png" href="{{ asset('img/akord.png') }}" rel="shortcut icon">
 @endsection
 
 @section('content')
@@ -22,8 +22,6 @@
         </div>
       </div>
     </div>
-    <!-- Wrapper End -->
-
     <!-- Page body -->
     <div class="page-body">
       <div class="container-fluid">
@@ -32,8 +30,5 @@
       </div>
     </div>
   </div>
-@endsection
-
-@section('scripts')
-  <script src="{{ asset('') }}"></script>
+  <!-- Wrapper End -->
 @endsection

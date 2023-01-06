@@ -22,6 +22,21 @@ class PageController extends Controller
         return view('servis', ['category' => 'Oznámení', 'title' => 'Odstávky a servis']);
     }
 
+    public function seminare()
+    {
+        return view('seminare', ['category' => 'Oznámení', 'title' => 'Seminaře']);
+    }
+
+    public function sluzby()
+    {
+        return view('sluzby', ['category' => 'Oznámení', 'title' => 'Změna služeb']);
+    }
+
+    public function informace()
+    {
+        return view('informace', ['category' => 'Oznámení', 'title' => 'Informace']);
+    }
+
     public function kultura()
     {
         return view('kultura', ['category' => 'Oznámení', 'title' => 'Kultura']);

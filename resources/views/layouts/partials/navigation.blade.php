@@ -63,7 +63,7 @@
                     {{ __('Odstávky a servis') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./navigation.html">
+                <a class="dropdown-item {{ request()->segment(2) == 'seminare' ? 'active' : '' }}" href="{{ route('oznameni.seminare') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg class="icon icon-tabler icon-tabler-armchair" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" stroke-width="2"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -79,7 +79,7 @@
                     {{ __('Semináře') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./navigation.html">
+                <a class="dropdown-item {{ request()->segment(2) == 'sluzby' ? 'active' : '' }}" href="{{ route('oznameni.sluzby') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg class="icon icon-tabler icon-tabler-transform" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" stroke-width="2"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -96,7 +96,7 @@
                     {{ __('Změny služeb') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./navigation.html">
+                <a class="dropdown-item {{ request()->segment(2) == 'informace' ? 'active' : '' }}" href="{{ route('oznameni.informace') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg class="icon icon-tabler icon-tabler-info-square" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -655,7 +655,7 @@
                         </svg>
                       </span>
                       <span class="nav-link-title">
-                        Radio
+                        Rádio
                       </span>
                     </a>
                     <a class="dropdown-item {{ request()->segment(2) == 'videa' ? 'active' : '' }}" href="{{ route('media.videa') }}">

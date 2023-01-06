@@ -23,6 +23,9 @@ Route::prefix('oznameni')->name('oznameni.')->group(function () {
     Route::get('zmeny', [PageController::class, 'zmeny'])->name('zmeny');
     Route::get('akord', [PageController::class, 'akord'])->name('akord');
     Route::get('servis', [PageController::class, 'servis'])->name('servis');
+    Route::get('seminare', [PageController::class, 'seminare'])->name('seminare');
+    Route::get('sluzby', [PageController::class, 'sluzby'])->name('sluzby');
+    Route::get('informace', [PageController::class, 'informace'])->name('informace');
     Route::get('kultura', [PageController::class, 'kultura'])->name('kultura');
 });
 
