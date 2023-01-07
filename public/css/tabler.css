@@ -5946,7 +5946,7 @@ fieldset:disabled .btn {
   margin: 0;
   font-family: var(--tblr-font-sans-serif);
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.4285714;
   text-align: left;
   text-align: start;
@@ -5958,7 +5958,7 @@ fieldset:disabled .btn {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
-  font-size: 0.765625rem;
+  font-size: 0.8rem;
   word-wrap: break-word;
   opacity: 0;
 }
@@ -5983,7 +5983,7 @@ fieldset:disabled .btn {
 
 .bs-tooltip-top,
 .bs-tooltip-auto[data-popper-placement^="top"] {
-  padding: 0.4rem 0;
+  padding: 0.3rem 0;
 }
 
 .bs-tooltip-top .tooltip-arrow,
