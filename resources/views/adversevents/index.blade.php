@@ -40,11 +40,11 @@
             <table class="table-bordered table-hover dataTable w-100 table">
               <thead>
                 <tr class="bg-azure-lt table bg-opacity-50 text-center text-white">
-                  <th>{{ __('Department') }}</th>
+                  {{-- <th>{{ __('Department') }}</th> --}}
+                  <th>{{ __('Typ') }}</th>
                   <th>{{ __('Místo') }}</th>
                   <th>{{ __('Date') }}</th>
                   <th>{{ __('Time') }}</th>
-                  <th>{{ __('Typ') }}</th>
                   <th>{{ __('Pracovník') }}</th>
                   <th>{{ __('Status') }}</th>
                   <th class="text-center"><i class="fas fa-bars"></i></th>
@@ -358,8 +358,8 @@
           [1, "asc"]
         ],
         "lengthMenu": [
-          [10, 20, 30, 60, 100, -1],
-          [10, 20, 30, 60, 100, "Všechny"]
+          [5, 10, 20, 30, 60, 100, -1],
+          [5, 10, 20, 30, 60, 100, "Všechny"]
         ],
         language: {
           "url": "{{ asset('js/cs.json') }}",
@@ -374,10 +374,15 @@
           type: 'czech',
           targets: [3]
         }],
-        columns: [{
-            data: 'department_name',
-            "width": "5%",
-            searchable: false
+        columns: [
+          //  {
+          //     data: 'department_name',
+          //     "width": "5%",
+          //     searchable: false
+          //   },
+          {
+            data: 'spec_druh',
+            "width": "11%"
           },
           {
             data: 'misto',
@@ -385,7 +390,7 @@
           },
           {
             data: 'datum_cas',
-            "width": "3%",
+            "width": "2%",
             render: function(data, type, full, meta) {
               var date = moment(data).locale('cs');
               return date.format('DD. MM. YYYY');
@@ -393,15 +398,11 @@
           },
           {
             data: 'cas',
-            "width": "3%"
-          },
-          {
-            data: 'spec_druh',
-            "width": "6%"
+            "width": "2%"
           },
           {
             data: 'pracovnik',
-            "width": "5%"
+            "width": "3%"
           },
           {
             data: 'status',
