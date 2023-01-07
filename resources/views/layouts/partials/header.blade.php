@@ -1,13 +1,17 @@
 <header class="navbar navbar-expand-md navbar-light d-print-none">
+
   <div class="container-fluid">
+
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-menu" type="button" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
       <a href="https://www.khn.cz" target="_blank">
         <img class="navbar-brand-image" src="{{ asset('img/logo.png') }}" alt="Logo Intranetu KHN a.s.">
       </a>
     </h1>
+
     <div class="navbar-nav order-md-last flex-row">
       <div class="nav-item d-none d-md-flex nav-item d-none d-md-flex">
         <div class="btn-list me-lg-1 me-md-1 me-0">
@@ -23,17 +27,18 @@
               {{ __('Employees') }}
             </a>
           @endauth
-          <a class="btn {{ request()->segment(1) == 'adversevents' ? 'bg-primary-lt' : '' }}" href="{{ route('adversevents.index') }}" rel="noreferrer">
-            <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                 stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M8 16v-4a4 4 0 0 1 8 0v4"></path>
-              <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"></path>
-              <rect x="6" y="16" width="12" height="4" rx="1">
-              </rect>
-            </svg>
-            {{ __('Nežádoucí události') }}
-          </a>
+            <a class="btn {{ request()->segment(1) == 'adversevents' ? 'bg-primary-lt' : '' }}" href="{{ route('adversevents.index') }}" rel="noreferrer">
+              <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M8 16v-4a4 4 0 0 1 8 0v4"></path>
+                <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"></path>
+                <rect x="6" y="16" width="12" height="4" rx="1">
+                </rect>
+              </svg>
+              {{ __('Nežádoucí události') }}
+            </a>
+          {{-- Helpdesk --}}
           <div class="nav-item dropdown d-none d-md-flex me-3">
             <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown"><svg class="icon text-red" xmlns="http://www.w3.org/2000/svg"
                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -44,7 +49,8 @@
                 <line x1="9" y1="15" x2="5.65" y2="18.35"></line>
                 <line x1="5.65" y1="5.65" x2="9" y2="9"></line>
                 <line x1="18.35" y1="5.65" x2="15" y2="9"></line>
-              </svg>{{ __('Helpdesk') }}</button>
+              </svg>{{ __('Helpdesk') }}
+            </button>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow dropdown-menu-card">
               <div class="card">
                 <div class="card-header">
@@ -62,7 +68,6 @@
                       </div>
                       <div class="col-auto">
                         <a class="list-group-item-actions" href="#">
-                          <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                           <svg class="icon text-muted" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -76,14 +81,16 @@
                     <div class="row align-items-center">
                       <div class="col-auto"><span class="status-dot d-block"></span></div>
                       <div class="col text-truncate">
-                        <a class="text-body d-block" href="#">Example 2</a>
+                        <a class="text-body d-block"
+                           href="#">
+                          Example 2
+                        </a>
                         <div class="d-block text-muted text-truncate mt-n1">
                           justify-content:between ⇒ justify-content:space-between (#29734)
                         </div>
                       </div>
                       <div class="col-auto">
                         <a class="list-group-item-actions show" href="#">
-                          <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                           <svg class="icon text-yellow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -104,7 +111,6 @@
                       </div>
                       <div class="col-auto">
                         <a class="list-group-item-actions" href="#">
-                          <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                           <svg class="icon text-muted" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -125,7 +131,6 @@
                       </div>
                       <div class="col-auto">
                         <a class="list-group-item-actions" href="#">
-                          <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                           <svg class="icon text-muted" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -139,6 +144,7 @@
               </div>
             </div>
           </div>
+          {{-- Radio Button --}}
           <a class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Radio Evropa 2" href="{{ route('media.radio') }}" rel="noreferrer">
             <svg class="icon icon-tabler icon-tabler-radio text-yellow" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                  stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -177,6 +183,7 @@
         </div>
       </div>
       @auth
+        {{-- User Dropdown --}}
         <div class="nav-item dropdown">
           <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" href="#" aria-label="Open user menu">
             <span class="avatar avatar-sm" style="background-image: url(../foto/{{ Auth::user()->personal_number . '.jpg' ?? 'no_image.png' }})"></span>
@@ -185,9 +192,9 @@
               <div class="small text-muted mt-1">{{ Auth::user()->personal_number ?? '' }}</div>
             </div>
           </a>
+          {{-- User Dropdown Menu --}}
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <a class="dropdown-item" href="{{ route('user-profile-information.update') }}">
-              <!-- Download SVG icon from http://tabler-icons.io/i/edit -->
               <svg class="icon dropdown-item-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                    fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -198,7 +205,6 @@
               {{ __('Profile') }}
             </a>
             <a class="dropdown-item" href="#">
-              <!-- Download SVG icon from http://tabler-icons.io/i/settings -->
               <svg class="icon dropdown-item-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                    fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -211,7 +217,6 @@
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logout-modal" href="#">
-              <!-- Download SVG icon from http://tabler-icons.io/i/logout -->
               <svg class="icon dropdown-item-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                    fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -221,7 +226,9 @@
               {{ __('Logout') }}
             </a>
           </div>
+          {{-- User Dropdown Menu End --}}
         </div>
+        {{-- User Dropdown End --}}
       </div>
     @endauth
   </div>

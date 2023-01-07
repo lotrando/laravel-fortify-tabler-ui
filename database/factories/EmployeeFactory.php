@@ -30,7 +30,6 @@ class EmployeeFactory extends Factory
             'start_date'      => $this->faker->dateTimeBetween('-1 week', '+1 week'),
             'end_date'        => $this->faker->dateTimeBetween('-1 week', '+1 week'),
             'comment'         => $this->faker->text(),
-            'email'           => $this->faker->unique()->safeEmail(),
             'phone'           => $this->faker->numberBetween(341, 556),
             'mobile'          => $this->faker->e164PhoneNumber(),
             'id_card'         => $this->faker->randomElement(['Nový nástup', 'Vytvořit kartu', 'Předat nálepku', 'Aktualizovat nálepku', 'Ok', 'Vrácena']),
