@@ -4,7 +4,7 @@ use App\Http\Controllers\AdverseventController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EvidenceController;
-use App\Http\Controllers\InstructionController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\TrainingController;
@@ -39,8 +39,8 @@ Route::prefix('stravovani')->name('stravovani.')->group(function () {
 
 // Standardy
 Route::prefix('standardy')->name('standardy.')->group(function () {
-    Route::get('akreditacni', [InstructionController::class, 'akreditacni'])->name('akreditacni');
-    Route::get('osetrovatelske', [InstructionController::class, 'osetrovatelske'])->name('osetrovatelske');
+    Route::get('akreditacni', [PageController::class, 'akreditacni'])->name('akreditacni');
+    Route::get('osetrovatelske', [PageController::class, 'osetrovatelske'])->name('osetrovatelske');
 });
 
 // Media

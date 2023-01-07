@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInstructionsTable extends Migration
+class CreateDocumentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateInstructionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('instructions', function (Blueprint $table) {
+        Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->string('standard_id');
-            $table->string('standard_category_id');
+            $table->string('category_id');
             $table->string('name');
+            $table->string('descriptioon');
             $table->string('revision');
-            $table->string('addons');
             $table->enum('status', ['Rozpracováno', 'Schváleno']);
-            $table->timestamps();
         });
     }
 
@@ -32,6 +30,6 @@ class CreateInstructionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instructions');
+        Schema::dropIfExists('documents');
     }
 }

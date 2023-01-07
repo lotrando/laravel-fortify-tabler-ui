@@ -5,20 +5,10 @@
   <div class="row justify-content-center">
     <div class="col-12">
       <div class="card mb-2 mt-2 shadow-sm">
-        <div class="card-header align-items-center justify-content-between bg-muted-lt d-flex">
+        <div class="card-header align-items-center justify-content-start bg-muted-lt d-flex">
           <h3 class="text-muted m-0 mb-0 p-0">
             {{ __('Employees of KHN') }}
           </h3>
-          <div class="ms-auto d-print-none col-auto">
-            <div class="btn-list">
-              @auth
-              <button class="btn btn-purple" id="exportTable" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Export') }}"><i class="fas fa-file-export fa-1x m-1"></i>Export</button>
-              <a class="btn btn-green" id="exportPhoneList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Export phone list') }}" href="{{ route('employees.phonelist') }}" title="Telefoní seznam"><i class="fas fa-address-book fa-1x m-1"></i>{{ __('Phonelist') }}</a>
-              <a class="btn btn-blue" id="exportList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Export list') }}" href="{{ route('employees.list') }}" title="Kompletní seznam"><i class="fas fa-book fa-1x m-1"></i>{{ __('List') }}</a>
-              <button class="btn btn-lime" id="openCreateModal" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Nový') }}"><i class="fas fa-user-plus fa-1x m-1"></i>{{ __('New') }}</button>
-              @endauth
-            </div>
-          </div>
         </div>
         <div class="card-body p-2">
           <div class="row">
@@ -34,7 +24,6 @@
                 <th>{{ __('Titles') }}</th>
                 <th>{{ __('Last name') }}</th>
                 <th>{{ __('First name') }}</th>
-                <th>{{ __('Vema') }}</th>
                 <th>{{ __('Department') }}</th>
                 <th>{{ __('Job title') }}</th>
                 <th>{{ __('Email') }}</th>
@@ -53,6 +42,23 @@
 </div>
 @endsection
 
+@section('buttons')
+<div class="ms-auto d-print-none col-auto">
+  <div class="btn-list">
+    @auth
+    <button class="btn btn-purple py-0" id="exportTable" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Export') }}"><i
+         class="fas fa-file-export fa-1x m-1"></i>Export</button>
+    <a class="btn btn-green" id="exportPhoneList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Export phone list') }}"
+       href="{{ route('employees.phonelist') }}" title="Telefoní seznam"><i class="fas fa-address-book fa-1x m-1"></i>{{ __('Phonelist') }}</a>
+    <a class="btn btn-blue" id="exportList" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Export list') }}"
+       href="{{ route('employees.list') }}" title="Kompletní seznam"><i class="fas fa-book fa-1x m-1"></i>{{ __('List') }}</a>
+    <button class="btn btn-lime" id="openCreateModal" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Nový') }}"><i
+         class="fas fa-user-plus fa-1x m-1"></i>{{ __('New') }}</button>
+    @endauth
+  </div>
+</div>
+@endsection
+
 @section('modals')
 {{-- Main Form Modal --}}
 <div class="modal modal-blur fade" id="formModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
@@ -61,7 +67,6 @@
       <div id="modal-header">
         <h5 class="modal-title"></h5>
         <i id="modal-icon"></i>
-        {{-- <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button> --}}
       </div>
       <form id="inputForm" action="{{ route('employees.create') }}">
         @csrf
@@ -261,10 +266,10 @@
 <div class="modal modal-blur fade" id="confirmModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
     <div class="modal-content shadow-lg">
-      {{-- <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="{{ __('Close') }}"></button> --}}
       <div class="modal-status bg-danger"></div>
       <div class="modal-body py-4 text-center">
-        <svg class="icon text-danger icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="icon text-danger icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+             stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
           <path d="M12 9v2m0 4v.01" />
           <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
@@ -296,7 +301,6 @@
 <div class="modal modal-blur fade" id="photoModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
     <div class="modal-content shadow-lg">
-      {{-- <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="{{ __('Close') }}"></button> --}}
       <div class="modal-status bg-warning"></div>
       <div class="modal-body py-4 text-center">
         <div class="row">
@@ -304,7 +308,8 @@
             <span id="form_result_modal"></span>
           </div>
         </div>
-        <svg class="icon icon-tabler icon-tabler-photo-off text-warning icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="icon icon-tabler icon-tabler-photo-off text-warning icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+             stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
           <line x1="3" y1="3" x2="21" y2="21"></line>
           <line x1="15" y1="8" x2="15.01" y2="8"></line>
@@ -402,6 +407,12 @@
 @endsection
 
 @section('scripts')
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.scroller.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.select.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.fixedHeader.min.js') }}"></script>
+<script src="{{ asset('js/czech-string.js') }}"></script>
 <script>
   // Data Table
     $(document).ready(function() {
@@ -465,11 +476,6 @@
             "width": "3%"
           },
           {
-            data: 'department.center_code',
-            "width": "1%",
-            orderable: false,
-          },
-          {
             data: 'department.department_name',
             "width": "8%",
             orderable: false,
@@ -494,7 +500,7 @@
           {
             data: 'phone',
             className: "text-center",
-            "width": "1%"
+            "width": "0.5%"
           },
           {
             data: 'mobile',
@@ -517,7 +523,7 @@
           },
           {
             data: 'start_date',
-            "width": "1%",
+            "width": "0.5%",
             render: function(data, type, full, meta) {
               var date = moment(data).locale('cs');
               return date.format('DD. MM. YYYY');

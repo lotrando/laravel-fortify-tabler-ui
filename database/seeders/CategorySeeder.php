@@ -15,7 +15,15 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'category_name' => 'Oznámení'
+            'category_name' => 'Akreditační'
+        ]);
+
+        DB::table('categories')->insert([
+            'category_name' => 'Ošetřovatelské'
+        ]);
+
+        DB::table('categories')->insert([
+            'category_name' => 'Léčebné'
         ]);
     }
 }

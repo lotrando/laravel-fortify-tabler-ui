@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DepartmentSeeder::class,
             JobSeeder::class,
-            //PrinterSeeder::class,
+            CategorySeeder::class,
         ]);
 
         Employee::factory(400)->create();
