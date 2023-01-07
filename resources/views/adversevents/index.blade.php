@@ -344,14 +344,14 @@
     // Data Table
     $(document).ready(function() {
       $('.dataTable').DataTable({
-        filter: false,
+        filter: true,
         processing: true,
         processingAnim: false,
         serverSide: true,
         stateSave: true,
         pageSave: true,
         fixedHeader: {
-          header: false,
+          header: true,
           footer: false
         },
         order: [

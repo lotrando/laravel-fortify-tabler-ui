@@ -9,21 +9,16 @@
       </a>
     </h1>
     <div class="navbar-nav order-md-last flex-row">
-      <div class="nav-item d-none d-md-flex nav-item d-none d-md-flex me-3">
-        {{-- <audio controls>
-          <audio>
-            <source src="{{ url('http://192.168.81.121:8000/radio.m3u') }}" type="audio/mpeg">
-          </audio> --}}
-        <div class="btn-list">
+      <div class="nav-item d-none d-md-flex nav-item d-none d-md-flex">
+        <div class="btn-list me-lg-1 me-md-1 me-0">
           @auth
             <a class="btn {{ request()->segment(1) == 'employees' ? 'bg-primary-lt' : '' }}" href="{{ route('employees.index') }}" rel="noreferrer">
-              <svg class="icon text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                   fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="icon icon-tabler icon-tabler-user-circle" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
+                   stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                <circle cx="12" cy="12" r="9"></circle>
+                <circle cx="12" cy="10" r="3"></circle>
+                <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
               </svg>
               {{ __('Employees') }}
             </a>
@@ -144,6 +139,18 @@
               </div>
             </div>
           </div>
+          <a class="btn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Radio Evropa 2" href="{{ route('media.radio') }}" rel="noreferrer">
+            <svg class="icon icon-tabler icon-tabler-radio text-yellow" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
+                 stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M14 3l-9.371 3.749a1 1 0 0 0 -.629 .928v11.323a1 1 0 0 0 1 1h14a1 1 0 0 0 1 -1v-11a1 1 0 0 0 -1 -1h-14.5"></path>
+              <path d="M4 12h16"></path>
+              <path d="M7 12v-2"></path>
+              <path d="M17 16v.01"></path>
+              <path d="M13 16v.01"></path>
+            </svg>
+            {{ __('Rádio') }}
+          </a>
           @guest
             <a class="btn hover-shadow-sm" href="{{ route('register') }}" rel="noreferrer">
               <svg class="icon icon-tabler icon-tabler-login" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"

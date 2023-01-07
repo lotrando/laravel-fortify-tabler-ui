@@ -33,10 +33,10 @@
     <div class="container-fluid">
       <div class="col-lg-12">
         <div class="card">
-          <div class="card-header bg-grey-lt">
+          <div class="card-header bg-muted-lt">
             <ul class="nav nav-tabs card-header-tabs nav-fill" data-bs-toggle="tabs" role="tablist">
               <li class="nav-item" role="presentation">
-                <a class="nav-link active" data-bs-toggle="tab" href="#tabs-home-13" role="tab" aria-selected="true">
+                <a class="nav-link active" data-bs-toggle="tab" href="#tabs-home-13" role="tab" aria-selected="true"e>
                   <!-- Download SVG icon from http://tabler-icons.io/i/home -->
                   <svg class="icon me-2" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                        stroke-linecap="round" stroke-linejoin="round">
@@ -52,11 +52,14 @@
               <li class="nav-item" role="presentation">
                 <a class="nav-link" data-bs-toggle="tab" href="#tabs-profile-13" role="tab" aria-selected="false" tabindex="-1">
                   <!-- Download SVG icon from http://tabler-icons.io/i/user -->
-                  <svg class="icon me-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                  <svg class="icon me-2" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none"
                        stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                    <path d="M6 4h-1a2 2 0 0 0 -2 2v3.5h0a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1"></path>
+                    <path d="M8 15a6 6 0 1 0 12 0v-3"></path>
+                    <path d="M11 3v2"></path>
+                    <path d="M6 3v2"></path>
+                    <circle cx="20" cy="10" r="2"></circle>
                   </svg>
                   Ošetřovatelské
                 </a>

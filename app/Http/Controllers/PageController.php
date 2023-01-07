@@ -43,7 +43,6 @@ class PageController extends Controller
     }
 
 
-    // Stravování
     public function obedy()
     {
         return redirect()->away('http://akordapp/SISAkord/Login.aspx?ReturnUrl=%2fSISAkord%2f');
@@ -51,7 +50,7 @@ class PageController extends Controller
 
     public function kantyna()
     {
-        return view('kantyna', ['category' => 'Oznámení', 'title' => 'Kantýna']);
+        return view('kantyna', ['category' => 'Stravování', 'title' => 'Kantýna']);
     }
 
 

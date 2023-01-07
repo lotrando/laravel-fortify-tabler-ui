@@ -1,4 +1,4 @@
-<footer class="footer fixed-bottom footer-transparent d-print-none">
+<footer class="footer fixed-bottom footer-transparent d-print-none mt-5 p-0">
   <div class="container-fluid">
     <div class="row align-items-center flex-row-reverse text-center">
       <div class="col-lg-auto ms-lg-auto">

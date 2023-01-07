@@ -5,7 +5,7 @@
           <ul class="navbar-nav">
             {{-- Oznámení Dropdown --}}
             <li class="nav-item dropdown {{ request()->segment(1) == 'oznameni' ? 'active' : '' }}" href="">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-base" role="button" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                        fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -81,15 +81,13 @@
                 </a>
                 <a class="dropdown-item {{ request()->segment(2) == 'sluzby' ? 'active' : '' }}" href="{{ route('oznameni.sluzby') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <svg class="icon icon-tabler icon-tabler-transform" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" stroke-width="2"
+                    <svg class="icon icon-tabler icon-tabler-users" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M5 13v.875c0 3.383 2.686 6.125 6 6.125"></path>
-                      <circle cx="6" cy="6" r="3"></circle>
-                      <circle cx="18" cy="18" r="3"></circle>
-                      <path d="M16 9l2 2l2 -2"></path>
-                      <path d="M18 10v-.875c0 -3.383 -2.686 -6.125 -6 -6.125"></path>
-                      <path d="M3 15l2 -2l2 2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                      <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
                     </svg>
                   </span>
                   <span class="nav-link-title">
@@ -135,7 +133,7 @@
             </li>
             {{-- Stravování --}}
             <li class="nav-item dropdown {{ request()->segment(1) == 'stravovani' ? 'active' : '' }}">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-base" role="button" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-tools-kitchen-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -170,7 +168,6 @@
                 </a>
                 <a class="dropdown-item {{ request()->segment(2) == 'kantyna' ? 'active' : '' }}" href="{{ route('stravovani.kantyna') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
                     <svg class="icon icon-tabler icon-tabler-baguette" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -191,7 +188,6 @@
             <li class="nav-item">
               <a class="nav-link" href="https://email.khn.cz" target="_blank">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/home -->
                   <svg class="icon icon-tabler icon-tabler-mail" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -205,9 +201,8 @@
               </a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-extra" role="button" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                   <svg class="icon icon-tabler icon-tabler-book" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -223,25 +218,21 @@
                 </span>
               </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="./activity.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-users" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                    <svg class="icon icon-tabler icon-tabler-user" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <circle cx="9" cy="7" r="4"></circle>
-                      <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                      <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                      <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
                     </svg>
                   </span>
                   <span class="nav-link-title">
                     {{ __('Personální') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                     <svg class="icon icon-tabler icon-tabler-nurse" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -255,9 +246,8 @@
                     {{ __('Sesterská') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                     <svg class="icon icon-tabler icon-tabler-hand-sanitizer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -272,43 +262,38 @@
                     {{ __('Hygiena') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-user-plus" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                    <svg class="icon icon-tabler icon-tabler-old" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <circle cx="9" cy="7" r="4"></circle>
-                      <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
-                      <path d="M16 11h6m-3 -3v6"></path>
+                      <path d="M11 21l-1 -4l-2 -3v-6"></path>
+                      <path d="M5 14l-1 -3l4 -3l3 2l3 .5"></path>
+                      <circle cx="8" cy="4" r="1"></circle>
+                      <path d="M7 17l-2 4"></path>
+                      <path d="M16 21v-8.5a1.5 1.5 0 0 1 3 0v.5"></path>
                     </svg>
                   </span>
                   <span class="nav-link-title">
                     {{ __('Pacient') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-microscope" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                    <svg class="icon icon-tabler icon-tabler-flask" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M5 21h14"></path>
-                      <path d="M6 18h2"></path>
-                      <path d="M7 18v3"></path>
-                      <path d="M9 11l3 3l6 -6l-3 -3z"></path>
-                      <path d="M10.5 12.5l-1.5 1.5"></path>
-                      <path d="M17 3l3 3"></path>
-                      <path d="M12 21a6 6 0 0 0 3.715 -10.712"></path>
+                      <line x1="9" y1="3" x2="15" y2="3"></line>
+                      <line x1="10" y1="9" x2="14" y2="9"></line>
+                      <path d="M10 3v6l-4 11a0.7 .7 0 0 0 .5 1h11a0.7 .7 0 0 0 .5 -1l-4 -11v-6"></path>
                     </svg>
                   </span>
                   <span class="nav-link-title">
                     {{ __('OKB') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                     <svg class="icon icon-tabler icon-tabler-radioactive" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -321,9 +306,8 @@
                     {{ __('RDG') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                     <svg class="icon icon-tabler icon-tabler-devices-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -339,9 +323,8 @@
                     {{ __('IT') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                     <svg class="icon icon-tabler icon-tabler-heartbeat" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -354,10 +337,8 @@
                     {{ __('KPR') }}
                   </span>
                 </a>
-                <div class="dropdown-menu-column">
-                  <a class="dropdown-item" href="./gallery.html">
+                  <a class="dropdown-item" href="#">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                       <svg class="icon icon-tabler icon-tabler-cards" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -373,25 +354,24 @@
                       {{ __('Komunikační karty') }}
                     </span>
                   </a>
-                  <a class="dropdown-item" href="./gallery.html">
+                  <a class="dropdown-item" href="#">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                      <svg class="icon icon-tabler icon-tabler-clipboard-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                           stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <svg class="icon icon-tabler icon-tabler-checkup-list" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                           stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2">
-                        </path>
+                        <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
                         <rect x="9" y="3" width="6" height="4" rx="2"></rect>
-                        <path d="M9 14l2 2l4 -4"></path>
+                        <path d="M9 14h.01"></path>
+                        <path d="M9 17h.01"></path>
+                        <path d="M12 16l1 1l3 -3"></path>
                       </svg>
                     </span>
                     <span class="nav-link-title">
                       {{ __('Vyhodnocení dotazníků') }}
                     </span>
                   </a>
-                  <a class="dropdown-item" href="./gallery.html">
+                  <a class="dropdown-item" href="#">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                       <svg class="icon icon-tabler icon-tabler-help" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -404,18 +384,17 @@
                       {{ __('Návody') }}
                     </span>
                   </a>
-                  <a class="dropdown-item" href="./wizard.html">
+                  <a class="dropdown-item" href="#">
                     <span class="flag flag-country-ua me-2"></span>
                     <span class="nav-link-title">
                       {{ __('Ukrajinské dokumenty') }}
                     </span>
                   </a>
-                </div>
+              </div>
             </li>
             <li class="nav-item dropdown {{ request()->segment(1) == 'standardy' ? 'active' : '' }}">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-extra" role="button" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                   <svg class="icon icon-tabler icon-tabler-book-2" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -431,7 +410,6 @@
               <div class="dropdown-menu">
                 <a class="dropdown-item {{ request()->segment(2) == 'akreditacni' ? 'active' : '' }}" href="{{ route('standardy.akreditacni') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                     <svg class="icon icon-tabler icon-tabler-file-certificate" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -447,7 +425,6 @@
                 </a>
                 <a class="dropdown-item {{ request()->segment(2) == 'osetrovatelske' ? 'active' : '' }}" href="{{ route('standardy.osetrovatelske') }}">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                     <svg class="icon icon-tabler icon-tabler-stethoscope" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -462,16 +439,14 @@
                     {{ __('Ošetřovatelské') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-clipboard-heart" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
-                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-hearts" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
+                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
-                      <rect x="9" y="3" width="6" height="4" rx="2"></rect>
+                      <path d="M14.017 18.001l-2.017 1.999l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 0 1 8.153 5.784"></path>
                       <path
-                            d="M11.993 16.75l2.747 -2.815a1.9 1.9 0 0 0 .005 -2.632a1.775 1.775 0 0 0 -2.56 -.005l-.183 .188l-.183 -.189a1.775 1.775 0 0 0 -2.56 -.004a1.899 1.899 0 0 0 -.004 2.632l2.738 2.825z">
+                            d="M15.99 20l4.197 -4.223a2.81 2.81 0 0 0 .006 -3.948a2.747 2.747 0 0 0 -3.91 -.007l-.28 .282l-.279 -.283a2.747 2.747 0 0 0 -3.91 -.007a2.81 2.81 0 0 0 -.007 3.948l4.182 4.238z">
                       </path>
                     </svg>
                   </span>
@@ -479,9 +454,8 @@
                     {{ __('Léčebné') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                     <svg class="icon icon-tabler icon-tabler-report-medical" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -495,37 +469,36 @@
                     {{ __('Speciální') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-bookmarks" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
+                    <svg class="icon icon-tabler icon-tabler-slice" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                          stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M13 7a2 2 0 0 1 2 2v12l-5 -3l-5 3v-12a2 2 0 0 1 2 -2h6z"></path>
-                      <path d="M9.265 4a2 2 0 0 1 1.735 -1h6a2 2 0 0 1 2 2v12l-1 -.6"></path>
+                      <path d="M3 19l15 -15l3 3l-6 6l2 2a14 14 0 0 1 -14 4"></path>
                     </svg>
                   </span>
                   <span class="nav-link-title">
                     {{ __('Operační') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-bookmarks" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-heart-rate-monitor" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                         stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <path d="M13 7a2 2 0 0 1 2 2v12l-5 -3l-5 3v-12a2 2 0 0 1 2 -2h6z"></path>
-                      <path d="M9.265 4a2 2 0 0 1 1.735 -1h6a2 2 0 0 1 2 2v12l-1 -.6"></path>
+                      <rect x="3" y="4" width="18" height="12" rx="1"></rect>
+                      <path d="M7 20h10"></path>
+                      <path d="M9 16v4"></path>
+                      <path d="M15 16v4"></path>
+                      <path d="M7 10h2l2 3l2 -6l1 3h3"></path>
                     </svg>
                   </span>
                   <span class="nav-link-title">
                     {{ __('Anesteziologické') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                     <svg class="icon icon-tabler icon-tabler-radioactive" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -538,61 +511,55 @@
                     {{ __('RDG') }}
                   </span>
                 </a>
-                <a class="dropdown-item" href="./gallery.html">
+                <a class="dropdown-item" href="#">
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                    <svg class="icon icon-tabler icon-tabler-disabled" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
-                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="icon icon-tabler icon-tabler-physotherapist" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                         stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                      <circle cx="11" cy="5" r="2"></circle>
-                      <polyline points="11 7 11 15 15 15 19 20"></polyline>
-                      <line x1="11" y1="11" x2="16" y2="11"></line>
-                      <path d="M7 11.5a5 5 0 1 0 6 7.5"></path>
+                      <path d="M9 15l-1 -3l4 -2l4 1h3.5"></path>
+                      <circle cx="4" cy="19" r="1"></circle>
+                      <circle cx="12" cy="6" r="1"></circle>
+                      <path d="M12 17v-7"></path>
+                      <path d="M8 20h7l1 -4l4 -2"></path>
+                      <path d="M18 20h3"></path>
                     </svg>
                   </span>
                   <span class="nav-link-title">
                     {{ __('Rehabilitační') }}
                   </span>
                 </a>
-                <div class="dropdown-menu-column">
-                  <a class="dropdown-item" href="./gallery.html">
+                  <a class="dropdown-item" href="#">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                      <svg class="icon icon-tabler icon-tabler-helicopter-landing" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
-                           stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <svg class="icon icon-tabler icon-tabler-bandage" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
+                           stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                        <line x1="9" y1="8" x2="9" y2="16"></line>
-                        <line x1="9" y1="12" x2="15" y2="12"></line>
-                        <line x1="15" y1="8" x2="15" y2="16"></line>
+                        <line x1="14" y1="12" x2="14" y2="12.01"></line>
+                        <line x1="10" y1="12" x2="10" y2="12.01"></line>
+                        <line x1="12" y1="10" x2="12" y2="10.01"></line>
+                        <line x1="12" y1="14" x2="12" y2="14.01"></line>
+                        <path d="M4.5 12.5l8 -8a4.94 4.94 0 0 1 7 7l-8 8a4.94 4.94 0 0 1 -7 -7"></path>
                       </svg>
                     </span>
                     <span class="nav-link-title">
                       {{ __('OPL') }}
                     </span>
                   </a>
-                  <a class="dropdown-item" href="./gallery.html">
+                  <a class="dropdown-item" href="#">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                      <svg class="icon icon-tabler icon-tabler-microscope" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
-                           stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <svg class="icon icon-tabler icon-tabler-flask" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
+                           stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M5 21h14"></path>
-                        <path d="M6 18h2"></path>
-                        <path d="M7 18v3"></path>
-                        <path d="M9 11l3 3l6 -6l-3 -3z"></path>
-                        <path d="M10.5 12.5l-1.5 1.5"></path>
-                        <path d="M17 3l3 3"></path>
-                        <path d="M12 21a6 6 0 0 0 3.715 -10.712"></path>
+                        <line x1="9" y1="3" x2="15" y2="3"></line>
+                        <line x1="10" y1="9" x2="14" y2="9"></line>
+                        <path d="M10 3v6l-4 11a0.7 .7 0 0 0 .5 1h11a0.7 .7 0 0 0 .5 -1l-4 -11v-6"></path>
                       </svg>
                     </span>
                     <span class="nav-link-title">
                       {{ __('OKB') }}
                     </span>
                   </a>
-                  <a class="dropdown-item" href="./gallery.html">
+                  <a class="dropdown-item" href="#">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/star -->
                       <svg class="icon icon-tabler icon-tabler-messages" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
                            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -604,26 +571,28 @@
                       {{ __('Logopedické') }}
                     </span>
                   </a>
-                  <a class="dropdown-item" href="./gallery.html">
+                  <a class="dropdown-item" href="#">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
-                      <!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                      <svg class="icon icon-tabler icon-tabler-rubber-stamp" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
-                           stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <svg class="icon icon-tabler icon-tabler-certificate" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                           stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M21 17.85h-18c0 -4.05 1.421 -4.05 3.79 -4.05c5.21 0 1.21 -4.59 1.21 -6.8a4 4 0 1 1 8 0c0 2.21 -4 6.8 1.21 6.8c2.369 0 3.79 0 3.79 4.05z"></path>
-                        <path d="M5 21h14"></path>
+                        <circle cx="15" cy="15" r="3"></circle>
+                        <path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5"></path>
+                        <path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73"></path>
+                        <line x1="6" y1="9" x2="18" y2="9"></line>
+                        <line x1="6" y1="12" x2="9" y2="12"></line>
+                        <line x1="6" y1="15" x2="8" y2="15"></line>
                       </svg>
                     </span>
                     <span class="nav-link-title">
                       {{ __('Legislativní') }}
                     </span>
                   </a>
-                </div>
+              </div>
             </li>
             <li class="nav-item dropdown {{ request()->segment(1) == 'media' ? 'active' : '' }}">
-              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#navbar-layout" role="button" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#" role="button" aria-expanded="false">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/layout-2 -->
                   <svg class="icon icon-tabler icon-tabler-device-tv-old" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -693,7 +662,6 @@
             <form action="." method="get">
               <div class="input-icon">
                 <span class="input-icon-addon">
-                  <!-- Download SVG icon from http://tabler-icons.io/i/search -->
                   <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                        fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
