@@ -8,7 +8,7 @@
             <a class="link-secondary text-primary text-decoration-none"
                data-bs-toggle="tooltip"
                data-bs-placement="top"
-               data-bs-original-title="Poslat email autorovi"
+               data-bs-original-title="Poslat Mirkovi email"
                href="mailto:klika@khn.cz"
                target="_blank"
                rel="noopener">
@@ -39,9 +39,8 @@
             <a class="link-secondary text-primary text-decoration-none"
                data-bs-toggle="tooltip"
                data-bs-placement="top"
-               data-bs-original-title="Web KHN a.s."
+               data-bs-original-title="Web KHN a.s. v aktualní záložce"
                href="https://www.khn.cz"
-               target="_blank"
                rel="noopener">KHN a.s.
             </a> - všechna práva vyhrazena
           </li>

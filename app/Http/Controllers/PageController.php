@@ -73,6 +73,11 @@ class PageController extends Controller
         $documents5 = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->where('accordion_group', 5)->orderBy('position')->get();
         $documents6 = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->where('accordion_group', 6)->orderBy('position')->get();
         $documents7 = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->where('accordion_group', 7)->orderBy('position')->get();
+        $documents8 = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->where('accordion_group', 8)->orderBy('position')->get();
+        $documents9 = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->where('accordion_group', 9)->orderBy('position')->get();
+        $documents10 = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->where('accordion_group', 10)->orderBy('position')->get();
+        $documents11 = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->where('accordion_group', 11)->orderBy('position')->get();
+        $documents12 = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->where('accordion_group', 12)->orderBy('position')->get();
 
         return view('standardy', [
             'category'          => 'Standardy',
@@ -87,6 +92,11 @@ class PageController extends Controller
             'documents5'        => $documents5,
             'documents6'        => $documents6,
             'documents7'        => $documents7,
+            'documents8'        => $documents8,
+            'documents9'        => $documents9,
+            'documents10'       => $documents10,
+            'documents11'       => $documents11,
+            'documents12'       => $documents12
         ]);
     }
 
