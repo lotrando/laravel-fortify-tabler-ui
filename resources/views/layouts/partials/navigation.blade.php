@@ -7,7 +7,7 @@
           <li class="nav-item dropdown {{ request()->segment(1) == 'oznameni' ? 'active' : '' }}" href="">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#" role="button" aria-expanded="false">
               <span class="nav-link-icon d-md-none d-lg-inline-block">
-                <svg class="icon icon-tabler" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                <svg class="icon icon-tabler text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                      fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <circle cx="12" cy="12" r="9"></circle>
@@ -23,7 +23,7 @@
             <div class="dropdown-menu">
               <a class="dropdown-item {{ request()->segment(2) == 'zmeny' ? 'active' : '' }}" href="{{ route('oznameni.zmeny') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                  <svg class="icon icon-tabler text-red" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                        fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <rect x="4" y="4" width="16" height="16" rx="2"></rect>
@@ -36,7 +36,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'servis' ? 'active' : '' }}" href="{{ route('oznameni.servis') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-tool" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                  <svg class="icon icon-tabler icon-tabler-tool text-cyan" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5">
@@ -49,7 +49,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'sluzby' ? 'active' : '' }}" href="{{ route('oznameni.sluzby') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-users" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
+                  <svg class="icon icon-tabler icon-tabler-users text-yellow" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <circle cx="9" cy="7" r="4"></circle>
@@ -64,7 +64,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'informace' ? 'active' : '' }}" href="{{ route('oznameni.informace') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-square-rounded" width="40" height="40" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-square-rounded text-cyan" width="40" height="40" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M12 8h.01"></path>
                     <path d="M11 12h1v4h1"></path>
@@ -77,7 +77,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'seminare' ? 'active' : '' }}" href="{{ route('oznameni.seminare') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-armchair" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" stroke-width="2"
+                  <svg class="icon icon-tabler icon-tabler-armchair text-orange" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" stroke-width="2"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M5 11a2 2 0 0 1 2 2v2h10v-2a2 2 0 1 1 4 0v4a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2z">
@@ -93,7 +93,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'akord' ? 'active' : '' }}" href="{{ route('oznameni.akord') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                  <svg class="icon icon-tabler text-bitbucket" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                        fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <line x1="3" y1="21" x2="21" y2="21"></line>
@@ -109,7 +109,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'kultura' ? 'active' : '' }}" href="{{ route('oznameni.kultura') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-masks-theater" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+                  <svg class="icon icon-tabler icon-tabler-masks-theater text-google" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M13.192 9h6.616a2 2 0 0 1 1.992 2.183l-.567 6.182a4 4 0 0 1 -3.983 3.635h-1.5a4 4 0 0 1 -3.983 -3.635l-.567 -6.182a2 2 0 0 1 1.992 -2.183z">
@@ -134,7 +134,7 @@
           <li class="nav-item dropdown {{ request()->segment(1) == 'stravovani' ? 'active' : '' }}">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#" role="button" aria-expanded="false">
               <span class="nav-link-icon d-md-none d-lg-inline-block">
-                <svg class="icon icon-tabler icon-tabler-tools-kitchen-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                <svg class="icon icon-tabler icon-tabler-tools-kitchen-2 text-cyan" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                      stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12zm0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3">
@@ -148,7 +148,7 @@
             <div class="dropdown-menu">
               <a class="dropdown-item {{ request()->segment(2) == 'obedy' ? 'active' : '' }}" href="{{ route('stravovani.obedy') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-meat" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                  <svg class="icon icon-tabler icon-tabler-meat text-red" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M13.62 8.382l1.966 -1.967a2 2 0 1 1 3.414 -1.415a2 2 0 1 1 -1.413 3.414l-1.82 1.821">
@@ -167,7 +167,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'kantyna' ? 'active' : '' }}" href="{{ route('stravovani.kantyna') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-baguette" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                  <svg class="icon icon-tabler icon-tabler-baguette text-yellow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path
@@ -187,7 +187,7 @@
           <li class="nav-item">
             <a class="nav-link" href="https://email.khn.cz" target="_blank">
               <span class="nav-link-icon d-md-none d-lg-inline-block">
-                <svg class="icon icon-tabler icon-tabler-mail" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                <svg class="icon icon-tabler icon-tabler-mail text-yellow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <rect x="3" y="5" width="18" height="14" rx="2"></rect>
@@ -394,7 +394,7 @@
           <li class="nav-item dropdown {{ request()->segment(1) == 'standardy' ? 'active' : '' }}">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#" role="button" aria-expanded="false">
               <span class="nav-link-icon d-md-none d-lg-inline-block">
-                <svg class="icon icon-tabler icon-tabler-book-2" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
+                <svg class="icon icon-tabler icon-tabler-book-2 text-purple" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <path d="M19 4v16h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12z"></path>
@@ -409,7 +409,7 @@
             <div class="dropdown-menu">
               <a class="dropdown-item {{ request()->segment(2) == 'akreditacni' ? 'active' : '' }}" href="{{ route('standardy.akreditacni', 1) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-file-certificate" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                  <svg class="icon icon-tabler icon-tabler-file-certificate text-indigo" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
@@ -424,7 +424,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'osetrovatelske' ? 'active' : '' }}" href="{{ route('standardy.osetrovatelske', 2) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-stethoscope" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                  <svg class="icon icon-tabler icon-tabler-stethoscope text-pink" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M6 4h-1a2 2 0 0 0 -2 2v3.5h0a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1"></path>
@@ -440,7 +440,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'lecebne' ? 'active' : '' }}" href="{{ route('standardy.lecebne', 3) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-hearts" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
+                  <svg class="icon icon-tabler icon-tabler-hearts text-red" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M14.017 18.001l-2.017 1.999l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 0 1 8.153 5.784"></path>
@@ -470,7 +470,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'operacni' ? 'active' : '' }}" href="{{ route('standardy.operacni', 5) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-slice" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
+                  <svg class="icon icon-tabler icon-tabler-slice text-lime" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M3 19l15 -15l3 3l-6 6l2 2a14 14 0 0 1 -14 4"></path>
@@ -482,7 +482,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'anesteziologicke' ? 'active' : '' }}" href="{{ route('standardy.anesteziologicke', 6) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-heart-rate-monitor" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                  <svg class="icon icon-tabler icon-tabler-heart-rate-monitor text-purple" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <rect x="3" y="4" width="18" height="12" rx="1"></rect>
@@ -498,7 +498,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'rdg' ? 'active' : '' }}" href="{{ route('standardy.rdg', 7) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-radioactive" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                  <svg class="icon icon-tabler icon-tabler-radioactive text-yellow" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M13.5 14.6l3 5.19a9 9 0 0 0 4.5 -7.79h-6a3 3 0 0 1 -1.5 2.6"></path>
@@ -512,7 +512,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'rehabilitacni' ? 'active' : '' }}" href="{{ route('standardy.rehabilitacni', 8) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-physotherapist" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                  <svg class="icon icon-tabler icon-tabler-physotherapist text-green" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M9 15l-1 -3l4 -2l4 1h3.5"></path>
@@ -529,7 +529,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'opl' ? 'active' : '' }}" href="{{ route('standardy.opl', 9) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-bandage" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
+                  <svg class="icon icon-tabler icon-tabler-bandage text-cyan" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <line x1="14" y1="12" x2="14" y2="12.01"></line>
@@ -545,7 +545,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'okb' ? 'active' : '' }}" href="{{ route('standardy.okb', 10) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-flask" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
+                  <svg class="icon icon-tabler icon-tabler-flask text-purple" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <line x1="9" y1="3" x2="15" y2="3"></line>
@@ -559,7 +559,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'logopedicke' ? 'active' : '' }}" href="{{ route('standardy.logopedicke', 11) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-messages" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
+                  <svg class="icon icon-tabler icon-tabler-messages text-teal" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10"></path>
@@ -572,7 +572,7 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'legislativni' ? 'active' : '' }}" href="{{ route('standardy.legislativni', 12) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-certificate" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                  <svg class="icon icon-tabler icon-tabler-certificate text-orange" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <circle cx="15" cy="15" r="3"></circle>
@@ -592,7 +592,7 @@
           <li class="nav-item dropdown {{ request()->segment(1) == 'media' ? 'active' : '' }}">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" href="#" role="button" aria-expanded="false">
               <span class="nav-link-icon d-md-none d-lg-inline-block">
-                <svg class="icon icon-tabler icon-tabler-device-tv-old" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                <svg class="icon icon-tabler icon-tabler-device-tv-old text-lime" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                      stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                   <rect x="3" y="7" width="18" height="13" rx="2"></rect>
@@ -603,7 +603,7 @@
                 </svg>
               </span>
               <span class="nav-link-title">
-                {{ __('Media') }}
+                {{ __('Média') }}
               </span>
             </a>
             <div class="dropdown-menu">
@@ -611,7 +611,7 @@
                 <div class="dropdown-menu-column">
                   <a class="dropdown-item{{ request()->segment(2) == 'radio' ? 'active' : '' }}" href="{{ route('media.radio') }}">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
-                      <svg class="icon icon-tabler icon-tabler-radio" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                      <svg class="icon icon-tabler icon-tabler-radio text-orange" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M14 3l-9.371 3.749a1 1 0 0 0 -.629 .928v11.323a1 1 0 0 0 1 1h14a1 1 0 0 0 1 -1v-11a1 1 0 0 0 -1 -1h-14.5">
@@ -628,7 +628,7 @@
                   </a>
                   <a class="dropdown-item {{ request()->segment(2) == 'videa' ? 'active' : '' }}" href="{{ route('media.videa') }}">
                     <span class="nav-link-icon d-md-none d-lg-inline-block">
-                      <svg class="icon icon-tabler icon-tabler-movie" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                      <svg class="icon icon-tabler icon-tabler-movie text-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <rect x="4" y="4" width="16" height="16" rx="2"></rect>
