@@ -15,11 +15,13 @@ class CreateAddonsTable extends Migration
     {
         Schema::create('addons', function (Blueprint $table) {
             $table->id();
-            $table->string('document_id');
+            $table->bigInteger('document_id');
             $table->string('name');
             $table->string('descriptioon');
             $table->string('revision');
+            $table->string('file');
             $table->enum('status', ['Rozpracováno', 'Schváleno']);
+            $table->timestamps();
         });
     }
 

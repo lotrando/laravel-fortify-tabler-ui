@@ -41,6 +41,8 @@ Route::prefix('stravovani')->name('stravovani.')->group(function () {
 Route::prefix('standardy')->name('standardy.')->group(function () {
     Route::get('akreditacni', [PageController::class, 'akreditacni'])->name('akreditacni');
     Route::get('osetrovatelske', [PageController::class, 'osetrovatelske'])->name('osetrovatelske');
+    Route::get('lecebne', [PageController::class, 'lecebne'])->name('lecebne');
+    Route::get('specialni', [PageController::class, 'specialni'])->name('specialni');
 });
 
 // Media

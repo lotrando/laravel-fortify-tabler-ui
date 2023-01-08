@@ -439,7 +439,7 @@
                   {{ __('Ošetřovatelské') }}
                 </span>
               </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item {{ request()->segment(2) == 'lecebne' ? 'active' : '' }}" href="{{ route('standardy.lecebne') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-hearts" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -454,7 +454,7 @@
                   {{ __('Léčebné') }}
                 </span>
               </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item {{ request()->segment(2) == 'specialni' ? 'active' : '' }}" href="{{ route('standardy.specialni') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-report-medical" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Addon;
+use App\Models\Category;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
@@ -60,24 +61,51 @@ class PageController extends Controller
     // Standardy
     public function akreditacni()
     {
-        $akreditacni = Document::where('category_id', '1')->with('category', 'addon')->get();
-        $osetrovatelske = Document::where('category_id', '2')->with('category', 'addon')->get();
-        $lecebne = Document::where('category_id', '3')->with('category', 'addon')->get();
-        return view('standardy.akreditacni', [
+        $categorie = Category::where('id', 1)->first();
+        $documents = Document::where('category_id', 1)->with('category', 'addon')->get();
+        return view('standardy.standardy', [
             'category'          => 'Standardy',
             'title'             => 'Akreditační',
-            'akreditacni'       => $akreditacni,
-            'osetrovatelske'    => $osetrovatelske,
-            'lecebne'           => $lecebne
+            'categorie'         => $categorie,
+            'documents'         => $documents
         ]);
     }
 
     public function osetrovatelske()
     {
-        $osetrovatelske = Document::where('category_id', '2')->with('category', 'addon')->get();
-        return view('standardy.osetrovatelske', ['category' => 'Standardy', 'title' => 'Ošetřovatelské', 'osetrovatelske' => $osetrovatelske]);
+        $categorie = Category::where('id', 2)->first();
+        $documents = Document::where('category_id', 2)->with('category', 'addon')->get();
+        return view('standardy.standardy', [
+            'category'          => 'Standardy',
+            'title'             => 'Ošetřovatelské',
+            'categorie'         => $categorie,
+            'documents'         => $documents
+        ]);
     }
 
+    public function lecebne()
+    {
+        $categorie = Category::where('id', 3)->first();
+        $documents = Document::where('category_id', 3)->with('category', 'addon')->get();
+        return view('standardy.standardy', [
+            'category'          => 'Standardy',
+            'title'             => 'Léčebné',
+            'categorie'         => $categorie,
+            'documents'         => $documents
+        ]);
+    }
+
+    public function specialni()
+    {
+        $categorie = Category::where('id', 4)->first();
+        $documents = Document::where('category_id', 4)->with('category', 'addon')->get();
+        return view('standardy.standardy', [
+            'category'          => 'Standardy',
+            'title'             => 'Léčebné',
+            'categorie'         => $categorie,
+            'documents'         => $documents
+        ]);
+    }
 
     // Media
     public function radio()

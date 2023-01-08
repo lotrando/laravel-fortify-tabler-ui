@@ -15,11 +15,15 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->string('category_id');
+            $table->bigInteger('category_id');
+            $table->string('accordion_name');
+            $table->integer('position');
             $table->string('name');
             $table->string('descriptioon');
             $table->string('revision');
+            $table->string('file');
             $table->enum('status', ['Rozpracováno', 'Schváleno']);
+            $table->timestamps();
         });
     }
 
