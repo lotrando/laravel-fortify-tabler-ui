@@ -14,7 +14,7 @@
 
     <div class="navbar-nav order-md-last flex-row">
       <div class="nav-item d-none d-md-flex nav-item d-none d-md-flex">
-        <div class="btn-list me-lg-1 me-md-1 me-0">
+        <div class="btn-list">
           @auth
           <a class="btn {{ request()->segment(1) == 'employees' ? 'bg-primary-lt' : '' }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Seznam zaměstnanců KHN" href="{{ route('employees.index') }}" rel="noreferrer">
             <svg class="icon icon-tabler icon-tabler-user-circle" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -174,13 +174,13 @@
       </div>
       @auth
       {{-- User Dropdown --}}
-      <div class="nav-item dropdown">
-        <a class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" href="#" aria-label="Open user menu">
-          <span class="avatar avatar-sm" style="background-image: url(../foto/{{ Auth::user()->personal_number . '.jpg' ?? 'no_image.png' }})"></span>
-          <div class="d-none d-xl-block ps-2">
+      <div class="nav-item dropdown m-1">
+        <a class="nav-link d-flex text-reset p-0" data-bs-toggle="dropdown" href="#" aria-label="Open user menu">
+          <div class="d-none d-xl-block ps-1">
             <div>{{ Auth::user()->name ?? '' }}</div>
-            <div class="small text-muted mt-1">{{ Auth::user()->personal_number ?? '' }}</div>
+            <div class="small text-muted">{{ Auth::user()->personal_number ?? '' }}</div>
           </div>
+          <span class="avatar avatar-sm ms-1" style="background-image: url(../../foto/{{ Auth::user()->personal_number . '.jpg' ?? 'no_image.png' }})"></span>
         </a>
         {{-- User Dropdown Menu --}}
         <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">

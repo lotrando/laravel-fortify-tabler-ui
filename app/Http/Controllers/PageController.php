@@ -62,8 +62,8 @@ class PageController extends Controller
     public function standard($id)
     {
         $categorie = Category::where('id', $id)->first();
-        $documents = Document::where('category_id', $id)->with('category', 'addon')->orderBy('position')->get();
-        return view('standardy.standardy', [
+        $documents = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->orderBy('position')->get();
+        return view('standardy', [
             'category'          => 'Standardy',
             'title'             => $categorie->category_name,
             'categorie'         => $categorie,

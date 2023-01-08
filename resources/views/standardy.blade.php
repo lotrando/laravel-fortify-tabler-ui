@@ -93,7 +93,7 @@
                     </div>
                   </div>
                   @foreach ($document->addon as $add)
-                  <div class="row align-items-center mb-2">
+                  <div class="row align-items-center mb-1">
                     <div class="col-auto">
                       <a href="{{ url('standardy/'.$add->file) }}">
                         <span class="avatar">

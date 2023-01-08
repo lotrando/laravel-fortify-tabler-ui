@@ -15,7 +15,7 @@ class Document extends Model
 
     public function addon()
     {
-        return $this->hasMany(Addon::class);
+        return $this->hasMany(Addon::class)->where('status', 'Schváleno');
     }
 
     public function category()
