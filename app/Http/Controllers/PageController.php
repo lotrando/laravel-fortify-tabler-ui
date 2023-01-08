@@ -59,49 +59,13 @@ class PageController extends Controller
 
 
     // Standardy
-    public function akreditacni()
+    public function standard($id)
     {
-        $categorie = Category::where('id', 1)->first();
-        $documents = Document::where('category_id', 1)->with('category', 'addon')->get();
+        $categorie = Category::where('id', $id)->first();
+        $documents = Document::where('category_id', $id)->with('category', 'addon')->orderBy('position')->get();
         return view('standardy.standardy', [
             'category'          => 'Standardy',
-            'title'             => 'Akreditační',
-            'categorie'         => $categorie,
-            'documents'         => $documents
-        ]);
-    }
-
-    public function osetrovatelske()
-    {
-        $categorie = Category::where('id', 2)->first();
-        $documents = Document::where('category_id', 2)->with('category', 'addon')->get();
-        return view('standardy.standardy', [
-            'category'          => 'Standardy',
-            'title'             => 'Ošetřovatelské',
-            'categorie'         => $categorie,
-            'documents'         => $documents
-        ]);
-    }
-
-    public function lecebne()
-    {
-        $categorie = Category::where('id', 3)->first();
-        $documents = Document::where('category_id', 3)->with('category', 'addon')->get();
-        return view('standardy.standardy', [
-            'category'          => 'Standardy',
-            'title'             => 'Léčebné',
-            'categorie'         => $categorie,
-            'documents'         => $documents
-        ]);
-    }
-
-    public function specialni()
-    {
-        $categorie = Category::where('id', 4)->first();
-        $documents = Document::where('category_id', 4)->with('category', 'addon')->get();
-        return view('standardy.standardy', [
-            'category'          => 'Standardy',
-            'title'             => 'Léčebné',
+            'title'             => $categorie->category_name,
             'categorie'         => $categorie,
             'documents'         => $documents
         ]);

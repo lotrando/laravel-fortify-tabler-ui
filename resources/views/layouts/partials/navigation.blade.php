@@ -408,7 +408,7 @@
               </span>
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item {{ request()->segment(2) == 'akreditacni' ? 'active' : '' }}" href="{{ route('standardy.akreditacni') }}">
+              <a class="dropdown-item {{ request()->segment(2) == 'akreditacni' ? 'active' : '' }}" href="{{ route('standardy.akreditacni', 1) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-file-certificate" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -423,7 +423,7 @@
                   {{ __('Akreditační') }}
                 </span>
               </a>
-              <a class="dropdown-item {{ request()->segment(2) == 'osetrovatelske' ? 'active' : '' }}" href="{{ route('standardy.osetrovatelske') }}">
+              <a class="dropdown-item {{ request()->segment(2) == 'osetrovatelske' ? 'active' : '' }}" href="{{ route('standardy.osetrovatelske', 2) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-stethoscope" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -439,7 +439,7 @@
                   {{ __('Ošetřovatelské') }}
                 </span>
               </a>
-              <a class="dropdown-item {{ request()->segment(2) == 'lecebne' ? 'active' : '' }}" href="{{ route('standardy.lecebne') }}">
+              <a class="dropdown-item {{ request()->segment(2) == 'lecebne' ? 'active' : '' }}" href="{{ route('standardy.lecebne', 3) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-hearts" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -454,7 +454,7 @@
                   {{ __('Léčebné') }}
                 </span>
               </a>
-              <a class="dropdown-item {{ request()->segment(2) == 'specialni' ? 'active' : '' }}" href="{{ route('standardy.specialni') }}">
+              <a class="dropdown-item {{ request()->segment(2) == 'specialni' ? 'active' : '' }}" href="{{ route('standardy.specialni', 4) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-report-medical" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -469,7 +469,7 @@
                   {{ __('Speciální') }}
                 </span>
               </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item {{ request()->segment(2) == 'operacni' ? 'active' : '' }}" href="{{ route('standardy.operacni', 5) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-slice" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -481,7 +481,7 @@
                   {{ __('Operační') }}
                 </span>
               </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item {{ request()->segment(2) == 'anesteziologicke' ? 'active' : '' }}" href="{{ route('standardy.anesteziologicke', 6) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-heart-rate-monitor" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -497,7 +497,7 @@
                   {{ __('Anesteziologické') }}
                 </span>
               </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item {{ request()->segment(2) == 'rdg' ? 'active' : '' }}" href="{{ route('standardy.rdg', 7) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-radioactive" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -511,7 +511,7 @@
                   {{ __('RDG') }}
                 </span>
               </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item {{ request()->segment(2) == 'rehabilitacni' ? 'active' : '' }}" href="{{ route('standardy.rehabilitacni', 8) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-physotherapist" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -528,7 +528,7 @@
                   {{ __('Rehabilitační') }}
                 </span>
               </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item {{ request()->segment(2) == 'opl' ? 'active' : '' }}" href="{{ route('standardy.opl', 9) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-bandage" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -544,7 +544,7 @@
                   {{ __('OPL') }}
                 </span>
               </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item {{ request()->segment(2) == 'okb' ? 'active' : '' }}" href="{{ route('standardy.okb', 10) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-flask" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -558,7 +558,7 @@
                   {{ __('OKB') }}
                 </span>
               </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item {{ request()->segment(2) == 'logopedicke' ? 'active' : '' }}" href="{{ route('standardy.logopedicke', 11) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-messages" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="2"
                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -571,7 +571,7 @@
                   {{ __('Logopedické') }}
                 </span>
               </a>
-              <a class="dropdown-item" href="#">
+              <a class="dropdown-item {{ request()->segment(2) == 'legislativni' ? 'active' : '' }}" href="{{ route('standardy.legislativni', 12) }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-certificate" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                        stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

@@ -39,10 +39,18 @@ Route::prefix('stravovani')->name('stravovani.')->group(function () {
 
 // Standardy
 Route::prefix('standardy')->name('standardy.')->group(function () {
-    Route::get('akreditacni', [PageController::class, 'akreditacni'])->name('akreditacni');
-    Route::get('osetrovatelske', [PageController::class, 'osetrovatelske'])->name('osetrovatelske');
-    Route::get('lecebne', [PageController::class, 'lecebne'])->name('lecebne');
-    Route::get('specialni', [PageController::class, 'specialni'])->name('specialni');
+    Route::get('akreditacni/{id}', [PageController::class, 'standard'])->name('akreditacni');
+    Route::get('osetrovatelske/{id}', [PageController::class, 'standard'])->name('osetrovatelske');
+    Route::get('lecebne/{id}', [PageController::class, 'standard'])->name('lecebne');
+    Route::get('specialni/{id}', [PageController::class, 'standard'])->name('specialni');
+    Route::get('operacni/{id}', [PageController::class, 'standard'])->name('operacni');
+    Route::get('anesteziologicke/{id}', [PageController::class, 'standard'])->name('anesteziologicke');
+    Route::get('rdg/{id}', [PageController::class, 'standard'])->name('rdg');
+    Route::get('rehabilitacni/{id}', [PageController::class, 'standard'])->name('rehabilitacni');
+    Route::get('opl/{id}', [PageController::class, 'standard'])->name('opl');
+    Route::get('okb/{id}', [PageController::class, 'standard'])->name('okb');
+    Route::get('logopedicke/{id}', [PageController::class, 'standard'])->name('logopedicke');
+    Route::get('legislativni/{id}', [PageController::class, 'standard'])->name('legislativni');
 });
 
 // Media
