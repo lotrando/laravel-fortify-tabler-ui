@@ -8,7 +8,11 @@
 
     <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
       <a href="https://www.khn.cz" target="_blank">
-        <img class="navbar-brand-image" src="{{ asset('img/logo.png') }}" alt="Logo Intranetu KHN a.s.">
+        <img class="navbar-brand-image" src="{{ asset('img/logo.png') }}" alt="Logo Intranetu KHN a.s." data-bs-toggle="tooltip"
+             data-bs-placement="bottom"
+             data-bs-original-title="Web KHN a.s. v nové záložce"
+             href="https://www.khn.cz"
+             target="_blank">
       </a>
     </h1>
 
