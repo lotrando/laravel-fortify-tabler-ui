@@ -34,22 +34,6 @@
                   {{ __('Změny v dokumentaci') }}
                 </span>
               </a>
-              <a class="dropdown-item {{ request()->segment(2) == 'akord' ? 'active' : '' }}" href="{{ route('oznameni.akord') }}">
-                <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                       fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <line x1="3" y1="21" x2="21" y2="21"></line>
-                    <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"></path>
-                    <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"></path>
-                    <line x1="10" y1="9" x2="14" y2="9"></line>
-                    <line x1="12" y1="7" x2="12" y2="11"></line>
-                  </svg>
-                </span>
-                <span class="nav-link-title">
-                  {{ __('Akord') }}
-                </span>
-              </a>
               <a class="dropdown-item {{ request()->segment(2) == 'servis' ? 'active' : '' }}" href="{{ route('oznameni.servis') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                   <svg class="icon icon-tabler icon-tabler-tool" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
@@ -61,22 +45,6 @@
                 </span>
                 <span class="nav-link-title">
                   {{ __('Odstávky a servis') }}
-                </span>
-              </a>
-              <a class="dropdown-item {{ request()->segment(2) == 'seminare' ? 'active' : '' }}" href="{{ route('oznameni.seminare') }}">
-                <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-armchair" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" stroke-width="2"
-                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M5 11a2 2 0 0 1 2 2v2h10v-2a2 2 0 1 1 4 0v4a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2z">
-                    </path>
-                    <path d="M5 11v-5a3 3 0 0 1 3 -3h8a3 3 0 0 1 3 3v5"></path>
-                    <path d="M6 19v2"></path>
-                    <path d="M18 19v2"></path>
-                  </svg>
-                </span>
-                <span class="nav-link-title">
-                  {{ __('Semináře') }}
                 </span>
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'sluzby' ? 'active' : '' }}" href="{{ route('oznameni.sluzby') }}">
@@ -96,16 +64,47 @@
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'informace' ? 'active' : '' }}" href="{{ route('oznameni.informace') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                  <svg class="icon icon-tabler icon-tabler-info-square" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
-                       stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-square-rounded" width="40" height="40" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                    <polyline points="11 12 12 12 12 16 13 16"></polyline>
+                    <path d="M12 8h.01"></path>
+                    <path d="M11 12h1v4h1"></path>
+                    <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z"></path>
                   </svg>
                 </span>
                 <span class="nav-link-title">
                   {{ __('Informace') }}
+                </span>
+              </a>
+              <a class="dropdown-item {{ request()->segment(2) == 'seminare' ? 'active' : '' }}" href="{{ route('oznameni.seminare') }}">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg class="icon icon-tabler icon-tabler-armchair" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" stroke-width="2"
+                       stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M5 11a2 2 0 0 1 2 2v2h10v-2a2 2 0 1 1 4 0v4a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-4a2 2 0 0 1 2 -2z">
+                    </path>
+                    <path d="M5 11v-5a3 3 0 0 1 3 -3h8a3 3 0 0 1 3 3v5"></path>
+                    <path d="M6 19v2"></path>
+                    <path d="M18 19v2"></path>
+                  </svg>
+                </span>
+                <span class="nav-link-title">
+                  {{ __('Semináře') }}
+                </span>
+              </a>
+              <a class="dropdown-item {{ request()->segment(2) == 'akord' ? 'active' : '' }}" href="{{ route('oznameni.akord') }}">
+                <span class="nav-link-icon d-md-none d-lg-inline-block">
+                  <svg class="icon icon-tabler" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                       fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <line x1="3" y1="21" x2="21" y2="21"></line>
+                    <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"></path>
+                    <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"></path>
+                    <line x1="10" y1="9" x2="14" y2="9"></line>
+                    <line x1="12" y1="7" x2="12" y2="11"></line>
+                  </svg>
+                </span>
+                <span class="nav-link-title">
+                  {{ __('Akord') }}
                 </span>
               </a>
               <a class="dropdown-item {{ request()->segment(2) == 'kultura' ? 'active' : '' }}" href="{{ route('oznameni.kultura') }}">

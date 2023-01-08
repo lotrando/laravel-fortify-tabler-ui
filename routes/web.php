@@ -17,7 +17,7 @@ Route::get("/", function () {
 
 // Home page
 Route::get("home", function () {
-    return view('home', ['category' => 'Oznámení', 'title' => 'Home']);
+    return view('home', ['category' => 'Uživatel', 'title' => 'Home']);
 });
 
 // Oznámení

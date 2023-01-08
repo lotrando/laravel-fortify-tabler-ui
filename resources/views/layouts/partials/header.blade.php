@@ -15,7 +15,6 @@
     <div class="navbar-nav order-md-last flex-row">
       <div class="nav-item d-none d-md-flex nav-item d-none d-md-flex">
         <div class="btn-list">
-          @auth
           <a class="btn {{ request()->segment(1) == 'employees' ? 'bg-primary-lt' : '' }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Seznam zaměstnanců KHN" href="{{ route('employees.index') }}" rel="noreferrer">
             <svg class="icon icon-tabler icon-tabler-user-circle" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -25,7 +24,6 @@
             </svg>
             {{ __('Employees') }}
           </a>
-          @endauth
           <a class="btn {{ request()->segment(1) == 'adversevents' ? 'bg-primary-lt' : '' }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Odeslat nežádoucí událost" href="{{ route('adversevents.index') }}" rel="noreferrer">
             <svg class="icon text-red" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -63,24 +61,27 @@
             </button>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow dropdown-menu-card">
               <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Vyber typ požadavku helpdesku</h3>
-                </div>
                 <div class="list-group list-group-flush list-group-hoverable">
-                  <div class="list-group-item">
+                  <div class="list-group-item col-12">
                     <div class="row align-items-center">
-                      <div class="col-auto"><span class="status-dot status-dot-animated bg-red d-block"></span></div>
                       <div class="col text-truncate">
-                        <a class="text-body d-block" href="#">IT</a>
+                        <a class="d-block text-decoration-none text-primary" href="#">
+                          IT
+                        </a>
                         <div class="d-block text-muted text-truncate mt-n1">
-                          Vyberte pokud máte problémy v výpočetní technikou
+                          Akord, počítače, tiskárny, mobily, sítě, web, intranet ...
                         </div>
                       </div>
                       <div class="col-auto">
                         <a class="list-group-item-actions" href="#">
-                          <svg class="icon text-muted" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <svg class="icon icon-tabler icon-tabler-devices-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
+                            <path d="M10 15h-6a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h6"></path>
+                            <rect x="13" y="4" width="8" height="16" rx="1"></rect>
+                            <line x1="7" y1="19" x2="10" y2="19"></line>
+                            <line x1="17" y1="8" x2="17" y2="8.01"></line>
+                            <circle cx="17" cy="16" r="1"></circle>
+                            <line x1="9" y1="15" x2="9" y2="19"></line>
                           </svg>
                         </a>
                       </div>
@@ -88,20 +89,20 @@
                   </div>
                   <div class="list-group-item">
                     <div class="row align-items-center">
-                      <div class="col-auto"><span class="status-dot d-block"></span></div>
-                      <div class="col text-truncate">
-                        <a class="text-body d-block" href="#">
-                          Example 2
+                      <div class="col">
+                        <a class="text-primary d-block text-decoration-none" href="#">
+                          Údržbářské práce
                         </a>
                         <div class="d-block text-muted text-truncate mt-n1">
-                          justify-content:between ⇒ justify-content:space-between (#29734)
+                          Stěhování, opravy, elektro, instalatérské práce, plyn...
                         </div>
                       </div>
                       <div class="col-auto">
-                        <a class="list-group-item-actions show" href="#">
-                          <svg class="icon text-yellow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <a class="list-group-item-actions" href="#">
+                          <svg class="icon icon-tabler icon-tabler-tool text-black-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
+                            <path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5">
+                            </path>
                           </svg>
                         </a>
                       </div>
@@ -109,37 +110,24 @@
                   </div>
                   <div class="list-group-item">
                     <div class="row align-items-center">
-                      <div class="col-auto"><span class="status-dot d-block"></span></div>
-                      <div class="col text-truncate">
-                        <a class="text-body d-block" href="#">Example 3</a>
-                        <div class="d-block text-muted text-truncate mt-n1">
-                          Update change-version.js (#29736)
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <a class="list-group-item-actions" href="#">
-                          <svg class="icon text-muted" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
-                          </svg>
+                      <div class="col">
+                        <a class="text-primary d-block text-decoration-none" href="#">
+                          Úklidové služby
                         </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-group-item">
-                    <div class="row align-items-center">
-                      <div class="col-auto"><span class="status-dot status-dot-animated bg-green d-block"></span></div>
-                      <div class="col text-truncate">
-                        <a class="text-body d-block" href="#">Example 4</a>
                         <div class="d-block text-muted text-truncate mt-n1">
-                          Regenerate package-lock.json (#29730)
+                          Úklid, mytí oken, dezinfekce, úklid po malování ...
                         </div>
                       </div>
                       <div class="col-auto">
                         <a class="list-group-item-actions" href="#">
-                          <svg class="icon text-muted" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-recycle text-success" width="40" height="40" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"></path>
+                            <path d="M12 17l-2 2l2 2"></path>
+                            <path d="M10 19h9a2 2 0 0 0 1.75 -2.75l-.55 -1"></path>
+                            <path d="M8.536 11l-.732 -2.732l-2.732 .732"></path>
+                            <path d="M7.804 8.268l-4.5 7.794a2 2 0 0 0 1.506 2.89l1.141 .024"></path>
+                            <path d="M15.464 11l2.732 .732l.732 -2.732"></path>
+                            <path d="M18.196 11.732l-4.5 -7.794a2 2 0 0 0 -3.256 -.14l-.591 .976"></path>
                           </svg>
                         </a>
                       </div>
@@ -151,7 +139,7 @@
           </div>
           @guest
           <a class="btn hover-shadow-sm" href="{{ route('register') }}" rel="noreferrer">
-            <svg class="icon icon-tabler icon-tabler-login" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="icon icon-tabler icon-tabler-login text-azure" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
               </path>
@@ -160,7 +148,7 @@
             {{ __('Register') }}
           </a>
           <a class="btn hover-shadow-sm" href="{{ route('login') }}" rel="noreferrer">
-            <svg class="icon icon-tabler icon-tabler-lock-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="icon icon-tabler icon-tabler-lock-open text-success" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <rect x="5" y="11" width="14" height="10" rx="2">
               </rect>

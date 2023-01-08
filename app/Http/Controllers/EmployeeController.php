@@ -84,6 +84,8 @@ class EmployeeController extends Controller
         }
 
         return view('employees.index')->with([
+            'category'      => 'Přehledy',
+            'title'         => 'Zaměstnanci',
             'departments'   => $departments,
             'jobs'          => $jobs,
             'columns'       => $columns

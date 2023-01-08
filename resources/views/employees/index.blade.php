@@ -1,5 +1,9 @@
 @extends('layouts.employee')
 
+@section('favicon')
+<link type="image/png" href="{{ asset('img/zamestnanci.png') }}" rel="shortcut icon">
+@endsection
+
 @section('main')
 <div class="container-fluid">
   <div class="row justify-content-center">
@@ -25,13 +29,17 @@
                 <th>{{ __('Last name') }}</th>
                 <th>{{ __('First name') }}</th>
                 <th>{{ __('Department') }}</th>
+                @auth
                 <th>{{ __('Job title') }}</th>
+                @endauth
                 <th>{{ __('Email') }}</th>
                 <th>{{ __('Phone') }}</th>
                 <th>{{ __('Mobile') }}</th>
                 <th>{{ __('Status') }}</th>
+                @auth
                 <th>{{ __('Start date') }}</th>
                 <th class="text-center"><i class="fas fa-bars"></i></th>
+                @endauth
               </tr>
             </thead>
           </table>
@@ -480,11 +488,13 @@
             "width": "8%",
             orderable: false,
           },
+          @auth
           {
             data: 'job.job_title',
             "width": "7%",
             orderable: false,
           },
+          @endauth
           {
             data: 'email',
             "width": "3%",
@@ -521,6 +531,7 @@
               }
             }
           },
+          @auth
           {
             data: 'start_date',
             "width": "0.5%",
@@ -535,6 +546,7 @@
             orderable: false,
             searchable: false
           },
+          @endauth
         ],
       });
     });
