@@ -17,9 +17,10 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->bigInteger('category_id');
             $table->string('accordion_name');
+            $table->integer('accordion_group');
             $table->integer('position');
             $table->string('name');
-            $table->string('descriptioon');
+            $table->string('description');
             $table->string('revision');
             $table->string('file');
             $table->enum('status', ['Rozpracováno', 'Schváleno']);

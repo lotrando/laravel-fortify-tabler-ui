@@ -17,7 +17,7 @@ class CreateAddonsTable extends Migration
             $table->id();
             $table->bigInteger('document_id');
             $table->string('name');
-            $table->string('descriptioon');
+            $table->string('description');
             $table->string('revision');
             $table->string('file');
             $table->enum('status', ['Rozpracováno', 'Schváleno']);

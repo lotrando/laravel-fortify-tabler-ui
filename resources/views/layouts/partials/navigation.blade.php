@@ -652,6 +652,22 @@
                       Videa
                     </span>
                   </a>
+                  <div class="dropend">
+                    <a class="dropdown-item dropdown-toggle show" href="#sidebar-cards" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="true">
+                      Cards
+                    </a>
+                    <div class="dropdown-menu show" data-bs-popper="static">
+                      <a href="./cards.html" class="dropdown-item">
+                        Sample cards
+                      </a>
+                      <a href="./card-actions.html" class="dropdown-item">
+                        Card actions
+                      </a>
+                      <a href="./cards-masonry.html" class="dropdown-item">
+                        Cards Masonry
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
