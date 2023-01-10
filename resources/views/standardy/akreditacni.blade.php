@@ -2,8 +2,6 @@
 
 {{--
 
-01. Bezpečnostní cíle Finální verze 23.02.2022
-02. Dostupnost a kontinuita péče Finální verze 02.03.2022
 03. Práva pacientů a jejich blízkých Finální verze 30.03.2022
 04. Diagnostická péče Finální verze 09.03.2022
 05. Terapeutická péče Finální verze 23.02.2022
@@ -62,7 +60,7 @@ Finální verze  28.03.2022
         <div class="accordion-item">
           <h2 class="accordion-header" id="main-heading-1">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#standard-1" aria-expanded="true">
-              1
+              01. Bezpečnostní cíle : 23.02.2022
             </button>
           </h2>
           <div id="standard-1" class="accordion-collapse collapse m-2" data-bs-parent="#accordion-standard">
@@ -161,7 +159,7 @@ Finální verze  28.03.2022
         <div class="accordion-item">
           <h2 class="accordion-header" id="main-heading-2">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#standard-2" aria-expanded="true">
-              2
+              02. Dostupnost a kontinuita péče : 02.03.2022
             </button>
           </h2>
           <div id="standard-2" class="accordion-collapse collapse m-2" data-bs-parent="#accordion-standard">
@@ -282,7 +280,7 @@ Finální verze  28.03.2022
         <div class="accordion-item">
           <h2 class="accordion-header" id="main-heading-3">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#standard-3" aria-expanded="true">
-              3
+              03. Práva pacientů a jejich blízkých : 30.03.2022
             </button>
           </h2>
           <div id="standard-3" class="accordion-collapse collapse m-2" data-bs-parent="#accordion-standard">
