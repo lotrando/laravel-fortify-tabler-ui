@@ -142,7 +142,8 @@ return [
         'stav_pacienta'     => 'Stav pacienta',
         'lokalizace'        => 'Lokalizace zranění po pádu',
         'upresneni'         => 'Upřesnění k jiný',
-        'druh_zraneni'      => 'Příznaky po pádu'
+        'druh_zraneni'      => 'Příznaky po pádu',
+        'attachment'        => 'Soubor'
     ],
     'values'                => [
         'after_or_equal'    => [

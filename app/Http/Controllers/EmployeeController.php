@@ -367,7 +367,7 @@ class EmployeeController extends Controller
                 return response()->json(['errors' => $error->errors()->all()]);
             }
 
-            $current = Carbon::now()->format('Ymd-His');
+            $current = Carbon::now()->format('d-m-Y');
             $guessExtension = $image->guessExtension();
             $image_name = $request->personal_number . '_' . $current . '.' . $guessExtension;
             $image->move(public_path('foto'), $image_name);

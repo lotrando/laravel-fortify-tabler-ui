@@ -67,6 +67,8 @@ Route::resource('attendances', AttendanceController::class);
 // Employees
 Route::resource('employees', EmployeeController::class);
 Route::resource('adversevents', AdverseventController::class);
+Route::resource('documents', DocumentController::class);
+
 Route::get('vcards', [EmployeeController::class, 'vcards'])->name('employees.vcards');
 Route::get('search', [EmployeeController::class, 'vcardSearch'])->name('employees.search');
 
@@ -83,6 +85,10 @@ Route::group(['middleware' => 'auth'], function () {
     // Adverse Events
     Route::post('adversevent/update', [AdverseventController::class, 'update'])->name('adverseevents.update');
     Route::get('adversevent/destroy/{id}', [AdverseventController::class, 'destroy']);
+
+    // Document Events
+    Route::post('documents/update', [DocumentController::class, 'update'])->name('documents.update');
+    Route::get('documents/destroy/{id}', [DocumentController::class, 'destroy']);
 
     // Evidence
     Route::resource('evidences', EvidenceController::class);

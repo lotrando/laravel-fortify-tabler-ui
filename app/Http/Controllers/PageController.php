@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Addon;
 use App\Models\Category;
+use App\Models\Department;
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Return_;
 
 class PageController extends Controller
@@ -102,16 +104,22 @@ class PageController extends Controller
     // Standardy
     public function lecebne($id)
     {
-        $accordion_groups = Document::where('status', 'Schváleno')->where('category_id', $id)->pluck('accordion_group');
+        //$accordion_groups = Document::where('status', 'Schváleno')->where('category_id', $id)->pluck('accordion_group');
+        $categories = Category::all();
         $categorie = Category::where('id', $id)->first();
-        $documents = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->where('accordion_group', $accordion_groups)->orderBy('position')->get();
+
+        if (Auth::user()) {
+            $documents = Document::with('category', 'addon')->where('category_id', $id)->orderBy('position')->get();
+        } else {
+            $documents = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->orderBy('position')->get();
+        }
 
         return view('standardy.lecebne', [
             'category'          => 'Standardy',
             'title'             => $categorie->category_name,
             'categorie'         => $categorie,
-            'groups'            => $accordion_groups,
             'documents'         => $documents,
+            'categories'        => $categories
         ]);
     }
 
