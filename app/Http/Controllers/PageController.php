@@ -57,9 +57,8 @@ class PageController extends Controller
         return view('kantyna', ['category' => 'Stravování', 'title' => 'Kantýna']);
     }
 
-
-    // Standardy
-    public function standard($id)
+    // Akreditacní stadnardy
+    public function akreditacni($id)
     {
         $accordion_groups = Document::where('status', 'Schváleno')->where('category_id', $id)->pluck('accordion_group');
         $categorie = Category::where('id', $id)->first();
@@ -79,7 +78,7 @@ class PageController extends Controller
         $documents11 = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->where('accordion_group', 11)->orderBy('position')->get();
         $documents12 = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->where('accordion_group', 12)->orderBy('position')->get();
 
-        return view('standardy', [
+        return view('standardy.akreditacni', [
             'category'          => 'Standardy',
             'title'             => $categorie->category_name,
             'categorie'         => $categorie,
@@ -97,6 +96,22 @@ class PageController extends Controller
             'documents10'       => $documents10,
             'documents11'       => $documents11,
             'documents12'       => $documents12
+        ]);
+    }
+
+    // Standardy
+    public function lecebne($id)
+    {
+        $accordion_groups = Document::where('status', 'Schváleno')->where('category_id', $id)->pluck('accordion_group');
+        $categorie = Category::where('id', $id)->first();
+        $documents = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->where('accordion_group', $accordion_groups)->orderBy('position')->get();
+
+        return view('standardy.lecebne', [
+            'category'          => 'Standardy',
+            'title'             => $categorie->category_name,
+            'categorie'         => $categorie,
+            'groups'            => $accordion_groups,
+            'documents'         => $documents,
         ]);
     }
 

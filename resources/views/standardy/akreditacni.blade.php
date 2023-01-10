@@ -1,5 +1,27 @@
 @extends('layouts.blank')
 
+{{--
+
+01. Bezpečnostní cíle Finální verze 23.02.2022
+02. Dostupnost a kontinuita péče Finální verze 02.03.2022
+03. Práva pacientů a jejich blízkých Finální verze 30.03.2022
+04. Diagnostická péče Finální verze 09.03.2022
+05. Terapeutická péče Finální verze 23.02.2022
+06. Anesteziologická a chirurgická péče Finální verze 01.04.2022
+07. Skladování, předepisování a podávání léčiv Finální verze 07.03.2022
+08. Edukace pacientů a jejich blízkých Finální verze 02.03.2022
+09. Kvalita péče a bezpečí pacientů Finální verze 01.04.2022
+10. Prevence a kontrola infekcí spojených se zdravotní péčí Finální verze 01.04.2022
+11. Řízení a vedení Finální verze 15.06.2022
+12. Zajištění bezpečnosti nemocničního prostředí
+Finální verze  28.03.2022
+13. Kvalifikace a vzdělávání personálu Finální verze 06.06.2022
+14. Řízení informací Finální verze 15.06.2022
+15. Přehled povinných školení pro zaměstnance KHN a.s. Finální verze  01.05.2022
+
+--}}
+
+
 @section('favicon')
 <link type="image/png" href="{{ asset('img/'.$categorie->category_icon) ?? '' }}" rel="shortcut icon">
 @endsection
