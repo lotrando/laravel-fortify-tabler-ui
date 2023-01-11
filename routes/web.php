@@ -40,7 +40,7 @@ Route::prefix('stravovani')->name('stravovani.')->group(function () {
 // Standardy
 Route::prefix('standardy')->name('standardy.')->group(function () {
     Route::get('akreditacni/{id}', [PageController::class, 'akreditacni'])->name('akreditacni');
-    Route::get('osetrovatelske/{id}', [PageController::class, 'standard'])->name('osetrovatelske');
+    Route::get('osetrovatelske/{id}', [PageController::class, 'osetrovatelske'])->name('osetrovatelske');
     Route::get('lecebne/{id}', [PageController::class, 'lecebne'])->name('lecebne');
     Route::get('specialni/{id}', [PageController::class, 'standard'])->name('specialni');
     Route::get('operacni/{id}', [PageController::class, 'standard'])->name('operacni');

@@ -46,7 +46,7 @@ class DocumentController extends Controller
             'name'                  => 'required',
             'revision'              => 'required',
             'description'           => 'required',
-            'position'              => 'required|unique:position',
+            'position'              => 'required',
             'status'                => 'required',
             'file'                  => 'required|mimes:pdf,doc,xls|max:4096'
         ];
@@ -57,10 +57,10 @@ class DocumentController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
-        $current = Carbon::now()->format('d-m-Y');
+        $current = Carbon::now()->format('d-m-Y_His');
         $file_ext  = $request->file->extension();
-        $file_name = $current . '.' . $file_ext;
-        $request->file->move(public_path('standardy/lecebne/'), Str::lower($file_name));
+        $file_name = 'standard_' . $current . '.' . $file_ext;
+        $request->file->move(public_path('standardy/' . $request->folder_name . '/'), Str::lower($file_name));
 
         $form_data = [
             'category_id'           => $request->category_id,
@@ -114,7 +114,7 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        $file = $request->file('file');
+        $file = $request->file;
         if ($file != '') {
             $rules = [
                 'category_id'           => 'required',
@@ -122,7 +122,7 @@ class DocumentController extends Controller
                 'accordion_group'       => 'nullable',
                 'name'                  => 'required',
                 'description'           => 'required',
-                'position'              => 'required|unique:position',
+                'position'              => 'required',
                 'revision'              => 'required',
                 'status'                => 'required',
                 'file'                  => 'required|mimes:pdf,doc,xls|max:4096'
@@ -136,8 +136,8 @@ class DocumentController extends Controller
 
             $current = Carbon::now()->format('d-m-Y');
             $file_ext  = $request->file->extension();
-            $file_name = $current . '.' . $file_ext;
-            $request->file->move(public_path('standardy/lecebne/'), Str::lower($file_name));
+            $file_name = 'standard_' . $request->name . '_' . $current . '.' . $file_ext;
+            $request->file->move(public_path('standardy/' . $request->folder_name . '/'), Str::lower($file_name));
         } else {
 
             $rules = [
@@ -146,7 +146,7 @@ class DocumentController extends Controller
                 'accordion_group'       => 'nullable',
                 'name'                  => 'required',
                 'description'           => 'required',
-                'position'              => 'required|unique:position',
+                'position'              => 'required',
                 'revision'              => 'required',
                 'status'                => 'required',
             ];

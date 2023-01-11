@@ -13,8 +13,6 @@ class Document extends Model
 
     protected $guarded = [];
 
-    public $timestamps = false;
-
     public function addon()
     {
         return $this->hasMany(Addon::class)->where('status', 'Schváleno');

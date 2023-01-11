@@ -24,8 +24,7 @@
           <div class="btn-list">
             <div class="d-flex justify-content-end">
               @auth
-              <button class="btn btn-success me-2 d-none d-sm-inline-block" id="openCreateModal" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                      data-bs-original-title="{{ __('Vytvoří novou položku standardu') }}">
+              <button class="btn btn-success me-2 d-none d-sm-inline-block hover-shadow-sm" id="openCreateModal">
                 <svg class="icon icon-tabler icon-tabler-book-upload" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1"
                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -37,30 +36,6 @@
                 {{ __('Nový standard') }}
               </button>
               @endauth
-              <button class="btn btn-yellow me-2 d-none d-sm-inline-block" id="showbtn" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                      data-bs-original-title="{{ __('Zoobrayí všechny standardy na stránku') }}">
-                <svg class="icon icon-tabler icon-tabler-list-details" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                     stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path d="M13 5h8"></path>
-                  <path d="M13 9h5"></path>
-                  <path d="M13 15h8"></path>
-                  <path d="M13 19h5"></path>
-                  <rect x="3" y="4" width="6" height="6" rx="1"></rect>
-                  <rect x="3" y="14" width="6" height="6" rx="1"></rect>
-                </svg>
-                {{ __('Zobrazit vše') }}
-              </button>
-              <button class="btn btn-secondary me-2 d-none d-sm-inline-block" id="closebtn" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="{{ __('Skryje všechny standardy') }}">
-                <svg class="icon icon-tabler icon-tabler-menu-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                     stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <line x1="4" y1="6" x2="20" y2="6"></line>
-                  <line x1="4" y1="12" x2="20" y2="12"></line>
-                  <line x1="4" y1="18" x2="20" y2="18"></line>
-                </svg>
-                {{ __('Skrýt vše') }}
-              </button>
             </div>
           </div>
         </div>
@@ -77,26 +52,20 @@
               <div class="accordion mt-2" id="accordion-example">
                 @foreach ($documents as $document)
                 <div class="accordion-item">
-                  <h2 class="accordion-header" id="heading-{{ $document->position }}">
-                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $document->position }}" type="button"
-                            aria-expanded="false">
-                      {{ $document->accordion_name }}
-                    </button>
-                  </h2>
-                  <div class="accordion-collapse collapse" id="collapse-{{ $document->position }}" data-bs-parent="#accordion-standard" style="">
+                  <div class="show" id="collapse-{{ $document->position }}" data-bs-parent="#accordion-standard" style="">
                     <div class="accordion-body pt-0">
-                      <div class="list-group list-group-flush list-group-hoverable">
+                      <div class="list-group list-group-flush list-group-hoverable pt-1">
                         <div class="list-group-item">
-                          <div class="row align-items-center mb-3">
+                          <div class="row align-items-center">
                             <div class="col-auto">
-                              <a href="{{ url('standardy/lecebne/' . $document->file) }}" target="_blank">
+                              <a href="{{ url('standardy/osetrovatelske/' . $document->file) }}" target="_blank">
                                 <span class="avatar">
                                   <img src="{{ asset('img/files/pdf.png') }}" alt="PDF - Standard">
                                 </span>
                               </a>
                             </div>
                             <div class="col text-truncate">
-                              <a class="text-primary d-block text-decoration-none" href="{{ url('standardy/lecebne/' . $document->file) }}" target="_blank">
+                              <a class="text-primary d-block text-decoration-none" href="{{ url('standardy/osetrovatelske/' . $document->file) }}" target="_blank">
                                 <h3 style="margin-bottom: 0;">{{ $document->name }}</h3>
                               </a>
                               <div class="d-block text-muted text-truncate mt-n1">{{ $document->description }}</div>
@@ -110,9 +79,9 @@
                               <span class="text-muted">revize č. {{ $document->revision }}</span>
                               @auth
                               @if ($document->status == 'Rozpracováno')
-                              <span class="badge badge-sm bg-yellow-lt text-uppercase ms-auto">Skryté</span>
+                              <span class="badge badge-sm bg-yellow-lt text-uppercase ms-auto">Rozpracováno</span>
                               @else
-                              <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Viditelné</span>
+                              <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Schváleno</span>
                               @endif
                               @endauth
                               @if ( Carbon\Carbon::parse($document->created_at)->addDay() >= Carbon\Carbon::today())
@@ -170,33 +139,40 @@
                           @foreach ($document->addon as $add)
                           <div class="row align-items-center mb-1">
                             <div class="col-auto">
-                              <a href="{{ url('standardy/lecebne/' . $add->file) }}">
+                              <a href="{{ url('standardy/osetrovatelske/' . $add->file) }}">
                                 <span class="avatar">
                                   <img src="{{ asset('img/files/pdf-add.png') }}" alt="PDF - Příloha standardu">
                                 </span>
                               </a>
                             </div>
                             <div class="col text-truncate">
-                              <a class="text-primary d-block d-block text-primary text-decoration-none" href="{{ url('standardy/' . $add->file) }}">
+                              <a class="text-primary d-block d-block text-primary text-decoration-none" href="{{ url('standardy/osetrovatelske/' . $add->file) }}">
                                 <h3 style="margin-bottom: 0;">{{ $document->name }} - příloha : {{ $add->name }}</h3>
                               </a>
                               <div class="d-block text-muted text-truncate mt-n1">{{ $add->description }}</div>
                             </div>
                             <div class="col-auto">
-                              @if ( Carbon\Carbon::parse($document->created_at)->addDay() >= Carbon\Carbon::today())
-                              <span class="badge badge-sm bg-red-lt text-uppercase ms-auto">Nový</span>
-                              @endif
-                              @if ( Carbon\Carbon::parse($document->updated_at)->addDays(15) >= Carbon\Carbon::today())
-                              <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Aktualizováno</span>
-                              @endif
                               <svg class="icon icon-tabler text-yellow" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
                                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M9 4h6a2 2 0 0 1 2 2v14l-5 -3l-5 3v-14a2 2 0 0 1 2 -2"></path>
                               </svg>
-                              <span class="text-muted">revize č. {{ $document->revision }}</span>
-                              <svg class="icon icon-tabler text-info" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                   stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                              <span class="text-muted">revize č. {{ $add->revision }}</span>
+                              @auth
+                              @if ($add->status == 'Rozpracováno')
+                              <span class="badge badge-sm bg-yellow-lt text-uppercase ms-auto">Rozpracováno</span>
+                              @else
+                              <span class="badge badge-sm bg-green-lt text-uppercase ms-auto">Schváleno</span>
+                              @endif
+                              @endauth
+                              @if ( Carbon\Carbon::parse($add->created_at)->addDay() >= Carbon\Carbon::today())
+                              <span class="badge badge-sm bg-red-lt text-uppercase ms-auto">Nový</span>
+                              @endif
+                              @if (Carbon\Carbon::parse($add->updated_at)->addDays(15) >= Carbon\Carbon::now())
+                              <span class="badge badge-sm bg-lime-lt text-uppercase ms-auto">Aktualizováno</span>
+                              @endif
+                              <svg class="icon icon-tabler text-info" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                   stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <rect x="4" y="5" width="16" height="16" rx="2"></rect>
                                 <line x1="16" y1="3" x2="16" y2="7"></line>
@@ -205,7 +181,7 @@
                                 <line x1="11" y1="15" x2="12" y2="15"></line>
                                 <line x1="12" y1="15" x2="12" y2="18"></line>
                               </svg>
-                              <span class="text-muted">aktualiziváno: {{ Carbon\Carbon::parse($document->updated_at)->diffForHumans() }}</span>
+                              <span class="text-muted">{{ Carbon\Carbon::parse($document->updated_at)->diffForHumans() }}</span>
                             </div>
                           </div>
                           @endforeach
@@ -225,7 +201,7 @@
       @section('modals')
       {{-- Main Form Modal --}}
       <div class="modal modal-blur fade" id="formModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-xl modal-dialog-top" role="document">
+        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
           <div class="modal-content shadow-lg">
             <div id="modal-header">
               <h5 class="modal-title"></h5>
@@ -339,21 +315,6 @@
 
     @section('scripts')
     <script>
-      $(document).ready(function() {
-            $('.accordion-collapse').removeClass('show');
-            $('#showbtn').click(function() {
-              $('.accordion-collapse').addClass('show');
-              $('.accordion-button').removeClass('collapsed');
-            });
-
-            $('#closebtn').click(function() {
-              $('.accordion-collapse').removeClass('show');
-              $('.accordion-button').addClass('collapsed');
-            });
-          });
-    </script>
-
-    <script>
       // Form Modal Functions
           $(document).on('click', '.edit', function() {
             var id = $(this).attr('id');
@@ -370,7 +331,7 @@
                 $('#action_button, .modal-title').text("{{ __('Edit standard') }}");
                 $('#action').val("Edit");
                 $('#category_id').val(html.data.category_id);
-                $('#folder_name').val(html.data.folder_name)
+                $('#folder_name').val(html.data.folder_name);
                 $('#accordion_name').val(html.data.accordion_name);
                 $('#name').val(html.data.name);
                 $('#revision').val(html.data.revision);
@@ -392,10 +353,10 @@
             $('#category_id').val('');
             $('#formModal').modal('show');
             $('#modal-icon').addClass('fas fa-book-medical fa-2x m-2');
-            $('#modal-header').addClass("modal-header bg-red-lt");
+            $('#modal-header').addClass("modal-header bg-pink-lt");
             $('#action_button, .modal-title').text("{{ __('Create new standard') }}");
             $('#action').val("Add");
-            $('#folder_name').val("lecebne");
+            $('#folder_name').val("osetrovatelske");
             $('#status').val('Rozpracováno');
           })
 
@@ -424,8 +385,8 @@
                     html = '<div class="alert alert-success text-success shadow-sm"><ul><li>' + data.success + '</li></ul></div>';
                     $('#formModal').modal('hide')
                     $('#inputForm')[0].reset();
-                    $('#form_result_window').html(html);
                     location.reload()
+                    $('#form_result_window').html(html);
                   }
                 }
               })

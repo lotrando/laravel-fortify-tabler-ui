@@ -17,7 +17,7 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->bigInteger('category_id');
             $table->string('accordion_name');
-            $table->integer('accordion_group');
+            $table->integer('accordion_group')->nullable();
             $table->integer('position');
             $table->string('name');
             $table->string('description');

@@ -123,6 +123,26 @@ class PageController extends Controller
         ]);
     }
 
+    public function osetrovatelske($id)
+    {
+        $categories = Category::all();
+        $categorie = Category::where('id', $id)->first();
+
+        if (Auth::user()) {
+            $documents = Document::with('category', 'addon')->where('category_id', $id)->orderBy('position')->get();
+        } else {
+            $documents = Document::where('status', 'Schváleno')->with('category', 'addon')->where('category_id', $id)->orderBy('position')->get();
+        }
+
+        return view('standardy.osetrovatelske', [
+            'category'          => 'Standardy',
+            'title'             => $categorie->category_name,
+            'categorie'         => $categorie,
+            'documents'         => $documents,
+            'categories'        => $categories
+        ]);
+    }
+
     // Media
     public function radio()
     {
