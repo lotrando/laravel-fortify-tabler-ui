@@ -118,5 +118,6 @@
   "This operation cannot be undone": "Tuto operaci nelze vrátit zpět",
   "Login with Github": "Přihlásit s Githubem",
   "Login with Twitter": "Přihlásit s Twitterem",
-  "Create new adverse event": "Vytvořit novou nežadoucí událost"
+  "Create new adverse event": "Vytvořit novou nežadoucí událost",
+  "Create new standard": "Vytvořit nový standard"
 }

@@ -226,7 +226,7 @@
               <h5 class="modal-title"></h5>
               <i id="modal-icon"></i>
             </div>
-            <form id="inputForm" action="{{ route('adversevents.create') }}">
+            <form id="inputForm" action="{{ route('documents.create') }}">
               @csrf
               <div class="modal-body">
                 <div class="row">
@@ -236,7 +236,7 @@
                 </div>
                 <div class="row mb-2">
                   <div class="col-12 col-lg-3 mb-sm-1">
-                    <label class="form-label">{{ __('Categorie standardu') }}</label>
+                    <label class="form-label">{{ __('Kategorie standardu') }}</label>
                     <select class="form-select" id="category_id" name="category_id">
                       @foreach ($categories as $item)
                       <option value="{{ $item->id }}" @if (old('category_id')==$item->id) selected @endif>
@@ -245,36 +245,30 @@
                     </select>
                   </div>
                   <div class="col-12 col-lg-9 mb-sm-1">
-                    <label class="form-label">{{ __('Název tlačítka v seznamu standardu') }}</label>
-                    <input class="form-control" id="accordion_name" name="accordion_name" type="text" placeholder="{{ __('Název tlačítka v seznamu standardů') }}">
+                    <label class="form-label">{{ __('Název standardu') }}</label>
+                    <input class="form-control" id="name" name="name" type="text" placeholder="{{ __('Celý název standardu') }}">
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="col-12 col-lg-9 mb-sm-1">
-                    <label class="form-label">{{ __('Celý název standardu') }}</label>
-                    <input class="form-control" id="name" name="name" type="text" placeholder="{{ __('Celý název standardu (seznam)') }}">
+                    <label class="form-label">{{ __('Jednoduchý popis standardu') }}</label>
+                    <input class="form-control" id="description" name="description" type="text" placeholder="{{ __('Jednoduchý popis standardu') }}">
                   </div>
                   <div class="col-12 col-lg-3 mb-sm-1">
-                    <label class="form-label">{{ __('Revision') }}</label>
-                    <input class="form-control" id="revision" name="revision" type="number" placeholder="{{ __('Revize směrnice (pouze číslo)') }}">
-                  </div>
-                </div>
-                <div class="row mb-2">
-                  <div class="col-12 col-lg-8 mb-sm-1">
-                    <label class="form-label">{{ __('Popis standardu popis') }}</label>
-                    <input class="form-control" id="description" name="description" type="text" placeholder="{{ __('Jednoduchý popis standardu (seznam)') }}">
-                  </div>
-                  <div class="col-12 col-lg-4 mb-sm-1">
                     <label class="form-label">{{ __('Position') }}</label>
-                    <input class="form-control" id="position" name="position" type="number" placeholder="{{ __('Pozice tlačítka v seznamu (pouze číslo)') }}">
+                    <input class="form-control" id="position" name="position" type="number" placeholder="{{ __('Pozice v seznamu') }}">
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-12 col-lg-9 mb-sm-1">
-                    <label class="form-label">{{ __('Soubor') }}</label>
-                    <input class="form-control" id="file" name="file" type="file" placeholder="{{ __('Soubor se standardem ve formátu PDF') }}">
+                <div class="row mb-2">
+                  <div class="col-12 col-lg-2 mb-sm-1">
+                    <label class="form-label">{{ __('Revision') }}</label>
+                    <input class="form-control" id="revision" name="revision" type="number" placeholder="{{ __('Číslo revize') }}">
                   </div>
-                  <div class="col-12 col-lg-3 mb-sm-1">
+                  <div class="col-12 col-lg-8 mb-sm-1">
+                    <label class="form-label">{{ __('Soubor') }}</label>
+                    <input class="form-control" id="file" name="file" type="file" placeholder="{{ __('Soubor standardu ve formátu PDF') }}">
+                  </div>
+                  <div class="col-12 col-lg-2 mb-sm-1">
                     <label class="form-label">{{ __('Status') }}</label>
                     <select class="form-select" id="status" name="status">
                       <option value="Rozpracováno">Rozpracováno</option>
@@ -297,48 +291,49 @@
           </div>
         </div>
       </div>
+    </div>
 
-      {{-- Delete Event Modal --}}
-      <div class="modal modal-blur fade" id="confirmModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-          <div class="modal-content shadow-lg">
-            {{-- <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="{{ __('Close') }}"></button> --}}
-            <div class="modal-status bg-danger"></div>
-            <div class="modal-body py-4 text-center">
-              <svg class="icon text-danger icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-                   stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M12 9v2m0 4v.01" />
-                <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
-              </svg>
-              <h3>{{ __('Are you sure?') }}</h3>
-              <div class="text-muted mb-2">
-                {{ __('Do you really want to remove standard event?') }}<br>{{ __('This operation cannot be undone') }}
-              </div>
-              <div class="text-info">{{ __('If the standard contains appendices, it will be possible to subsequently attach these appendices to a new or different standard') }}</div>
+    {{-- Delete Event Modal --}}
+    <div class="modal modal-blur fade" id="confirmModal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-hidden="true" tabindex="-1">
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content shadow-lg">
+          {{-- <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="{{ __('Close') }}"></button> --}}
+          <div class="modal-status bg-danger"></div>
+          <div class="modal-body py-4 text-center">
+            <svg class="icon text-danger icon-lg mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                 stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 9v2m0 4v.01" />
+              <path d="M5 19h14a2 2 0 0 0 1.84 -2.75l-7.1 -12.25a2 2 0 0 0 -3.5 0l-7.1 12.25a2 2 0 0 0 1.75 2.75" />
+            </svg>
+            <h3>{{ __('Are you sure?') }}</h3>
+            <div class="text-muted mb-2">
+              {{ __('Do you really want to remove standard event?') }}<br>{{ __('This operation cannot be undone') }}
             </div>
-            <div class="modal-footer">
-              <div class="w-100">
-                <div class="row">
-                  <div class="col">
-                    <button class="btn btn-muted w-100 hover-shadow" data-bs-dismiss="modal">
-                      {{ __('Cancel') }}
-                    </button>
-                  </div>
-                  <div class="col">
-                    <button class="btn btn-danger w-100 hover-shadow" id="ok_button"></button>
-                  </div>
+            <div class="text-info">{{ __('If the standard contains appendices, it will be possible to subsequently attach these appendices to a new or different standard') }}</div>
+          </div>
+          <div class="modal-footer">
+            <div class="w-100">
+              <div class="row">
+                <div class="col">
+                  <button class="btn btn-muted w-100 hover-shadow" data-bs-dismiss="modal">
+                    {{ __('Cancel') }}
+                  </button>
+                </div>
+                <div class="col">
+                  <button class="btn btn-danger w-100 hover-shadow" id="ok_button"></button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      @endsection
+    </div>
+    @endsection
 
-      @section('scripts')
-      <script>
-        $(document).ready(function() {
+    @section('scripts')
+    <script>
+      $(document).ready(function() {
             $('.accordion-collapse').removeClass('show');
             $('#showbtn').click(function() {
               $('.accordion-collapse').addClass('show');
@@ -350,10 +345,10 @@
               $('.accordion-button').addClass('collapsed');
             });
           });
-      </script>
+    </script>
 
-      <script>
-        // Form Modal Functions
+    <script>
+      // Form Modal Functions
           $(document).on('click', '.edit', function() {
             var id = $(this).attr('id');
             $('#form_result_modal, form_result_window').html('');
@@ -483,5 +478,5 @@
               }
             })
           })
-      </script>
-      @endsection
+    </script>
+    @endsection

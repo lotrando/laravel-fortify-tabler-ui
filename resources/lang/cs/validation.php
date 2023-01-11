@@ -143,7 +143,12 @@ return [
         'lokalizace'        => 'Lokalizace zranění po pádu',
         'upresneni'         => 'Upřesnění k jiný',
         'druh_zraneni'      => 'Příznaky po pádu',
-        'attachment'        => 'Soubor'
+        'attachment'        => 'Soubor',
+        'name'              => 'Jméno',
+        'revision'          => 'Revize',
+        'position'          => 'Popis',
+        'file'              => 'Pole soubor',
+        'category_id'       => 'Pole kategorie standardu',
     ],
     'values'                => [
         'after_or_equal'    => [

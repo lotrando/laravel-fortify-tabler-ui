@@ -41,12 +41,12 @@ class DocumentController extends Controller
     {
         $rules = [
             'category_id'           => 'required',
-            'accordion_name'        => 'required',
+            'accordion_name'        => 'nullable',
             'accordion_group'       => 'nullable',
             'name'                  => 'required',
             'revision'              => 'required',
             'description'           => 'required',
-            'position'              => 'required',
+            'position'              => 'required|unique:position',
             'status'                => 'required',
             'file'                  => 'required|mimes:pdf,doc,xls|max:4096'
         ];
@@ -64,7 +64,7 @@ class DocumentController extends Controller
 
         $form_data = [
             'category_id'           => $request->category_id,
-            'accordion_name'        => $request->accordion_name,
+            'accordion_name'        => $request->name,
             'name'                  => $request->name,
             'description'           => $request->description,
             'position'              => $request->position,
@@ -118,11 +118,11 @@ class DocumentController extends Controller
         if ($file != '') {
             $rules = [
                 'category_id'           => 'required',
-                'accordion_name'        => 'required',
+                'accordion_name'        => 'nullable',
                 'accordion_group'       => 'nullable',
                 'name'                  => 'required',
                 'description'           => 'required',
-                'position'              => 'required',
+                'position'              => 'required|unique:position',
                 'revision'              => 'required',
                 'status'                => 'required',
                 'file'                  => 'required|mimes:pdf,doc,xls|max:4096'
@@ -142,11 +142,11 @@ class DocumentController extends Controller
 
             $rules = [
                 'category_id'           => 'required',
-                'accordion_name'        => 'required',
+                'accordion_name'        => 'nullable',
                 'accordion_group'       => 'nullable',
                 'name'                  => 'required',
                 'description'           => 'required',
-                'position'              => 'required',
+                'position'              => 'required|unique:position',
                 'revision'              => 'required',
                 'status'                => 'required',
             ];
@@ -154,8 +154,8 @@ class DocumentController extends Controller
 
         $form_data = [
             'category_id'           => $request->category_id,
-            'accordion_name'        => $request->accordion_name,
             'accordion_group'       => $request->accordion_group,
+            'accordion_name'        => $request->name,
             'name'                  => $request->name,
             'description'           => $request->description,
             'position'              => $request->position,
@@ -181,6 +181,6 @@ class DocumentController extends Controller
     {
         $document = Document::find($id);
         $document->delete();
-        return response()->json(['success' => __('Adverse event deleted successfully')]);
+        return response()->json(['success' => __('Standard deleted successfully')]);
     }
 }
