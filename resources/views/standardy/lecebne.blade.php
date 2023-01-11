@@ -224,6 +224,7 @@
           <div class="modal-content shadow-lg">
             <div id="modal-header">
               <h5 class="modal-title"></h5>
+              <i id="modal-icon"></i>
             </div>
             <form id="inputForm" action="{{ route('adversevents.create') }}">
               @csrf
@@ -235,7 +236,7 @@
                 </div>
                 <div class="row mb-2">
                   <div class="col-12 col-lg-3 mb-sm-1">
-                    <label class="form-label">{{ __('Typ standardu') }}</label>
+                    <label class="form-label">{{ __('Categorie standardu') }}</label>
                     <select class="form-select" id="category_id" name="category_id">
                       @foreach ($categories as $item)
                       <option value="{{ $item->id }}" @if (old('category_id')==$item->id) selected @endif>
@@ -244,18 +245,18 @@
                     </select>
                   </div>
                   <div class="col-12 col-lg-9 mb-sm-1">
-                    <label class="form-label">{{ __('Název standardu') }}</label>
-                    <input class="form-control" id="accordion_name" name="accordion_name" type="text" placeholder="{{ __('Celý název standardu (lišta, tlačítko)') }}">
+                    <label class="form-label">{{ __('Název tlačítka v seznamu standardu') }}</label>
+                    <input class="form-control" id="accordion_name" name="accordion_name" type="text" placeholder="{{ __('Název tlačítka v seznamu standardů') }}">
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="col-12 col-lg-9 mb-sm-1">
-                    <label class="form-label">{{ __('Název standardu popis') }}</label>
+                    <label class="form-label">{{ __('Celý název standardu') }}</label>
                     <input class="form-control" id="name" name="name" type="text" placeholder="{{ __('Celý název standardu (seznam)') }}">
                   </div>
                   <div class="col-12 col-lg-3 mb-sm-1">
                     <label class="form-label">{{ __('Revision') }}</label>
-                    <input class="form-control" id="revision" name="revision" type="number" placeholder="{{ __('revize (pouze číslo)') }}">
+                    <input class="form-control" id="revision" name="revision" type="number" placeholder="{{ __('Revize směrnice (pouze číslo)') }}">
                   </div>
                 </div>
                 <div class="row mb-2">
@@ -265,7 +266,7 @@
                   </div>
                   <div class="col-12 col-lg-4 mb-sm-1">
                     <label class="form-label">{{ __('Position') }}</label>
-                    <input class="form-control" id="position" name="position" type="number" placeholder="{{ __('pozice v seznamu (pouze číslo)') }}">
+                    <input class="form-control" id="position" name="position" type="number" placeholder="{{ __('Pozice tlačítka v seznamu (pouze číslo)') }}">
                   </div>
                 </div>
                 <div class="row">
@@ -363,8 +364,8 @@
                 $('#inputForm')[0].reset();
                 $("#modal-icon, #modal-header").removeClass();
                 $('#formModal').modal('show');
-                $('#modal-icon').addClass('fas fa-first-aid fa-2x m-2');
-                $('#modal-header').addClass("modal-header bg-red-lt");
+                $('#modal-icon').addClass('fas fa-book-medical fa-2x m-2');
+                $('#modal-header').addClass("modal-header bg-yellow-lt");
                 $('#action_button, .modal-title').text("{{ __('Edit standard') }}");
                 $('#action').val("Edit");
                 $('#category_id').val(html.data.category_id);
@@ -388,8 +389,8 @@
             $("#modal-icon, #modal-header").removeClass();
             $('#category_id').val('');
             $('#formModal').modal('show');
-            $('#modal-icon').addClass('fas fa-first-aid fa-2x m-2');
-            $('#modal-header').addClass("modal-header bg-muted-lt");
+            $('#modal-icon').addClass('fas fa-book-medical fa-2x m-2');
+            $('#modal-header').addClass("modal-header bg-green-lt");
             $('#action_button, .modal-title').text("{{ __('Create new standard') }}");
             $('#action').val("Add");
             $('#status').val('Rozpracováno');
