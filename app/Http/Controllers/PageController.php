@@ -116,6 +116,7 @@ class PageController extends Controller
 
         return view('standardy.lecebne', [
             'category'          => 'Standardy',
+            'foldername'        => 1,
             'title'             => $categorie->category_name,
             'categorie'         => $categorie,
             'documents'         => $documents,
